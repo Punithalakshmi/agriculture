@@ -13,7 +13,7 @@ class Login_Model extends CI_Model
      $pass = md5($password);
      
         $this->db->select("*");
-        $this->db->from('users');
+        $this->db->from('admin_users');
         $this->db->where('email', $email);
         $this->db->where('password', $pass);
 

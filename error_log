@@ -1,0 +1,2 @@
+[12-Oct-2017 09:39:59 America/Denver] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/izaapinn/public_html/construction/core/models/Api_model.php on line 61
+[12-Oct-2017 09:41:50 America/Denver] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/izaapinn/public_html/construction/core/models/Api_model.php on line 61

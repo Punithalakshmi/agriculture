@@ -1,34 +1,23 @@
-
-
 $(function()
 {
-    
-     tab_view('chapter','chapter/add','');
-     tab_view('personal_info','personal_info/add','');
-     $("[data-fancybox]").fancybox({
-        // Options will go here
-     });
-     
-    
-    $("input[name='a_c[]']").click(function()
-    {
-        if($(this).prop('checked'))
-        {
-            var cont_name = $(this).attr("data-contractor");
-
-            $("select").append("<option value='"+$(this).val()+"'>"+cont_name+"</option>");
-        }
-        else
-        {
-            $("select [value='"+$(this).val()+"']").remove();
-        }
-    });
 
 
-    $(".singledate").datepicker({
-        format: 'mm/dd/yyyy'
-    });
+    $("[data-fancybox]").fancybox({
+    // Options will go here
+  });
+    // $("input[name='a_c[]']").click(function()
+    // {
+    //     if($(this).prop('checked'))
+    //     {
+    //         var cont_name = $(this).attr("data-contractor");
 
+    //         $("select").append("<option value='"+$(this).val()+"'>"+cont_name+"</option>");
+    //     }
+    //     else
+    //     {
+    //         $("select [value='"+$(this).val()+"']").remove();
+    //     }
+    // });
 
     $(".mt-repeater-add2").click(function()
     {
@@ -41,13 +30,6 @@ $(function()
     });
 
 });	
-function init_datepicker()
-{
-  $(".singledate").datepicker({
-        format: 'mm/dd/yyyy'
-    });
-}
-
 
 //to delete selected record from list.
 function delete_record(del_url,elm){
@@ -142,34 +124,4 @@ function change_status(id='',type='')
         }
     });
   }
-}
-
-function tab_view(id,url,formid='')
-{
-   var form_data = $("#"+formid).serializeArray();
-   var formData = new FormData();
-   if(id=="personal_info" && formid=="add_profile")
-   {
-    // if($('#userfile')[0]!='')
-      formData.append('file', $('#userfile')[0].files[0]);
-   }
-   $(form_data).each(function (index, element) {
-      formData.append(element.name, element.value);
-    });
-    $.ajax({
-        type:"POST",
-        url:base_url+url,
-        processData: false,
-        data:formData,
-        contentType: false,
-        dataType:'json',
-        success:function(data)
-        {
-          console.log(data);
-          $("#"+id).trigger('click');
-          $("#"+id).html(data.output);
-          if(data.status=="success")
-            service_message(data.status,data.msg);
-        }
-    });
 }

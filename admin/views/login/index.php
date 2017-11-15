@@ -1,3 +1,4 @@
+
 <body class="login">
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
@@ -5,8 +6,7 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<!-- <img src="<?php echo include_img_path();?>/logo-big.png" alt=""/> -->
-	<h1 style="color:white;">BRO</h1>
+	<h1 style="color: #fff;font-size: 30px;">8th Domain Technology</h1>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
@@ -42,7 +42,7 @@
 	<!-- END LOGIN FORM -->
 </div>
 <div class="copyright">
-	 <?=date('Y');?> © BRO Admin Panel.
+	 <?=date('Y');?> © 8th Domain Technology
 </div>
 
 </body>

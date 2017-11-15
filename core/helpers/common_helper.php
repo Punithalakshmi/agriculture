@@ -125,7 +125,7 @@ function displayData($data = null, $type = 'string', $row = array(), $wrap_tag_o
             str2USDate($data);
             break;
         case 'status':
-           $labels_array = array('COMPLETED' => 'label-success','PROCESSING' => 'label-success','CANCELLED' => 'label-danger','HOLD' => 'label-danger','PENDING'=>'label-warning',"Active"=>"label-success","Inactive"=>"label-danger");
+           $labels_array = array('COMPLETED' => 'label-success','PROCESSING' => 'label-success','CANCELLED' => 'label-danger','HOLD' => 'label-danger','PENDING'=>'label-warning');
            $data = "<span class='label {$labels_array[$data]}'>{$data}</span>";
           break;
         case "status_change":
@@ -475,41 +475,21 @@ function is_valid_user($user_id = 0)
 
     return $result->num_rows()?TRUE:FALSE;
 }
-function get_user_info()
+
+function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message='')
 {
-    $user_id = get_current_user_id();
-    $role = get_user_data()['role_id'];
-    $CI = &get_instance();
-    /*Users Table*/
-    $CI->db->where("id",$user_id);
-    $CI->db->select("*,IF(role_id='1','Yes','No') as is_admin,id as user_id");
-    $CI->db->from("users");
-    $q['info'] = $CI->db->get()->row_array();
-    /*Persoanl Info Table*/
-    $CI->db->where("user_id",$user_id);
-    $CI->db->select("*");
-    $CI->db->from("personal_info");
-    $q['personal'] = $CI->db->get()->row_array();
-    /*Home Address Table*/
-    $CI->db->where("user_id",$user_id);
-    $CI->db->select("*");
-    $CI->db->from("home_address");
-    $q['home_address'] = $CI->db->get()->row_array();
-    /*Work Address Table*/
-    $CI->db->where("user_id",$user_id);
-    $CI->db->select("*");
-    $CI->db->from("work_address");
-    $q['work_address'] = $CI->db->get()->row_array();
-    /*Affiliations Table*/
-    $CI->db->where("user_id",$user_id);
-    $CI->db->select("*");
-    $CI->db->from("affiliations");
-    $q['affiliations'] = $CI->db->get()->row_array();
-    /*Family Table*/
-    $CI->db->where("user_id",$user_id);
-    $CI->db->select("*");
-    $CI->db->from("family");
-    $q['family'] = $CI->db->get()->row_array();
-    return $q;
+  $CI = & get_instance();
+  $CI->load->library('email');
+  $CI->email->set_mailtype("html");        
+  $CI->email->from($from, $from_name);      
+  $CI->email->to($to);      
+  $CI->email->cc($cc);      
+  $CI->email->subject($subject);      
+  $CI->email->message($message);      
+  if($CI->email->send())
+    return true;
+  else
+    return false;
 }
+
 ?>

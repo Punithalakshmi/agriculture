@@ -16,15 +16,15 @@
 
 $root = (empty($_SERVER['HTTPS'])?'http://':'https://');
 
-$host = $_SERVER['HTTP_HOST'];
+$host = $_SERVER['HTTP_HOST']."/~izaapinn/construction/";
 if($_SERVER['HTTP_HOST']=='localhost')
- $host = 'localhost/bro/';
+ $host = 'localhost/construction/';
 
 
 $config['base_url'] = $root.$host;
 
 $config['base_path'] = $root.$host;
- 
+
 $config['permitted_uri_chars'] = 'a-zA-Z 0-9~%.:_\-@&,()+=';
 
 $config['sess_cookie_name']		= 'ci_session_order_processing';

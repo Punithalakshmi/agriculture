@@ -17,12 +17,12 @@ $root = (empty($_SERVER['HTTPS'])?'http://':'https://');
 
 $host = $_SERVER['HTTP_HOST'];
 if($_SERVER['HTTP_HOST']=='localhost')
-	$host = 'localhost/bro/';
+	$host = 'localhost/construction/';
 
 
-$config['base_url']	= $root.$host."admin";
+$config['base_url']	= $root.$host."/~izaapinn/construction/admin";
 
-$config['base_path'] = $root.$host;
+$config['base_path'] = $root.$host."/~izaapinn/construction/";
  
 $config['permitted_uri_chars'] = 'a-zA-Z 0-9~%.:_\-@&,()+=';
 

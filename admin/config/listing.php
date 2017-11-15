@@ -23,18 +23,18 @@
  */
  
 
-$config['york_index'] = array(
+$config['contractors_index'] = array(
 	"view"		=> 	'listing/listing',
 	"init_scripts" => 'listing/init_scripts',
-	"advance_search_view" => 'frontend/york/filter',
-	"base_url"	=> 	'/york/index/',
+	"advance_search_view" => 'frontend/contractors/filter',
+	"base_url"	=> 	'/contractors/index/',
 	"per_page"	=>	"20",
 	"fields"	=> array(   
-						'first_name'=>array('name'=>'First Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),					
-						'last_name'=>array('name'=>'Last Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
-						'phone'=>array('name'=>'Phone', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'email'=>array('name'=>'Email', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'status'=>array('name'=>'Status', 'data_type' => 'status', 'sortable' => FALSE, 'default_view'=>1)),
+						'company_name'=>array('name'=>'Company Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),					
+						'first_name'=>array('name'=>'Contractor Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'email1'=>array('name'=>'Email', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'office_phone'=>array('name'=>'Phone', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1)),
 
 	"default_order"	=> "id",
 	"default_direction" => "DESC"

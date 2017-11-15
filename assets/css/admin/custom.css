@@ -63,19 +63,3 @@ Change Quick Sidebar Width
     font-size: 18px;
     margin-top: 11px;
 }
-.dashboard-content
-{
-  width: 100%;
-  text-align: center;
-  margin:0 auto;
-}
-.dashboard-content div
-{
-  margin: 0 auto;
-  text-align: center;
-}
-.dashboard-content div a
-{
-  color: #fff;
-  text-decoration: none;
-}
