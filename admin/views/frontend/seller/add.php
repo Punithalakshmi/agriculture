@@ -2,7 +2,7 @@
 		<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			 Add Customer
+			 Add Seller
 			</h3>
 			<div class="page-bar">
 				 <?php echo set_breadcrumb(); ?>

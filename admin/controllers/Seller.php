@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require_once(COREPATH."controllers/Admin_controller.php");
-class Chapter extends Admin_Controller
+class Seller extends Admin_Controller
 {
-	function __construct()
+  function __construct()
   {
     parent::__construct();
     
@@ -17,6 +17,29 @@ class Chapter extends Admin_Controller
   public function index()
   {
     $this->layout->view('frontend/dashboard');
+  }
+  
+  public function index()
+  {
+  	$this->layout->add_javascripts(array('listing'));
+    $this->load->library('listing');
+    $this->simple_search_fields = array('first_name' => 'First Name','last_name'=>'Last Name','email'=>'Email','phone'=>'Phone',"status"=>"Status");
+    $this->_narrow_search_conditions = array("start_date");
+    $str = '<a href="#" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i> Details</a';    
+    $this->listing->initialize(array('listing_action' => $str));
+    $listing = $this->listing->get_listings('york_model', 'listing');
+    $this->data['btn'] = "";
+    if($this->input->is_ajax_request())
+      $this->_ajax_output(array('listing' => $listing), TRUE);
+    $this->data['bulk_actions'] = array('' => 'select', 'delete' => 'Delete');
+    $this->data['simple_search_fields'] = $this->simple_search_fields;
+    $this->data['search_conditions'] = $this->session->userdata($this->namespace.'_search_conditions');
+    $this->data['per_page'] = $this->listing->_get_per_page();
+    $this->data['per_page_options'] = array_combine($this->listing->_get_per_page_options(), $this->listing->_get_per_page_options());
+    $this->data['search_bar'] = $this->load->view('listing/search_bar', $this->data, TRUE);
+    $this->data['listing'] = $listing;
+    $this->data['grid'] = $this->load->view('listing/view', $this->data, TRUE);
+  	$this->layout->view('frontend/york/index');
   }
   
   public function add($edit_id = '')
@@ -36,11 +59,6 @@ class Chapter extends Admin_Controller
           $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
           $this->form_validation->set_rules('most_high_priest','Most High Priest','trim|required');
           $this->form_validation->set_rules('district_high_priest','District High Priest','trim|required');
-          // $this->form_validation->set_rules('category_id','Color','trim|required');
-          //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
-          //  $this->form_validation->set_rules('units','Units','trim|required|numeric');
-          //  $this->form_validation->set_rules('retail_price','Retail Price','trim|required');
-          //  $this->form_validation->set_rules('wholesale_price','Wholesale Price','trim|required');
           
           $this->form_validation->set_error_delimiters('', '');
           if($this->form_validation->run()){
@@ -72,17 +90,12 @@ class Chapter extends Admin_Controller
               $ins_data['sentinel']                  = $this->input->post('sentinel');
               
               if($edit_id){
-               // $ins_data['updated_date'] = date('Y-m-d H:i:s'); 
-               // $ins_data['updated_id']   = get_current_user_id();    
                 $msg                      = 'Chapter updated successfully';
                 $this->chapter_model->update(array("id" => $edit_id),$ins_data);
                // log_history($edit_id,'inventory',"Product <b>".$ins_data['name']."</b> has been updated."); 
               }
               else
-              {   
-              //  $ins_data['created_date'] = date('Y-m-d H:i:s'); 
-              //  $ins_data['updated_date'] = date('Y-m-d H:i:s');
-              //  $ins_data['created_id']   = get_current_user_id();  
+              {    
                 $new_id                   = $this->chapter_model->insert($ins_data);         
                 $msg                      = 'Chapter added successfully';
                 $edit_id                  =  $new_id;
