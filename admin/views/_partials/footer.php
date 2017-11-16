@@ -2,7 +2,7 @@
 <div class="md-overlay"></div> 
 <footer id="footer-bar" class="row">
 	<p id="footer-copyright" class="col-xs-12">
-	Copyright &copy; – <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>  8th Domain Technology
+	Copyright &copy; – <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script> Agriculture
 	</p>
 </footer>
 

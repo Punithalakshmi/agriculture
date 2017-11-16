@@ -6,7 +6,7 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<h1 style="color: #fff;font-size: 30px;">8th Domain Technology</h1>
+	<h1 style="color: #fff;font-size: 30px;">Agriculture</h1>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->

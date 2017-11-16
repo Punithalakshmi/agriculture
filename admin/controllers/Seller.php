@@ -10,24 +10,21 @@ class Seller extends Admin_Controller
     if(!is_logged_in())
       redirect('login');
       
-    $this->load->model('chapter_model');  
+    //$this->load->model('hapterc_model');  
   }
 
   
   public function index()
   {
-    $this->layout->view('frontend/dashboard');
-  }
-  
-  public function index()
-  {
   	$this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
-    $this->simple_search_fields = array('first_name' => 'First Name','last_name'=>'Last Name','email'=>'Email','phone'=>'Phone',"status"=>"Status");
+
+    $this->simple_search_fields = array('first_name' => 'First Name','last_name'=>'Last Name','email'=>'Email','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
-    $str = '<a href="#" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i> Details</a';    
+    $str = '<a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-add add"></i> Add</a><a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i> Edit</a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-remove remove"></i> Remove</a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa  details"></i> Details</a>';    
     $this->listing->initialize(array('listing_action' => $str));
-    $listing = $this->listing->get_listings('york_model', 'listing');
+    $listing = $this->listing->get_listings('seller_model', 'listing');
+
     $this->data['btn'] = "";
     if($this->input->is_ajax_request())
       $this->_ajax_output(array('listing' => $listing), TRUE);
@@ -39,7 +36,8 @@ class Seller extends Admin_Controller
     $this->data['search_bar'] = $this->load->view('listing/search_bar', $this->data, TRUE);
     $this->data['listing'] = $listing;
     $this->data['grid'] = $this->load->view('listing/view', $this->data, TRUE);
-  	$this->layout->view('frontend/york/index');
+
+  	$this->layout->view('frontend/seller/index');
   }
   
   public function add($edit_id = '')
@@ -53,41 +51,31 @@ class Seller extends Admin_Controller
           if($this->input->post('edit_id'))            
             $edit_id = $this->input->post('edit_id');
            
-          $this->form_validation->set_rules('chapter_name','Chapter Name','trim|required');
-          $this->form_validation->set_rules('chapter_no','Chapter No','trim|required');
-          $this->form_validation->set_rules('district_no','District No','trim|required');
-          $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
-          $this->form_validation->set_rules('most_high_priest','Most High Priest','trim|required');
-          $this->form_validation->set_rules('district_high_priest','District High Priest','trim|required');
+          $this->form_validation->set_rules('first_name','First Name','trim|required');
+          $this->form_validation->set_rules('last_name','Last Name','trim|required');
+          $this->form_validation->set_rules('seller_image','Seller Image','trim|required');
+          $this->form_validation->set_rules('address','Address','trim|required');
+          $this->form_validation->set_rules('email','Email','trim|required');
+          $this->form_validation->set_rules('address2','Address2','trim|required');
+          $this->form_validation->set_rules('city','City','trim|required');
+          $this->form_validation->set_rules('zip','Zib','trim|required');
+          $this->form_validation->set_rules('phone','Phone','trim|required');
+          
           
           $this->form_validation->set_error_delimiters('', '');
           if($this->form_validation->run()){
             
               $ins_data = array();
-              $ins_data['chapter_name']              = $this->input->post('chapter_name');
-              $ins_data['chapter_no']                = $this->input->post('chapter_no');
-              $ins_data['district_no']               = $this->input->post('district_no');
-              $ins_data['top_line_signer']           = $this->input->post('top_line_signer');  
-              $ins_data['second_line_signer']        = $this->input->post('second_line_signer');
-              $ins_data['date_joined']               = $this->input->post('date_joined_chapter');
-              $ins_data['most_high_priest']          = $this->input->post('most_high_priest');
-              $ins_data['year1']                     = $this->input->post('year1');
-              $ins_data['district_high_priest']      = $this->input->post('district_high_priest');
-              $ins_data['year2']                     = $this->input->post('year2');
-              $ins_data['hight_priest']              = $this->input->post('hight_priest');
-              $ins_data['year3']                     = $this->input->post('year3');
-              $ins_data['king']                      = $this->input->post('king');
-              $ins_data['scribe']                    = $this->input->post('scribe');
-              $ins_data['secretary']                 = $this->input->post('secretary');
-              $ins_data['treasurer']                 = $this->input->post('treasurer');
-              $ins_data['capt_host']                 = $this->input->post('capt_host');
-              $ins_data['principal_sojourner']       = $this->input->post('principal_sojourner');
-              $ins_data['ra_captain']                = $this->input->post('ra_captain');
-              $ins_data['master_vef_1']              = $this->input->post('master_vef_1');
-              $ins_data['master_vef_2']              = $this->input->post('master_vef_2');
-              $ins_data['master_vef_3']              = $this->input->post('master_vef_3');
-              $ins_data['chaptain']                  = $this->input->post('chaptain');
-              $ins_data['sentinel']                  = $this->input->post('sentinel');
+              $ins_data['first_name']              = $this->input->post('first_name');
+              $ins_data['last_name']                = $this->input->post('last_name');
+              $ins_data['seller_image']               = $this->input->post('seller_image');
+              $ins_data['address']           = $this->input->post('address');  
+              $ins_data['email']        = $this->input->post('email');
+              $ins_data['address2']               = $this->input->post('address2');
+              $ins_data['city']          = $this->input->post('city');
+              $ins_data['zip']                     = $this->input->post('zip');
+              $ins_data['phone']      = $this->input->post('phone');
+              
               
               if($edit_id){
                 $msg                      = 'Chapter updated successfully';
@@ -96,7 +84,9 @@ class Seller extends Admin_Controller
               }
               else
               {    
-                $new_id                   = $this->chapter_model->insert($ins_data);         
+
+
+                $new_id                   = $this->seller_model->insert($ins_data);         
                 $msg                      = 'Chapter added successfully';
                 $edit_id                  =  $new_id;
                // log_history($new_id,'inventory',"Product <b>".$ins_data['name']."</b> has been inserted."); 
@@ -107,29 +97,16 @@ class Seller extends Admin_Controller
           else
           {
             $edit_data = array();
-            $edit_data['chapter_name']              = '';
-            $edit_data['chapter_no']                = '';
-            $edit_data['district_no']               = '';
-            $edit_data['top_line_signer']           = '';  
-            $edit_data['date_joined']               = '';
-            $edit_data['most_high_priest']          = '';
-            $edit_data['year1']                     = '';
-            $edit_data['district_high_priest']      = '';
-            $edit_data['year2']                     = '';
-            $edit_data['hight_priest']              = '';
-            $edit_data['year3']                     = '';
-            $edit_data['king']                      = '';
-            $edit_data['scribe']                    = '';
-            $edit_data['secretary']                 = '';
-            $edit_data['treasurer']                 = '';
-            $edit_data['capt_host']                 = '';
-            $edit_data['principal_sojourner']       = '';
-            $edit_data['ra_captain']                = '';
-            $edit_data['master_vef_1']              = '';
-            $edit_data['master_vef_2']              = '';
-            $edit_data['master_vef_3']              = '';
-            $edit_data['chaptain']                  = '';
-            $edit_data['sentinel']                  = '';
+            $edit_data['first_name']              = '';
+            $edit_data['last_name']                = '';
+            $edit_data['seller_image']               = '';
+            $edit_data['email']           = '';  
+            $edit_data['address2']               = '';
+            $edit_data['address']          = '';
+            $edit_data['city']                     = '';
+            $edit_data['zip']      = '';
+            $edit_data['phone']                     = '';
+           
             $status = 'error';
           }
         }
@@ -139,19 +116,20 @@ class Seller extends Admin_Controller
             $msg  = $e->getMessage();
         }
 
-        if($edit_id){
-          $edit_data = $this->chapter_model->get_where(array("id" => $edit_id))->row_array();
-        }   
+       /* if($edit_id){
+          $edit_data = $this->seller_model->get_where(array("id" => $edit_id))->row_array();
+        }  */
          
         $this->data['editdata']              = $edit_data;
         
         if($this->input->is_ajax_request()){
-          $output  = $this->load->view('frontend/yorksite/chapter',$this->data,true);
+          $output  = $this->load->view('frontend/seller/',$this->data,true);
           return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
         } 
         else
         {
-            $this->layout->view('frontend/yorksite/chapter',$this->data);
+
+            $this->layout->view('frontend/seller/add',$this->data);
         }  
   }
   

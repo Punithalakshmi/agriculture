@@ -15,7 +15,7 @@
     <div class="page-header-inner">
       <!-- BEGIN LOGO -->
       <div class="page-logo">      
-        <h4 style="color: white;">daVinci - GC Punch List Manager</h4>    
+        <h4 style="color: white;">Agriculture Dashboard</h4>    
         <div class="menu-toggler sidebar-toggler hide">
           <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
         </div>
@@ -29,14 +29,14 @@
       <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
          
-          <?php
-            $profile = get_user_data();         
+          <?php /*
+            $profile = get_user_data();     */    
           ?>
           <li class="dropdown dropdown-user">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <img alt="" class="img-circle" src=""/>
             <span class="username username-hide-on-mobile">
-            Welcome <?=$profile['name'];?> </span>
+            Welcome  </span>
             <i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
@@ -71,33 +71,40 @@
           <div class="sidebar-toggler">
           </div>
         </li>
-        <li class="start <?=($uri=='project')?'active':'';?>">
-          <a href="<?=site_url('project');?>">
+        <li class="start <?=($uri=='')?'active':'';?>">
+          <a href="<?=site_url('seller');?>">
           <i class="fa fa-anchor"></i>
-          <span class="title">Project</span>
-          <?=($uri=='project')?"<span class='selected'>":"";?>
+          <span class="title">Seller Management</span>
+          <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
 
-        <li class="start <?=($uri=='contractors')?'active':'';?>">
-          <a href="<?=site_url('contractors');?>">
+        <li class="start <?=($uri=='')?'active':'';?>">
+          <a href="<?=site_url('');?>">
           <i class="fa fa-users"></i>
-          <span class="title">Contractors</span>
-          <?=($uri=='contractors')?"<span class='selected'>":"";?>
+          <span class="title">Seller Services and Product</span>
+          <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
-        <li class="start <?=($uri=='works')?'active':'';?>">
-          <a href="<?=site_url('works');?>">
+        <li class="start <?=($uri=='')?'active':'';?>">
+          <a href="<?=site_url('');?>">
           <i class="fa fa-cogs"></i>
-          <span class="title">Work Items</span>
-          <?=($uri=='works')?"<span class='selected'>":"";?>
+          <span class="title">Events/News</span>
+          <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
-        <li class="start <?=($uri=='milestone')?'active':'';?>">
-          <a href="<?=site_url('milestone');?>">
+        <li class="start <?=($uri=='')?'active':'';?>">
+          <a href="<?=site_url('');?>">
           <i class="fa fa-sitemap"></i>
-          <span class="title">Milestone Status</span>
-          <?=($uri=='milestone')?"<span class='selected'>":"";?>
+          <span class="title">Business ads management</span>
+          <?=($uri=='')?"<span class='selected'>":"";?>
+          </a>
+        </li>
+         <li class="start <?=($uri=='')?'active':'';?>">
+          <a href="<?=site_url('');?>">
+          <i class="fa fa-sitemap"></i>
+          <span class="title">Subscription mangement</span>
+          <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
       </ul>
