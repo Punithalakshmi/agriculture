@@ -39,6 +39,5 @@ class Seller_model extends App_model
     return parent::listing();
   }
 
-
 }
 ?>

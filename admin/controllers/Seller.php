@@ -10,7 +10,11 @@ class Seller extends Admin_Controller
     if(!is_logged_in())
       redirect('login');
       
-    //$this->load->model('hapterc_model');  
+  $this->load->model('seller_model');  
+  $this->load->model('country_model');
+  $this->load->model('state_model');
+  $this->load->helper(array('url','html','form'));
+
   }
 
   
@@ -21,7 +25,7 @@ class Seller extends Admin_Controller
 
     $this->simple_search_fields = array('first_name' => 'First Name','last_name'=>'Last Name','email'=>'Email','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
-    $str = '<a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-add add"></i> Add</a><a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i> Edit</a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-remove remove"></i> Remove</a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa  details"></i> Details</a>';    
+    $str = '<a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding"><i class="fa fa-edit"></i></a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding"><i class="fa fa-remove remove"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
     $listing = $this->listing->get_listings('seller_model', 'listing');
 
@@ -45,7 +49,9 @@ class Seller extends Admin_Controller
     
     $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
     $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
-    
+    $this->layout->add_stylesheets(array('dropzone'));
+    $this->layout->add_javascripts(array('dropzone'));
+
      try
         {
           if($this->input->post('edit_id'))            
@@ -53,7 +59,8 @@ class Seller extends Admin_Controller
            
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
-          $this->form_validation->set_rules('seller_image','Seller Image','trim|required');
+          $this->form_validation->set_rules('password','Password','trim|required');
+          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|max_length[232]|matches[password]', ['matches'=>'Password does not match']);
           $this->form_validation->set_rules('address','Address','trim|required');
           $this->form_validation->set_rules('email','Email','trim|required');
           $this->form_validation->set_rules('address2','Address2','trim|required');
@@ -63,65 +70,87 @@ class Seller extends Admin_Controller
           
           
           $this->form_validation->set_error_delimiters('', '');
+
           if($this->form_validation->run()){
-            
+             
               $ins_data = array();
               $ins_data['first_name']              = $this->input->post('first_name');
               $ins_data['last_name']                = $this->input->post('last_name');
-              $ins_data['seller_image']               = $this->input->post('seller_image');
+              $ins_data['password']           = $this->input->post('password'); 
               $ins_data['address']           = $this->input->post('address');  
               $ins_data['email']        = $this->input->post('email');
               $ins_data['address2']               = $this->input->post('address2');
               $ins_data['city']          = $this->input->post('city');
+              $ins_data['country_id']          = $this->input->post('country_id');
+              $ins_data['state_id']          = $this->input->post('state_id');
               $ins_data['zip']                     = $this->input->post('zip');
               $ins_data['phone']      = $this->input->post('phone');
-              
-              
+              $ins_data['company_name'] = $this->input->post('company_name');
+              $ins_data['description'] = $this->input->post('description');
+              $ins_data['website']  = $this->input->post('website');
+            
               if($edit_id){
-                $msg                      = 'Chapter updated successfully';
-                $this->chapter_model->update(array("id" => $edit_id),$ins_data);
+                $msg                      = 'Seller updated successfully';
+                $this->seller_model->update(array("id" => $edit_id),$ins_data);
                // log_history($edit_id,'inventory',"Product <b>".$ins_data['name']."</b> has been updated."); 
               }
               else
               {    
 
-
                 $new_id                   = $this->seller_model->insert($ins_data);         
-                $msg                      = 'Chapter added successfully';
+                $msg                      = 'Seller added successfully';
                 $edit_id                  =  $new_id;
                // log_history($new_id,'inventory',"Product <b>".$ins_data['name']."</b> has been inserted."); 
               }
               $this->session->set_flashdata('success_msg',$msg,TRUE);
               $status  = 'success';
-          }    
+          }  
+
           else
           {
             $edit_data = array();
             $edit_data['first_name']              = '';
+            $edit_data['password']                = '';
             $edit_data['last_name']                = '';
-            $edit_data['seller_image']               = '';
             $edit_data['email']           = '';  
             $edit_data['address2']               = '';
             $edit_data['address']          = '';
             $edit_data['city']                     = '';
             $edit_data['zip']      = '';
             $edit_data['phone']                     = '';
+            $edit_data['company_name'] = '';
+            $edit_data['website']  = '';
+            $edit_data['description'] = '';
+          
            
             $status = 'error';
           }
         }
+        
         catch (Exception $e)
         {
             $this->data['status']   = 'error';
             $msg  = $e->getMessage();
         }
 
-       /* if($edit_id){
+       if($edit_id){
           $edit_data = $this->seller_model->get_where(array("id" => $edit_id))->row_array();
-        }  */
-         
-        $this->data['editdata']              = $edit_data;
+        }  
         
+        $country = $this->country_model->get_all();
+
+        $state =  $this->state_model->get_all();
+
+        $country_id = $country[0]->name;
+
+        $state_id = $state[0]->name;
+
+        $this->data['editdata']              = $edit_data;
+
+        $this->data['country']              = $country_id;
+      
+        $this->data['state']                = $state_id;
+
         if($this->input->is_ajax_request()){
           $output  = $this->load->view('frontend/seller/',$this->data,true);
           return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
@@ -132,6 +161,41 @@ class Seller extends Admin_Controller
             $this->layout->view('frontend/seller/add',$this->data);
         }  
   }
+
+  function delete($del_id)
+    {
+      $access_data = $this->seller_model->get_where(array("id"=>$del_id),'id')->row_array();
+      $output=array();
+      if(count($access_data) > 0)
+      {
+        $this->seller_model->delete(array("id"=>$del_id));
+        $output['message'] ="Record deleted successfuly.";
+        $output['status']  = "success";
+        redirect("seller");
+      }
+      else
+      {
+        $output['message'] ="This record not matched by Contractor.";
+        $output['status']  = "error";
+        redirect("seller");
+      }
+      $this->_ajax_output($output, TRUE);
+    }
+
+    public function upload() {
+      die('test');
+        if (!empty($_FILES)) {
+        $tempFile = $_FILES['file']['tmp_name'];
+        $fileName = $_FILES['file']['name'];
+        $targetPath = getcwd() . '/uploads/';
+        $targetFile = $targetPath . $fileName ;
+        move_uploaded_file($tempFile, $targetFile);
+        // if you want to save in db,where here
+        // with out model just for example
+        // $this->load->database(); // load database
+        // $this->db->insert('file_table',array('file_name' => $fileName));
+        }
+    }
   
 }
 ?>

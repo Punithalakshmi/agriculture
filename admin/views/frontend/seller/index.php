@@ -21,9 +21,11 @@
 								<i class="fa fa-user"></i>Agricultuer List
 							</div>
 						</div>
+
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="row">
+								<a href="<?php echo site_url('seller/add/') ?>" class="btn btn btn-padding yellow table-action"><i class="fa fa-add add"></i> Add</a>
 									<?=$grid;?>
 								</div>
 							</div>

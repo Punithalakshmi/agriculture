@@ -86,6 +86,7 @@ class Api_model extends App_Model {
 		return $this->db->get()->result_array();
 
 	}
+	
     
 }
 ?>
