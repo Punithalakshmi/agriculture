@@ -93,11 +93,11 @@
           <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
-        <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('');?>">
+        <li class="start <?=($uri=='business')?'active':'';?>">
+          <a href="<?=site_url('business');?>">
           <i class="fa fa-sitemap"></i>
           <span class="title">Business ads management</span>
-          <?=($uri=='')?"<span class='selected'>":"";?>
+          <?=($uri=='business')?"<span class='selected'>":"";?>
           </a>
         </li>
          <li class="start <?=($uri=='')?'active':'';?>">
@@ -105,6 +105,13 @@
           <i class="fa fa-sitemap"></i>
           <span class="title">Subscription mangement</span>
           <?=($uri=='')?"<span class='selected'>":"";?>
+          </a>
+        </li>
+         <li class="start <?=($uri=='plans')?'active':'';?>">
+          <a href="<?=site_url('plans');?>">
+          <i class="fa fa-sitemap"></i>
+          <span class="title">Plans</span>
+          <?=($uri=='plans')?"<span class='selected'>":"";?>
           </a>
         </li>
       </ul>

@@ -63,3 +63,10 @@ Change Quick Sidebar Width
     font-size: 18px;
     margin-top: 11px;
 }
+.radio-btn input {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 13px;
+    margin-top: -2px;
+}

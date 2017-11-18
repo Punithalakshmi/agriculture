@@ -70,15 +70,15 @@ $uri = $this->uri->segment(2);?>
 
 			<!-- <td>
           		<?php 
-                    $clk            = '';
+                    //$clk            = '';
                     // $data_attributes= '';
                     //$clk = ($uri1 == "salesproductselection")?'onclick="product_add_to_shipment('.$item['id'].')"':"";
-                    $data_attributes = ($uri1 == "salesproductselection")?'data-qty="'.$item['quantity'].'" data-price="'.$item['wholesale_price'].'"':"";
+                    //$data_attributes = ($uri1 == "salesproductselection")?'data-qty="'.$item['quantity'].'" data-price="'.$item['wholesale_price'].'"':"";
                     
-          			if((isset($item['id']) && !empty($item['id']))){ 
-						echo '<label for="selectAll-'.$item['id'].'" class="custom-checkbox">&nbsp;</label>';
-          				echo form_checkbox("op_select[]", $item['id'], '', "id='selectAll-{$item['id']}'  class= 'checkbox' $data_attributes $clk");
-          			} 
+          			//if((isset($item['id']) && !empty($item['id']))){ 
+					//	echo '<label for="selectAll-'.$item['id'].'" class="custom-checkbox">&nbsp;</label>';
+          			//	echo form_checkbox("op_select[]", $item['id'], '', "id='selectAll-{$item['id']}'  class= //'checkbox' $data_attributes $clk");
+          			//} 
           		?>
             </td> -->
 				<?php foreach ($fields as $field => $row):?>

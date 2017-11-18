@@ -62,7 +62,6 @@ function delete_record(del_url,elm){
 
 /* refresh grid after ajax submitting form */
 function refresh_grid(data_tbl){
-     
      data_tbl =(data_tbl)?data_tbl:"data_table";
      var cur_page = $("#base_url").val()+$("#cur_page").val();
      $.fn.init_progress_bar();

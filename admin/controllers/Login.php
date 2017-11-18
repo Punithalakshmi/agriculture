@@ -28,8 +28,9 @@ class Login extends Admin_Controller
             {
                 redirect("dashboard");
                
-
-            }else{
+            }
+            else
+            {
 
                 $this->session->set_flashdata("login_fail1","Invalid Username or Password",TRUE);
             }
