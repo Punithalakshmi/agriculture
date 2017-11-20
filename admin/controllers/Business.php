@@ -40,6 +40,7 @@ class Business extends Admin_Controller
   public function add($edit_id = '')
   {
         $this->layout->add_stylesheets(array('custom'));
+        $this->layout->add_javascripts(array('function'));
    
          try
         {

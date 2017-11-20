@@ -110,7 +110,7 @@
          <li class="start <?=($uri=='plans')?'active':'';?>">
           <a href="<?=site_url('plans');?>">
           <i class="fa fa-sitemap"></i>
-          <span class="title">Plans</span>
+          <span class="title">Plans Management</span>
           <?=($uri=='plans')?"<span class='selected'>":"";?>
           </a>
         </li>

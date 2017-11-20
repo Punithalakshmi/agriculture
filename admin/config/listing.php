@@ -92,18 +92,18 @@ $config['milestone_index'] = array(
 	"default_direction" => "DESC"
 );
 
-$config["business_index"] = array(
-"view" =>"listing/listing",
-"init_scripts" =>"listing/init_scripts",
-"advance_search_view"=>"frontend/business/filter",
-"base_url" =>'/business/index',
-"per_page" =>"20",
-"fields"   =>array(   
-						'customer_name'=>array('name'=>'Customer Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+$config['business_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/business/filter',
+	"base_url"	=> 	'/business/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'customer_name'=>array('name'=>'Customer Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'status'=>array('name'=>'Status', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1),),
-
+						'status'=>array('name'=>'Status', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
@@ -116,8 +116,8 @@ $config['plans_index'] = array(
 	"base_url"	=> 	'/plans/index/',
 	"per_page"	=>	"20",
 	"fields"	=> array(   
-						'name'=>array('name'=>' Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
-						'amount'=>array('name'=>'Amount', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'name'=>array('name'=>' Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'amount'=>array('name'=>'Amount', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1)
 						,),
 	"default_order"	=> "id",

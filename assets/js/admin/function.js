@@ -76,8 +76,8 @@ function service_message(err_type,message,div_id){
     
     var str  ='<div id="div_service_message" class="Metronic-alerts alert alert-'+err_type+' fade in">';
         str +='<button class="close" aria-hidden="true" data-dismiss="alert" type="button"><i class="fa-lg fa fa-warning"></i></button>';
-	    str +='<strong>'+capitaliseFirstLetter(err_type)+':&nbsp;</strong>';
-	    str += message;
+	    str   +='<strong>'+capitaliseFirstLetter(err_type)+':&nbsp;</strong>';
+	    str   += message;
         str +='</div>';
         
     if(div_id){
