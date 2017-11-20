@@ -114,6 +114,13 @@
           <?=($uri=='plans')?"<span class='selected'>":"";?>
           </a>
         </li>
+        <li class="start <?=($uri=='events')?'active':'';?>">
+          <a href="<?=site_url('events');?>">
+          <i class="fa fa-sitemap"></i>
+          <span class="title">Events Management</span>
+          <?=($uri=='events')?"<span class='selected'>":"";?>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

@@ -159,8 +159,9 @@ class Business extends Admin_Controller
 
               if(!$this->upload->do_upload('ads_image'))
               {
-                $final_file_data = array('error' => $this->upload->display_errors());
                
+                $final_file_data = array('error' => $this->upload->display_errors());
+        
               }
               else
               {

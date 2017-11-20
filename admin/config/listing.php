@@ -123,4 +123,21 @@ $config['plans_index'] = array(
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
+
+$config['events_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/events/filter',
+	"base_url"	=> 	'/events/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'title'=>array('name'=>'Title Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'location'=>array('name'=>'Location', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
+						,),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
 ?>

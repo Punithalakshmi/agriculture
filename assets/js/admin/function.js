@@ -1,6 +1,22 @@
+
 $(function()
 {
+function datepicker()
+{
+  
+    $('#from_date').datepicker({
+    format: 'yyyy/mm/dd',
+    fromDate: '-3d'
+});
+   
+   $('#to_date').datepicker({
+    format: 'yyyy/mm/dd',
+    Todate: '-3d'
+});
 
+
+
+}
 
     $("[data-fancybox]").fancybox({
     // Options will go here
