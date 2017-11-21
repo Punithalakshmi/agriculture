@@ -1,22 +1,28 @@
+$(document).ready(function(){
+  $("#from_date").datepicker({
+      format: 'yyyy-mm-dd',
+      startDate:new Date(),
+      autoclose: true,
+    }).on('changeDate', function (selected) {
+        var startDate = new Date(selected.date.valueOf());
+        $('#to_date').datepicker('setStartDate', startDate);
+    }).on('clearDate', function (selected) {
+    $('#to_date').datepicker('setStartDate', null);
+});
 
+    $("#to_date").datepicker({
+       format: 'yyyy-mm-dd',
+       autoclose: true,
+    }).on('changeDate', function (selected) {
+       var endDate = new Date(selected.date.valueOf());
+       $('#from_date').datepicker('setEndDate', endDate);
+    }).on('clearDate', function (selected) {
+   $('#from_date').datepicker('setEndDate', null);
+});
+ })
 $(function()
 {
-function datepicker()
-{
-  
-    $('#from_date').datepicker({
-    format: 'yyyy/mm/dd',
-    fromDate: '-3d'
-});
-   
-   $('#to_date').datepicker({
-    format: 'yyyy/mm/dd',
-    Todate: '-3d'
-});
 
-
-
-}
 
     $("[data-fancybox]").fancybox({
     // Options will go here
@@ -140,3 +146,4 @@ function change_status(id='',type='')
     });
   }
 }
+

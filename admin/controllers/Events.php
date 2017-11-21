@@ -43,10 +43,8 @@ class Events extends Admin_controller
     public function add($edit_id='')
     {	
   		  $this->layout->add_stylesheets(array('custom'));
-        $this->layout->add_javascripts(array('function'));
-         $this->layout->add_javascripts(array('jquery.min'));
-        $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
-        $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
+
+
 
   		try
   		{
@@ -91,7 +89,7 @@ class Events extends Admin_controller
                $ins_data['filepath'] = base_path()."assets/img/business/";
                $ins_data['event_image'] = (!empty($filename1))?$filename1:"";
                $ins_data['event_image'] = (!empty($filename1))?$filename1:"";
-  				if(!$edit_id)
+  				if($edit_id)
   				{
             $ins_data['updated_id'] = $creater_id["id"];
             $ins_data['updated_date']   = date("Y-m-d H:i:s");

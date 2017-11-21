@@ -51,7 +51,7 @@
                           <div class="form-group <?php echo (form_error('from_date'))?'has-error':'';?>">
                               <label class="control-label col-md-3">From date<span class="required">*</span>  </label>
                               <div class="col-md-9">
-                                <input type="text" autocomplete="off" class="form-control" onclick="datepicker()" name="from_date" id="from_date" placeholder="from date" value="<?php echo set_value('from_date',$editdata['from_date']);?>">
+                                <input type="text" autocomplete="off" class="form-control"  name="from_date" id="from_date" placeholder="yyyy/dd/mm"  value="<?php echo set_value('from_date',$editdata['from_date']);?>">
                                 <?php echo form_error("from_date"); ?>
                               </div>
                           </div>
@@ -60,7 +60,7 @@
                           <div class="form-group <?php echo (form_error('to_date'))?'has-error':'';?>">
                               <label class="control-label col-md-3">To Date<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <input type="text" autocomplete="off" class="form-control" onclick="datepicker()" name="to_date" id="to_date" placeholder="to date" value="<?php echo set_value('to_date',$editdata['to_date']);?>">
+                                <input type="text" autocomplete="off" class="form-control" name="to_date" id="to_date" placeholder="yyyy/dd/mm" value="<?php echo set_value('to_date',$editdata['to_date']);?>">
                                 <?php echo form_error("to_date"); ?>
                               </div>
                           </div>
@@ -85,7 +85,7 @@
                                 <input type="hidden" name="file_path" value="<?php echo (!empty($editdata['filepath']))?rtrim($editdata['filepath'],","):""; ?>" />
                                   <?php if(!empty($editdata["event_image"])){ ?>
                                     <br>
-                                  <img src="<?=base_path()."assets/img/business/".$editdata["event_image"]; ?>" width="50" height="50" />
+                                  <img src="<?=base_path()."assets/img/events/".$editdata["event_image"]; ?>" width="50" height="50" />
                                 <?Php }?>
                               </div>
                               <?php echo form_error('event_image'); ?>
