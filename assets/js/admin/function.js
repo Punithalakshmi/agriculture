@@ -147,3 +147,46 @@ function change_status(id='',type='')
   }
 }
 
+function tab_view(id,url,formid='')
+{
+
+  
+   var form_data = $("#"+formid).serializeArray();
+   
+   var formData = new FormData();
+
+   $(form_data).each(function (index, element) {
+      formData.append(element.name, element.value);
+    });
+   formData.append('seller_id', $("input[name='seller_id']").val());
+   
+    $.ajax({
+        type:"POST",
+        url:base_url+url,
+        processData: false,
+        data:formData,
+        contentType: false,
+        dataType:'json',
+        success:function(data)
+        {
+          console.log(data.edit_id);
+          $("#"+id).trigger('click');
+          $("#"+id).html(data.output);
+          if(id=='contact')
+           $("input[name='seller_id']").val(data.edit_id);
+         if(id=='service')
+            $("input[name='seller_id']").val(data.edit_id);
+          if(id=='photos')
+             $("input[name='seller_id']").val(data.edit_id);
+          //$("form#photoForm #photo_seller_id").val(data.edit_id);
+          if(data.status=="success")
+            
+            service_message(data.status,data.msg);
+        }
+    });
+}
+
+
+
+
+
