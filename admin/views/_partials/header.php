@@ -95,7 +95,7 @@
         </li>
         <li class="start <?=($uri=='business')?'active':'';?>">
           <a href="<?=site_url('business');?>">
-          <i class="fa fa-sitemap"></i>
+          <i class="fa fa-briefcase" aria-hidden="true"></i>
           <span class="title">Business ads management</span>
           <?=($uri=='business')?"<span class='selected'>":"";?>
           </a>
@@ -116,9 +116,16 @@
         </li>
         <li class="start <?=($uri=='events')?'active':'';?>">
           <a href="<?=site_url('events');?>">
-          <i class="fa fa-sitemap"></i>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
           <span class="title">Events Management</span>
           <?=($uri=='events')?"<span class='selected'>":"";?>
+          </a>
+        </li>
+        <li class="start <?=($uri=='category')?'active':'';?>">
+          <a href="<?=site_url('category');?>">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <span class="title">Category Management</span>
+          <?=($uri=='category')?"<span class='selected'>":"";?>
           </a>
         </li>
       </ul>

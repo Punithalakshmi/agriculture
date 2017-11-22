@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2017 at 03:04 PM
+-- Generation Time: Nov 22, 2017 at 01:10 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -50,6 +50,33 @@ INSERT INTO `business_ads` (`id`, `customer_name`, `title`, `ads_image`, `filepa
 (28, 'mahe', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'iuhiuhuih', 'Active', '2017-11-18 00:46:16', '0000-00-00 00:00:00', 1, 0),
 (32, 'mahe', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'iuhiuhuih', 'Active', '2017-11-18 00:46:30', '0000-00-00 00:00:00', 1, 0),
 (34, 'mahe', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'iuhiuhuih', 'Inactive', '2017-11-18 00:46:37', '2017-11-18 03:22:37', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `category_img` text NOT NULL,
+  `filepath` text NOT NULL,
+  `status` enum('Active','Inactive','','') NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_id` int(11) NOT NULL,
+  `updated_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`, `category_img`, `filepath`, `status`, `created_date`, `updated_date`, `created_id`, `updated_id`) VALUES
+(12, 'some category', 'jhgjgjhgjhg', 'slide--31.jpg', 'http://localhost/agriculture/assets/img/category/', 'Active', '2017-11-22 07:27:18', '2017-11-22 07:29:56', 1, 1),
+(13, 'rwetwert', 'werwer', 'slide--121.jpg', 'http://localhost/agriculture/assets/img/category/', 'Active', '2017-11-22 07:38:21', '0000-00-00 00:00:00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -168,6 +195,12 @@ ALTER TABLE `business_ads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -200,6 +233,11 @@ ALTER TABLE `user`
 --
 ALTER TABLE `business_ads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `events`
 --

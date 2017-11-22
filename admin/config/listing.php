@@ -140,4 +140,20 @@ $config['events_index'] = array(
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
+
+$config['category_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/category/filter',
+	"base_url"	=> 	'/category/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'name'=>array('name'=>' Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
 ?>
