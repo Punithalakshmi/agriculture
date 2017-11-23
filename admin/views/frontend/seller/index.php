@@ -2,7 +2,7 @@
 		<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			 Agricultuer List
+			 Seller List
 			</h3>
 			<div class="page-bar">
 				 <?php echo set_breadcrumb(); ?>
@@ -18,14 +18,14 @@
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>Agricultuer List
+								<i class="fa fa-user"></i>Seller List
 							</div>
 						</div>
 
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="row">
-								<a href="<?php echo site_url('seller/add/') ?>" class="btn btn btn-padding yellow table-action"><i class="fa fa-add add"></i> Add</a>
+								
 									<?=$grid;?>
 								</div>
 							</div>
