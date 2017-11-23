@@ -30,7 +30,8 @@ class Seller extends Admin_Controller
     $this->listing->initialize(array('listing_action' => $str));
     $listing = $this->listing->get_listings('seller_model', 'listing');
 
-    $this->data['btn'] = "";
+     $this->data['btn'] = "";
+    $this->data['btn'] ="<a href=".site_url('seller/add')." class='btn green'>Add New <i class='fa fa-plus'></i></a>";
     if($this->input->is_ajax_request())
       $this->_ajax_output(array('listing' => $listing), TRUE);
     $this->data['bulk_actions'] = array('' => 'select', 'delete' => 'Delete');
@@ -195,6 +196,7 @@ class Seller extends Admin_Controller
             
           $this->form_validation->set_rules('company_name','Company Name','trim|required');
           $this->form_validation->set_rules('website','Website','trim|required');
+          //$this->form_validation->set_rules('website', $this->lang->line('website'), 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
           $this->form_validation->set_rules('description','Description','trim|required');
 
         $this->form_validation->set_error_delimiters('', '');
@@ -353,13 +355,14 @@ class Seller extends Admin_Controller
       if(count($access_data) > 0)
       {
         $this->seller_model->delete(array("id"=>$del_id));
+
         $output['message'] ="Record deleted successfuly.";
         $output['status']  = "success";
         redirect("seller");
       }
       else
       {
-        $output['message'] ="This record not matched by Contractor.";
+        $output['message'] ="This record not matched by Seller.";
         $output['status']  = "error";
         redirect("seller");
       }
@@ -380,6 +383,20 @@ class Seller extends Admin_Controller
         
         return TRUE;
     }
+  /**
+  * This method handles to validate url
+  **/
+  function form_validation_validate_url($str){
+        $valid_url  = validate_url($str);
+        if(!empty($str)){
+          if (!$valid_url){
+              $this->form_validation->set_message('form_validation_validate_url', $this->lang->line('valid_url'));
+              return FALSE;
+          }
+        }
+        
+        return TRUE;
+    }
 
     public function deleteimage() {
         $deleteid = $this->input->post('image_id');
@@ -391,7 +408,7 @@ class Seller extends Admin_Controller
            $path = getcwd() . '/uploads/';
 
           $delete_file_result = delete_file($path, $image_data[0]->image_name);
-          
+
         }
 
         $this->db->delete('seller_image', array('id' => $deleteid));
