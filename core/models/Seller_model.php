@@ -39,5 +39,15 @@ class Seller_model extends App_model
     return parent::listing();
   }
 
+  /**
+
+     * This method handles to get last inserted id
+
+     * */
+    function get_last_inserted_id() {
+
+        return $this->db->insert_id();
+    }
+
 }
 ?>

@@ -80,12 +80,13 @@
         </li>
 
         <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('');?>">
+          <a href="<?=site_url('product');?>">
           <i class="fa fa-users"></i>
-          <span class="title">Seller Services and Product</span>
+          <span class="title">Product Management</span>
           <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
+
         <li class="start <?=($uri=='')?'active':'';?>">
           <a href="<?=site_url('');?>">
           <i class="fa fa-cogs"></i>

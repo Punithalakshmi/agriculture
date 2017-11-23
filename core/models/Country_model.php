@@ -15,11 +15,9 @@ class Country_model extends App_model
     **/
     function get_all($field='name', $order_by='ASC'){
         $table_name =  $this->_table;
-        $this->db->select('name')
+        $this->db->select('*')
                     ->from($table_name)
-                    ->where('status=', 'Active')
-                    //->order_by($field, $order_by);
-                 ->order_by('name','ASC');
+                   ->order_by('name','ASC');
         $data = $this->db->get();
         if(!empty($data)){
             $return = $data->result();
