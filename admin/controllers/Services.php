@@ -3,7 +3,7 @@
 require_once(COREPATH."controllers/Admin_controller.php");
 class Services extends Admin_Controller
 {
-	function __construct()
+  function __construct()
   {
     parent::__construct();
     
@@ -11,23 +11,24 @@ class Services extends Admin_Controller
       redirect('login');
       
     $this->load->model('services_model');  
-    $this->load->model('seller_model');
   }
 
-  
   public function index()
   {
 
-    $this->layout->add_javascripts(array('listing'));
+  	$this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
-
-    $this->simple_search_fields = array('first_name' => 'First Name','last_name'=>'Last Name','email'=>'Email','status'=>'Status');
+    $this->simple_search_fields = array('title' => 'Title','Image_name' =>'Image','description'=>'Description','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
-    $str = '<a href="'.site_url('seller/add/{id}').'" class="btn btn btn-padding"><i class="fa fa-edit"></i></a><a href="'.site_url('seller/delete/{id}').'" class="btn btn btn-padding"><i class="fa fa-remove remove"></i></a>';    
-    $this->listing->initialize(array('listing_action' => $str));
-    $listing = $this->listing->get_listings('seller_model', 'listing');
 
+    $str ='<a href="'.site_url('services/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn red" onclick="delete_record(\'services/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
+    $this->listing->initialize(array('listing_action' => $str));
+    
+    $listing = $this->listing->get_listings('services_model', 'listing');
+    
     $this->data['btn'] = "";
+    $this->data['btn'] ="<a href=".site_url('services/add')." class='btn green'>Add New <i class='fa fa-plus'></i></a>";
+
     if($this->input->is_ajax_request())
       $this->_ajax_output(array('listing' => $listing), TRUE);
     $this->data['bulk_actions'] = array('' => 'select', 'delete' => 'Delete');
@@ -38,62 +39,47 @@ class Services extends Admin_Controller
     $this->data['search_bar'] = $this->load->view('listing/search_bar', $this->data, TRUE);
     $this->data['listing'] = $listing;
     $this->data['grid'] = $this->load->view('listing/view', $this->data, TRUE);
-
-    $this->layout->view('frontend/seller/index');
-
-    //$this->layout->view('frontend/dashboard');
+    $this->layout->view("frontend/services/index");
   }
   
   public function add($edit_id = '')
   {
-    
-    $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
-    $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
-    
-    //print_r($this->input->post());exit;
-     try
+         try
         {
-          if($this->input->post('edit_id'))            
-            $edit_id = $this->input->post('edit_id');
            
-          $this->form_validation->set_rules('company_name','Company Name','trim|required');
-          $this->form_validation->set_rules('website','Website','trim|required');
-          $this->form_validation->set_rules('description','Description','trim|required');
+           if($this->input->post('edit_id'))            
+             $edit_id = $this->input->post('edit_id');
+            
+           $this->form_validation->set_rules('name','Name','trim|required');
+           
+           $this->form_validation->set_rules('description','Description','trim|required');
+           
+           $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+           if($this->form_validation->run())
+           {
+             
+               $ins_data = array();
+               $form = $this->input->post();
+               $ins_data['name']        = $form["name"];
+               $ins_data['description'] = $form["description"];
+               $creater_id   = $this->session->userdata("user_data");
 
-
-          if($this->form_validation->run()){
-              
-              $ins_data = array();
-              $ins_data['company_name']          = $this->input->post('company_name');
-              $ins_data['website']               = $this->input->post('website');
-              $ins_data['description']           = $this->input->post('description'); 
-              $ins_data['seller_id']             = $this->input->post('seller_id');
-              
-              if($edit_id){
-                $msg                      = 'Service updated successfully';
-                $this->services_model->update(array("id" => $edit_id),$ins_data);
+              if($edit_id)
+              {
+                $ins_data["updated_id"] = $creater_id["id"];
+                $ins_data['created_date']   = date("Y-m-d H:i:s");
+                $update_id = $this->plans_model->update(array("id" => $edit_id),$ins_data);
+                $this->session->set_flashdata("success_msg","Plans updated successfully.",TRUE);              
               }
               else
-              {   
-                  
-                $new_id                   = $this->services_model->insert($ins_data);         
-                $msg                      = 'Services added successfully';
-                $edit_id                  =  $new_id;
-               
+              {  
+                $ins_data["created_id"] = $creater_id["id"];
+                $ins_data['updated_date']   = date("Y-m-d H:i:s");  
+                $new_id = $this->plans_model->insert($ins_data,"plans");
+                $this->session->set_flashdata("success_msg","Plans inserted successfully.",TRUE);         
               }
-              $this->session->set_flashdata('success_msg',$msg,TRUE);
-              $status  = 'success';
-          }  
-
-          else
-          {
-              $edit_data = array();
-              $edit_data['company_name'] = '';
-              $edit_data['description'] = '';
-              $edit_data['website']  = '';
-              
-              $status = 'error'; 
-          }
+                 redirect("plans");
+            }
 
         }
         catch (Exception $e)
@@ -102,24 +88,35 @@ class Services extends Admin_Controller
             $msg  = $e->getMessage();
         }
 
-        if($edit_id){
-          $edit_data = $this->services_model->get_where(array("id" => $edit_id))->row_array();
-        } 
-
-          
-        $this->data['editdata']              = $edit_data;
-        
-        if($this->input->is_ajax_request()){
-          
-         $output  = $this->load->view('frontend/services/add',$this->data,true);
-          return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
-        } 
-        else
-        {
-
-            $this->layout->view('frontend/services/add',$this->data);
-        }  
+          if($edit_id)
+          {
+             $this->data["editdata"] = $this->plans_model->get_where(array("id" => $edit_id))->row_array();
+          }  
+          else
+          {
+              $this->data["editdata"] = array("name"=>"","amount"=>"","description"=>"");
+          }
+      $this->layout->view('frontend/plans/add',$this->data);
   }
-  
+ 
+    function delete($del_id)
+   {
+
+      $access_data = $this->plans_model->get_where(array("id"=>$del_id),'id')->row_array();     
+      $output=array();
+      if(count($access_data) > 0){
+        $this->plans_model->delete(array("id"=>$del_id));
+        $output['message'] ="Record deleted successfuly.";
+        $output['status']  = "success";
+      }
+      else
+      {
+        $output['message'] ="This record not matched by work item.";
+        $output['status']  = "error";
+      }      
+      $this->_ajax_output($output, TRUE);            
+    }
+
+
 }
 ?>

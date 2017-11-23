@@ -149,11 +149,29 @@ $config['category_index'] = array(
 	"base_url"	=> 	'/category/index/',
 	"per_page"	=>	"20",
 	"fields"	=> array(   
-						'name'=>array('name'=>' Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'name'=>array('name'=>'Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
 						),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
+
+$config['services_product_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/services_product/filter',
+	"base_url"	=> 	'/services_product/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'description'=>array('name'=>'Description', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
+
+
 ?>
