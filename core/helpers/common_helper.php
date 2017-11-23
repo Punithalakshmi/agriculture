@@ -492,4 +492,40 @@ function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message=''
     return false;
 }
 
+/**
+* This method handles to delete a file
+**/
+function delete_file($path, $file_name){
+
+
+    $path = $path.$file_name;
+        
+    if($file_name){
+
+        if(file_exists($path)){ 
+
+            if(unlink($path)){
+
+                return true;
+
+            }else{
+
+                return false;
+
+            }
+
+        }else{ 
+
+            return false;
+
+        }
+
+    }else{ 
+
+        return false;
+
+    }  
+
+}
+
 ?>

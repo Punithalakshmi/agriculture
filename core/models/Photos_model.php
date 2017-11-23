@@ -74,7 +74,26 @@ class  Photos_model extends App_model
         }
     }
 
-  
+  /**
+     * This method handles to retrieve image by Id
+     * */
+    function get_image_by_id($id) {
+
+        $table_name =  $this->_table;
+
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('id' => (int) $id));
+
+        if (!empty($result)) {
+
+            $return = $result->result();
+            
+        }
+
+        return $return;
+    }
+      
    /**
      * This method handles to retrieve a bio detail by seller Id
      * */

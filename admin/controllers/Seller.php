@@ -384,10 +384,21 @@ class Seller extends Admin_Controller
     public function deleteimage() {
         $deleteid = $this->input->post('image_id');
 
+        if($deleteid ){
+
+          $image_data = $this->photos_model->get_image_by_id($deleteid);
+        
+           $path = getcwd() . '/uploads/';
+
+          $delete_file_result = delete_file($path, $image_data[0]->image_name);
+          
+        }
+
         $this->db->delete('seller_image', array('id' => $deleteid));
 
         $verify = $this->db->affected_rows();
 
+      
         echo $verify;
     }
 
