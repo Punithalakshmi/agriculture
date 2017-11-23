@@ -70,25 +70,16 @@ class Events extends Admin_controller
   				$ins_data["to_date"]  = $form["to_date"];
   				$ins_data["description"] = $form["description"];
   				$ins_data["status"] = $form["status"];
-          $added_files1               = $form['added_files1'];
-          $file_path                  = $form['file_path'];
           
           $creater_id   = $this->session->userdata("user_data");
   	       
            if(!empty($_FILES["event_image"]["name"]))
-           {
+           {;
             $filedata1 = $this->do_upload();
             $filename1 = $filedata1["file_name"]; 
-           }
-           else
-           {
-              $filepath  = $file_path;
-              $filename1  = $added_files1;
+            $ins_data['event_image'] = (!empty($filename1))?$filename1:"";
            }
 
-               $ins_data['filepath'] = base_path()."assets/img/business/";
-               $ins_data['event_image'] = (!empty($filename1))?$filename1:"";
-               $ins_data['event_image'] = (!empty($filename1))?$filename1:"";
   				if($edit_id)
   				{
             $ins_data['updated_id'] = $creater_id["id"];

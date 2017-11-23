@@ -52,8 +52,6 @@
                               <label class="control-label col-md-3">Category Image</span></label>
                               <div class="col-md-9">
                                 <input type="file"  name="category_image" size="20" />
-                                <input type="hidden" name="added_files1" value="<?php echo (!empty($editdata['category_img']))?rtrim($editdata['category_img'],","):""; ?>" />
-                                <input type="hidden" name="file_path" value="<?php echo (!empty($editdata['filepath']))?rtrim($editdata['filepath'],","):""; ?>" />
                                   <?php if(!empty($editdata["category_img"])){ ?>
                                     <br>
                                   <img src="<?=base_path()."assets/img/category/".$editdata["category_img"]; ?>" width="50" height="50" />

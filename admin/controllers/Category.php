@@ -62,25 +62,15 @@ class Category extends Admin_Controller
                $ins_data['name'] = $form["name"];
                $ins_data['description']   = $form["description"];
                $ins_data['status']         = $form["status"];
-               $added_files1               = $form['added_files1'];
-               $file_path                  = $form['file_path'];
-
+  
                $creater_id   = $this->session->userdata("user_data");
 
                if(isset($_FILES["category_image"]["name"]) && $_FILES["category_image"]["size"]>0)
                {
                  $filedata1 = $this->do_upload1();
                  $filename1  = $filedata1['file_name'];
+                 $ins_data['category_img'] = (!empty($filename1))?$filename1:"";
                }
-               else
-               {
-                  $filepath  = $file_path;
-                  $filename1  = $added_files1;
-               } 
- 
-               $ins_data['filepath'] = base_path()."assets/img/category/";
-               $ins_data['category_img'] = (!empty($filename1))?$filename1:"";
-               $ins_data['category_img'] = (!empty($filename1))?$filename1:"";
                
                 if($edit_id)
                 {
@@ -156,7 +146,7 @@ class Category extends Admin_Controller
               {
                
                 $final_file_data = array('error' => $this->upload->display_errors());
-        
+              
               }
               else
               {

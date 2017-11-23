@@ -8,7 +8,7 @@
 <div class="page-content-wrapper">
   <div class="page-content">
       <h3 class="page-title">
-          Add Business Ads
+          Add Events
       </h3>
       <div class="page-bar">
       <?php echo set_breadcrumb(); ?>
@@ -19,13 +19,13 @@
           <div class="portlet box green ">
               <div class="portlet-title">
                   <div class="caption">
-                    <i class="fa fa-table"></i> Business Form
+                    <i class="fa fa-table"></i> Event Form
                   </div>
               </div>
               <div class="portlet-body form">
                 <form action="#" class="mt-repeater form-horizontal" name="add_project" id="add_new_project" method="post" enctype="multipart/form-data">
                     <div class="form-body">
-                      <h3 class="form-section"><strong>Business Details</strong></h3>
+                      <h3 class="form-section"><strong>Event Details</strong></h3>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('title'))?'has-error':'';?>">
@@ -81,8 +81,6 @@
                               <label class="control-label col-md-3">Events Image</span></label>
                               <div class="col-md-9">
                                 <input type="file"  name="event_image" size="20" />
-                                <input type="hidden" name="added_files1" value="<?php echo (!empty($editdata['event_image']))?rtrim($editdata['event_image'],","):""; ?>" />
-                                <input type="hidden" name="file_path" value="<?php echo (!empty($editdata['filepath']))?rtrim($editdata['filepath'],","):""; ?>" />
                                   <?php if(!empty($editdata["event_image"])){ ?>
                                     <br>
                                   <img src="<?=base_path()."assets/img/events/".$editdata["event_image"]; ?>" width="50" height="50" />

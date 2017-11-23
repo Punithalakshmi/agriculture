@@ -39,23 +39,24 @@ class Business extends Admin_Controller
   
   public function add($edit_id = '')
   {
+        if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+        {
+            $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
+        }
         $this->layout->add_stylesheets(array('custom'));
         $this->layout->add_javascripts(array('function'));
    
          try
         {
-           if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
-           {
-             $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio');
-           }
+           
            if($this->input->post('edit_id'))            
              $edit_id = $this->input->post('edit_id');
             
-           $this->form_validation->set_rules('customer_name','Customer Name','trim|required');
-           $this->form_validation->set_rules('title','Last Name','trim|required');
-           $this->form_validation->set_rules('description','Description','trim|required');
+           $this->form_validation->set_rules('customer_name','Customer Name','trim|required|min_length[5]|is_unique[business_ads.customer_name]');
+           $this->form_validation->set_rules('title','Title','trim|required|min_length[10]');
+           $this->form_validation->set_rules('description','Description','trim|required|min_length[10]');
            $this->form_validation->set_rules('status','Status','trim|required');
-           $this->form_validation->set_rules('url','Weblink','trim|required');
+           $this->form_validation->set_rules('url','Weblink','trim|required|callback_valid_url');
            
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
            if($this->form_validation->run())
@@ -68,26 +69,19 @@ class Business extends Admin_Controller
                $ins_data['description']   = $form["description"];
                $ins_data['url']            = $form["url"];
                $ins_data['status']         = $form["status"];
-               $added_files1               = $form['added_files1'];
-               $file_path                  = $form['file_path'];
-
+              
+               
                $creater_id   = $this->session->userdata("user_data");
 
                if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
                {
-                 $filedata1 = $this->do_upload1();
+
+                 $filedata1 = $this->do_upload();
+                  
                  $filename1  = $filedata1['file_name'];
+                 $ins_data['ads_image'] = (!empty($filename1))?$filename1:"";
                }
-                else
-               {
-                 $filepath  = $file_path;
-                 $filename1  = $added_files1;
-               } 
  
-               $ins_data['filepath'] = base_path()."assets/img/business/";
-               $ins_data['ads_image'] = (!empty($filename1))?$filename1:"";
-               $ins_data['ads_image'] = (!empty($filename1))?$filename1:"";
-               
                 if($edit_id)
                 {
                   $ins_data['updated_id'] = $creater_id["id"];
@@ -119,6 +113,7 @@ class Business extends Admin_Controller
        }  
         else
         {
+
            $this->data["editdata"] = array("customer_name"=>"","title"=>"","ads_image"=>"","description"=>"","url"=>"","status"=>"");
         }
       $this->layout->view('frontend/business/add',$this->data);
@@ -143,37 +138,36 @@ class Business extends Admin_Controller
       $this->_ajax_output($output, TRUE);            
     }
 
-    public function do_upload1()
+    public function do_upload()
     {
         $this->load->library('upload');
-        
-             
-              $config = array(
-                'allowed_types' => 'jpg|jpeg|png|gif',
-                'max_size'      => 1024 * 10,
-                'overwrite'     => FALSE,
-                'upload_path'   => '../assets/img/business/'
-              );
+      
+              $config['upload_path']   = '../assets/img/business/';
+                $config['file_ext']    = 'gif|png|jpg|jpeg';
+                $config['max_size']    = 100;
+                $config['max_width']   = 1024;
+                $config['max_height']  = 768;
 
               $this->upload->initialize($config);
-
               if(!$this->upload->do_upload('ads_image'))
               {
-               
-                $final_file_data = array('error' => $this->upload->display_errors());
-        
+                $this->form_validation->set_message('do_upload', $this->upload->display_errors());
+                return FALSE;
               }
               else
               {
-                $final_file_data = $this->upload->data();
+                $final_file_data = array("success"=>$this->upload->data());
 
              }
+                
           return $final_file_data;
         }
 
-    function imgratio($str)
+    /*function imgratio($str)
       {  
         $str = getimagesize($_FILES['ads_image']['tmp_name']);
+
+        echo "<pre>";print_r($str); exit;
         if($str[0]>="1600" && $str[1]>="650")
           return true;
         else
@@ -181,7 +175,19 @@ class Business extends Admin_Controller
           $this->form_validation->set_message('imgratio',"The Ads image should be 1600x650 ratio");
           return false;
         }
-      }
+        if($str["mime"]!='image/gif|image/jpg|image/png')
+        {
+          $this->form_validation->set_message('imgratio',"please select an image file");
+          return false;
+        }
+        else
+        {
+          return true;
+        }
+
+      }*/
+
+              
 
 }
 ?>

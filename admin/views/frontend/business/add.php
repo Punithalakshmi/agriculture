@@ -70,10 +70,8 @@
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('ads_image'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Ads Image</span></label>
-                              <div class="col-md-9">
+                              <div class="col-md-3">
                                 <input type="file"  name="ads_image" size="20" />
-                                <input type="hidden" name="added_files1" value="<?php echo (!empty($editdata['ads_image']))?rtrim($editdata['ads_image'],","):""; ?>" />
-                                <input type="hidden" name="file_path" value="<?php echo (!empty($editdata['filepath']))?rtrim($editdata['filepath'],","):""; ?>" />
                                   <?php if(!empty($editdata["ads_image"])){ ?>
                                     <br>
                                   <img src="<?=base_path()."assets/img/business/".$editdata["ads_image"]; ?>" width="50" height="50" />
@@ -82,8 +80,6 @@
                               <?php echo form_error('ads_image'); ?>
                           </div>
                         </div>
-                      </div>
-               			  <div class="row">
                         <div class="col-md-5">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>

@@ -11,7 +11,6 @@ $('.country_id').change(function() {
         
   $("#from_date").datepicker({
       format: 'yyyy-mm-dd',
-      startDate:new Date(),
       autoclose: true,
     }).on('changeDate', function (selected) {
         var startDate = new Date(selected.date.valueOf());
