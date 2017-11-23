@@ -189,6 +189,62 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `username`, `password`, `emai
 --
 
 --
+-- Table structure for table `seller_image`
+--
+
+CREATE TABLE `seller_image` (
+  `id` int(3) NOT NULL,
+  `seller_id` int(3) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `status` enum('Active','Suspended') DEFAULT 'Active',
+  `created_on` datetime DEFAULT NULL,
+  `modified_on` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
+-- Table structure for table `seller`
+--
+
+CREATE TABLE `seller` (
+  `id` int(12) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(232) NOT NULL,
+  `first_name` varchar(258) NOT NULL,
+  `last_name` varchar(258) DEFAULT NULL,
+  `address` varchar(258) DEFAULT NULL,
+  `address2` varchar(258) DEFAULT NULL,
+  `city` varchar(58) DEFAULT NULL,
+  `country_id` int(3) DEFAULT NULL,
+  `state_id` int(6) DEFAULT NULL,
+  `zip` varchar(20) NOT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `status` enum('Active','Suspended') DEFAULT 'Active',
+  `created_on` datetime NOT NULL,
+  `modified_on` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
+-- Table structure for table `bio_seller`
+--
+
+CREATE TABLE `bio_seller` (
+  `id` int(3) NOT NULL,
+  `seller_id` int(3) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `description` text,
+  `website` varchar(255) DEFAULT NULL,
+  `status` enum('Active','Suspended') DEFAULT 'Active',
+  `created_on` datetime DEFAULT NULL,
+  `modified_on` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
 -- Indexes for table `business_ads`
 --
 ALTER TABLE `business_ads`
