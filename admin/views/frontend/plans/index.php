@@ -2,7 +2,7 @@
 		<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			 Add Product List
+			 Add Plans List
 			</h3>
 			<div class="page-bar">
 				 <?php echo set_breadcrumb(); ?>
@@ -18,7 +18,7 @@
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>Product List
+								<i class="fa fa-user"></i>Plans List
 							</div>
 						</div>
 						<div class="portlet-body">
