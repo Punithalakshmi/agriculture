@@ -40,13 +40,20 @@ class Seller_model extends App_model
   }
 
   /**
-
-     * This method handles to get last inserted id
-
-     * */
-    function get_last_inserted_id() {
-
-        return $this->db->insert_id();
+    * This method handles to retrive all seller
+    **/
+    function get_all($field='name', $order_by='ASC'){
+        $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                   ->order_by('first_name','ASC');
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
     }
 
 }

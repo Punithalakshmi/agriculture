@@ -12,6 +12,13 @@ class Services_product extends Admin_Controller
       redirect('login');
       
     $this->load->model('services_product_model');  
+    $this->load->model('category_model'); 
+    $this->load->model('seller_model');
+
+    $this->load->helper('ckeditor');
+
+
+    
   }
 
   public function index()
@@ -23,7 +30,7 @@ class Services_product extends Admin_Controller
     $this->simple_search_fields = array('title' => 'Title','image_name' =>'Image','description'=>'Description','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
 
-    $str ='<a href="'.site_url('services_product/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn red" onclick="delete_record(\'services_product/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
+    $str ='<a href="'.site_url('services_product/add/{id}').'" class="btn btn btn-padding"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding" onclick="delete_record(\'services_product/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
     
     $listing = $this->listing->get_listings('services_product_model', 'listing');
@@ -46,42 +53,81 @@ class Services_product extends Admin_Controller
   
   public function add($edit_id = '')
   {
-         try
+
+
+
+
+        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
+        $this->layout->add_javascripts(array('tinymce'));   
+        
+       try
         {
            
            if($this->input->post('edit_id'))  
-                     
+
              $edit_id = $this->input->post('edit_id');
             
            $this->form_validation->set_rules('title','Title','trim|required');
            
            $this->form_validation->set_rules('description','Description','trim|required');
            
+           $this->form_validation->set_rules('category_id_','Category','trim|required');
+
+           $this->form_validation->set_rules('seller_id_','Seller','trim|required');
+
+           $this->form_validation->set_rules('price','Price','trim|required');
+
+            $this->form_validation->set_rules('image_name', 'Upload Image', 'callback_file_selected_validation');
+
+            
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
+           
            if($this->form_validation->run())
            {
-             
+
+             if ($_FILES['image_name']['name']) {
+
+                $tempFile = $_FILES['image_name']['tmp_name'];
+                $fileName = $_FILES['image_name']['name'];
+                $targetPath = getcwd() . '/uploads/services/';
+               
+                
+                $targetFile = $targetPath . $fileName ;
+
+                move_uploaded_file($tempFile, $targetFile);
+
                $ins_data = array();
+               
+               $ins_data['category_id'] = $this->input->post('category_id_');
+               $ins_data['seller_id'] = $this->input->post('seller_id_');
                $ins_data['title']        = $this->input->post('title');
                $ins_data['description'] = $this->input->post('description');
+               $ins_data['price'] = $this->input->post('price');
+               $ins_data['address'] = $this->input->post('address');
+               $ins_data['contact_details'] = $this->input->post('contact_details');
+               $ins_data['image_name'] = $fileName;
                $ins_data['status']     = $this->input->post('status');
 
+               }
+              
               if($edit_id)
               {
                 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
-                $update_id = $this->plans_model->update(array("id" => $edit_id),$ins_data);
+                $update_id = $this->services_product_model->update(array("id" => $edit_id),$ins_data);
                 $this->session->set_flashdata("success_msg","Services updated successfully.",TRUE);              
               }
               else
               {  
                 $ins_data['created_on']   = date("Y-m-d H:i:s");  
-                $new_id = $this->plans_model->insert($ins_data,"plans");
+                $new_id = $this->services_product_model->insert($ins_data);
                 $this->session->set_flashdata("success_msg","Services inserted successfully.",TRUE);         
               }
+              
                  redirect("services_product");
             }
+            
 
         }
         catch (Exception $e)
@@ -90,13 +136,46 @@ class Services_product extends Admin_Controller
             $msg  = $e->getMessage();
         }
 
+        $category = $this->category_model->get_all();
+
+
+        
+        $category_data[null] = 'Select Category';
+
+        if($category){
+
+           foreach ($category as $key => $value) {
+
+            $category_data[$value->id] = $value->name;
+
+            }
+          } 
+
+          $seller = $this->seller_model->get_all();
+
+          $seller_data[null] = 'Select Seller';
+
+          if($seller){
+
+             foreach ($seller as $key => $value) {
+
+              $seller_data[$value->id] = $value->first_name;
+
+              }
+            }
+
+          $this->data['category']              = $category_data;
+          $this->data['seller']              = $seller_data;
+
+
           if($edit_id)
           {
              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $edit_id))->row_array();
           }  
           else
           {
-              $this->data["editdata"] = array("title"=>"","description"=>"","status"=>"");
+              $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'');
+
           }
       $this->layout->view('frontend/services_product/add',$this->data);
   }
@@ -104,10 +183,10 @@ class Services_product extends Admin_Controller
     function delete($del_id)
    {
 
-      $access_data = $this->plans_model->get_where(array("id"=>$del_id),'id')->row_array();     
+      $access_data = $this->services_product_model->get_where(array("id"=>$del_id),'id')->row_array();     
       $output=array();
       if(count($access_data) > 0){
-        $this->plans_model->delete(array("id"=>$del_id));
+        $this->services_product_model->delete(array("id"=>$del_id));
         $output['message'] ="Record deleted successfuly.";
         $output['status']  = "success";
       }
@@ -117,6 +196,18 @@ class Services_product extends Admin_Controller
         $output['status']  = "error";
       }      
       $this->_ajax_output($output, TRUE);            
+    }
+
+    /**
+     * This method handles to validate image
+     * */
+    function file_selected_validation() {
+        $this->form_validation->set_message('file_selected_validation', sprintf('required', 'Upload Image %s'));
+        if (empty($_FILES['image_name']['name'])) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
