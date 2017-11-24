@@ -5,6 +5,13 @@
 //echo "<pre>";
 //print_r($editdata); exit;
 ?>
+<style type="text/css">
+p{
+        margin: 0 0 10px;
+    width: 50%;
+    float: left;
+  }
+</style>
 <div class="page-content-wrapper">
   <div class="page-content">
       <h3 class="page-title">
@@ -70,7 +77,7 @@
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('ads_image'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Ads Image</span></label>
-                              <div class="col-md-3">
+                              <div class="col-md-9">
                                 <input type="file"  name="ads_image" size="20" />
                                   <?php if(!empty($editdata["ads_image"])){ ?>
                                     <br>

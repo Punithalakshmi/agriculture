@@ -142,17 +142,16 @@ class Business extends Admin_Controller
     {
         $this->load->library('upload');
       
-              $config['upload_path']   = '../assets/img/business/';
-                $config['file_ext']    = 'gif|png|jpg|jpeg';
-                $config['max_size']    = 100;
+                $config['upload_path']   = '../assets/img/business/';
+                $config['allowed_types'] = 'gif|png|jpg|jpeg';
+                $config['max_size']    = 2048;
                 $config['max_width']   = 1024;
                 $config['max_height']  = 768;
 
               $this->upload->initialize($config);
               if(!$this->upload->do_upload('ads_image'))
-              {
+              { 
                 $this->form_validation->set_message('do_upload', $this->upload->display_errors());
-                return FALSE;
               }
               else
               {
@@ -161,33 +160,7 @@ class Business extends Admin_Controller
              }
                 
           return $final_file_data;
-        }
-
-    /*function imgratio($str)
-      {  
-        $str = getimagesize($_FILES['ads_image']['tmp_name']);
-
-        echo "<pre>";print_r($str); exit;
-        if($str[0]>="1600" && $str[1]>="650")
-          return true;
-        else
-        {
-          $this->form_validation->set_message('imgratio',"The Ads image should be 1600x650 ratio");
-          return false;
-        }
-        if($str["mime"]!='image/gif|image/jpg|image/png')
-        {
-          $this->form_validation->set_message('imgratio',"please select an image file");
-          return false;
-        }
-        else
-        {
-          return true;
-        }
-
-      }*/
-
-              
+        }     
 
 }
 ?>

@@ -39,6 +39,11 @@ class Category extends Admin_Controller
   
   public function add($edit_id = '')
   {
+        if(isset($_FILES["category_image"]["name"]) && $_FILES["category_image"]["size"]>0)
+        {
+            $this->form_validation->set_rules('category_image',  'category Image','trim|callback_do_upload');
+        }
+
         $this->layout->add_stylesheets(array('custom'));
         $this->layout->add_javascripts(array('function'));
    
@@ -50,9 +55,8 @@ class Category extends Admin_Controller
             
            $this->form_validation->set_rules('name','Category Name','trim|required');
            $this->form_validation->set_rules('description','Description','trim|required');
-           //$this->form_validation->set_rules('category_image','Category Image','trim|required');
            $this->form_validation->set_rules('status','Status','trim|required');
-           
+
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
            if($this->form_validation->run())
            {
@@ -67,7 +71,7 @@ class Category extends Admin_Controller
 
                if(isset($_FILES["category_image"]["name"]) && $_FILES["category_image"]["size"]>0)
                {
-                 $filedata1 = $this->do_upload1();
+                 $filedata1 = $this->do_upload();
                  $filename1  = $filedata1['file_name'];
                  $ins_data['category_img'] = (!empty($filename1))?$filename1:"";
                }
@@ -128,25 +132,24 @@ class Category extends Admin_Controller
       $this->_ajax_output($output, TRUE);            
     }
 
-    public function do_upload1()
+    public function do_upload()
     {
         $this->load->library('upload');
-        
-             
-              $config = array(
-                'allowed_types' => 'jpg|jpeg|png|gif',
-                'max_size'      => 1024 * 10,
-                'overwrite'     => FALSE,
-                'upload_path'   => '../assets/img/category/'
-              );
+
+                $config['upload_path']   = '../assets/img/category/';
+                $config['allowed_types'] = 'gif|png|jpg|jpeg';
+                $config['max_size']      = 2048;
+                $config['max_width']     = 1024;
+                $config['max_height']    = 768;
+            
 
               $this->upload->initialize($config);
 
               if(!$this->upload->do_upload('category_image'))
               {
                
-                $final_file_data = array('error' => $this->upload->display_errors());
-              
+                $this->form_validation->set_message('do_upload' , $this->upload->display_errors());
+                return FALSE;
               }
               else
               {

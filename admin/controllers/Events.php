@@ -19,7 +19,7 @@ class Events extends Admin_controller
   {
   	$this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
-    $this->simple_search_fields = array("title" =>"Title","locatrion"=>"location");
+    $this->simple_search_fields = array("title" =>"Title","location"=>"Location");
     $this->_narrow_search_conditions = array("start_date");
     $str ='<a href="'.site_url('events/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn red" onclick="delete_record(\'events/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
@@ -42,24 +42,23 @@ class Events extends Admin_controller
 
     public function add($edit_id='')
     {	
+
+        if(isset($_FILES["event_image"]["name"])&& $_FILES["event_image"]["size"]>0)
+        {
+          $this->form_validation->set_rules('event_image','Events image','trim|callback_do_upload');
+        }
   		  $this->layout->add_stylesheets(array('custom'));
-
-
-
   		try
   		{
-  			//if($this->input->post('edit_id'));
-  			//$edit_id = $this->input->post('edit_id');
-  			//echo $edit_id; exit;
   			
         $this->form_validation->set_rules('title','Title','trim|required');
-  			$this->form_validation->set_rules('description','Description','trim|required');
+  			$this->form_validation->set_rules('description','Description','trim|required|min_length[15]');
   			$this->form_validation->set_rules('location','Location','trim|required');
   			$this->form_validation->set_rules('from_date','From date','trim|required');
   			$this->form_validation->set_rules('to_date','To date','trim|required');
   			$this->form_validation->set_rules('status','Status','trim|required');
 
-  			$this->form_validation->set_error_delimiters('<span class="help-block">,</span>');
+  			$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
   			if($this->form_validation->run())
   			{  
   				$form= $this->input->post();
@@ -136,27 +135,28 @@ class Events extends Admin_controller
     }
 
     public function do_upload()
-        {
-                $this->load->library('upload');
-                
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 100;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-                $config['upload_path']          ='../assets/img/events/' ;
+    { 
+         $this->load->library('upload');
+         
+         $config['upload_path']   = '../assets/img/events/';
+         $config['allowed_types'] = 'gif|png|jpg|jpeg';
+         $config['max_size']      = 100;
+         $config['max_width']     = 1024;
+         $config['max_height']    = 768;
 
-                 $this->upload->initialize($config);
+          $this->upload->initialize($config);
 
-                if ( ! $this->upload->do_upload('event_image'))
-                {
-                     $final_file_data = array('error' => $this->upload->display_errors());
-                }
-                else
-                {
-                    $final_file_data = $this->upload->data();   
-                }
-                return $final_file_data;
-        }
+         if (!$this->upload->do_upload('event_image'))
+         { 
+             $this->form_validation->set_message('do_upload', $this->upload->display_errors());
+             return false;
+         }
+         else
+         {
+             $final_file_data = $this->upload->data();   
+         }
+         return $final_file_data;
+    }
 }
 
 ?>
