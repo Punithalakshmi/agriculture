@@ -53,9 +53,11 @@ class Seller extends Admin_Controller
     // $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
     // $this->layout->add_stylesheets(array('dropzone'));
     // $this->layout->add_javascripts(array('dropzone'));
-   // print_r($this->input->post());exit;
+   	//print_r($this->input->post());exit;
      try
         {
+
+
           if($this->input->post('edit_id')) 
 
           $edit_id = $this->input->post('edit_id');
@@ -65,12 +67,21 @@ class Seller extends Admin_Controller
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
           $this->form_validation->set_rules('password','Password','trim|required');
+
+          if(empty($seller_id)){
+
+          $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[seller.email]');
+
+           }
+          //$this->form_validation->set_rules('country_id','Country','trim|required');
+          //$this->form_validation->set_rules('state_id','State','trim|required');
           $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|max_length[232]|matches[password]', ['matches'=>'Password does not match']);
           $this->form_validation->set_rules('address','Address','trim|required');
-          $this->form_validation->set_rules('email','Email','trim|required');
+          //$this->form_validation->set_rules('email','Email','trim|required');
           $this->form_validation->set_rules('city','City','trim|required');
-           $this->form_validation->set_rules('zip', 'Zib','trim|max_length[8]|integer', ['integer'=>'Invalid ZIP']);
-         $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');           
+          $this->form_validation->set_rules('status','Status','trim|required');
+          $this->form_validation->set_rules('zip', 'Zib','trim|max_length[8]|integer', ['integer'=>'Invalid ZIP']);
+          $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');           
           $this->form_validation->set_error_delimiters('', '');
 
           if($this->form_validation->run()){
@@ -83,21 +94,21 @@ class Seller extends Admin_Controller
               $ins_data['email']        = $this->input->post('email');
               $ins_data['address2']               = $this->input->post('address2');
               $ins_data['city']          = $this->input->post('city');
-              $ins_data['country_id']          = $this->input->post('country_id_');
-              $ins_data['state_id']          = $this->input->post('state_id_');
+              $ins_data['country_id']          = $this->input->post('country_id');
+              $ins_data['state_id']          = $this->input->post('state_id');
               $ins_data['zip']                     = $this->input->post('zip');
               $ins_data['phone']      = $this->input->post('phone');
-              
+              $ins_data['status']      = $this->input->post('status');
             
               if($edit_id){
               	
                 $ins_data['modified_on'] = date('Y-m-d H:i:s');
                 $msg                      = 'Seller updated successfully';
                 $this->seller_model->update(array("id" => $edit_id),$ins_data);
-               // log_history($edit_id,'inventory',"Product <b>".$ins_data['name']."</b> has been updated."); 
+                
               }
               if($seller_id){
-              	
+
               	$ins_data['modified_on'] = date('Y-m-d H:i:s');
                 $msg                      = 'Seller updated successfully';
                 $this->seller_model->update(array("id" => $seller_id),$ins_data);
@@ -118,16 +129,19 @@ class Seller extends Admin_Controller
           else
           {
             $edit_data = array();
-
+            
             $edit_data['first_name']              = '';
             $edit_data['password']                = '';
             $edit_data['last_name']                = '';
             $edit_data['email']           = '';  
             $edit_data['address2']               = '';
             $edit_data['address']          = '';
+            $edit_data['state_id']                     = '';
+            $edit_data['country_id']                     = '';
             $edit_data['city']                     = '';
             $edit_data['zip']      = '';
             $edit_data['phone']                     = '';
+            $edit_data['status']                     = '';
             $edit_data['id'] =      '';
             $status = 'error';
           }
@@ -143,9 +157,9 @@ class Seller extends Admin_Controller
 
           $edit_data = $this->seller_model->get_where(array("id" => $edit_id))->row_array();
 
-        }  
+        } 
         
-        $country = $this->country_model->get_all();
+        $country = $this->country_model->get_all('231');
 
         $country_data[null] = 'Select Country';
 
@@ -158,7 +172,7 @@ class Seller extends Admin_Controller
             }
           }
         //print_r($country_data);exit;
-        $state =  $this->state_model->get_all();
+        $state =  $this->state_model->get_state_by_country_id(231);
 
         $state_data[null] = 'Select State';
          if($state){
@@ -170,7 +184,8 @@ class Seller extends Admin_Controller
             }
           }
         
-
+        
+        
         $this->data['editdata']              = $edit_data;
 
         $this->data['country']              = $country_data;
@@ -374,6 +389,16 @@ class Seller extends Admin_Controller
       $this->_ajax_output($output, TRUE);
     }
 
+    /*
+    * This method loads states based on the country
+    */
+    public function get_state($id){   
+        $states = get_state_by_country($id);
+        foreach($states as $index=>$state):
+            echo '<option value="'.$index.'">'.$state.'</option>';
+        endforeach;
+        exit;
+    }
   /**
   * This method handles to validate phone
   **/
