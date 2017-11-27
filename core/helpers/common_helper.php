@@ -528,4 +528,38 @@ function delete_file($path, $file_name){
 
 }
 
+/**
+
+* This method handles to get states based on the country selected
+
+**/
+
+function get_state_by_country($id){
+
+                $CI =& get_instance();
+
+                $CI->load->model('State_model');
+
+                $data   = $CI->State_model->get_state_by_country_id($id);
+
+
+                $states = ($data) ? $data['data'] : '';
+
+                $state_data[null] = 'Select State';
+
+                if($states){
+
+                        foreach ($states as $key => $value) {
+
+                                $state_data[$value->id] = $value->name;  
+
+                        }
+
+                }
+
+                $result = $state_data;
+
+                return $result;                       
+}
+
 ?>

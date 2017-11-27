@@ -28,6 +28,26 @@ class State_model extends App_model
             return $return;
         }
     }
+    /**
+    * This method handles to retrive all states based on a country Id
+    **/
+    function get_state_by_country_id($id){
+        $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->where('country_id',$id)
+                    ->order_by('name ASC');
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
+        
+    }
+
+
 
 }
 ?>
