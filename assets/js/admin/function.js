@@ -1,13 +1,16 @@
 $(document).ready(function(){
 
-$('.country_id').change(function() {
+$('#country_id').change(function() {
+
     var id = $('#country_id').val();
+
     if( $(id).val() !='' ){          
       $.post(base_url+'seller/get_state/'+id,{id:$(id).val()}, function(data){
         $('#state_id').html(data);
       }); 
     } 
   }); 
+  
         
   $("#from_date").datepicker({
       format: 'yyyy-mm-dd',
@@ -31,12 +34,11 @@ $('.country_id').change(function() {
 
  })
  
+
 $(function()
 {
-
-
     $("[data-fancybox]").fancybox({
-    // Options will go here
+     // Options will go here
   });
     // $("input[name='a_c[]']").click(function()
     // {
