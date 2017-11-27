@@ -70,3 +70,13 @@ Change Quick Sidebar Width
     margin-left: 13px;
     margin-top: -2px;
 }
+#description{
+    margin: 0px -4.25px 0px 0px;
+    height: 117px;
+    width: 381px;
+}
+.help-block p {
+    margin: 5px 15px 10px;
+    width: 50%;
+    float: left;
+}

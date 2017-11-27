@@ -25,7 +25,6 @@
               <div class="portlet-body form">
                 <form action="#" class="mt-repeater form-horizontal" name="add_project" id="add_new_project" method="post" enctype="multipart/form-data">
                     <div class="form-body">
-                      <h3 class="form-section"><strong>Business Details</strong></h3>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('name'))?'has-error':'';?>">
@@ -37,17 +36,6 @@
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
-                            <div class="col-md-9">
-                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
-                              <?php echo form_error('description'); ?>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('category_image'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Category Image</span></label>
                               <div class="col-md-9">
@@ -58,6 +46,17 @@
                                 <?Php }?>
                               </div>
                               <?php echo form_error('category_image'); ?>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">       
+                        <div class="col-md-6">
+                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
+                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
+                              <?php echo form_error('description'); ?>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-5">

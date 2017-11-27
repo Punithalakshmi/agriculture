@@ -47,7 +47,6 @@ class Events extends Admin_controller
         {
           $this->form_validation->set_rules('event_image','Events image','trim|callback_do_upload');
         }
-  		  $this->layout->add_stylesheets(array('custom'));
   		try
   		{
   			
@@ -140,7 +139,7 @@ class Events extends Admin_controller
          
          $config['upload_path']   = '../assets/img/events/';
          $config['allowed_types'] = 'gif|png|jpg|jpeg';
-         $config['max_size']      = 100;
+         $config['max_size']      = 5000;
          $config['max_width']     = 1024;
          $config['max_height']    = 768;
 

@@ -27,7 +27,6 @@
                     
                     <div class="form-body">
                       
-                      <h3 class="form-section"><strong>Plans Details</strong></h3>
                         <!--row start -->
                         <div class="row">
                           <div class="col-md-6">

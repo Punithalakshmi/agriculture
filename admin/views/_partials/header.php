@@ -74,7 +74,7 @@
         <li class="start <?=($uri=='')?'active':'';?>">
           <a href="<?=site_url('seller');?>">
           <i class="fa fa-anchor"></i>
-          <span class="title">Seller Management</span>
+          <span class="title">Seller</span>
           <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
@@ -82,7 +82,7 @@
         <li class="start <?=($uri=='')?'active':'';?>">
           <a href="<?=site_url('services_product');?>">
           <i class="fa fa-users"></i>
-          <span class="title">Service Management</span>
+          <span class="title">Service</span>
           <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
@@ -97,35 +97,35 @@
         <li class="start <?=($uri=='business')?'active':'';?>">
           <a href="<?=site_url('business');?>">
           <i class="fa fa-briefcase" aria-hidden="true"></i>
-          <span class="title">Business ads management</span>
+          <span class="title">Business ads</span>
           <?=($uri=='business')?"<span class='selected'>":"";?>
           </a>
         </li>
          <li class="start <?=($uri=='')?'active':'';?>">
           <a href="<?=site_url('');?>">
           <i class="fa fa-sitemap"></i>
-          <span class="title">Subscription mangement</span>
+          <span class="title">Subscriptions</span>
           <?=($uri=='')?"<span class='selected'>":"";?>
           </a>
         </li>
          <li class="start <?=($uri=='plans')?'active':'';?>">
           <a href="<?=site_url('plans');?>">
           <i class="fa fa-sitemap"></i>
-          <span class="title">Plans Management</span>
+          <span class="title">Plans</span>
           <?=($uri=='plans')?"<span class='selected'>":"";?>
           </a>
         </li>
         <li class="start <?=($uri=='events')?'active':'';?>">
           <a href="<?=site_url('events');?>">
           <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span class="title">Events Management</span>
+          <span class="title">Events</span>
           <?=($uri=='events')?"<span class='selected'>":"";?>
           </a>
         </li>
         <li class="start <?=($uri=='category')?'active':'';?>">
           <a href="<?=site_url('category');?>">
           <i class="fa fa-linkedin" aria-hidden="true"></i>
-          <span class="title">Category Management</span>
+          <span class="title">Category</span>
           <?=($uri=='category')?"<span class='selected'>":"";?>
           </a>
         </li>

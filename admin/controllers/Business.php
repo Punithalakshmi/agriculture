@@ -38,25 +38,29 @@ class Business extends Admin_Controller
   }
   
   public function add($edit_id = '')
-  {
+  { 
         if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
         {
             $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
         }
-        $this->layout->add_stylesheets(array('custom'));
-        $this->layout->add_javascripts(array('function'));
-   
          try
         {
            
            if($this->input->post('edit_id'))            
              $edit_id = $this->input->post('edit_id');
-            
-           $this->form_validation->set_rules('customer_name','Customer Name','trim|required|min_length[5]|is_unique[business_ads.customer_name]');
+
+           if($this->input->post("customer_name")==$this->input->post("updated_customer_name"))
+           {
+              $this->form_validation->set_rules('customer_name','Customer Name','trim|required|min_length[5]');
+           }
+           else
+           {
+             $this->form_validation->set_rules('customer_name','Customer Name','trim|required|is_unique[business_ads.customer_name]|min_length[5]');
+           }
            $this->form_validation->set_rules('title','Title','trim|required|min_length[10]');
            $this->form_validation->set_rules('description','Description','trim|required|min_length[10]');
            $this->form_validation->set_rules('status','Status','trim|required');
-           $this->form_validation->set_rules('url','Weblink','trim|required|callback_valid_url');
+           $this->form_validation->set_rules('url','Weblink','trim|required|callback_valid_url1');
            
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
            if($this->form_validation->run())
@@ -77,7 +81,6 @@ class Business extends Admin_Controller
                {
 
                  $filedata1 = $this->do_upload();
-                  
                  $filename1  = $filedata1['file_name'];
                  $ins_data['ads_image'] = (!empty($filename1))?$filename1:"";
                }
@@ -107,15 +110,15 @@ class Business extends Admin_Controller
             $msg  = $e->getMessage();
         }
 
-       if($edit_id)
-       {
-          $this->data["editdata"] = $this->business_model->get_where(array("id" => $edit_id))->row_array();
-       }  
-        else
-        {
+          if($edit_id)
+          {
+             $this->data["editdata"] = $this->business_model->get_where(array("id" => $edit_id))->row_array();
+          }  
+           else
+           {
 
-           $this->data["editdata"] = array("customer_name"=>"","title"=>"","ads_image"=>"","description"=>"","url"=>"","status"=>"");
-        }
+              $this->data["editdata"] = array("customer_name"=>"","title"=>"","ads_image"=>"","description"=>"","url"=>"","status"=>"");
+            }
       $this->layout->view('frontend/business/add',$this->data);
   }
  
@@ -144,7 +147,7 @@ class Business extends Admin_Controller
       
                 $config['upload_path']   = '../assets/img/business/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
-                $config['max_size']    = 2048;
+                $config['max_size']    = 5000;
                 $config['max_width']   = 1024;
                 $config['max_height']  = 768;
 
@@ -152,15 +155,28 @@ class Business extends Admin_Controller
               if(!$this->upload->do_upload('ads_image'))
               { 
                 $this->form_validation->set_message('do_upload', $this->upload->display_errors());
+                return false;
               }
               else
               {
                 $final_file_data = array("success"=>$this->upload->data());
+                return true;
+              }
 
-             }
-                
-          return $final_file_data;
-        }     
+        }   
+ 
+   function valid_url1($str)
+   {
+
+           $pattern = "/^(http|https|ftp):\/\/([A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?/i";
+            if (!preg_match($pattern, $str))
+            {
+                 $this->form_validation->set_message("valid_url1","please insert a valid url");
+                return FALSE;
+            }
+
+            return TRUE;
+    }
 
 }
 ?>

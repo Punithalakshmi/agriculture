@@ -44,8 +44,7 @@ class Category extends Admin_Controller
             $this->form_validation->set_rules('category_image',  'category Image','trim|callback_do_upload');
         }
 
-        $this->layout->add_stylesheets(array('custom'));
-        $this->layout->add_javascripts(array('function'));
+     
    
          try
         {
@@ -138,7 +137,7 @@ class Category extends Admin_Controller
 
                 $config['upload_path']   = '../assets/img/category/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
-                $config['max_size']      = 2048;
+                $config['max_size']      = 5000;
                 $config['max_width']     = 1024;
                 $config['max_height']    = 768;
             

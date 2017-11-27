@@ -5,13 +5,6 @@
 //echo "<pre>";
 //print_r($editdata); exit;
 ?>
-<style type="text/css">
-p{
-        margin: 0 0 10px;
-    width: 50%;
-    float: left;
-  }
-</style>
 <div class="page-content-wrapper">
   <div class="page-content">
       <h3 class="page-title">
@@ -32,13 +25,13 @@ p{
               <div class="portlet-body form">
                 <form action="#" class="mt-repeater form-horizontal" name="add_project" id="add_new_project" method="post" enctype="multipart/form-data">
                     <div class="form-body">
-                      <h3 class="form-section"><strong>Business Details</strong></h3>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('customer_name'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Company/Customer Name<span class="required">*</span>  </label>
                               <div class="col-md-9">
                                 <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Name" value="<?php echo set_value('customer_name',$editdata['customer_name']);?>">
+                                <input type="hidden" name="updated_customer_name" value="<?php echo set_value('customer_name',$editdata['customer_name']);?>">
                                 <?php echo form_error("customer_name"); ?>
                               </div>
                           </div>

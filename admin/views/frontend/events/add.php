@@ -25,7 +25,6 @@
               <div class="portlet-body form">
                 <form action="#" class="mt-repeater form-horizontal" name="add_project" id="add_new_project" method="post" enctype="multipart/form-data">
                     <div class="form-body">
-                      <h3 class="form-section"><strong>Event Details</strong></h3>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('title'))?'has-error':'';?>">
@@ -89,8 +88,6 @@
                               <?php echo form_error('event_image'); ?>
                           </div>
                         </div>
-                      </div>
-               			  <div class="row">
                         <div class="col-md-5">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>
