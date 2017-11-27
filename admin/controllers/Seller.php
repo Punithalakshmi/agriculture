@@ -53,12 +53,14 @@ class Seller extends Admin_Controller
     // $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
     // $this->layout->add_stylesheets(array('dropzone'));
     // $this->layout->add_javascripts(array('dropzone'));
-    // print_r($this->input->post());exit;
+   // print_r($this->input->post());exit;
      try
         {
           if($this->input->post('edit_id')) 
 
           $edit_id = $this->input->post('edit_id');
+
+      	  $seller_id = $this->input->post('seller_id');
            
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
@@ -88,18 +90,23 @@ class Seller extends Admin_Controller
               
             
               if($edit_id){
-
+              	
                 $ins_data['modified_on'] = date('Y-m-d H:i:s');
                 $msg                      = 'Seller updated successfully';
                 $this->seller_model->update(array("id" => $edit_id),$ins_data);
                // log_history($edit_id,'inventory',"Product <b>".$ins_data['name']."</b> has been updated."); 
+              }
+              if($seller_id){
+              	
+              	$ins_data['modified_on'] = date('Y-m-d H:i:s');
+                $msg                      = 'Seller updated successfully';
+                $this->seller_model->update(array("id" => $seller_id),$ins_data);
               }
               else
               {    
 
                 $ins_data['created_on'] = date('Y-m-d H:i:s');
                 $new_id                   = $this->seller_model->insert($ins_data); 
-                
                 $msg                      = 'Seller added successfully';
                 $edit_id                  =  $new_id;
               
@@ -111,8 +118,6 @@ class Seller extends Admin_Controller
           else
           {
             $edit_data = array();
-
-            $edit_bio = array();
 
             $edit_data['first_name']              = '';
             $edit_data['password']                = '';
