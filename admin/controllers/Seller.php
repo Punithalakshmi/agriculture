@@ -57,7 +57,6 @@ class Seller extends Admin_Controller
      try
         {
 
-
           if($this->input->post('edit_id')) 
 
           $edit_id = $this->input->post('edit_id');
@@ -129,7 +128,7 @@ class Seller extends Admin_Controller
           else
           {
             $edit_data = array();
-            
+
             $edit_data['first_name']              = '';
             $edit_data['password']                = '';
             $edit_data['last_name']                = '';
@@ -214,10 +213,13 @@ class Seller extends Admin_Controller
 
             $edit_id = $this->input->post('seller_id');
             
-          $this->form_validation->set_rules('company_name','Company Name','trim|required');
-          $this->form_validation->set_rules('website','Website','trim|required');
-          //$this->form_validation->set_rules('website', $this->lang->line('website'), 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
-          $this->form_validation->set_rules('description','Description','trim|required');
+        $this->form_validation->set_rules('company_name','Company Name','trim|required');
+
+          //$this->form_validation->set_rules('website', 'URL', 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
+
+        $this->form_validation->set_rules('website','Website','trim|required');
+          
+        $this->form_validation->set_rules('description','Description','trim|required');
 
         $this->form_validation->set_error_delimiters('', '');
 
@@ -413,14 +415,15 @@ class Seller extends Admin_Controller
         
         return TRUE;
     }
+  
   /**
-  * This method handles to validate url
+  *This method handles to validate url
   **/
   function form_validation_validate_url($str){
         $valid_url  = validate_url($str);
         if(!empty($str)){
           if (!$valid_url){
-              $this->form_validation->set_message('form_validation_validate_url', $this->lang->line('valid_url'));
+              $this->form_validation->set_message('form_validation_validate_url', 'Invalid URL');
               return FALSE;
           }
         }
