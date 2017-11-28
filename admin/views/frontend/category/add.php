@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('category_image'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Category Image</span></label>
+                              <label class="control-label col-md-3">Category Image(maximum size 2MB)</span></label>
                               <div class="col-md-9">
                                 <input type="file"  name="category_image" size="20" />
                                   <?php if(!empty($editdata["category_img"])){ ?>

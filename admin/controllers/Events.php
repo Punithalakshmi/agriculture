@@ -139,9 +139,9 @@ class Events extends Admin_controller
          
          $config['upload_path']   = '../assets/img/events/';
          $config['allowed_types'] = 'gif|png|jpg|jpeg';
-         $config['max_size']      = 5000;
-         $config['max_width']     = 1024;
-         $config['max_height']    = 768;
+         $config['max_size']      = 2056;
+         $config['max_width']     = 1600;
+         $config['max_height']    = 650;
 
           $this->upload->initialize($config);
 

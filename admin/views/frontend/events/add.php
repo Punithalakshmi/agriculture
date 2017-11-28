@@ -77,7 +77,7 @@
                         </div>  
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('event_image'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Events Image</span></label>
+                              <label class="control-label col-md-3">Events Image(maximum size 2MB)</span></label>
                               <div class="col-md-9">
                                 <input type="file"  name="event_image" size="20" />
                                   <?php if(!empty($editdata["event_image"])){ ?>

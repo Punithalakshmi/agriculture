@@ -137,9 +137,9 @@ class Category extends Admin_Controller
 
                 $config['upload_path']   = '../assets/img/category/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
-                $config['max_size']      = 5000;
-                $config['max_width']     = 1024;
-                $config['max_height']    = 768;
+                $config['max_size']      = 2056;
+                $config['max_width']     = 1600;
+                $config['max_height']    = 650;
             
 
               $this->upload->initialize($config);

@@ -69,7 +69,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('ads_image'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Ads Image</span></label>
+                              <label class="control-label col-md-3">Ads Image(maximum size 2MB)</span></label>
                               <div class="col-md-9">
                                 <input type="file"  name="ads_image" size="20" />
                                   <?php if(!empty($editdata["ads_image"])){ ?>
@@ -80,7 +80,7 @@
                               <?php echo form_error('ads_image'); ?>
                           </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>
                             <div class="col-md-9 radio-btn">
@@ -101,6 +101,10 @@
                           </div>
                         </div>
                     </div>
+                    <?php
+                    $this->load->helper('date');
+echo date(DATE_RFC822, time());                 
+ ?>  
                 </form>
               </div>
           </div>
