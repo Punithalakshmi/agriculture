@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+//tab_view("contact","seller/add");
+
 $('#country_id').change(function() {
 
     var id = $('#country_id').val();
@@ -11,7 +13,7 @@ $('#country_id').change(function() {
     } 
   }); 
   
-        
+
   $("#from_date").datepicker({
       format: 'yyyy-mm-dd',
       autoclose: true,
@@ -32,6 +34,7 @@ $('#country_id').change(function() {
    $('#from_date').datepicker('setEndDate', null);
 });
 
+
  })
  
 
@@ -40,20 +43,7 @@ $(function()
     $("[data-fancybox]").fancybox({
      // Options will go here
   });
-    // $("input[name='a_c[]']").click(function()
-    // {
-    //     if($(this).prop('checked'))
-    //     {
-    //         var cont_name = $(this).attr("data-contractor");
-
-    //         $("select").append("<option value='"+$(this).val()+"'>"+cont_name+"</option>");
-    //     }
-    //     else
-    //     {
-    //         $("select [value='"+$(this).val()+"']").remove();
-    //     }
-    // });
-
+    
     $(".mt-repeater-add2").click(function()
     {
         if($(".mt-repeater-cust-item").length >= 1)
@@ -95,6 +85,7 @@ function delete_record(del_url,elm){
       
 }
 
+
 /* refresh grid after ajax submitting form */
 function refresh_grid(data_tbl){
      data_tbl =(data_tbl)?data_tbl:"data_table";
@@ -132,6 +123,7 @@ function scroll_to(jump_id){
        $(window).scrollTop($('#'+jump_id).offset().top); 
     }
 }
+
 
 function capitaliseFirstLetter(string)
 {
@@ -182,12 +174,13 @@ function tab_view(id,url,formid='')
         dataType:'json',
         success:function(data)
         {
-          console.log(data.edit_id);
+
           $("#"+id).trigger('click');
           $("#"+id).html(data.output);
           if(id=='contact')
            $("input[name='seller_id']").val(data.edit_id);
          if(id=='service')
+
             $("input[name='seller_id']").val(data.edit_id);
           if(id=='photos')
              $("input[name='seller_id']").val(data.edit_id);
@@ -197,6 +190,57 @@ function tab_view(id,url,formid='')
             service_message(data.status,data.msg);
         }
     });
+}
+
+function dropzone()
+{
+  $("#photoForm").dropzone({
+
+    
+    maxFiles: 5,
+    addRemoveLinks:true,
+    acceptedFiles: ".png, .jpg",//is this correct? I got an error if im using this
+    dictRemoveFile:"Remove",
+    dictDefaultMessage:"Drag or Drop Image here<br>(Or)<br>Browse File (Click)",  
+
+    url:base_url+'seller/add_photos',
+
+    
+
+    
+    sending: function(file, xhr, formData) {
+       formData.append("seller_id", $('input[name="seller_id"]').val());
+     },    
+    success: function (response) {
+      console.log(response);
+    },    
+  addRemoveLinks: true,
+  removedfile: function(file) {
+            var _ref;  // Remove file on clicking the 'Remove file' button
+    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;  
+          }   
+  });
+}
+
+function deleteimage(image_id){
+
+   var answer = confirm ("Are you sure you want to delete this image?");
+    if (answer)
+    {
+        $.ajax({
+                type: "POST",
+                url:base_url+'seller/deleteimage',
+                
+                data: "image_id="+image_id,
+                success: function (response) {
+                  if (response == 1) {
+                    $(".imagelocation"+image_id).remove(".imagelocation"+image_id);
+                     // window.location.reload();
+                  };
+                  
+                }
+            });
+      }
 }
 
 
