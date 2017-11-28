@@ -15,14 +15,14 @@
       <div class="col-lg-7">
       <label class="control-label">Email<span class="required">*</span></label>
            
-            <?php echo form_input(['name' => 'email', 'id' => 'email', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Email' ,'value' => set_value('email',$editdata['email'])]); ?> <?php echo form_error('email', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+            <?php echo form_input(['name' => 'email', 'id' => 'email', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '3', 'placeholder' =>'Email' ,'value' => set_value('email',$editdata['email'])]); ?> <?php echo form_error('email', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
         </div>
         </div>
 
         <div class="form-group">
       <div class="col-lg-7">
       <label class="control-label">Confirm Password<span class="required">*</span></label>
-          <?php echo form_password(['name'=>'confirm_password', 'id'=>'confirm_password','placeholder' =>'Confirm Password','tabindex'=>'6', 'class'=>'form-control', 'maxlength'=>'232']); ?>
+          <?php echo form_password(['name'=>'confirm_password', 'id'=>'confirm_password','placeholder' =>'Confirm Password','tabindex'=>'5', 'class'=>'form-control', 'maxlength'=>'232']); ?>
         <?php echo form_error('confirm_password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
         </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
       <div class="col-lg-7">
       <label class="control-label">Address 2<span class="required">*</span></label>
-            <?php echo form_input(['name' => 'address2', 'id' => 'address2', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Address 2' ,'value' => set_value('address2',$editdata['address2'])]); ?> <?php echo form_error('address2', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+            <?php echo form_input(['name' => 'address2', 'id' => 'address2', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '7', 'placeholder' =>'Address 2' ,'value' => set_value('address2',$editdata['address2'])]); ?> <?php echo form_error('address2', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
         </div>
         </div>
 
@@ -38,14 +38,14 @@
       <div class="col-lg-7">
       <label class="control-label">Country</label>
        <?php echo form_dropdown('country_id', $country, (set_value('country_id')) ? set_value('country_id') : 231,
-        ['name' => 'country_id', 'id' => 'country_id', 'tabindex' => '6', 'class' => 'form-control']); ?> <?php echo form_error('country_id',
+        ['name' => 'country_id', 'id' => 'country_id', 'tabindex' => '9', 'class' => 'form-control']); ?> <?php echo form_error('country_id',
                     '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
         </div>
         </div>
         <div class="form-group">
       <div class="col-lg-7">
       <label class="control-label">State</label>
-            <?php echo form_dropdown('state_id', $state, $editdata['state_id'], ['name' => 'state_id', 'tabindex' => '2', 'id' => 'state_id', 'class' => 'form-control']); ?> <?php echo form_error('state_id ', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
+            <?php echo form_dropdown('state_id', $state, $editdata['state_id'], ['name' => 'state_id', 'tabindex' => '10', 'id' => 'state_id', 'class' => 'form-control']); ?> <?php echo form_error('state_id ', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
         </div>
         </div> 
 
@@ -85,21 +85,21 @@
   <div class="col-lg-7">
               <label class="control-label">Password<span class="required">*</span></label>
               
-             <?php echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Password' ,'value' => set_value('password',$editdata['password'])]); ?> <?php echo form_error('password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '4', 'placeholder' =>'Password' ,'value' => set_value('password',$editdata['password'])]); ?> <?php echo form_error('password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
           <div class="form-group">
   <div class="col-lg-7">
    <label class="control-label">Address 1<span class="required">*</span></label>
               
-             <?php echo form_input(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Address' ,'value' => set_value('address',$editdata['address'])]); ?> <?php echo form_error('address', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_input(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '6', 'placeholder' =>'Address' ,'value' => set_value('address',$editdata['address'])]); ?> <?php echo form_error('address', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
           <div class="form-group">
   <div class="col-lg-7">
   <label class="control-label">City<span class="required">*</span></label>
              
-             <?php echo form_input(['name' => 'city', 'id' => 'city', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'City' ,'value' => set_value('city',$editdata['city'])]); ?> <?php echo form_error('city', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_input(['name' => 'city', 'id' => 'city', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '8', 'placeholder' =>'City' ,'value' => set_value('city',$editdata['city'])]); ?> <?php echo form_error('city', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
 
@@ -107,13 +107,13 @@
   <div class="col-lg-7">
               <label class="control-label">Phone<span class="required">*</span></label>
               
-             <?php echo form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Phone' ,'value' => set_value('phone',$editdata['phone'])]); ?> <?php echo form_error('phone', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '11', 'placeholder' =>'Phone' ,'value' => set_value('phone',$editdata['phone'])]); ?> <?php echo form_error('phone', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
            <div class="form-group">
   <div class="col-lg-7">
               <label for="exampleInputEmail1">Zip</label>
-             <?php echo form_input(['name' => 'zip', 'id' => 'zip', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Zip' ,'value' => set_value('zip',$editdata['zip'])]); ?> <?php echo form_error('zip', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_input(['name' => 'zip', 'id' => 'zip', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '12', 'placeholder' =>'Zip' ,'value' => set_value('zip',$editdata['zip'])]); ?> <?php echo form_error('zip', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
 
