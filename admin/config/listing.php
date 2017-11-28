@@ -173,5 +173,22 @@ $config['services_product_index'] = array(
 	"default_direction" => "DESC"
 );
 
+$config['subscription_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/subscription/filter',
+	"base_url"	=> 	'/subscription/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'seller'=>array('name'=>'Seller', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'plan'=>array('name'=>'Plan', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'payment_date'=>array('name'=>'Payment Date', 'data_type' => 'date', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
+
 
 ?>
