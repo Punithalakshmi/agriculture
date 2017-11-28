@@ -34,7 +34,7 @@
                             <div class="form-group <?php echo (form_error('category_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Category<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_dropdown('category_id ', $category, set_value('category_id'), ['name' => 'category_id ', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
+                                <?php echo form_dropdown('category_id ', $category, $editdata['category_id'], ['name' => 'category_id ', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
                               </div>
                             </div>
                           </div>
@@ -43,7 +43,7 @@
                             <div class="form-group <?php echo (form_error('seller_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Seller<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_dropdown('seller_id ', $seller, set_value('seller_id'), ['name' => 'seller_id ', 'tabindex' => '2', 'id' => 'seller_id', 'class' => 'form-control']); ?> <?php echo form_error('seller_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>  
+                                <?php echo form_dropdown('seller_id ', $seller, $editdata['seller_id'], ['name' => 'seller_id ', 'tabindex' => '2', 'id' => 'seller_id', 'class' => 'form-control']); ?> <?php echo form_error('seller_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>  
                               </div>
                             </div>
                           </div>
@@ -82,7 +82,7 @@
                             <div class="form-group <?php echo (form_error('price'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Price<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_input(['name' => 'price', 'id' => 'price', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '6', 'placeholder' =>'Price' ,'value' => set_value('price',$editdata['price'])]); ?> <?php echo form_error('price', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
+                                <?php echo form_input(['name' => 'price', 'id' => 'price', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '5', 'placeholder' =>'Price' ,'value' => set_value('price',$editdata['price'])]); ?> <?php echo form_error('price', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
                               </div>
                             </div>
                           </div>
@@ -91,7 +91,7 @@
                               <label class="control-label col-md-3">Addresss</label>
                               <div class="col-md-9">
 
-                               <?php echo form_textarea(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'tabindex' => '5', 'value' => set_value('',$editdata['address']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> 
+                               <?php echo form_textarea(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'tabindex' => '6', 'value' => set_value('address',$editdata['address']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> 
                               </div>
                             </div>
                           </div>
@@ -99,7 +99,7 @@
                             <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Description<span class="required">*</span></label>
                               <div class="col-md-9">
-                               <?php echo form_textarea(['name' => 'description', 'id' => 'description', 'class' => 'form-control mceEditor', 'tabindex' => '5', 'value' => set_value('description',$editdata['description']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+                               <?php echo form_textarea(['name' => 'description', 'id' => 'description', 'class' => 'form-control mceEditor', 'tabindex' => '7', 'value' => set_value('description',$editdata['description']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                               </div>
                             </div>
                           </div>
@@ -107,7 +107,7 @@
                             <div class="form-group">
                               <label class="control-label col-md-3">Contact</label>
                               <div class="col-md-9">
-                               <?php echo form_textarea(['name' => 'contact_details', 'id' => 'contact_details', 'class' => 'form-control', 'tabindex' => '5', 'value' => set_value('',$editdata['contact_details']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?>  
+                               <?php echo form_textarea(['name' => 'contact_details', 'id' => 'contact_details', 'class' => 'form-control', 'tabindex' => '8', 'value' => set_value('contact_details',$editdata['contact_details']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?>  
                               </div>
                             </div>
                           </div>
@@ -141,6 +141,7 @@
                        
                     <!--/row-->                                            
                     </div>
+                    
                     <div class="form-actions">
                        <div class="row">
                           <div class="col-md-offset-3 col-md-9">

@@ -15,6 +15,8 @@ th {
      
    </form>
    <br /><br />
+   
+   <br /><br />
 
     <?php if($editdata) { ?>
 
@@ -34,7 +36,7 @@ th {
     ?>
        <tr class="imagelocation<?php echo $data->id ?>">
         <td><?php echo $i++ ?></td>
-        <td align="center"><img src="<?php echo base_url(); ?>uploads/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></td>
+        <td align="center"><a href="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" data-fancybox data-caption=""><img src="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a></td>
         <td><span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)">X</span></td>
       </tr>
       <?php } endif; ?>
@@ -45,36 +47,17 @@ th {
    <br /><br />
    
 <script type="text/javascript">
-  $("#photoForm").dropzone({
-    
-    maxFiles: 5,
-    addRemoveLinks:true,
-    // acceptedFiles:"application/pdf",
-    dictRemoveFile:"Remove",
-    dictDefaultMessage:"Drag or Drop Image here<br>(Or)<br>Browse File (Click)",  
+  dropzone();
+  deleteimage(image_id);
 
-    url:base_url+'seller/add_photos',
-    sending: function(file, xhr, formData) {
-       formData.append("seller_id", $('input[name="seller_id"]').val());
-     },    
-    success: function (response) {
-      console.log(response);
-    },    
-  addRemoveLinks: true,
-  removedfile: function(file) {
-            var _ref;  // Remove file on clicking the 'Remove file' button
-    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;  
-          }   
-  });
-
-function deleteimage(image_id)
+/* function deleteimage(image_id)
 {
     var answer = confirm ("Are you sure you want to delete this image?");
     if (answer)
     {
         $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('seller/deleteimage');?>",
+                url: "<?php //echo site_url('seller/deleteimage');?>",
                 data: "image_id="+image_id,
                 success: function (response) {
                   if (response == 1) {
@@ -85,5 +68,6 @@ function deleteimage(image_id)
                 }
             });
       }
-}
+} */
+
 </script>

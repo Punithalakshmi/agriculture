@@ -102,7 +102,7 @@
           </a>
         </li>
          <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('');?>">
+          <a href="<?=site_url('subscription');?>">
           <i class="fa fa-sitemap"></i>
           <span class="title">Subscriptions</span>
           <?=($uri=='')?"<span class='selected'>":"";?>

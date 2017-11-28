@@ -49,10 +49,11 @@ class Seller extends Admin_Controller
   public function add($edit_id = '')
   {
    
-    // $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
-    // $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
-    // $this->layout->add_stylesheets(array('dropzone'));
-    // $this->layout->add_javascripts(array('dropzone'));
+    $this->layout->add_javascripts(array('dropzone'));
+    $this->layout->add_javascripts(array('jquery.fancybox.min'));
+    $this->layout->add_stylesheets(array('dropzone'));
+    $this->layout->add_stylesheets(array('jquery.fancybox.min'));
+    
    	//print_r($this->input->post());exit;
      try
         {
@@ -83,7 +84,7 @@ class Seller extends Admin_Controller
           $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');           
           $this->form_validation->set_error_delimiters('', '');
 
-          if($this->form_validation->run()){
+          if(count($_POST) > 1 && $this->form_validation->run()){
              
               $ins_data = array();
               $ins_data['first_name']              = $this->input->post('first_name');
@@ -302,9 +303,7 @@ class Seller extends Admin_Controller
   public function add_photos($edit_id = '')
   {
     
-    $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
-    $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
-    
+      
      try
         {
           if($this->input->post('seller_id'))            
@@ -321,7 +320,7 @@ class Seller extends Admin_Controller
             
             $tempFile = $_FILES['file']['tmp_name'];
             $fileName = $_FILES['file']['name'];
-            $targetPath = getcwd() . '/uploads/';
+            $targetPath = getcwd() . '/uploads/seller/';
             $ins_data['seller_id'] = $seller_id;
             $ins_data['image_name'] = $fileName;
             $ins_data['created_on'] = date('Y-m-d H:i:s'); 
@@ -373,11 +372,22 @@ class Seller extends Admin_Controller
   function delete($del_id)
     {
       $access_data = $this->seller_model->get_where(array("id"=>$del_id),'id')->row_array();
+      $service_data =  $this->services_model->get_where(array("seller_id"=>$del_id),'id')->row_array();
+      $photo_data =  $this->photos_model->get_where(array("seller_id"=>$del_id),'id')->row_array();
       $output=array();
       if(count($access_data) > 0)
       {
         $this->seller_model->delete(array("id"=>$del_id));
+        if(count($service_data) > 0){
 
+          $this->services_model->delete(array("seller_id"=>$del_id));
+        }
+        if(count($service_data) > 0){
+
+           $this->photos_model->delete(array("seller_id"=>$del_id));
+        }
+        //$this->services_model->delete(array("seller_id"=>$del_id));
+        //$this->photos_model->delete(array("seller_id")=>$del_id);
         $output['message'] ="Record deleted successfuly.";
         $output['status']  = "success";
         redirect("seller");

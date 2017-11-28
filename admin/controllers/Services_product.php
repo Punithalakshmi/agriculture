@@ -59,7 +59,7 @@ class Services_product extends Admin_Controller
 
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));   
-        
+       
        try
         {
            
@@ -77,7 +77,9 @@ class Services_product extends Admin_Controller
 
            $this->form_validation->set_rules('price','Price','trim|required');
 
-            $this->form_validation->set_rules('image_name', 'Upload Image', 'callback_file_selected_validation');
+           
+
+          // $this->form_validation->set_rules('image_name', 'Upload Image', 'callback_file_selected_validation');
 
             
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
@@ -86,16 +88,19 @@ class Services_product extends Admin_Controller
            if($this->form_validation->run())
            {
 
+
+              
+
              if ($_FILES['image_name']['name']) {
 
                 $tempFile = $_FILES['image_name']['tmp_name'];
                 $fileName = $_FILES['image_name']['name'];
                 $targetPath = getcwd() . '/uploads/services/';
-               
                 
                 $targetFile = $targetPath . $fileName ;
 
                 move_uploaded_file($tempFile, $targetFile);
+               }
 
                $ins_data = array();
                
@@ -104,17 +109,18 @@ class Services_product extends Admin_Controller
                $ins_data['title']        = $this->input->post('title');
                $ins_data['description'] = $this->input->post('description');
                $ins_data['price'] = $this->input->post('price');
+               $ins_data['image_name'] =  $fileName;
                $ins_data['address'] = $this->input->post('address');
                $ins_data['contact_details'] = $this->input->post('contact_details');
-               $ins_data['image_name'] = $fileName;
+               
                $ins_data['status']     = $this->input->post('status');
-
-               }
+                
               
               if($edit_id)
               {
                 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
+
                 $update_id = $this->services_product_model->update(array("id" => $edit_id),$ins_data);
                 $this->session->set_flashdata("success_msg","Services updated successfully.",TRUE);              
               }
@@ -171,15 +177,33 @@ class Services_product extends Admin_Controller
           if($edit_id)
           {
              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $edit_id))->row_array();
+
           }  
           else
           {
-              $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'');
+              $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'','category_id' =>'','seller_id' =>'');
 
           }
       $this->layout->view('frontend/services_product/add',$this->data);
   }
- 
+ /*
+     * file value and type check during validation
+     */
+    public function file_check($str){
+        $allowed_mime_type_arr = array('application/pdf','image/gif','image/jpeg','image/pjpeg','image/png','image/x-png');
+        $mime = get_mime_by_extension($_FILES['file']['name']);
+        if(isset($_FILES['file']['name']) && $_FILES['file']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                return true;
+            }else{
+                $this->form_validation->set_message('file_check', 'Please select only pdf/gif/jpg/png file.');
+                return false;
+            }
+        }else{
+            $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
+            return false;
+        }
+    }
     function delete($del_id)
    {
 

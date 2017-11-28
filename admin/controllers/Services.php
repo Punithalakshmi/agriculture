@@ -53,7 +53,9 @@ class Services extends Admin_Controller
            $this->form_validation->set_rules('name','Name','trim|required');
            
            $this->form_validation->set_rules('description','Description','trim|required');
-           
+
+           $this->form_validation->set_rules('url', 'URL', 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
+
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
            if($this->form_validation->run())
            {
@@ -96,9 +98,22 @@ class Services extends Admin_Controller
           {
               $this->data["editdata"] = array("name"=>"","amount"=>"","description"=>"");
           }
-      $this->layout->view('frontend/plans/add',$this->data);
+      $this->layout->view('frontend/services/add',$this->data);
   }
- 
+ /**
+  *
+  **/
+  function form_validation_validate_url($str){
+        $valid_url  = validate_url($str);
+        if(!empty($str)){
+          if (!$valid_url){
+              $this->form_validation->set_message('form_validation_validate_url', 'Invalid URL');
+              return FALSE;
+          }
+        }
+        
+        return TRUE;
+    }
     function delete($del_id)
    {
 

@@ -29,7 +29,7 @@
 
   <div class="container">
    <ul class="nav nav-tabs sellertabs">
-  <li class="active"><a data-toggle="tab" id="tab1" href="#contact" >Contact Information</a></li>
+  <li class="active"><a data-toggle="tab" id="tab1" href="#contact" > <?php/*onclick="tab_view('seller','seller/add_service','')"*/?> Contact Information</a></li>
 
   <li><a data-toggle="tab" href="#service" onclick="tab_view('service','seller/add_service','')" >Seller Services</a></li>
 
@@ -42,7 +42,6 @@
     <div id="contact" class="tab-pane fade in active">
 
     <?php $this->load->view('frontend/seller/contact'); ?>
-     
      
     </div>
     <div id="service" class="tab-pane fade">
