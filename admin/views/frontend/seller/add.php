@@ -27,7 +27,7 @@
     
                 <div class="form-body">
 
-  <div class="container">
+  <div class="container-full sellerform">
    <ul class="nav nav-tabs sellertabs">
   <li class="active"><a data-toggle="tab" id="tab1" href="#contact" > <?php/*onclick="tab_view('seller','seller/add_service','')"*/?> Contact Information</a></li>
 

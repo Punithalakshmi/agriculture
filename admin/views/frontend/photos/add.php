@@ -21,27 +21,21 @@ th {
     <?php if($editdata) { ?>
 
     <table style="width:45%">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Image</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
+    
+    
 
     <?php
     if(isset($editdata) && is_array($editdata) && count($editdata)): $i=1;
     foreach ($editdata as $key => $data) {  
     ?>
-       <tr class="imagelocation<?php echo $data->id ?>">
-        <td><?php echo $i++ ?></td>
-        <td align="center"><a href="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" data-fancybox data-caption=""><img src="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a></td>
-        <td><span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)">X</span></td>
-      </tr>
+       <div class="imagelocation<?php echo $data->id ?> seller-img">
+        
+        <a href="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" data-fancybox data-caption=""><img src="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a>
+        <span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+      </div>
       <?php } endif; ?>
-    </tbody>
-  </table>
+    
+  
 <?php } ?>
    
    <br /><br />

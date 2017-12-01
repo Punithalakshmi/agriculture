@@ -80,3 +80,26 @@ Change Quick Sidebar Width
     width: 50%;
     float: left;
 }
+.sellerform { width: 100%; display: inline-block; }
+.seller-img {
+    max-width: 80px;
+    float: left;
+    position: relative;
+    margin-right:10px;
+}
+.seller-img span
+{
+cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: rgba(12, 6, 6, 0.47);
+    padding: 1px 5px;
+    margin-bottom:0px;
+
+
+}
+
+.seller-img span i {
+    color: #fff;
+}
