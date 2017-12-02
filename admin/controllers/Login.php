@@ -30,7 +30,7 @@ class Login extends Admin_Controller
             }
             else if($this->login_model->login1($form['email'], $form['password']))
             {
-                redirect("admin/add");
+                redirect("seller/add");
             }
             else
             {

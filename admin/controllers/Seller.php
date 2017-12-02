@@ -48,7 +48,7 @@ class Seller extends Admin_Controller
   
   public function add($edit_id = '')
   {
-   
+   $admin_data = get_user_type();
     $this->layout->add_javascripts(array('dropzone'));
     $this->layout->add_javascripts(array('jquery.fancybox.min'));
     $this->layout->add_stylesheets(array('dropzone'));
@@ -58,10 +58,18 @@ class Seller extends Admin_Controller
      try
         {
 
-          if($this->input->post('edit_id')) 
-
-          $edit_id = $this->input->post('edit_id');
-           $id = $this->input->post('id');
+           
+          
+          if($admin_data["role"]==1)
+          {
+            if($this->input->post('edit_id'))
+             $editid = $this->input->post('edit_id'); 
+          }
+          elseif($admin_data["role"]==2)
+          {
+            $edit_id = $admin_data["id"];
+          }
+           
           $seller_id = $this->input->post('seller_id');
            
           $this->form_validation->set_rules('first_name','First Name','trim|required');
