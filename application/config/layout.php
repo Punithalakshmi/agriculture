@@ -11,11 +11,9 @@ $config['layout']['default']['js_dir']    = "assets/js/frontend";
 $config['layout']['default']['css_dir']   = "assets/css/frontend";
 $config['layout']['default']['img_dir']   = "assets/img";
 
-$config['layout']['default']['javascripts'] = array(
-  'jquery.min', 'bootstrap.min','chosen.jquery','common'
-);
+$config['layout']['default']['javascripts'] = array('jquery.min', 'bootstrap.min','chosen.jquery','common','jquery.matchHeight','materialize.min','init');
  
-$config['layout']['default']['stylesheets'] = array('bootstrap.min', 'style','bootstrap-chosen');
+$config['layout']['default']['stylesheets'] = array('bootstrap.min', 'style','bootstrap-chosen','materialize','_theme');
 
 $config['layout']['default']['description'] = '';
 $config['layout']['default']['keywords']    = '';

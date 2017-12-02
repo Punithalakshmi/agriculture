@@ -38,6 +38,14 @@ class Seller_model extends App_model
     }
     return parent::listing();
   }
+   public function get_seller_data($email)
+   {
+        $this->db->select("*");
+        $this->db->from('seller');
+        $this->db->where('email', $email);
+        $user = $this->db->get()->row_array();        
+       return $user;          
+   }
 
   /**
     * This method handles to retrive all seller

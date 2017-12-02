@@ -16,9 +16,9 @@
 
 $root = (empty($_SERVER['HTTPS'])?'http://':'https://');
 
-$host = $_SERVER['HTTP_HOST']."/~izaapinn/construction/";
+$host = $_SERVER['HTTP_HOST'];
 if($_SERVER['HTTP_HOST']=='localhost')
- $host = 'localhost/construction/';
+ $host = 'localhost/agriculture';
 
 
 $config['base_url'] = $root.$host;

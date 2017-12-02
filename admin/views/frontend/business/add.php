@@ -100,11 +100,7 @@
                               <a href="<?php echo site_url('business');?>" class="btn default">Cancel</a>
                           </div>
                         </div>
-                    </div>
-                    <?php
-                    $this->load->helper('date');
-echo date(DATE_RFC822, time());                 
- ?>  
+                    </div> 
                 </form>
               </div>
           </div>

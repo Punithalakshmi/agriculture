@@ -7,6 +7,7 @@ class Login_Model extends CI_Model
    {
      parent::__construct();
    }
+   
    public function login($email, $password)
    {
 
@@ -22,6 +23,28 @@ class Login_Model extends CI_Model
       if(count($user)>0)
       {      
         $this->session->set_userdata('user_data', $user);
+        
+        return TRUE;
+      }
+      
+      return FALSE;
+   }
+   
+   public function login1($email, $password)
+   {
+
+     $pass = md5($password);
+     
+        $this->db->select("*");
+        $this->db->from('seller');
+        $this->db->where('email', $email);
+        $this->db->where('password', $pass);
+
+        $seller_user = $this->db->get()->row_array();
+     
+      if(count($seller_user)>0)
+      {      
+        $this->session->set_userdata('user_data', $seller_user);
         
         return TRUE;
       }

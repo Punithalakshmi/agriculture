@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2017 at 01:37 PM
+-- Generation Time: Dec 02, 2017 at 06:36 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -39,6 +39,14 @@ CREATE TABLE `bio_seller` (
   `modified_on` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `bio_seller`
+--
+
+INSERT INTO `bio_seller` (`id`, `seller_id`, `company_name`, `description`, `website`, `status`, `created_on`, `modified_on`) VALUES
+(0, 4, 'ertgewrtgertgert', 'eterterterterterterter', 'https://forum.codeigniter.com/archive/index.php?thread-64059.html', 'Active', '2017-12-01 13:32:03', NULL),
+(0, 1, 'izaaptechnologies', 'wqedfwerwerfwerwer', 'https://forum.codeigniter.com/archive/index.php?thread-64059.html', 'Active', '2017-12-01 15:14:23', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -50,7 +58,6 @@ CREATE TABLE `business_ads` (
   `customer_name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `ads_image` text NOT NULL,
-  `filepath` text NOT NULL,
   `description` text NOT NULL,
   `url` varchar(255) NOT NULL,
   `status` enum('Active','Inactive','','') NOT NULL,
@@ -64,11 +71,11 @@ CREATE TABLE `business_ads` (
 -- Dumping data for table `business_ads`
 --
 
-INSERT INTO `business_ads` (`id`, `customer_name`, `title`, `ads_image`, `filepath`, `description`, `url`, `status`, `created_date`, `updated_date`, `created_id`, `updated_id`) VALUES
-(22, 'mahendransdsdsd', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-17 10:47:32', '2017-11-27 07:52:32', 2, 2),
-(28, 'maheKUMAR', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:16', '2017-11-27 07:52:59', 1, 2),
-(32, 'mahendranferde', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:30', '2017-11-27 07:53:04', 1, 2),
-(34, 'mahendran', 'huihyuhyiu', 'slide--1111.jpg', 'http://localhost/agriculture/assets/img/business/', 'kjghsdfsdfsdfsdfs', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:37', '2017-11-27 07:43:19', 1, 2);
+INSERT INTO `business_ads` (`id`, `customer_name`, `title`, `ads_image`, `description`, `url`, `status`, `created_date`, `updated_date`, `created_id`, `updated_id`) VALUES
+(22, 'mahendransdsdsd', 'huihyuhyiu', 'slide--1111.jpg', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-17 10:47:32', '2017-11-27 07:52:32', 2, 2),
+(28, 'maheKUMAR', 'huihyuhyiu', 'slide--1111.jpg', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:16', '2017-11-27 07:52:59', 1, 2),
+(32, 'mahendranferde', 'huihyuhyiu', 'slide--1111.jpg', 'kjghkjhjkhkjkj', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:30', '2017-11-27 07:53:04', 1, 2),
+(34, 'mahendran', 'huihyuhyiu', 'slide--1111.jpg', 'kjghsdfsdfsdfsdfs', 'https://brianistech.wordpress.com/2010/11/19/url-validation-in-codeigniter/', 'Active', '2017-11-18 00:46:37', '2017-11-27 07:43:19', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -81,7 +88,6 @@ CREATE TABLE `category` (
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `category_img` text NOT NULL,
-  `filepath` text NOT NULL,
   `status` enum('Active','Inactive','','') NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -93,9 +99,11 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `description`, `category_img`, `filepath`, `status`, `created_date`, `updated_date`, `created_id`, `updated_id`) VALUES
-(12, 'some category', 'jhgjgjhgjhg', 'slide--31.jpg', 'http://localhost/agriculture/assets/img/category/', 'Active', '2017-11-22 07:27:18', '2017-11-22 07:29:56', 1, 1),
-(13, 'rwetwert', 'this is a simple description', 'slide--121.jpg', 'http://localhost/agriculture/assets/img/category/', 'Active', '2017-11-22 07:38:21', '2017-11-27 06:06:14', 1, 2);
+INSERT INTO `category` (`id`, `name`, `description`, `category_img`, `status`, `created_date`, `updated_date`, `created_id`, `updated_id`) VALUES
+(12, 'some category', 'jhgjgjhgjhg', 'slide--31.jpg', 'Active', '2017-11-22 07:27:18', '2017-11-22 07:29:56', 1, 1),
+(13, 'rwetwert', 'this is a simple description', 'slide--121.jpg', 'Active', '2017-11-22 07:38:21', '2017-11-27 06:06:14', 1, 2),
+(14, 'some category', 'wretfgwerfwerfwefwefwefwefwe', 'qweqwefaf1.jpg', 'Active', '2017-12-01 02:54:42', '0000-00-00 00:00:00', 1, 0),
+(15, 'some category', 'dfyretertertergertger', 'qweqwefaf3.jpg', 'Active', '2017-12-01 10:20:14', '0000-00-00 00:00:00', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -375,7 +383,6 @@ CREATE TABLE `events` (
   `from_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `to_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `event_image` text NOT NULL,
-  `filepath` text NOT NULL,
   `description` text NOT NULL,
   `status` enum('Active','Inactive','','') NOT NULL,
   `created_id` int(11) NOT NULL,
@@ -388,12 +395,12 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `location`, `from_date`, `to_date`, `event_image`, `filepath`, `description`, `status`, `created_id`, `updated_id`, `created_date`, `updated_date`) VALUES
-(1, 'developement vents', 'chennai', '2017-12-07 18:30:00', '2017-12-08 18:30:00', '', 'http://localhost/agriculture/assets/img/business/', 'sdrftwerwerwe', 'Active', 2, 2, '2017-11-21 05:44:12', '2017-11-21 06:28:36'),
-(2, 'wrtw3rwe', 'werwer', '2017-11-22 18:30:00', '2017-11-29 18:30:00', 'download_(1).jpg', 'http://localhost/agriculture/assets/img/business/', 'werwer', 'Active', 2, 1, '2017-11-21 07:03:07', '2017-11-21 09:26:15'),
-(3, 'developement vents', 'chennai', '2017-12-01 18:30:00', '2018-01-03 18:30:00', 'download.jpg', 'http://localhost/agriculture/assets/img/business/', 'uiyhiyiuyiy', 'Active', 2, 1, '2017-11-21 07:05:22', '2017-11-21 09:29:12'),
-(4, 'swfgsdf', 'sdfsdf', '2017-11-21 18:30:00', '2017-11-29 18:30:00', 'download_(2).jpg', 'http://localhost/agriculture/assets/img/business/', 'sdfsdfsdfjhjghjghjghjghjghj', 'Active', 1, 2, '2017-11-21 08:16:43', '2017-11-27 02:23:07'),
-(5, 'swfgsdf', 'hydrapth', '2017-11-29 18:30:00', '2017-11-30 18:30:00', 'download_(3).jpg', 'http://localhost/agriculture/assets/img/business/', 'wefwfwefghjgjhgjghj', 'Inactive', 1, 2, '2017-11-21 08:26:54', '2017-11-27 06:08:56');
+INSERT INTO `events` (`id`, `title`, `location`, `from_date`, `to_date`, `event_image`, `description`, `status`, `created_id`, `updated_id`, `created_date`, `updated_date`) VALUES
+(1, 'developement vents', 'chennai', '2017-12-07 18:30:00', '2017-12-08 18:30:00', '', 'sdrftwerwerwe', 'Active', 2, 2, '2017-11-21 05:44:12', '2017-11-21 06:28:36'),
+(2, 'wrtw3rwe', 'werwer', '2017-11-22 18:30:00', '2017-11-29 18:30:00', 'download_(1).jpg', 'werwer', 'Active', 2, 1, '2017-11-21 07:03:07', '2017-11-21 09:26:15'),
+(3, 'developement vents', 'chennai', '2017-12-01 18:30:00', '2018-01-03 18:30:00', 'download.jpg', 'uiyhiyiuyiy', 'Active', 2, 1, '2017-11-21 07:05:22', '2017-11-21 09:29:12'),
+(4, 'swfgsdf', 'sdfsdf', '2017-11-21 18:30:00', '2017-11-29 18:30:00', 'download_(2).jpg', 'sdfsdfsdfjhjghjghjghjghjghj', 'Active', 1, 2, '2017-11-21 08:16:43', '2017-11-27 02:23:07'),
+(5, 'swfgsdf', 'hydrapth', '2017-11-29 18:30:00', '2017-11-30 18:30:00', 'download_(3).jpg', 'wefwfwefghjgjhgjghj', 'Inactive', 1, 2, '2017-11-21 08:26:54', '2017-11-27 06:08:56');
 
 -- --------------------------------------------------------
 
@@ -441,7 +448,7 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`id`, `role`) VALUES
 (1, 'superadmin'),
-(2, 'admin');
+(2, 'seller_admin');
 
 -- --------------------------------------------------------
 
@@ -450,7 +457,8 @@ INSERT INTO `role` (`id`, `role`) VALUES
 --
 
 CREATE TABLE `seller` (
-  `id` int(12) NOT NULL,
+  `id` int(11) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT '2',
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(232) NOT NULL,
   `first_name` varchar(258) NOT NULL,
@@ -471,8 +479,11 @@ CREATE TABLE `seller` (
 -- Dumping data for table `seller`
 --
 
-INSERT INTO `seller` (`id`, `email`, `password`, `first_name`, `last_name`, `address`, `address2`, `city`, `country_id`, `state_id`, `zip`, `phone`, `status`, `created_on`, `modified_on`) VALUES
-(0, 'mahe@gmail.com', 'mahendran', 'kjghkj', 'sjds', 'kjlsdskjhsdkjfhdsf', 'vellithiruppur', 'dfsfdsfsfs', 12, 334, '654465', '5649874651', 'Active', '2017-11-27 07:22:31', NULL);
+INSERT INTO `seller` (`id`, `role`, `email`, `password`, `first_name`, `last_name`, `address`, `address2`, `city`, `country_id`, `state_id`, `zip`, `phone`, `status`, `created_on`, `modified_on`) VALUES
+(1, 2, 'mahe@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'ramkumar', 'ram', 'kjhkdjghekjgverkjgerkjuger', 'kjhkjhkjhjkh', 'sdfsdfsdf', 231, 0, '12345689', '1234567898', 'Active', '2017-12-01 13:16:22', '2017-12-01 13:16:23'),
+(2, 2, 'jakathees@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'kjghkj', 'mahe@gmail.com', 'kjhkdjghekjgverkjgerkjuger', 'kjhkjhkjhjkh', 'sdfsdfsdf', 233, 0, '12345689', '1234567898', 'Active', '2017-12-01 07:30:15', NULL),
+(3, 2, 'ewrewe@gmail.com', '2636b93f2a2af0f7586ec907bface0bd', 'ramkumar', 'ram', 'kjhkdjghekjgverkjgerkjuger', 'kjhkjhkjhjkh', 'sdfsdfsdf', 231, 0, '12345689', '1234567898', 'Active', '2017-12-01 11:02:39', NULL),
+(4, 2, 'mahekutty@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'ramkumar', 'ram', 'kjhkdjghekjgverkjgerkjuger', 'kjhkjhkjhjkh', 'sdfsdfsdf', 231, 0, '12345689', '1234567898', 'Active', '2017-12-01 13:16:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -494,13 +505,37 @@ CREATE TABLE `seller_image` (
 --
 
 INSERT INTO `seller_image` (`id`, `seller_id`, `image_name`, `status`, `created_on`, `modified_on`) VALUES
-(0, 0, 'download (1).jpg', 'Active', '2017-11-27 07:32:14', NULL),
-(0, 0, 'download (2).jpg', 'Active', '2017-11-27 07:32:14', NULL),
-(0, 0, 'download (3).jpg', 'Active', '2017-11-27 07:32:14', NULL),
-(0, 0, 'download.jpg', 'Active', '2017-11-27 15:01:22', NULL),
-(0, 0, 'agriculture.sql', 'Active', '2017-11-27 15:01:22', NULL),
-(0, 0, 'download (2).jpg', 'Active', '2017-11-27 15:01:23', NULL),
-(0, 0, 'download (3).jpg', 'Active', '2017-11-27 15:01:23', NULL);
+(0, 4, 'download (3).jpg', 'Active', '2017-12-01 13:32:54', NULL),
+(0, 4, 'download.jpg', 'Active', '2017-12-01 13:32:55', NULL),
+(0, 1, '332115.jpg', 'Active', '2017-12-01 15:14:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(3) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `seller_id` varchar(3) NOT NULL,
+  `category_id` int(3) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `address` text,
+  `contact_details` text,
+  `price` decimal(15,2) NOT NULL,
+  `status` enum('Active','Inactive') DEFAULT 'Active',
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_on` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `title`, `seller_id`, `category_id`, `image_name`, `description`, `address`, `contact_details`, `price`, `status`, `created_on`, `modified_on`) VALUES
+(1, 'developement vents', '2', 13, 'ewrewew.jpg', '<p>kjghjgjhgjhgjhg</p>', 'hjgjhghgjhgjgjhgjhg', 'jhgjg', '5454.00', 'Active', '2017-12-01 03:35:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -1477,6 +1512,31 @@ INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subscription`
+--
+
+CREATE TABLE `subscription` (
+  `id` int(3) NOT NULL,
+  `seller` varchar(248) NOT NULL,
+  `plan` varchar(248) NOT NULL,
+  `account_id` int(3) NOT NULL,
+  `payment_id` int(3) NOT NULL,
+  `plan_amount` decimal(15,2) NOT NULL,
+  `payment_date` datetime DEFAULT NULL,
+  `renewal_date` datetime DEFAULT NULL,
+  `status` enum('Paid','Failure') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`id`, `seller`, `plan`, `account_id`, `payment_id`, `plan_amount`, `payment_date`, `renewal_date`, `status`) VALUES
+(1, 'Sathish', 'Test Plan', 1, 1, '500.00', '2017-11-24 00:00:00', '2017-11-24 00:00:00', 'Paid');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -1496,8 +1556,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `role`, `profile_image`) VALUES
-(1, 'Sathish', 'M', 'admin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@gmail.com', 1, ''),
-(2, 'mahe', 'chinnasamy', 'mahendran', '5f4dcc3b5aa765d61d8327deb882cf99', 'mahe@gmail.com', 1, '');
+(2, 'mahe', 'chinnasamy', 'superadmin', '5f4dcc3b5aa765d61d8327deb882cf99', 'ramkumar@gmail.com', 1, 'avatar6.jpg');
 
 --
 -- Indexes for dumped tables
@@ -1540,9 +1599,27 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `seller`
+--
+ALTER TABLE `seller`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1565,7 +1642,7 @@ ALTER TABLE `business_ads`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -1590,6 +1667,24 @@ ALTER TABLE `plans`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `seller`
+--
+ALTER TABLE `seller`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

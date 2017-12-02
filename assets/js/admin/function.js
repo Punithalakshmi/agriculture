@@ -19,7 +19,7 @@ $('#country_id').change(function() {
       autoclose: true,
     }).on('changeDate', function (selected) {
         var startDate = new Date(selected.date.valueOf());
-        $('#to_date').datepicker('setStartDate', startDate);
+        $('#to_date').datepicker('setStartDate', "12/12/1994");
     }).on('clearDate', function (selected) {
     $('#to_date').datepicker('setStartDate', null);
 });

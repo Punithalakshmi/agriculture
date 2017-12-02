@@ -562,4 +562,12 @@ function get_state_by_country($id){
                 return $result;                       
 }
 
+    function get_user_type()
+    {
+        $CI = @ get_instance();
+        $CI->load->model('login_model');
+       $result =  $CI->session->userdata("user_data");
+
+       return $result;
+    }
 ?>

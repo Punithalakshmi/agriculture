@@ -29,20 +29,25 @@
       <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
          
-          <?php /*
+          <?php 
+           $uri = $this->uri->segment(1);
+           $uri1 = $this->uri->segment(2);
+           $usertype = get_user_type();
+           //echo "<pre>"; print_r($usertype); exit;
+          /*
             $profile = get_user_data();     */    
           ?>
           <li class="dropdown dropdown-user">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <img alt="" class="img-circle" src=""/>
             <span class="username username-hide-on-mobile">
-            Welcome  </span>
+           <?=$usertype["email"]?></span>
             <i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
               <li>
                 <a href="<?=site_url('login/logout');?>">
-                <i class="icon-key"></i> Log Out </a>
+                <i class="icon-key"></i>Log Out </a>
               </li>
             </ul>
           </li>
@@ -61,74 +66,38 @@
     </div>
   </div>
   <div class="page-sidebar-wrapper">
-    <?php 
-      $uri = $this->uri->segment(1);
-      $uri1 = $this->uri->segment(2);
-    ?>
     <div class="page-sidebar navbar-collapse collapse">
       <ul class="page-sidebar-menu page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
         <li class="sidebar-toggler-wrapper">
           <div class="sidebar-toggler">
           </div>
         </li>
-        <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('seller');?>">
-          <i class="fa fa-anchor"></i>
-          <span class="title">Seller</span>
-          <?=($uri=='')?"<span class='selected'>":"";?>
-          </a>
-        </li>
 
-        <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('services_product');?>">
-          <i class="fa fa-users"></i>
-          <span class="title">Service</span>
-          <?=($uri=='')?"<span class='selected'>":"";?>
-          </a>
-        </li>
+        <?php $menu = array(array('link'=>'seller','name'=>'Seller','icon'=>'fa-anchor'),array('link'=>'services_product','name'=>'Services','icon'=>'fa-users'),array('link'=>'business','name'=>'Business Ads','icon'=>'fa-briefcase'),array('link'=>'subscription','name'=>'Subscriptions','icon'=>'fa-sitemap'),array('link'=>'plans','name'=>'Plans','icon'=>'fa-sitemap'),array('link'=>'events','name'=>'Events','icon'=>'fa-calendar'),array('link'=>'category','name'=>'Category','icon'=>'fa-linkedin'));
+          //echo "<pre>"; print_r($menu); exit;
+        
 
-        <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('');?>">
-          <i class="fa fa-cogs"></i>
-          <span class="title">Events/News</span>
-          <?=($uri=='')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-        <li class="start <?=($uri=='business')?'active':'';?>">
-          <a href="<?=site_url('business');?>">
-          <i class="fa fa-briefcase" aria-hidden="true"></i>
-          <span class="title">Business ads</span>
-          <?=($uri=='business')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-         <li class="start <?=($uri=='')?'active':'';?>">
-          <a href="<?=site_url('subscription');?>">
-          <i class="fa fa-sitemap"></i>
-          <span class="title">Subscriptions</span>
-          <?=($uri=='')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-         <li class="start <?=($uri=='plans')?'active':'';?>">
-          <a href="<?=site_url('plans');?>">
-          <i class="fa fa-sitemap"></i>
-          <span class="title">Plans</span>
-          <?=($uri=='plans')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-        <li class="start <?=($uri=='events')?'active':'';?>">
-          <a href="<?=site_url('events');?>">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span class="title">Events</span>
-          <?=($uri=='events')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-        <li class="start <?=($uri=='category')?'active':'';?>">
-          <a href="<?=site_url('category');?>">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-          <span class="title">Category</span>
-          <?=($uri=='category')?"<span class='selected'>":"";?>
-          </a>
-        </li>
+        foreach($menu as $row): 
+
+          if( $usertype["role"] == 2 && ($row['link'] =='category' || $row['link'] =='services_product')): ?>
+
+              <li class="start <?=($uri==$row['link'])?'active':'';?>">
+                <a href="<?=site_url($row['link']);?>">
+                <i class="fa <?=$row['icon'];?>"></i>
+                <span class="title"><?=$row['name'];?></span>
+                <?=($uri==$row['link'])?"<span class='selected'>":"";?>
+                </a>
+              </li>
+           <?php elseif($usertype["role"] == 1): ?>
+               <li class="start <?=($uri==$row['link'])?'active':'';?>">
+                <a href="<?=site_url($row['link']);?>">
+                <i class="fa <?=$row['icon'];?>"></i>
+                <span class="title"><?=$row['name'];?></span>
+                <?=($uri==$row['link'])?"<span class='selected'>":"";?>
+                </a>
+              </li>
+            <?php endif; ?>  
+        <?php endforeach;?>
       </ul>
     </div>
   </div>

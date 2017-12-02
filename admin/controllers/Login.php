@@ -23,11 +23,14 @@ class Login extends Admin_Controller
         if($this->form_validation->run())
         {
             $form = $this->input->post();
-
-            if($this->login_model->login($form['email'], $form['password']))
+            $chk = $this->login_model->login($form['email'], $form['password']);
+            if($chk)
+            {   
+                 redirect("dashboard");   
+            }
+            else if($this->login_model->login1($form['email'], $form['password']))
             {
-                redirect("dashboard");
-               
+                redirect("admin/add");
             }
             else
             {

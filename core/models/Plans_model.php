@@ -2,7 +2,7 @@
 
 require_once(COREPATH.'libraries/models/App_model.php');
 
-class plans_model extends App_model
+class Plans_model extends App_model
 {
   function __construct()
   {

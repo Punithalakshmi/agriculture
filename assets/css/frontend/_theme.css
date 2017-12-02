@@ -1,0 +1,366 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 75vh;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+.parallax-container .section {
+  width: 100%;
+}
+
+
+/* Custom Style Start*/
+.test {
+  border:1px solid red;
+}
+
+.no-caps {
+  text-transform: capitalize;
+}
+
+.custom-title {
+  color:#2e465e;
+  font-size:36px;
+  font-weight:300;
+  padding-bottom: 60px;
+  position: relative;
+  text-align: center;
+}
+
+.custom-title:before {
+   content:url('../images/title-bg.png');
+   position: absolute;
+   bottom: 20px;
+   left: 0;
+   right: 0;
+}
+
+.custom-title span {
+  font-weight:700;
+}
+
+.custom-title.no-decoration {
+  padding-bottom: 35px;
+}
+
+.custom-title.whats-new-icon,
+.custom-title.events-icon {
+  text-align: left;
+  padding-left: 100px;
+}
+.custom-title.whats-new-icon:before,
+.custom-title.events-icon:before {
+  content:url('../images/whats-new.png');
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  /*right: 0;*/
+}
+
+.custom-title.events-icon:before {
+  content:url('../images/events.png');
+}
+
+.about-wrap {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  background:#f8f6ee url(../images/about-bg.png) no-repeat center right;
+}
+
+@media only screen and (max-width : 767px) {
+  .about-wrap {
+    background-color:#f8f6ee;
+    background-image:none;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.feed-wrap {
+  border-top:1px solid #b8d686;
+}
+
+.feed-wrap .row,
+.subscriptionplan .row,
+.top-footer .row {
+  margin-bottom: 0;
+}
+
+.feed-wrap .feed-tweets, 
+.feed-wrap .feed-clients {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+@media only screen and (max-width : 767px) {
+  .feed-wrap .feed-tweets, 
+  .feed-wrap .feed-clients {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.feed-tweets {
+  background:#dfefca url(../images/tweet-icon.png) no-repeat center;
+}
+
+.feed-tweets p,
+.feed-tweets a,
+.feed-clients p,
+.feed-clients a
+ {
+  font-size:24px;
+  font-weight:300;
+  line-height: 32px;
+}
+
+.feed-tweets h2,
+.feed-clients h2 {
+  margin-bottom: 100px;
+}
+
+.feed-tweets a {
+  color:#00663f;
+}
+.feed-clients {
+  background:#fcfcfc url(../images/client-icon.png) no-repeat center;
+}
+
+
+/**/
+.feed-avatar  {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    max-width: 280px;
+}
+
+.feed-avatar li {
+    padding: 10px 20px;
+    padding-left: 92px;
+    position: relative;
+}
+
+.feed-avatar li img {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.feed-avatar li span.title {
+  font-size: 16px;
+}
+
+.feed-avatar li p {
+  font-size:14px;
+  margin: 0;
+}
+
+.feed-avatar li a {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.subscriptionplan {
+  background-color:#25a642;
+  padding-top: 85px;
+  padding-bottom: 85px;
+}
+
+.subscriptionplan h2 {
+  color: #fff;
+}
+.subscriptionplan h2:before {
+  content:url('../images/title-bg-2.png');
+}
+
+.subscriptionplan {
+
+}
+
+.subscriptionplan .card-panel {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.subscriptionplan h3,
+.subscriptionplan h4 {
+  font-weight:700;
+  font-size:36px;
+  margin-bottom: 0;
+}
+
+.subscriptionplan .description-text,
+.subscriptionplan .days {
+  color:#a3a3a3;
+ }
+
+.subscriptionplan h4 {
+  color: #25a642;
+ }
+
+.subscriptionplan .days {
+    position: relative;
+    top: -5px;
+}
+
+.white {
+  background-color:#fff !important;
+  color:#2e465e;
+}
+
+.white.lighten-1 {
+  background-color: #fff !important;
+}
+
+
+.subscriptionplan a {
+  margin-top: 15px;
+  font-weight:700;
+}
+
+.active-tab {
+  background-color: #dfefca
+}
+.subscriptionplan .active-tab a,
+.subscriptionplan a:hover {
+  background-color:#e9c540 !important;
+}
+
+.top-footer .whats-new-wrap,
+.top-footer .events-wrap {
+  padding:85px 100px;
+}
+
+@media only screen and (max-width : 767px) {
+  .top-footer .whats-new-wrap,
+  .top-footer .events-wrap {
+    padding-left: 30px;
+    padding-right: 30px;  
+  }
+}
+
+.top-footer {
+  border-bottom: 1px solid #8ec040;
+}
+
+.events-wrap {
+  background:#dfefca;
+}
+
+.social li {
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  vertical-align: top;
+  height: 30px;
+ }
+
+.social li a {
+  color: #444;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  line-height: 30px;
+}
+
+/**/
+
+.home-search {
+  
+}
+
+.home-search form {
+  background:#ffffff;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+
+.home-search input[type="search"],
+.home-search input[type="text"] {
+  margin-bottom: 0;
+  border-color: transparent;
+  color: #2e465e;
+}
+
+input[type="search" i] {
+    -webkit-appearance: searchfield;
+    box-sizing: border-box;
+}
+
+#index-banner h1 {
+  color:#fff;
+}
+
+.lgreen {
+
+}
+
+.lgreen.lighten-1 {
+
+}
+
+/* custom Stye End */
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+footer.page-footer .footer-copyright a {
+  color:#0a671f !important;
+}
