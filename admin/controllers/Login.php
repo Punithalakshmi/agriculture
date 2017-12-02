@@ -26,7 +26,7 @@ class Login extends Admin_Controller
             $chk = $this->login_model->login($form['email'], $form['password']);
             if($chk)
             {   
-                 redirect("dashboard");   
+                 redirect("seller");   
             }
             else if($this->login_model->login1($form['email'], $form['password']))
             {

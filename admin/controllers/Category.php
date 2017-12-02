@@ -39,6 +39,9 @@ class Category extends Admin_Controller
   
   public function add($edit_id = '')
   {
+        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
+        $this->layout->add_javascripts(array('tinymce'));    
+
         if(isset($_FILES["category_image"]["name"]) && $_FILES["category_image"]["size"]>0)
         {
             $this->form_validation->set_rules('category_image',  'category Image','trim|callback_do_upload');
@@ -138,8 +141,8 @@ class Category extends Admin_Controller
                 $config['upload_path']   = '../assets/img/category/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
                 $config['max_size']      = 2056;
-                $config['max_width']     = 1600;
-                $config['max_height']    = 650;
+                $config['max_width']     = 1800;
+                $config['max_height']    = 800;
             
 
               $this->upload->initialize($config);

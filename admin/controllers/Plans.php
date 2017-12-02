@@ -39,6 +39,9 @@ class Plans extends Admin_Controller
   
   public function add($edit_id = '')
   {
+        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
+        $this->layout->add_javascripts(array('tinymce'));     
+
          try
         {
            

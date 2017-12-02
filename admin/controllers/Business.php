@@ -39,6 +39,9 @@ class Business extends Admin_Controller
   
   public function add($edit_id = '')
   { 
+        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
+        $this->layout->add_javascripts(array('tinymce'));  
+
         if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
         {
             $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
@@ -148,8 +151,8 @@ class Business extends Admin_Controller
                 $config['upload_path']   = '../assets/img/business/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
                 $config['max_size']    = 2056;
-                $config['max_width']   = 1600;
-                $config['max_height']  = 650;
+                $config['max_width']   = 1700;
+                $config['max_height']  = 800;
 
               $this->upload->initialize($config);
               if(!$this->upload->do_upload('ads_image'))

@@ -42,7 +42,9 @@ class Events extends Admin_controller
 
     public function add($edit_id='')
     {	
-
+        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
+        $this->layout->add_javascripts(array('tinymce'));  
+        
         if(isset($_FILES["event_image"]["name"])&& $_FILES["event_image"]["size"]>0)
         {
           $this->form_validation->set_rules('event_image','Events image','trim|callback_do_upload');
@@ -140,8 +142,8 @@ class Events extends Admin_controller
          $config['upload_path']   = '../assets/img/events/';
          $config['allowed_types'] = 'gif|png|jpg|jpeg';
          $config['max_size']      = 2056;
-         $config['max_width']     = 1600;
-         $config['max_height']    = 650;
+         $config['max_width']     = 1800;
+         $config['max_height']    = 800;
 
           $this->upload->initialize($config);
 

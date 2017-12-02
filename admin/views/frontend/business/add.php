@@ -17,6 +17,7 @@
       <div class="row">
         <div class="col-md-12 ">
           <div class="portlet box green ">
+
               <div class="portlet-title">
                   <div class="caption">
                     <i class="fa fa-table"></i> Business Form
@@ -48,12 +49,16 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
-                            <div class="col-md-9">
-                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
-                              <?php echo form_error('description'); ?>
-                            </div>
+                          <div class="form-group <?php echo (form_error('ads_image'))?'has-error':'';?>">
+                              <label class="control-label col-md-3">Ads Image(maximum size 2MB)</span></label>
+                              <div class="col-md-9">
+                                <input type="file"  name="ads_image" size="20" />
+                                  <?php if(!empty($editdata["ads_image"])){ ?>
+                                    <br>
+                                  <img src="<?=base_path()."assets/img/business/".$editdata["ads_image"]; ?>" width="50" height="50" />
+                                <?Php }?>
+                              </div>
+                              <?php echo form_error('ads_image'); ?>
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -68,16 +73,12 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="form-group <?php echo (form_error('ads_image'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Ads Image(maximum size 2MB)</span></label>
-                              <div class="col-md-9">
-                                <input type="file"  name="ads_image" size="20" />
-                                  <?php if(!empty($editdata["ads_image"])){ ?>
-                                    <br>
-                                  <img src="<?=base_path()."assets/img/business/".$editdata["ads_image"]; ?>" width="50" height="50" />
-                                <?Php }?>
-                              </div>
-                              <?php echo form_error('ads_image'); ?>
+                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
+                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
+                              <?php echo form_error('description'); ?>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-6">
