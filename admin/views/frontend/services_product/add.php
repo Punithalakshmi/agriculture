@@ -61,7 +61,7 @@
 
                           <div class="col-md-6">
                             <div class="form-group <?php echo (form_error('image_name'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Image<span class="required">*</span></label>
+                              <label class="control-label col-md-3">Image</label>
                               <div class="col-md-9">
                                <?php echo form_upload(['name' => 'image_name', 'id' => 'image_name', 'class' => 'form-control', 'tabindex' => '4', 'placeholder' => $this->lang->line('image_name'), 'value' => set_value('image_name')]); ?> <?php echo form_error('image_name', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
 
