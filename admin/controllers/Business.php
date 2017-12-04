@@ -44,7 +44,8 @@ class Business extends Admin_Controller
 
         if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
         {
-            $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
+          
+             $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
         }
          try
         {
