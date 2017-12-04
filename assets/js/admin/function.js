@@ -212,7 +212,7 @@ function dropzone()
        formData.append("seller_id", $('input[name="seller_id"]').val());
      },    
     success: function (response) {
-      console.log(response);
+      alert("success");
     },    
   addRemoveLinks: true,
   removedfile: function(file) {
