@@ -14,10 +14,6 @@ class Services_product extends Admin_Controller
     $this->load->model('services_product_model');  
     $this->load->model('category_model'); 
     $this->load->model('seller_model');
-
-    $this->load->helper('ckeditor');
-
-
     
   }
 
@@ -58,10 +54,15 @@ class Services_product extends Admin_Controller
 
 
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
-        $this->layout->add_javascripts(array('tinymce'));   
-       
+        $this->layout->add_javascripts(array('tinymce')); 
+
+       if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
+        {
+            $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_do_upload');
+        }
        try
         {
+           
            
            if($this->input->post('edit_id'))  
 
@@ -71,12 +72,13 @@ class Services_product extends Admin_Controller
            
            $this->form_validation->set_rules('description','Description','trim|required');
            
-           $this->form_validation->set_rules('category_id_','Category','trim|required');
+           $this->form_validation->set_rules('category_id','Category','trim|required');
 
-           $this->form_validation->set_rules('seller_id_','Seller','trim|required');
+           $this->form_validation->set_rules('seller_id','Seller','trim|required');
 
            $this->form_validation->set_rules('price','Price','trim|required');
 
+           $this->form_validation->set_rules('status','Status','trim|required');
            
 
           // $this->form_validation->set_rules('image_name', 'Upload Image', 'callback_file_selected_validation');
@@ -91,7 +93,7 @@ class Services_product extends Admin_Controller
 
               
 
-             if ($_FILES['image_name']['name']) {
+             /* if ($_FILES['image_name']['name']) {
 
                 $tempFile = $_FILES['image_name']['tmp_name'];
                 $fileName = $_FILES['image_name']['name'];
@@ -100,21 +102,28 @@ class Services_product extends Admin_Controller
                 $targetFile = $targetPath . $fileName ;
 
                 move_uploaded_file($tempFile, $targetFile);
-               }
+               }*/
 
                $ins_data = array();
                
-               $ins_data['category_id'] = $this->input->post('category_id_');
-               $ins_data['seller_id'] = $this->input->post('seller_id_');
+               $ins_data['category_id'] = $this->input->post('category_id');
+               $ins_data['seller_id'] = $this->input->post('seller_id');
                $ins_data['title']        = $this->input->post('title');
                $ins_data['description'] = $this->input->post('description');
                $ins_data['price'] = $this->input->post('price');
-               $ins_data['image_name'] =  $fileName;
+               //$ins_data['image_name'] =  $fileName;
                $ins_data['address'] = $this->input->post('address');
                $ins_data['contact_details'] = $this->input->post('contact_details');
                
                $ins_data['status']     = $this->input->post('status');
                 
+              if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
+               {
+
+                 $filedata = $this->do_upload();
+                 $filename  = $_FILES["image_name"]["name"];
+                 $ins_data['image_name'] = (!empty($filename))?$filename:"";
+               }
               
               if($edit_id)
               {
@@ -204,6 +213,30 @@ class Services_product extends Admin_Controller
             return false;
         }
     }
+
+    public function do_upload()
+    {
+        $this->load->library('upload');
+      
+                $config['upload_path']   = '../admin/uploads/services/';
+                $config['allowed_types'] = 'gif|png|jpg|jpeg';
+                $config['max_size']    = 2056;
+                $config['max_width']   = 1700;
+                $config['max_height']  = 800;
+
+              $this->upload->initialize($config);
+              if(!$this->upload->do_upload('image_name'))
+              { 
+                $this->form_validation->set_message('do_upload', $this->upload->display_errors());
+                return false;
+              }
+              else
+              {
+                $final_file_data = array("success"=>$this->upload->data());
+                return true;
+              }
+
+        } 
     function delete($del_id)
    {
 
