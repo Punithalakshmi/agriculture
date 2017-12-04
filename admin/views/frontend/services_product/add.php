@@ -34,7 +34,7 @@
                             <div class="form-group <?php echo (form_error('category_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Category<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_dropdown('category_id ', $category, $editdata['category_id'], ['name' => 'category_id ', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
+                                <?php echo form_dropdown('category_id', $category, $editdata['category_id'], ['name' => 'category_id', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
                               </div>
                             </div>
                           </div>
@@ -43,10 +43,13 @@
                             <div class="form-group <?php echo (form_error('seller_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Seller<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_dropdown('seller_id ', $seller, $editdata['seller_id'], ['name' => 'seller_id ', 'tabindex' => '2', 'id' => 'seller_id', 'class' => 'form-control']); ?> <?php echo form_error('seller_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>  
+                                <?php echo form_dropdown('seller_id', $seller, $editdata['seller_id'], ['name' => 'seller_id', 'tabindex' => '2', 'id' => 'seller_id', 'class' => 'form-control']); ?> <?php echo form_error('seller_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>  
                               </div>
                             </div>
                           </div>
+                          </div>
+
+                          <div class="row">
                           <div class="col-md-6">
                             <div class="form-group <?php echo (form_error('title'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Title<span class="required">*</span></label>
@@ -72,12 +75,11 @@
                                      </div>
                                    <?php } ?> 
                               </div>
-
                             </div>
-                             
                           </div> 
-
+                          </div>
                          
+                          <div class="row">
                            <div class="col-md-6">
                             <div class="form-group <?php echo (form_error('price'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Price<span class="required">*</span></label>
@@ -95,14 +97,9 @@
                               </div>
                             </div>
                           </div>
-                           <div class="col-md-6">
-                            <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Description<span class="required">*</span></label>
-                              <div class="col-md-9">
-                               <?php echo form_textarea(['name' => 'description', 'id' => 'description', 'class' => 'form-control mceEditor', 'tabindex' => '7', 'value' => set_value('description',$editdata['description']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
-                              </div>
-                            </div>
                           </div>
+
+                            <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">
                               <label class="control-label col-md-3">Contact</label>
@@ -113,28 +110,29 @@
                           </div>
 
                           <div class="col-md-6">
-                            <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Status<span class="required">*</span></label>
+                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
+                            <label class="control-label col-md-3">Status<span class="required">*</span></label>
+                            <div class="col-md-9 radio-btn">
+                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Active" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Active')?True:False);?>> Active
+
+                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Inactive" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Inactive')?True:False);?>> Inactive
+                                <?php echo form_error('status'); ?>
+                            </div>
+                          </div>
+
+                            
+                          </div> 
+                          </div>
+                          
+                          <div class="row">
+                           <div class="col-md-6">
+                            <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
+                              <label class="control-label col-md-3">Description<span class="required">*</span></label>
                               <div class="col-md-9">
-                               <div class="col-lg-7 radio">
-
-                <label class="form-radio form-icon active form-text">
-
-                    <input type="radio" checked="checked" name="status" value="Active">
-
-                    Active</label>
-
-                <label class="form-radio form-icon active form-text">
-
-                    <input type="radio"  name="status" value="Inactive">
-
-                    Inactive  </label>
-
-                 </div>
+                               <?php echo form_textarea(['name' => 'description', 'id' => 'description', 'class' => 'form-control mceEditor', 'tabindex' => '7', 'value' => set_value('description',$editdata['description']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                               </div>
                             </div>
-                          </div> 
-
+                          </div>
 
                       
                       </div>
