@@ -21,7 +21,7 @@ class Services_product extends Admin_Controller
   {
 
 
-  	$this->layout->add_javascripts(array('listing'));
+    $this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
     $this->simple_search_fields = array('title' => 'Title','image_name' =>'Image','description'=>'Description','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
@@ -35,14 +35,16 @@ class Services_product extends Admin_Controller
     $this->data['btn'] ="<a href=".site_url('services_product/add')." class='btn green'>Add New <i class='fa fa-plus'></i></a>";
 
     if($this->input->is_ajax_request())
-      $this->_ajax_output(array('listing' => $listing), TRUE);
+    $this->_ajax_output(array('listing' => $listing), TRUE);
     $this->data['bulk_actions'] = array('' => 'select', 'delete' => 'Delete');
     $this->data['simple_search_fields'] = $this->simple_search_fields;
     $this->data['search_conditions'] = $this->session->userdata($this->namespace.'_search_conditions');
     $this->data['per_page'] = $this->listing->_get_per_page();
     $this->data['per_page_options'] = array_combine($this->listing->_get_per_page_options(), $this->listing->_get_per_page_options());
     $this->data['search_bar'] = $this->load->view('listing/search_bar', $this->data, TRUE);
+
     $this->data['listing'] = $listing;
+
     $this->data['grid'] = $this->load->view('listing/view', $this->data, TRUE);
     $this->layout->view("frontend/services_product/index");
   }
@@ -182,18 +184,9 @@ class Services_product extends Admin_Controller
           $this->data['sell_id']             = $seller_id;
           $this->data['s_id']   = $s_id;
 
-
           if($edit_id)
           {
-            if($admin_data["role"]==1)
-            {
              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $edit_id))->row_array();
-
-            }
-            else if($admin_data["role"]==2)
-            {
-              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $admin_data["id"]))->row_array();
-            } 
 
           }  
           else
