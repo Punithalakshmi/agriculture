@@ -4,6 +4,7 @@
 //echo "<pre>";print_r($editdata);die;
 //echo "<pre>";
 //print_r($editdata); exit;
+
 ?>
 <div class="page-content-wrapper">
   <div class="page-content">
@@ -42,8 +43,21 @@
                           <div class="col-md-6">
                             <div class="form-group <?php echo (form_error('seller_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Seller<span class="required">*</span></label>
+
+                             
+
                               <div class="col-md-9">
+                              <?php if($s_id){ ?>
+
                                 <?php echo form_dropdown('seller_id', $seller, $editdata['seller_id'], ['name' => 'seller_id', 'tabindex' => '2', 'id' => 'seller_id', 'class' => 'form-control']); ?> <?php echo form_error('seller_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>  
+
+                                <?php }else{ ?>
+
+                                <?php echo $seller_name; ?> 
+
+                                <input type="hidden" name="seller_id" value="<?php echo $sell_id ?>">
+
+                               <?php } ?> 
                               </div>
                             </div>
                           </div>
