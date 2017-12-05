@@ -50,8 +50,11 @@ class Services_product extends Admin_Controller
   public function add($edit_id = '')
   {
 
-
-
+      $admin_data = get_user_type();
+      
+        $s_id ='';
+        $seller_id = '';
+        $seller_name ='';
 
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce')); 
@@ -60,10 +63,20 @@ class Services_product extends Admin_Controller
         {
             $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_do_upload');
         }
+
        try
         {
            
-           
+          if($admin_data["role"]==1)
+          {
+             $s_id = $admin_data["id"];
+
+          }else{
+
+             $seller_id = $admin_data["id"];
+             $seller_name = $admin_data["first_name"];
+          } 
+
            if($this->input->post('edit_id'))  
 
              $edit_id = $this->input->post('edit_id');
@@ -80,29 +93,13 @@ class Services_product extends Admin_Controller
 
            $this->form_validation->set_rules('status','Status','trim|required');
            
-
-          // $this->form_validation->set_rules('image_name', 'Upload Image', 'callback_file_selected_validation');
-
+           
             
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
            
            if($this->form_validation->run())
            {
-
-
-              
-
-             /* if ($_FILES['image_name']['name']) {
-
-                $tempFile = $_FILES['image_name']['tmp_name'];
-                $fileName = $_FILES['image_name']['name'];
-                $targetPath = getcwd() . '/uploads/services/';
-                
-                $targetFile = $targetPath . $fileName ;
-
-                move_uploaded_file($tempFile, $targetFile);
-               }*/
 
                $ins_data = array();
                
@@ -114,7 +111,7 @@ class Services_product extends Admin_Controller
                //$ins_data['image_name'] =  $fileName;
                $ins_data['address'] = $this->input->post('address');
                $ins_data['contact_details'] = $this->input->post('contact_details');
-               
+
                $ins_data['status']     = $this->input->post('status');
                 
               if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
@@ -175,12 +172,15 @@ class Services_product extends Admin_Controller
              foreach ($seller as $key => $value) {
 
               $seller_data[$value->id] = $value->first_name;
-
+              
               }
             }
-
-          $this->data['category']              = $category_data;
+           
+          $this->data['category']            = $category_data;
           $this->data['seller']              = $seller_data;
+          $this->data['seller_name']         = $seller_name;
+          $this->data['sell_id']             = $seller_id;
+          $this->data['s_id']   = $s_id;
 
 
           if($edit_id)
@@ -193,27 +193,10 @@ class Services_product extends Admin_Controller
               $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'','category_id' =>'','seller_id' =>'');
 
           }
+
       $this->layout->view('frontend/services_product/add',$this->data);
   }
- /*
-     * file value and type check during validation
-     */
-    public function file_check($str){
-        $allowed_mime_type_arr = array('application/pdf','image/gif','image/jpeg','image/pjpeg','image/png','image/x-png');
-        $mime = get_mime_by_extension($_FILES['file']['name']);
-        if(isset($_FILES['file']['name']) && $_FILES['file']['name']!=""){
-            if(in_array($mime, $allowed_mime_type_arr)){
-                return true;
-            }else{
-                $this->form_validation->set_message('file_check', 'Please select only pdf/gif/jpg/png file.');
-                return false;
-            }
-        }else{
-            $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
-            return false;
-        }
-    }
-
+  
     public function do_upload()
     {
         $this->load->library('upload');
@@ -237,7 +220,7 @@ class Services_product extends Admin_Controller
               }
 
         } 
-    function delete($del_id)
+  function delete($del_id)
    {
 
       $access_data = $this->services_product_model->get_where(array("id"=>$del_id),'id')->row_array();     
@@ -254,19 +237,5 @@ class Services_product extends Admin_Controller
       }      
       $this->_ajax_output($output, TRUE);            
     }
-
-    /**
-     * This method handles to validate image
-     * */
-    function file_selected_validation() {
-        $this->form_validation->set_message('file_selected_validation', sprintf('required', 'Upload Image %s'));
-        if (empty($_FILES['image_name']['name'])) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
 }
 ?>
