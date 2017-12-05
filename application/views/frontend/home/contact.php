@@ -1,64 +1,7 @@
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Aggricultural</title>
-        <!-- Favicons-->
-        <!-- <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32"> -->
-        <!--  Android 5 Chrome Color-->
-        <meta name="theme-color" content="#25a642">
-        <!-- Remove Tap Highlight on Windows Phone IE -->
-        <meta name="msapplication-tap-highlight" content="no"/>
-        <!-- CSS-->
-        <link href="assets/css/materialize.css" rel="stylesheet" media="screen,projection"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- <link href="assets/css/ghpages-materialize.css" rel="stylesheet" /> -->
-        <link href="assets/css/_theme.css" rel="stylesheet" media="screen,projection"/>
-
-        <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-
-        <!--  -->
-
-        
-    </head>
-
-        <body>
-            
-            <nav class="white home-nav" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="index.html" class="brand-logo">Logo</a>
-                    <ul class="right hide-on-med-and-down desk-nav">
-                        <li><a href="index.html">Home </a></li>
-                        <li><a href="about.html">About Us </a></li>
-                        <li><a href="services.html">Services </a></li>
-                        <li><a href="events.html">Events </a></li>
-                        <li><a href="contact.html">Contact Us </a></li>
-                        <li><a href="signup.html">Register </a></li>
-                        <li><a href="login.html">Login </a></li>
-                    </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                         <li><a href="index.html">Home </a></li>
-                        <li><a href="about.html">About Us </a></li>
-                        <li><a href="services.html">Services </a></li>
-                        <li><a href="events.html">Events </a></li>
-                        <li><a href="contact.html">Contact Us </a></li>
-                        <li><a href="signup.html">Register </a></li>
-                        <li><a href="login.html">Login </a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a>
-                </div>
-            </nav>
-
             <!-- breadcrumb -->
             <nav>
-                <div class="nav-wrapper green black-text">
+                <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
                         <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
@@ -67,73 +10,84 @@
                   </div>
                 </div>
             </nav>
-
-            <!-- Content Area -->
-            <div class="interior-wrap">
-                <div class="interior-container">
-                    <div class="container">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <b>Aenean commodo ligula eget</b> dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
-                        <p>Nulla <a href="">consequat massa quis enim</a>. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-
-                        <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</p>
-
-                        <p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. <a href="#">Nam quam nunc</a>, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>
-
-                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
-
-                        <p>Sed consequat, leo eget <b>bibendum sodales</b>, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.</p>
-
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.</p>
-
-                        <p>Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. </p>
-                    </div>
-                </div>
+            
+            
+            <!--- map-->
+            
+            <div id="map" class="">
+                    <img src="assets/images/map.jpg" style="width:100%;">
             </div>
 
-            <footer class="page-footer">
-                <div class="container">
-                  <div class="row">
-                    <div class="col l12 s12">
-
-                        <ul class="social center">
-                            <li><a href="#!"><img src="assets/images/facebook.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/twitter.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/google-plus.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/youtube.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/trivago.png" alt=""></a></li>
-
-                        </ul>
-                      <div class="center">
-                          <img src="assets/images/footer-bg.png" class="responsive-img" alt="">
-                      </div>
-
-
+            <!-- Content Area -->
+<div class="interior-wrap contact-wrap">
+<div class="interior-container">
+<div class="container">
+<div class="row contact c-info green darken-1">
+        <div class="col s12 m8 e-height">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Send us a message
+                    </span>
+                <div class="">
+                <div class="rte">
+                </div>
+                    <form method="post" action="/contact#contact_form" id="contact_form" class="contact-form" accept-charset="UTF-8"><input value="contact" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
+                    <div class="input-field">
+                    <label for="ContactFormName" class="">Name</label>
+                    <input name="contact[name]" id="ContactFormName" value="" type="text">
                     </div>
-                  </div>
+                    <div class="input-field">
+                    <label for="ContactFormEmail" class="">Email</label>
+                    <input name="contact[email]" id="ContactFormEmail" value="" spellcheck="false" autocomplete="off" autocapitalize="off" type="email">
+                    </div>
+                    
+                    <div class="input-field">
+                    <label for="ContactFormPhone">Phone Number</label>
+                    <input name="contact[phone]" id="ContactFormPhone" value="" pattern="[0-9\-]*" type="tel">
+                    </div>
+                    
+                    <div class="input-field">
+                    <label for="ContactFormMessage">Message</label>
+                    <textarea class="materialize-textarea" rows="10" name="contact[body]" id="ContactFormMessage"></textarea>
+                    </div>
+                    <input class="btn" value="Send" type="submit">
+                    </form>
+                <br>
                 </div>
-                <div class="footer-copyright">
-                  <div class="container center">
-                  &copy; 2017 Company Name. All rights Reserved. | <a class="brown-text text-lighten-3" href="#">Terms of Use</a> | <a class="brown-text text-lighten-3" href="#">Privacy Policy</a>
-                  </div>
                 </div>
-            </footer>
+            </div>
+        </div>
+        <div class="col s12 m4 e-height">
+            <div class="card green darken-1">
+                <div class="card-content white-text">
+                <span class="card-title">Contact Information
+                    </span><br>
+                
+               
+                
+             <div class="address-group">  
+             <div class="home-icon"><i class="material-icons dp48">home</i></div>
+             <div class="address">  DieSachbearbeiter<br>
+                Choriner Straße 49<br>
+                10435 Berlin</p><br></div>
+             </div>
+                
+                <p><i class="material-icons dp48 phone">local_phone</i>Phone: 900000000</p> <br>
+               <p> <i class="material-icons dp48 mail">mail</i>E-Mail: moinsen@blindtextgenerator.com</p>
+                <br></div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+</div>
 
-    
-
-            <!-- Footer Scripts -->
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script>
-                if (!window.jQuery) { 
-                    document.write('<script src="assets/js/lib/3.2.1/jquery-3.2.1.min.js"><\/script>'); 
-                }
-            </script>
+<div class="row">
 
 
-            <script src="assets/js/jquery.matchHeight.js"></script>
-            <script src="assets/js/materialize.min.js"></script>
-            <script src="assets/js/slick.min.js"></script>
-            <script src="assets/js/init.js"></script>
-        </body>
+</div>
+</div>
+</div>
+</div>
 
-    </html>

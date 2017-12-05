@@ -12,19 +12,16 @@
         <!-- Remove Tap Highlight on Windows Phone IE -->
         <meta name="msapplication-tap-highlight" content="no"/>
         <!-- CSS-->
-
-
-        <!--  -->
-
-        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- <link href="assets/css/ghpages-materialize.css" rel="stylesheet" /> -->
+        <!--  -->     
     </head>
-
         <body>
-            
             <nav class="white home-nav" role="navigation">
                 <div class="nav-wrapper container">
                     <!-- Dropdown Structure -->
                     <ul id="dropdown1" class="dropdown-content">
+                      <li><a href="<?=base_url();?>home/services">Services</a></li>
                       <li><a href="#!">Properties</a></li>
                       <li class="divider"></li>
                       <li><a href="#!">Finance &amp; Loans</a></li>
@@ -36,33 +33,25 @@
                       <li><a href="#!">Forum</a></li>
                       <li class="divider"></li>
                       <li><a href="#!">Resources</a></li>
- 
- 
-
-
-
-
                     </ul>
                     <a id="logo-container" href="index.html" class="brand-logo">Logo</a>
                     <ul class="right hide-on-med-and-down desk-nav">
-                        <li><a href="<?php echo base_url();?>">Home </a></li>
-                        <li><a href="about.html">About Us </a></li>
-                        <li><a class="dropdown-button" href="services.html" data-activates="dropdown1">Services <!-- <i class="material-icons right">arrow_drop_down</i> --></a></li>
-                        <!-- <li><a class="dropdown-button" href="services.html" data-activates="dropdown1">Services<i class="material-icons right">arrow_drop_down</i></a></li> -->
-                        <li><a href="events.html">Events </a></li>
-                        <li><a href="contact.html">Contact Us </a></li>
-                        <li><a href="signup.html">Register </a></li>
-                        <li><a href="<?=site_url('home/login');?>">Login </a></li>
+                        <li><a href="<?=base_url();?>">Home </a></li>
+                        <li><a href="<?=base_url();?>home/about">About Us </a></li>
+                        <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown1">Services <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a href="<?=base_url();?>home/events">Events </a></li>
+                        <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
+                        <li><a href="<?=base_url();?>home/register">Register </a></li>
+                        <li><a href="<?=base_url();?>home/login">Login </a></li>
                     </ul>
-
                     <ul id="nav-mobile" class="side-nav">
-                         <li><a href="index.html">Home </a></li>
-                        <li><a href="about.html">About Us </a></li>
-                        <li><a href="services.html">Services </a></li>
-                        <li><a href="events.html">Events </a></li>
-                        <li><a href="contact.html">Contact Us </a></li>
-                        <li><a href="signup.html">Register </a></li>
-                        <li><a href="login.html">Login </a></li>
+                         <li><a href="<?=base_url();?>">Home </a></li>
+                        <li><a href="<?=base_url();?>home/about">About Us </a></li>
+                        <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown2">Services <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a href="<?=base_url();?>home/events">Events </a></li>
+                        <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
+                        <li><a href="<?=base_url();?>home/register">Register </a></li>
+                        <li><a href="<?=base_url();?>home/login">Login </a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse">
                         <i class="material-icons">menu</i>

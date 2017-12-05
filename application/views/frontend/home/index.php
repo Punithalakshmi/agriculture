@@ -1,6 +1,5 @@
 
 
-
             <div id="index-banner" class="parallax-container">
                 <div class="section no-pad-bot">
                     <h1 class="header center">Explore The Worldwide Farmers</h1>
@@ -261,4 +260,37 @@
                 </div>
             </div>
 
-           
+           <div class="top-footer">
+                <div class="row">
+                  <div class="col m6 s12 whats-new-wrap feed-e-height">
+                      <h3 class="custom-title no-decoration whats-new-icon">What’s <span>New</span></h3>
+                      <ul>
+                          <li>
+                            <a href="#">How Long Do You Stay with a Struggling Employer?</a>
+                            <p>Tuesday, February 28, 2017 </p>
+                          </li>
+                           <li>
+                            <a href="#">VIDEO: Acing Today's Interview</a>
+                            <p>Tuesday, October 25, 2016 </p>
+                          </li>
+                           <li>
+                            <a href="#">Questions to Avoid Asking in an Interview</a>
+                            <p>Tuesday, October 25, 2016 </p>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="col m6 s12 events-wrap feed-e-height">
+                      <h3 class="custom-title no-decoration events-icon"><span>Events</span></h3>
+                     <ul>
+                          <li>
+                            <a href="#">2018 Ag & Food HR Roundtable</a>
+                            <p>August 07, 2018 - August 09, 2018</p>
+                          </li>
+                           <li>
+                            <a href="#">Building a Workplace for the Future - Generation Z</a>
+                            <p>December 08, 2017  </p>
+                          </li>        
+                      </ul>
+                  </div>  
+                </div>
+            </div>

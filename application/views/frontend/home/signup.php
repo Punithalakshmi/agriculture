@@ -1,63 +1,7 @@
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Aggricultural</title>
-        <!-- Favicons-->
-        <!-- <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32"> -->
-        <!--  Android 5 Chrome Color-->
-        <meta name="theme-color" content="#25a642">
-        <!-- Remove Tap Highlight on Windows Phone IE -->
-        <meta name="msapplication-tap-highlight" content="no"/>
-        <!-- CSS-->
-        <link href="assets/css/materialize.css" rel="stylesheet" media="screen,projection"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- <link href="assets/css/ghpages-materialize.css" rel="stylesheet" /> -->
-        <link href="assets/css/_theme.css" rel="stylesheet" media="screen,projection"/>
-
-        <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-
-        <!--  -->
-
-    </head>
-
-        <body>
-            
-            <nav class="white" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="#" class="brand-logo center">Logo</a>
-                    <!-- <ul class="right hide-on-med-and-down">
-                        <li><a href="#">Home </a></li>
-                        <li><a href="#">About Us </a></li>
-                        <li><a href="#">Services </a></li>
-                        <li><a href="#">Events </a></li>
-                        <li><a href="#">Contact Us </a></li>
-                        <li><a href="#">Register </a></li>
-                        <li><a href="#">Login </a></li>
-                    </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="#">Home </a></li>
-                        <li><a href="#">About Us </a></li>
-                        <li><a href="#">Services </a></li>
-                        <li><a href="#">Events </a></li>
-                        <li><a href="#">Contact Us </a></li>
-                        <li><a href="#">Register </a></li>
-                        <li><a href="#">Login </a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a> -->
-                </div>
-            </nav>
-
             <!-- breadcrumb -->
             <nav>
-                <div class="nav-wrapper green black-text">
+                <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
                         <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
@@ -66,22 +10,16 @@
                   </div>
                 </div>
             </nav>
-
             <!-- Content Area -->
             <div class="interior-wrap">
                 <div class="interior-container">
-                    <div class="container">
-                        
+                    <div class="container">    
                       <div class="row">
                           <div class="col s12 m6 offset-m3">
                             <div class="card login-wrapper hoverable">
                               <div class="card-content">
-
                                 <form method="post" action="/account" id="create_customer" accept-charset="UTF-8"><input type="hidden" value="create_customer" name="form_type" /><input type="hidden" name="utf8" value="✓" />
                                   <h4 class="center">Create Account</h4>
-
-                                  
-
                                   <div class="input-field">
                                     <label for="FirstName"> First Name </label>
                                     <input type="text" name="customer[first_name]" id="FirstName" autofocus >
@@ -101,65 +39,14 @@
                                     <label for="CreatePassword"> Password </label>
                                     <input type="password" name="customer[password]" id="CreatePassword" class="">
                                   </div>
-
                                   <p>
                                     <input type="submit" value="Create" class="btn-large z-depth-0">
                                   </p>
                                 </form>
-
                               </div>
                             </div>
                           </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <div class="container">
-                  <div class="row">
-                    <div class="col l12 s12">
-
-                        <ul class="social center">
-                            <li><a href="#!"><img src="assets/images/facebook.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/twitter.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/google-plus.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/youtube.png" alt=""></a></li>
-                            <li><a href="#!"><img src="assets/images/trivago.png" alt=""></a></li>
-
-                        </ul>
-                      <div class="center">
-                          <img src="assets/images/footer-bg.png" class="responsive-img" alt="">
-                      </div>
-
-
-                    </div>
-                  </div>
-                </div>
-                <div class="footer-copyright">
-                  <div class="container center">
-                  &copy; 2017 Company Name. All rights Reserved. | <a class="brown-text text-lighten-3" href="#">Terms of Use</a> | <a class="brown-text text-lighten-3" href="#">Privacy Policy</a>
-                  </div>
-                </div>
-            </footer>
-
-    
-
-            <!-- Footer Scripts -->
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script>
-                if (!window.jQuery) { 
-                    document.write('<script src="assets/js/lib/3.2.1/jquery-3.2.1.min.js"><\/script>'); 
-                }
-            </script>
-
-
-            <script src="assets/js/jquery.matchHeight.js"></script>
-            <script src="assets/js/materialize.min.js"></script>
-            <script src="assets/js/slick.min.js"></script>
-            <script src="assets/js/init.js"></script>
-            <script> window.theme = { }; </script>
-        </body>
-
-    </html>
