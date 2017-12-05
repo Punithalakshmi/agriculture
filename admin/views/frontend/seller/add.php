@@ -36,7 +36,7 @@
   <li><a data-toggle="tab" id="tab3" href="#photos" onclick="tab_view('photos','seller/add_photos','')">photos</a></li>
 </ul>
   </ul>
-  <input type="" name="seller_id" value="<?=$editdata['id'];?>">
+  <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
  
   <div class="tab-content">
     <div id="contact" class="tab-pane fade in active">
