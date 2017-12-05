@@ -12,9 +12,16 @@ class  Services_product_model extends App_model
   
   function listing()
   {  
-    
+    $admin_data = get_user_type();
+    //print_r($admin_data["id"]); exit;
     $this->_fields = "*";
     $this->db->group_by('id');
+    
+    if($admin_data["role"]==2)
+    {
+      $this->db->where('seller_id',$admin_data["id"]);
+      $this->db->group_by('id');
+    }
 
     foreach ($this->criteria as $key => $value)
     {
