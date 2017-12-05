@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
-//tab_view("contact","seller/add");
+ //  //tab_view("contact","seller/add",'');
+ // $("#formtabs li").not(":first").click(function() {
+      
+ //   $('.nav-tabs li ').removeClass('active');
+ //   $('.nav-tabs li').eq(1).addClass('active'); 
+ //  });
+
 
 $('#country_id').change(function() {
 
@@ -40,10 +46,9 @@ $('#country_id').change(function() {
 
 $(function()
 {
-    $("[data-fancybox]").fancybox({
-     // Options will go here
-  });
-    
+
+  
+   
     $(".mt-repeater-add2").click(function()
     {
         if($(".mt-repeater-cust-item").length >= 1)
@@ -54,14 +59,14 @@ $(function()
 
     });
 
-});	
+}); 
 
 //to delete selected record from list.
 function delete_record(del_url,elm){
 
-	$("#div_service_message").remove();
+  $("#div_service_message").remove();
     
-    	retVal = confirm("Are you sure to remove?");
+      retVal = confirm("Are you sure to remove?");
 
         if( retVal == true ){
    
@@ -96,14 +101,14 @@ function refresh_grid(data_tbl){
 
 function service_message(err_type,message,div_id){
     
-    div_id = (div_id)?div_id:false; 	
+    div_id = (div_id)?div_id:false;   
 
     $("#div_service_message").remove();
     
     var str  ='<div id="div_service_message" class="Metronic-alerts alert alert-'+err_type+' fade in">';
         str +='<button class="close" aria-hidden="true" data-dismiss="alert" type="button"><i class="fa-lg fa fa-warning"></i></button>';
-	    str   +='<strong>'+capitaliseFirstLetter(err_type)+':&nbsp;</strong>';
-	    str   += message;
+      str   +='<strong>'+capitaliseFirstLetter(err_type)+':&nbsp;</strong>';
+      str   += message;
         str +='</div>';
         
     if(div_id){
@@ -156,6 +161,7 @@ function change_status(id='',type='')
 function tab_view(id,url,formid='')
 {
 
+   var sell_id = ($("input[name='seller_id']").val())?$("input[name='seller_id']").val():0;
    var form_data = $("#"+formid).serializeArray();
    
    var formData = new FormData();
@@ -164,39 +170,56 @@ function tab_view(id,url,formid='')
 
      formData.append(element.name, element.value);
     });
-   formData.append('seller_id', $("input[name='seller_id']").val());   
+   formData.append('seller_id', sell_id);   
     $.ajax({
         type:"POST",
-        url:base_url+url,
+        url:base_url+url+'/'+sell_id,
         processData: false,
         data:formData,
         contentType: false,
         dataType:'json',
         success:function(data)
-        {
+        {          
+          $("input[name='seller_id']").val(data.edit_id);
+          
+          $selid = $("input[name='seller_id']").val();
 
-          $("#"+id).trigger('click');
-          $("#"+id).html(data.output);
-          if(id=='contact')
-           $("input[name='seller_id']").val(data.edit_id);
-         if(id=='service')
+          if(data.edit_id != 0 || id=='contact'){
+            $("#"+id).html(data.output);
+          }
+          else
+           alerttab(id);
 
-            $("input[name='seller_id']").val(data.edit_id);
-          if(id=='photos')
-             $("input[name='seller_id']").val(data.edit_id);
-          //$("form#photoForm #photo_seller_id").val(data.edit_id);
-          if(data.status=="success")
+          if(data.msg)
+            alert(data.msg);
 
-            service_message(data.status,data.msg);
+          if(data.status=="add")
+            window.location.href = base_url+'seller/add/'+data.edit_id;
+          
+            //service_message(data.status,data.msg);
         }
     });
+  
 }
+
+function alerttab(id)
+{
+  if($("input[name='seller_id']").val() == 0 && (id=="service" || id=="photos"))
+  {
+    alert("Please Enter Contact Form");
+    $("ul.sellertabs li a#tab1").trigger('click');
+    return false;
+  }
+ 
+   
+} 
 
 function dropzone()
 {
-  $("#photoForm").dropzone({
 
-    
+  
+  $("#photoForm").dropzone({
+   
     maxFiles: 5,
     addRemoveLinks:true,
     acceptedFiles: ".png, .jpg",//is this correct? I got an error if im using this
@@ -204,22 +227,32 @@ function dropzone()
     dictDefaultMessage:"Drag or Drop Image here<br>(Or)<br>Browse File (Click)",  
 
     url:base_url+'seller/add_photos',
-
     
-
     
     sending: function(file, xhr, formData) {
        formData.append("seller_id", $('input[name="seller_id"]').val());
      },    
     success: function (response) {
-      alert("success");
+
+      window.location.href = base_url+'seller/index';
     },    
+
   addRemoveLinks: true,
   removedfile: function(file) {
             var _ref;  // Remove file on clicking the 'Remove file' button
     return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;  
           }   
+
   });
+  if($("input[name='seller_id']").val()=='' )
+  {
+
+    alert("Please Enter Contact Form");
+    $("ul.sellertabs li a#tab1").trigger('click');
+    return false;
+  }
+
+
 }
 
 function deleteimage(image_id){
@@ -242,9 +275,4 @@ function deleteimage(image_id){
             });
       }
 }
-
-
-
-
-
 
