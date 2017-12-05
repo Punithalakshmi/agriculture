@@ -1,3 +1,4 @@
+
  <form id="formContact" role="form" method="post">
      <div class="col-lg-12">
      <div class="col-lg-6">
@@ -21,15 +22,7 @@
 
         <div class="form-group">
       <div class="col-lg-7">
-      <label class="control-label">Confirm Password<span class="required">*</span></label>
-          <?php echo form_password(['name'=>'confirm_password', 'id'=>'confirm_password','placeholder' =>'Confirm Password','tabindex'=>'5', 'class'=>'form-control', 'maxlength'=>'232']); ?>
-        <?php echo form_error('confirm_password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
-        </div>
-        </div>
-
-        <div class="form-group">
-      <div class="col-lg-7">
-      <label class="control-label">Address 2<span class="required">*</span></label>
+      <label class="control-label">Address 2</label>
             <?php echo form_input(['name' => 'address2', 'id' => 'address2', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '7', 'placeholder' =>'Address 2' ,'value' => set_value('address2',$editdata['address2'])]); ?> <?php echo form_error('address2', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
         </div>
         </div>
@@ -85,7 +78,7 @@
   <div class="col-lg-7">
               <label class="control-label">Password<span class="required">*</span></label>
               
-             <?php echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '4', 'placeholder' =>'Password' ,'value' => set_value('password',$editdata['password'])]); ?> <?php echo form_error('password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+             <?php echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '4', 'placeholder' =>'Password' ,'value' => set_value('password')]); ?> <?php echo form_error('password', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
           </div>
           </div>
           <div class="form-group">
@@ -121,10 +114,11 @@
      <div class="clearfix"></div>
        <div class="col-md-offset-3 col-md-9">
                       <button type="button" onclick="tab_view('contact','seller/add','formContact')" class="btn green" name="seller_data">Submit</button>
+                      <?php $admin_data=get_user_type();if($admin_data["role"]==1){ ?>
                       <a href="<?=site_url('seller');?>" class="btn default">Cancel</a>
+                      <?php }?>
                     </div>
      </div>
 
      </form>
 
-    

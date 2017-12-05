@@ -102,7 +102,7 @@ $config['business_index'] = array(
 	"fields"	=> array(   
 						'customer_name'=>array('name'=>'Customer Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
-						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'created_date'=>array('name'=>'Created Date', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'status'=>array('name'=>'Status', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
@@ -118,7 +118,7 @@ $config['plans_index'] = array(
 	"fields"	=> array(   
 						'name'=>array('name'=>' Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'amount'=>array('name'=>'Amount', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1)
+						'created_date'=>array('name'=>'Created data', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1)
 						,),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
@@ -134,7 +134,7 @@ $config['events_index'] = array(
 	"fields"	=> array(   
 						'title'=>array('name'=>'Title Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'location'=>array('name'=>'Location', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'created_date'=>array('name'=>'Created Date', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
 						,),
 	"default_order"	=> "id",
@@ -150,7 +150,7 @@ $config['category_index'] = array(
 	"per_page"	=>	"20",
 	"fields"	=> array(   
 						'name'=>array('name'=>'Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'description'=>array('name'=>'Description', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
+						'created_date'=>array('name'=>'Created Date', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
 						),
 	"default_order"	=> "id",
@@ -166,7 +166,7 @@ $config['services_product_index'] = array(
 	"per_page"	=>	"20",
 	"fields"	=> array(   
 						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
-						'description'=>array('name'=>'Description', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'created_on'=>array('name'=>'Created Date', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
 						),
 	"default_order"	=> "id",

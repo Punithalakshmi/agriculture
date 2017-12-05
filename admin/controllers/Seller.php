@@ -46,7 +46,7 @@ class Seller extends Admin_Controller
     $this->layout->view('frontend/seller/index');
   }
   
-  public function add($edit_id = '')
+  public function add($edit_id = 0)
   {
    $admin_data = get_user_type();
     $this->layout->add_javascripts(array('dropzone'));
@@ -54,42 +54,41 @@ class Seller extends Admin_Controller
     $this->layout->add_stylesheets(array('dropzone'));
     $this->layout->add_stylesheets(array('jquery.fancybox.min'));
     
+    $msg ="";
     //print_r($this->input->post());exit;
      try
         {
-
-           
-          
-          if($admin_data["role"]==1)
+        
+          /* if($admin_data["role"]==1)
           {
             if($this->input->post('edit_id'))
              $editid = $this->input->post('edit_id'); 
           }
           elseif($admin_data["role"]==2)
           {
-            $edit_id = $admin_data["id"];
-          }
-           
+             $edit_id = $admin_data["id"];
+          } */
+
           $seller_id = $this->input->post('seller_id');
            
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
-          $this->form_validation->set_rules('password','Password','trim|required');
+          
+          //$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[seller.email]');
 
-          if(empty($id)){
-
-          $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[seller.email]');
-
-           }
-          //$this->form_validation->set_rules('country_id','Country','trim|required');
-          //$this->form_validation->set_rules('state_id','State','trim|required');
-          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|max_length[232]|matches[password]', ['matches'=>'Password does not match']);
+         $this->form_validation->set_rules('email','Email','trim|required|valid_email|callback_check_email['.$edit_id.']');
+          
           $this->form_validation->set_rules('address','Address','trim|required');
-          //$this->form_validation->set_rules('email','Email','trim|required');
+          
           $this->form_validation->set_rules('city','City','trim|required');
           $this->form_validation->set_rules('status','Status','trim|required');
           $this->form_validation->set_rules('zip', 'Zib','trim|max_length[8]|integer', ['integer'=>'Invalid ZIP']);
-          $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');           
+          $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');   
+
+          if(!$edit_id){
+              $this->form_validation->set_rules('password','Password','trim|required');  
+            }
+
           $this->form_validation->set_error_delimiters('', '');
 
           if(count($_POST) > 1 && $this->form_validation->run()){
@@ -97,7 +96,7 @@ class Seller extends Admin_Controller
               $ins_data = array();
               $ins_data['first_name']              = $this->input->post('first_name');
               $ins_data['last_name']                = $this->input->post('last_name');
-              $ins_data['password']           = $this->input->post('password'); 
+              $ins_data['password']           = md5($this->input->post('password')); 
               $ins_data['address']           = $this->input->post('address');  
               $ins_data['email']        = $this->input->post('email');
               $ins_data['address2']               = $this->input->post('address2');
@@ -109,19 +108,12 @@ class Seller extends Admin_Controller
               $ins_data['status']      = $this->input->post('status');
             
               if($edit_id){
-                
+               
                 $ins_data['modified_on'] = date('Y-m-d H:i:s');
-                $msg                      = 'Seller updated successfully';
+                $msg                      = 'Record updated successfully';
                 $this->seller_model->update(array("id" => $edit_id),$ins_data);
-                
-              }
-
-              if($seller_id){
-
-                $ins_data['modified_on'] = date('Y-m-d H:i:s');
-                $msg                      = 'Seller updated successfully';
-                $this->seller_model->update(array("id" => $seller_id),$ins_data);
-              }
+                $status  = 'edit';
+              }             
               else
               {    
 
@@ -129,12 +121,10 @@ class Seller extends Admin_Controller
                 $new_id                   = $this->seller_model->insert($ins_data); 
                 $msg                      = 'Seller added successfully';
                 $edit_id                  =  $new_id;
-              
+                $status  = 'add';
               }
                      
-
-              $this->session->set_flashdata('success_msg',$msg,TRUE);
-              $status  = 'success';
+             
           }  
           else
           {
@@ -166,6 +156,7 @@ class Seller extends Admin_Controller
        if($edit_id){
 
           $edit_data = $this->seller_model->get_where(array("id" => $edit_id))->row_array();
+          
 
         } 
         
@@ -204,7 +195,7 @@ class Seller extends Admin_Controller
 
         if($this->input->is_ajax_request()){
           $output  = $this->load->view('frontend/seller/contact',$this->data,true);
-          return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
+          return $this->_ajax_output(array('status' => $status,'msg'=>$msg, 'output' => $output, 'edit_id' => $edit_id), TRUE);
         } 
         else
         { 
@@ -341,7 +332,7 @@ class Seller extends Admin_Controller
               if($edit_id){
                 
                $this->photos_model->insert($ins_data); 
-               redirect("seller");
+               redirect("seller/add");
 
               }
               else
@@ -349,7 +340,7 @@ class Seller extends Admin_Controller
                 $new_id                   = $this->photos_model->insert($ins_data);         
                 $msg                      = 'Photos added successfully';
                 //$edit_id                  =  $new_id;
-                redirect("seller");
+                redirect("seller/add");
                 
               }
               $this->session->set_flashdata('success_msg',$msg,TRUE);
@@ -379,6 +370,24 @@ class Seller extends Admin_Controller
         } 
 
   }
+
+   function check_email($mail,$id)
+    {
+        $where = array();
+
+        if($id)
+            $where['id !='] = $id;
+
+        $where['email'] = $mail;
+
+        $result = $this->seller_model->get_where( $where)->num_rows();
+
+        if ($result) {
+            $this->form_validation->set_message('check_email', 'Given email already exists!');
+            return FALSE;
+        }
+        return TRUE;
+    }
 
   function delete($del_id)
     {

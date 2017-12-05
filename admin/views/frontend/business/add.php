@@ -71,16 +71,7 @@
                           </div>
                         </div>       
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
-                            <div class="col-md-9">
-                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
-                              <?php echo form_error('description'); ?>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="row">  
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>
@@ -92,6 +83,18 @@
                           </div>
                         </div>                                 
                       </div>
+                       <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
+                            <label class="control-label col-md-3">Description<span class="required">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="jqte-test form-control" name="description" id="description"><?php echo set_value('description',$editdata['description']);?></textarea>
+                              <?php echo form_error('description'); ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
                       <!--row-->                                            
                     </div>
                     <div class="form-actions">

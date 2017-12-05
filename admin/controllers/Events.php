@@ -44,6 +44,7 @@ class Events extends Admin_controller
     {	
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));  
+        $this->layout->add_javascripts(array('function')); 
         
         if(isset($_FILES["event_image"]["name"])&& $_FILES["event_image"]["size"]>0)
         {

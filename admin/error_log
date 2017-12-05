@@ -4,3 +4,4 @@
 [25-Oct-2017 04:50:16 America/Denver] PHP Fatal error:  Call to undefined function send_mail() in /home/izaapinn/public_html/construction/admin/controllers/Project.php on line 312
 [25-Oct-2017 04:53:10 America/Denver] PHP Fatal error:  Using $this when not in object context in /home/izaapinn/public_html/construction/core/helpers/common_helper.php on line 481
 [25-Oct-2017 04:53:50 America/Denver] PHP Fatal error:  Call to a member function library() on null in /home/izaapinn/public_html/construction/core/helpers/common_helper.php on line 481
+[02-Dec-2017 04:23:03 America/Denver] PHP Fatal error:  Call to undefined function get_user_type() in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 35

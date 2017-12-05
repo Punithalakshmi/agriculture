@@ -1,19 +1,9 @@
- <style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
-th {
-    text-align: left;
-}
-</style>
-
+ 
+  
    <form action="/" enctype="multipart/form-data" class="dropzone" id="photoForm">
      
    </form>
+  
    <br /><br />
    
    <br /><br />
@@ -30,7 +20,7 @@ th {
     ?>
        <div class="imagelocation<?php echo $data->id ?> seller-img">
         
-        <a href="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" data-fancybox data-caption=""><img src="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a>
+        <a href="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" data-fancybox="images"><img src="<?php echo base_url(); ?>uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a>
         <span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
       </div>
       <?php } endif; ?>

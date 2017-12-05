@@ -30,7 +30,7 @@
                           <div class="form-group <?php echo (form_error('title'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Title Name<span class="required">*</span>  </label>
                               <div class="col-md-9">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="title" value="<?php echo set_value('title',$editdata['title']);?>">
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php echo set_value('title',$editdata['title']);?>">
                                 <?php echo form_error("title"); ?>
                               </div>
                           </div>
@@ -39,7 +39,7 @@
                           <div class="form-group <?php echo (form_error('location'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Event Location<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <input type="text" class="form-control" name="location" id="location" placeholder="event loocation" value="<?php echo set_value('location',$editdata['location']);?>">
+                                <input type="text" class="form-control" name="location" id="location" placeholder="Event location" value="<?php echo set_value('location',$editdata['location']);?>">
                                 <?php echo form_error("location"); ?>
                               </div>
                           </div>

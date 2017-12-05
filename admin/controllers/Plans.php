@@ -40,7 +40,8 @@ class Plans extends Admin_Controller
   public function add($edit_id = '')
   {
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
-        $this->layout->add_javascripts(array('tinymce'));     
+        $this->layout->add_javascripts(array('tinymce'));
+           
 
          try
         {
@@ -49,7 +50,7 @@ class Plans extends Admin_Controller
              $edit_id = $this->input->post('edit_id');
             
            $this->form_validation->set_rules('name','Name','trim|required');
-           $this->form_validation->set_rules('amount','Amount','trim|required|numeric|min_length[10]');
+           $this->form_validation->set_rules('amount','Amount','trim|required|numeric');
            $this->form_validation->set_rules('description','Description','trim|required|min_length[15]');
            
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
