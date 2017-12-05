@@ -9,11 +9,11 @@ $config['layout']['default']['template'] = 'layouts/frontend';
 $config['layout']['default']['title']    = 'Customer Support Services';
 $config['layout']['default']['js_dir']    = "assets/js/frontend";
 $config['layout']['default']['css_dir']   = "assets/css/frontend";
-$config['layout']['default']['img_dir']   = "assets/img";
+$config['layout']['default']['img_dir']   = "assets/images";
 
-$config['layout']['default']['javascripts'] = array('jquery.min', 'bootstrap.min','chosen.jquery','common','jquery.matchHeight','materialize.min','init');
+$config['layout']['default']['javascripts'] = array('jquery.matchHeight','materialize.min','slick.min','init');
  
-$config['layout']['default']['stylesheets'] = array('bootstrap.min', 'style','bootstrap-chosen','materialize','_theme');
+$config['layout']['default']['stylesheets'] = array('materialize','slick','slick-theme','_theme');
 
 $config['layout']['default']['description'] = '';
 $config['layout']['default']['keywords']    = '';
