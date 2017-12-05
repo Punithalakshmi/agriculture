@@ -1,5 +1,4 @@
 
-
             <!-- breadcrumb -->
             <nav>
                 <div class="nav-wrapper green">
@@ -56,215 +55,30 @@
                         </div>
                         <div class="row farmers-list">                       
                             <!-- Single loop -->
+                            <?php  foreach($editdata as $services):?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
+                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
                                   </div>
                                   <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
+                                    <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>
 
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
+                                    <p> <small>by Ashiana Housing</small> <br /><?=$services["address"];?></p>
                                   </div>
 
                                   <div class="card-action right-align">
-                                    <a href="#">More Details </a>
+                                    <a href="<?=base_url()?>home/details/<?=$services["id"]?>">More Details </a>
                                   </div>
 
                                   <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    <span class="card-title grey-text text-darken-4"><?=$services["title"]?><i class="material-icons right">close</i></span>
+                                    <p><?=$services["description"];?></p>
                                   </div>
                                 </div>
                               </div>
-                              
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                   <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!-- Single loop -->
-                              <div class="col l4 m6 s12">
-                                <div class="card sticky-action hoverable" style="overflow: visible;">
-                                  <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/img-1.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                 <span class="card-title activator grey-text text-darken-4">Lorem Ipsum is simply dummy text of</span>
-
-                                    <p> <small>by Ashiana Housing</small> <br />Sector 39, Near Phara Village, State Florida </p>
-                                  </div>
-
-                                  <div class="card-action right-align">
-                                    <a href="#">More Details </a>
-                                  </div>
-
-                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                                    <span class="card-title grey-text text-darken-4">Lorem ipsum dolor sit amet, consec<i class="material-icons right">close</i></span>
-                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                  </div>
-                                </div>
-                              </div>
+                            <?php endforeach;?>
                         </div>
-
-
-
                         <!-- pagination -->
                         <div class="row center">
                           <ul class="pagination">

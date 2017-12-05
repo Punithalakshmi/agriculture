@@ -3,25 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once(COREPATH."controllers/Admin_controller.php");
 
+
 class Home extends Admin_Controller {
+
+	function __construct()
+	{
+		 parent::__construct();
+   		$this->load->model('services_product_model');
+	}
 
 	public function index()
 	{
-		//echo base_path();
-		$this->layout->view('frontend/home/index');
+		$this->data["editdata"] =$this->services_product_model->get_services();
+		$this->layout->view('frontend/home/index',$this->data);
 	}
+
+	public function services()
+	{	
+		$this->data["editdata"] =$this->services_product_model->get_services();
+		$this->layout->view('frontend/home/services',$this->data);
+	}
+
 	public function login()
 	{
 		$this->layout->view('frontend/home/login');
 	}
+
 	public function register()
 	{
 		$this->layout->view('frontend/home/signup');
 	}
+
 	public function contact()
 	{
 		$this->layout->view('frontend/home/contact');
 	}
+
 	public function events()
 	{
 		$this->layout->view('frontend/home/events');
@@ -30,17 +47,11 @@ class Home extends Admin_Controller {
 	{
 		$this->layout->view('frontend/home/about');
 	}
-	public function services()
+	public function details()
 	{
-		$this->layout->view('frontend/home/services');
+		
+		$this->layout->view('frontend/home/detail');
 	}
-	/*public function login()
-	{
-		$this->layout->view('frontend/home/login');
-	}
-	public function login()
-	{
-		$this->layout->view('frontend/home/login');
-	}*/
+	
 
 }
