@@ -185,7 +185,15 @@ class Services_product extends Admin_Controller
 
           if($edit_id)
           {
+            if($admin_data["role"]==1)
+            {
              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $edit_id))->row_array();
+
+            }
+            else if($admin_data["role"]==2)
+            {
+              $this->data["editdata"] = $this->services_product_model->get_where(array("id" => $admin_data["id"]))->row_array();
+            } 
 
           }  
           else
