@@ -46,6 +46,25 @@ class State_model extends App_model
         }
         
     }
+    /**
+    * This method handles to retrive all states
+    **/
+    function get_state_all($field='name', $order_by='ASC', $country_id=false){
+        $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->order_by($field, $order_by);
+        if($country_id){
+            $this->db->where('country_id =', $country_id);
+        }
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return['data'] = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
 
 
 

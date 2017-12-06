@@ -26,6 +26,22 @@ class Country_model extends App_model
             return $return;
         }
     }
+    /**
+    * This method handles to retrive all countries
+    **/
+    function get_country_all($field='name', $order_by='ASC'){
+        $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->order_by($field, $order_by);;
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return['data'] = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
 
 }
 ?>
