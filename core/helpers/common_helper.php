@@ -527,13 +527,44 @@ function delete_file($path, $file_name){
     }  
 
 }
+/**
+
+* This method handles to get all country 
+
+**/
+function get_country_all(){
+
+     $CI =& get_instance();
+
+     $CI->load->model('Country_model');
+
+     $data   = $CI->Country_model->get_country_all();
+
+     $countries = ($data) ? $data['data'] : '';
+
+    $country_data[null] = 'Select Country';
+
+    if($countries){
+
+        foreach ($countries as $key => $value) {
+
+            $country_data[$value->id] = $value->name;
+
+        }
+
+    }
+
+    $country_data = $country_data;
+
+    return $country_data;
+
+}
 
 /**
 
 * This method handles to get states based on the country selected
 
 **/
-
 function get_state_by_country($id){
 
                 $CI =& get_instance();
@@ -552,7 +583,6 @@ function get_state_by_country($id){
                         foreach ($states as $key => $value) {
 
                                 $state_data[$value->id] = $value->name;  
-
                         }
 
                 }
@@ -562,12 +592,44 @@ function get_state_by_country($id){
                 return $result;                       
 }
 
-    function get_user_type()
-    {
-        $CI = @ get_instance();
-        $CI->load->model('login_model');
-       $result =  $CI->session->userdata("user_data");
+/**
 
-       return $result;
+* This method handles to get all states as an array for dropdown
+
+**/
+
+function get_state_all($country_id=false){
+
+    $CI =& get_instance();
+
+    $CI->load->model('State_model');
+
+    $data   = $CI->State_model->get_state_all('', '', $country_id);
+
+    $states = ($data) ? $data['data'] : '';
+
+    $state_data[null] = 'Select State';
+
+    if($states){
+
+        foreach ($states as $key => $value) {
+
+            $state_data[$value->id] = $value->name;
+        }
     }
+
+    $state_data = $state_data;
+    
+    return $state_data;
+
+}
+
+function get_user_type()
+{
+    $CI = @ get_instance();
+    $CI->load->model('login_model');
+   $result =  $CI->session->userdata("user_data");
+
+   return $result;
+}
 ?>
