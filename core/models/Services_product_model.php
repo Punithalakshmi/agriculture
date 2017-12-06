@@ -45,14 +45,14 @@ class  Services_product_model extends App_model
     return parent::listing();
   }
    
-   public function get_services()
-   {
-    $this->db->select('*');
-    $this->db->from('services');
-    $result = $this->db->get()->result_array();
-    //echo "<pre>"; print_r($result); exit;
-   return $result;
-   }
+   public function get_services($limit='',$start='')
+  {
+      $this->db->select("*");
+    if($limit!='')
+      $this->db->limit($limit, $start);
+      $this->db->from("services");
+    return $this->db->get()->result_array();
+  }
    public function unique($id='')
    {
     $this->db->select('*');
@@ -62,6 +62,16 @@ class  Services_product_model extends App_model
     //echo "<pre>"; print_r($result); exit;
    return $result;
 
+   }
+
+   public function get_related($id='')
+   {
+      $this->db->select('*');
+    $this->db->from('services');
+    $this->db->where('seller_id',$id);
+    $result = $this->db->get()->row_array();
+    //echo "<pre>"; print_r($result); exit;
+   return $result;
    }
 
 }
