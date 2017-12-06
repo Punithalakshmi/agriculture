@@ -21,7 +21,7 @@
                 <div class="nav-wrapper container">
                     <!-- Dropdown Structure -->
                     <ul id="dropdown1" class="dropdown-content">
-                      <li><a href="<?=base_url();?>home/services">Services</a></li>
+                      <li><a href="<?=base_url();?>services">Services</a></li>
                       <li><a href="#!">Properties</a></li>
                       <li class="divider"></li>
                       <li><a href="#!">Finance &amp; Loans</a></li>
@@ -39,7 +39,7 @@
                         <li><a href="<?=base_url();?>">Home </a></li>
                         <li><a href="<?=base_url();?>home/about">About Us </a></li>
                         <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown1">Services <i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li><a href="<?=base_url();?>home/events">Events </a></li>
+                        <li><a href="<?=base_url();?>events">Events </a></li>
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
                         <li><a href="<?=base_url();?>registration">Register </a></li>
                         <li><a href="<?=base_url();?>login">Login </a></li>
@@ -47,11 +47,11 @@
                     <ul id="nav-mobile" class="side-nav">
                          <li><a href="<?=base_url();?>">Home </a></li>
                         <li><a href="<?=base_url();?>home/about">About Us </a></li>
-                        <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown2">Services <i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li><a href="<?=base_url();?>home/events">Events </a></li>
+                        <li><a class="dropdown-button" href="<?=base_url();?>services" data-activates="dropdown2">Services <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a href="<?=base_url();?>events">Events </a></li>
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
-                        <li><a href="<?=base_url();?>home/register">Register </a></li>
-                        <li><a href="<?=base_url();?>home/login">Login </a></li>
+                        <li><a href="<?=base_url();?>register">Register </a></li>
+                        <li><a href="<?=base_url();?>login">Login </a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse">
                         <i class="material-icons">menu</i>

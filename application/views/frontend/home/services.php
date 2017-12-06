@@ -4,21 +4,20 @@
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#!" class="breadcrumb">Services</a>
+                        <a href="<?=base_url();?>" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url();?>services" class="breadcrumb">Services</a>
                       </div>
                   </div>
                 </div>
             </nav>
-
             <!-- Content Area -->
-            <div class="interior-wrap">
+            <div class="interior-wrap inner-page-search">
                 <div class="interior-container">
 
                   <!-- Product Filter -->
                     <div class="filter-search teal lighten-5 cf">
                         <div class="container">
-                            <form class="col s12">
+                            <form class="col s12 white filter-sec">
                                 <div class="row">
                                     <div class="col m3 s12">
                                         <div class="input-field col s12">
@@ -33,17 +32,34 @@
                                     </div>
                                     
                                     <div class="col m9 s12">
-                                        <label><b>Filter Option</b></label> <br />
-                                        <ul class="tab-filter-search">
-                                            <li><a href="#">Filter one</a></li>
-                                            <li class="active"><a href="#">Filter two</a></li>
-                                            <li><a href="#">Filter three</a></li>
-                                            <li><a href="#">Filter four</a></li>
-                                            <li><a href="#">Filter five</a></li>
-                                        </ul>
+                                        <div class="search-container">
+                        <div class="row center home-search">
+                            <form class="col s12">
+                                <div class="col l6 s12">
+                                  <input onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="Enter Location" placeholder="Enter Location" aria-label="Search through site content" type="search">
+                                </div>
+
+                                <div class="col l6 s12">
+                                  <input onfocus="if(this.value == 'Enter Keyword') { this.value = ''; }" value="Enter Keyword" placeholder="Enter Keyword" type="search">
+                                </div>
+
+                                <!-- <div class=" col l3 s12">
+                                    <input type="submit" class="btn-large waves-effect waves-light lgreen lighten-1" value="Search">
+                                </div> -->
+                            </form>
+                        </div>
+                    <!-- <br><br> -->
+
+                    </div>
+                                        
                                     </div>
 
                                 </div>
+                                <div class="row center">
+                            <!-- <input type="submit" class="btn-large waves-effect waves-light lgreen lighten-1 search-btn" value="Search"> -->
+
+                            <button class="btn-large waves-effect waves-light lgreen lighten-1 search-btn">Search</button>
+                        </div>
                             </form>
                         </div>
                     </div>
@@ -55,7 +71,7 @@
                         </div>
                         <div class="row farmers-list">                       
                             <!-- Single loop -->
-                            <?php  foreach($editdata as $services):?>
+                               <?php  foreach($editdata as $services):?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
@@ -68,7 +84,7 @@
                                   </div>
 
                                   <div class="card-action right-align">
-                                    <a href="<?=base_url()?>home/details/<?=$services["id"]?>">More Details </a>
+                                    <a href="<?=base_url()?>services/details/<?=$services["id"];?>">More Details </a>
                                   </div>
 
                                   <div class="card-reveal" style="display: none; transform: translateY(0px);">
@@ -81,18 +97,12 @@
                         </div>
                         <!-- pagination -->
                         <div class="row center">
-                          <ul class="pagination">
-                            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                            <li class="active green"><a href="#!">1</a></li>
-                            <li class="waves-effect"><a href="#!">2</a></li>
-                            <li class="waves-effect"><a href="#!">3</a></li>
-                            <li class="waves-effect"><a href="#!">4</a></li>
-                            <li class="waves-effect"><a href="#!">5</a></li>
-                            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                         <ul class="pagination">
+                           <li class="waves-effect"><a href="#!"><?=$links;?></a></li>
                           </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-           
+            

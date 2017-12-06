@@ -1,11 +1,10 @@
-            
-            <!-- breadcrumb -->
+<!-- breadcrumb -->
             <nav>
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#!" class="breadcrumb">Services</a>
+                        <a href="<?=base_url();?>" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url();?>services" class="breadcrumb">Services</a>
                         <a href="#!" class="breadcrumb">Page Title</a>
                       </div>
                   </div>
@@ -24,7 +23,7 @@
                 
                     <div class="container">
                         <div class="row center">
-                          <h1 class="page-title">Page <span>Title</span></h1>
+                          <h1 class="page-title"><?=$service_row['title']; ?></span></h1>
                         </div>
 
                         <div class="row card hoverable detail-page">
@@ -32,7 +31,7 @@
 
                                 <div class="card" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$service_row["image_name"]; ?>">
+                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$service_row['image_name']; ?>">
                                   </div>
                                  
                                 </div>
@@ -48,28 +47,28 @@
                                     </div>
                                 </div>
 
-                                <div class="price-description-single green darken-1">
-                                    Sale Price: <b class="price--tag"><?="$".$service_row['price']; ?></b>
+                               <!-- <div class="price-description-single green darken-1">
+                                    Sale Price: <b class="price--tag">$0.00</b>
                                 </div>
                                 <div class="price-description-single green darken-2">
-                                    You Save:  <b class=""><?="$".$service_row['price']; ?></b>
-                                </div>
+                                    You Save:  <b class="">$87,500.00</b>
+                                </div>-->
 
                                 <table class="responsive-table highlight">
                                     <tbody><tr>
-                                        <td>Lorem ipsum </td>
+                                        <td>Address</td>
                                         <td>:</td>
-                                        <td><b>dolor sit amet</b></td>
+                                        <td><b><?=$service_row['address']; ?></b></td>
                                     </tr>
                                     <tr>
-                                        <td>Consectetuer</td>
+                                        <td>Status</td>
                                         <td>:</td>
-                                        <td><b>--</b></td>
+                                        <td><b><?=$service_row['status']; ?></b></td>
                                     </tr>
                                     <tr>
-                                        <td>Adipiscing</td>
+                                        <td>Contact</td>
                                         <td>:</td>
-                                        <td> <b>Dummy Text</b></td>
+                                        <td> <b><?=$service_row['contact_details']; ?></b></td>
                                         
                                     </tr>
                                     <tr>
@@ -88,7 +87,10 @@
                             </table>
                             </div>
 
-                            <div class="col m12">                          
+                            <div class="col m12">
+                            
+                            
+                            
   <div class="row">
     <div class="col s12">
       <ul class="tabs green">
@@ -100,14 +102,39 @@
       </ul>
     </div>
     <div id="test1" class="col s12">
-                                <p><?=$service_row["description"]; ?></p>
-                                <p><?=$service_row["description"]; ?></p>
-                                <p><?=$service_row["description"]; ?></p></div>
-    <!--<div id="test2" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
-                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>
-    <div id="test3" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
-                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>
-    <div id="test4" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
+                                <p><?=$service_row['description']; ?>!</p>
+                                <p<?=$service_row['description'];?></p>
+                                <p><?=$service_row['description'];?></p></div>
+    <!--<div id="test2" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error !</p>
+                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>-->
+    <div id="test3" class="col s12">
+
+<?php  foreach($related_product as $services):?>
+                              <div class="col l4 m6 s12">
+                                <div class="card sticky-action hoverable" style="overflow: visible;">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>
+
+                                    <p> <small>by Ashiana Housing</small> <br /><?=$services["address"];?></p>
+                                  </div>
+
+                                  <div class="card-action right-align">
+                                    <a href="<?=base_url()?>services/details/<?=$services["id"];?>">More Details </a>
+                                  </div>
+
+                                  <div class="card-reveal" style="display: none; transform: translateY(0px);">
+                                    <span class="card-title grey-text text-darken-4"><?=$services["title"]?><i class="material-icons right">close</i></span>
+                                    <p><?=$services["description"];?></p>
+                                  </div>
+                                </div>
+                              </div>
+                            <?php endforeach;?>
+                          
+                      </div>
+    <!--<div id="test4" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
                                 <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>-->
     
   </div>
@@ -118,6 +145,3 @@
 
                 </div>
             </div>
-
-
-            

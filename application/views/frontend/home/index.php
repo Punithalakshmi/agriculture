@@ -59,7 +59,7 @@
                                   </div>
 
                                   <div class="card-action right-align">
-                                    <a href="<?=base_url()?>home/details">More Details </a>
+                                    <a href="<?=base_url()?>services/details/<?=$services['id']?>">More Details </a>
                                   </div>
 
                                   <div class="card-reveal" style="display: none; transform: translateY(0px);">
