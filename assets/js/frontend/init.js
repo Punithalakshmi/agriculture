@@ -14,6 +14,10 @@
     $('select').material_select();
 
     $(".dropdown-button").dropdown();
+	
+	// tab
+	
+	$('ul.tabs').tabs('select_tab', 'tab_id');
 
     // Feed wrap eQual Height
     $('.feed-wrap .feed-e-height').matchHeight();
