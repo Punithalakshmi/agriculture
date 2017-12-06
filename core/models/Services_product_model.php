@@ -20,7 +20,6 @@ class  Services_product_model extends App_model
     if($admin_data["role"]==2)
     {
       $this->db->where('seller_id',$admin_data["id"]);
-      $this->db->group_by('id');
     }
 
     foreach ($this->criteria as $key => $value)
@@ -46,6 +45,24 @@ class  Services_product_model extends App_model
     return parent::listing();
   }
    
+   public function get_services()
+   {
+    $this->db->select('*');
+    $this->db->from('services');
+    $result = $this->db->get()->result_array();
+    //echo "<pre>"; print_r($result); exit;
+   return $result;
+   }
+   public function unique($id='')
+   {
+    $this->db->select('*');
+    $this->db->from('services');
+    $this->db->where('id',$id);
+    $result = $this->db->get()->row_array();
+    //echo "<pre>"; print_r($result); exit;
+   return $result;
+
+   }
 
 }
 ?>
