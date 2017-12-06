@@ -41,8 +41,8 @@
                         <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown1">Services <i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="<?=base_url();?>home/events">Events </a></li>
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
-                        <li><a href="<?=base_url();?>home/register">Register </a></li>
-                        <li><a href="<?=base_url();?>home/login">Login </a></li>
+                        <li><a href="<?=base_url();?>registration">Register </a></li>
+                        <li><a href="<?=base_url();?>login">Login </a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                          <li><a href="<?=base_url();?>">Home </a></li>
