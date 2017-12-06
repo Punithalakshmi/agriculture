@@ -23,6 +23,12 @@ class Home extends Admin_Controller {
 		$this->data["editdata"] =$this->services_product_model->get_services();
 		$this->layout->view('frontend/home/services',$this->data);
 	}
+	
+	public function details($id='')
+	{
+		$this->data["service_row"] = $this->services_product_model->unique($id);
+		$this->layout->view('frontend/home/detail',$this->data);
+	}
 
 	public function login()
 	{
@@ -47,11 +53,7 @@ class Home extends Admin_Controller {
 	{
 		$this->layout->view('frontend/home/about');
 	}
-	public function details()
-	{
-		
-		$this->layout->view('frontend/home/detail');
-	}
+	
 	
 
 }

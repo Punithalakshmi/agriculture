@@ -1,4 +1,4 @@
-
+            
             <!-- breadcrumb -->
             <nav>
                 <div class="nav-wrapper green">
@@ -32,7 +32,7 @@
 
                                 <div class="card" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="assets/images/products/img-1.jpg">
+                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$service_row["image_name"]; ?>">
                                   </div>
                                  
                                 </div>
@@ -44,15 +44,15 @@
                                 <div class="single-car-prices">
                                     <div class="single-regular-price text-center green">
                                         <span class="labeled">price</span>
-                                        <span class="h3">$87,500.00</span>
+                                        <span class="h3"><?="$".$service_row['price']; ?></span>
                                     </div>
                                 </div>
 
                                 <div class="price-description-single green darken-1">
-                                    Sale Price: <b class="price--tag">$0.00</b>
+                                    Sale Price: <b class="price--tag"><?="$".$service_row['price']; ?></b>
                                 </div>
                                 <div class="price-description-single green darken-2">
-                                    You Save:  <b class="">$87,500.00</b>
+                                    You Save:  <b class=""><?="$".$service_row['price']; ?></b>
                                 </div>
 
                                 <table class="responsive-table highlight">
@@ -88,13 +88,36 @@
                             </table>
                             </div>
 
-                            <div class="col m12">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
-                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p>
-                                <p>Qui officia eum hic obcaecati reiciendis asperiores! Corporis nostrum sapiente voluptas, cumque ducimus dolorem natus repellat magni quam voluptates illo atque voluptatem autem libero error, soluta consectetur, suscipit omnis neque.</p>
+                            <div class="col m12">                          
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs green">
+        <li class="tab col s3"><a href="#test1"  class="active white-text">Product Description</a></li>
+        <li class="tab col s3"><a href="#test2" class="white-text">Additional Information</a></li>
+        <li class="tab col s3"><a href="#test3" class="white-text">Related Products</a></li>
+        <li class="tab col s3"><a href="#test4" class="white-text">Product Review's</a></li>
+      
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+                                <p><?=$service_row["description"]; ?></p>
+                                <p><?=$service_row["description"]; ?></p>
+                                <p><?=$service_row["description"]; ?></p></div>
+    <!--<div id="test2" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
+                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>
+    <div id="test3" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
+                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>
+    <div id="test4" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
+                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>-->
+    
+  </div>
+        
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+
+
+            
