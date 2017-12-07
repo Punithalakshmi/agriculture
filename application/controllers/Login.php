@@ -42,6 +42,15 @@ class Login extends Admin_Controller {
 
        $this->layout->view('frontend/login/login');
         
-    } 
+    }
+  public function logout()
+  {
+     
+    $this->session->sess_destroy();
+  
+      $this->session->set_flashdata('logout_success','logged out successfully');
+  
+    redirect('login');
+  }
 
 }
