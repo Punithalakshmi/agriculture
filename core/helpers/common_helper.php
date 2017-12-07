@@ -633,4 +633,18 @@ function get_user_type()
 
    return $result;
 }
+
+function categories()
+{
+    $CI = & get_instance();
+    // $CI->db->where("status","Active");
+    $result = $CI->db->get('category')->result_array();
+    $types = array();
+    foreach ($result as $row) 
+    {
+        $types[$row['id']] = $row['name'];
+        // /print_r($types); exit
+    }
+    return $types;
+}
 ?>
