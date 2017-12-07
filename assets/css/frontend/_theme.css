@@ -728,3 +728,14 @@ footer.page-footer .footer-copyright a {
 	background-size:cover;
 }
 .filter-sec { padding-top:14px;}
+ul.tabs.green.profile-info {
+    height: inherit;
+    overflow: hidden;
+}
+.profile-info li { border-bottom: 1px solid #fff; }
+
+.profile-info a.active {
+    color: #000 !important;
+    background: #fff !important;
+}
+.user-icon { float:left; margin-right:2px !important; margin-top: 1px !important;}
