@@ -10,6 +10,7 @@ class Services extends Admin_Controller {
 	{
 		 parent::__construct();
    		$this->load->model('services_product_model');
+   		$this->load->model('category_model');
 	}
 
 	public function index($id='')
@@ -31,6 +32,7 @@ class Services extends Admin_Controller {
 		$this->pagination->initialize($config);
 		$this->data['editdata'] = $this->services_product_model->get_services($limit,$start);
 		$this->data['links'] = $this->pagination->create_links();
+		$this->data["category"] = $this->category_model->get_category();
 		$this->layout->view('frontend/home/services',$this->data);
 	}
 	
@@ -38,9 +40,8 @@ class Services extends Admin_Controller {
 	{	
 		$this->data["service_row"] = $this->services_product_model->unique($id);
 		$category_id = $this->data["service_row"]["category_id"];
-		
 		$this->data["related_product"] = $this->services_product_model->get_related($category_id);
 		$this->layout->view('frontend/home/detail',$this->data);
 	}
-	
+
 }
