@@ -68,8 +68,8 @@ class  Services_product_model extends App_model
    {
       $this->db->select('*');
     $this->db->from('services');
-    $this->db->where('seller_id',$id);
-    $result = $this->db->get()->row_array();
+    $this->db->where('category_id',$id);
+    $result = $this->db->get()->result_array();
     //echo "<pre>"; print_r($result); exit;
    return $result;
    }
