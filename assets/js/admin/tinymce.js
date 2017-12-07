@@ -1,5 +1,6 @@
 tinymce.init({
     selector: "#description",
+    forced_root_block : '<p>',
     //selector: "textarea",
     theme: "modern",
      height: "100",
