@@ -17,7 +17,7 @@
                   <!-- Product Filter -->
                     <div class="filter-search teal lighten-5 cf">
                         <div class="container">
-                            <form class="col s12 white filter-sec" action="services/filter" method="post" >
+                            <form class="col s12 white filter-sec" action="filter" method="post" >
                                 <div class="row">
                                     <div class="col m3 s12">
                                         <div class="input-field col s12">
@@ -29,7 +29,7 @@
                                     <div class="col m9 s12">
                                         <div class="search-container">
                         <div class="row center home-search">
-                            
+                            <form class="col s12" action="filter" method="post">
                                 <div class="col l6 s12">
                                   <input name="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
                                 </div>
@@ -66,6 +66,7 @@
                         </div>
                         <div class="row farmers-list">                       
                             <!-- Single loop -->
+                            <?php if($editdata){?>
                                <?php  foreach($editdata as $services):?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
@@ -89,11 +90,18 @@
                                 </div>
                               </div>
                             <?php endforeach;?>
+                            <?php 
+                                  }
+                                  else
+                                  {
+                                      echo "<h3 style='text-align:center;'>No Records Found.</h3>";
+                                  }
+                                ?>
                         </div>
                         <!-- pagination -->
                         <div class="row center">
                          <ul class="pagination">
-                           <li class="waves-effect"><a href="#!"><?=$links;?></a></li>
+                           <li class="waves-effect"><a href="#!"></a></li>
                           </ul>
                         </div>
                     </div>

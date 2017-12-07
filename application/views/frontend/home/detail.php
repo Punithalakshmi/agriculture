@@ -31,7 +31,7 @@
 
                                 <div class="card" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$service_row['image_name']; ?>">
+                                    <img class="activator" height="403" width="461" src="<?=base_url();?>assets/images/products/<?=$service_row['image_name']; ?>">
                                   </div>
                                  
                                 </div>
@@ -110,10 +110,12 @@
     <div id="test3" class="col s12">
 
 <?php  foreach($related_product as $services):?>
+
+        <?php if($services['id']!=$service_row['id']) { ?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
                                   </div>
                                   <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>
@@ -131,11 +133,9 @@
                                   </div>
                                 </div>
                               </div>
-                            <?php endforeach;?>
-                          
+                              <?php } ?>
+                            <?php endforeach; ?>
                       </div>
-    <!--<div id="test4" class="col s12"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt libero laboriosam voluptatum quos a sit sint recusandae eius explicabo sed fugiat ipsam consequatur, illum asperiores labore dolor, quidem error similique!</p>
-                                <p>Hic dolores quibusdam perferendis fugiat totam asperiores laborum. Corporis, sed eius laudantium, laborum voluptas eligendi animi blanditiis repellendus aperiam est quam! Expedita necessitatibus magni dolorum velit harum architecto, nemo consequuntur.</p></div>-->
     
   </div>
         
