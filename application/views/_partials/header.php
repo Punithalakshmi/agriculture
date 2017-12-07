@@ -34,6 +34,17 @@
                       <li class="divider"></li>
                       <li><a href="#!">Resources</a></li>
                     </ul>
+
+
+                    <ul id="pUser" class="dropdown-content"> 
+                      <li><a href="welcome.html"><i class="material-icons dp48 user-icon">account_circle</i>Welcome User</a></li> 
+                      <li><a href="#!">Profile</a></li>
+                      <li class="divider"></li> 
+                      <li><a href="#!">Log Out</a></li> 
+                      <li class="divider"></li>
+                    </ul>
+
+
                     <a id="logo-container" href="index.html" class="brand-logo">Logo</a>
                     <ul class="right hide-on-med-and-down desk-nav">
                         <li><a href="<?=base_url();?>">Home </a></li>
@@ -41,8 +52,13 @@
                         <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown1">Services <i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="<?=base_url();?>events">Events </a></li>
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
+                         <?php if(!is_logged_in()) { ?>
                         <li><a href="<?=base_url();?>registration">Register </a></li>
                         <li><a href="<?=base_url();?>login">Login </a></li>
+                        <?php }else { ?>
+                            <li><a href="">Profile </a></li>
+                        <li><a class="dropdown-button" href="welcome.html" data-activates="pUser"><i class="material-icons dp48 user-icon">account_circle</i>Welcome User <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <?php } ?>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                          <li><a href="<?=base_url();?>">Home </a></li>
@@ -50,8 +66,14 @@
                         <li><a class="dropdown-button" href="<?=base_url();?>services" data-activates="dropdown2">Services <i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="<?=base_url();?>events">Events </a></li>
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
-                        <li><a href="<?=base_url();?>register">Register </a></li>
-                        <li><a href="<?=base_url();?>login">Login </a></li>
+                        <?php if(!is_logged_in()) { ?> 
+                        <li><a href="<?=base_url();?>home/register">Register </a></li>
+                        <li><a href="<?=base_url();?>home/login">Login </a></li>
+
+                        <?php }else { ?>
+                            <li><a href="">Profile </a></li>
+                        <li><a href="">Logout</a></li>
+                        <?php } ?>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse">
                         <i class="material-icons">menu</i>
