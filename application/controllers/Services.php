@@ -44,4 +44,16 @@ class Services extends Admin_Controller {
 		$this->layout->view('frontend/home/detail',$this->data);
 	}
 
+	public function filter()
+	{ 
+		$search = array();
+
+	   $search['category'] = $this->input->post('category');
+       $search['location'] = $this->input->post('location');
+       $search['keyword'] = $this->input->post('keyword');
+      // print_r($search); exit;
+       $this->data['editdata'] = $this->services_product_model->filter_search($search);
+       $this->layout->view("frontend/home/filter",$this->data);
+	}
+	
 }
