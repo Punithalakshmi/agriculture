@@ -591,11 +591,11 @@ footer.page-footer .footer-copyright a {
     margin: 0px;
 }
 .home-icon {
-    width: 10%;
+    width: 20%;
     float: left;
     height: 70px;
 }
-.phone, .mail { vertical-align:middle; padding-right:15px;}
+.phone, .mail { vertical-align:middle; width:20%;}
 #map img {
     max-height: 325px;
 }
@@ -606,7 +606,7 @@ footer.page-footer .footer-copyright a {
 .c-info {
     margin-top: -150px;
 }
-
+.contact a { color:#fff;}
 .cf:before,
 .cf:after {
     content: " ";
@@ -727,15 +727,6 @@ footer.page-footer .footer-copyright a {
     background-position: center center;
 	background-size:cover;
 }
-.filter-sec { padding-top:14px;}
-ul.tabs.green.profile-info {
-    height: inherit;
-    overflow: hidden;
-}
-.profile-info li { border-bottom: 1px solid #fff; }
-
-.profile-info a.active {
-    color: #000 !important;
-    background: #fff !important;
-}
-.user-icon { float:left; margin-right:2px !important; margin-top: 1px !important;}
+.filter-sec { padding-top:14px; padding-bottom:14px; }
+.contact .material-icons { color: rgba(255, 255, 255, 0.5);}
+.contact-btn { margin-left:12px;}

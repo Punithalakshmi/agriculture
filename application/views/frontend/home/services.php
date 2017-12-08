@@ -17,11 +17,11 @@
                   <!-- Product Filter -->
                     <div class="filter-search teal lighten-5 cf">
                         <div class="container">
-                            <form class="col s12 white filter-sec" action="services/filter" method="post" >
+                            <form class="col s12 white filter-sec" action="services" method="post" >
                                 <div class="row">
                                     <div class="col m3 s12">
                                         <div class="input-field col s12">
-                                        <?php echo form_dropdown('category', array('' => 'Select Category')+categories(), set_value('category'));?>
+                                        <?php echo form_dropdown(array('name' => 'category', 'id' => 'category','class'=>'categories'), array('' => 'Select Category')+categories(), set_value('category'));?>
                                         <!--<label><b>Filter Option</b></label>-->
                                       </div>
                                     </div>
@@ -31,11 +31,11 @@
                         <div class="row center home-search">
                             
                                 <div class="col l6 s12">
-                                  <input name="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
+                                  <input name="location" id="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
                                 </div>
 
                                 <div class="col l6 s12">
-                                  <input name="keyword" onfocus="if(this.value == 'Enter Keyword') { this.value = ''; }" value="" placeholder="Enter Keyword" type="search">
+                                  <input name="keyword" id="keyword" onfocus="if(this.value == 'Enter Keyword') { this.value = ''; }" value="" placeholder="Enter Keyword" type="search">
                                 </div>
 
                                 <!-- <div class=" col l3 s12">
@@ -66,6 +66,7 @@
                         </div>
                         <div class="row farmers-list">                       
                             <!-- Single loop -->
+                          <?php if($editdata){?>  
                                <?php  foreach($editdata as $services):?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
@@ -89,6 +90,13 @@
                                 </div>
                               </div>
                             <?php endforeach;?>
+                            <?php 
+                            }
+                            else
+                            {
+                                echo "<h1 style='text-align:center;'>No Records Found.</h1>";
+                            }
+                            ?>
                         </div>
                         <!-- pagination -->
                         <div class="row center">

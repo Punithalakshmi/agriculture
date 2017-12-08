@@ -50,7 +50,7 @@
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
                                   </div>
                                   <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>

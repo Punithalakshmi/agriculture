@@ -634,17 +634,32 @@ function get_user_type()
    return $result;
 }
 
-function categories()
+function categories($id='')
 {
     $CI = & get_instance();
     // $CI->db->where("status","Active");
+    if($id)
+        $CI->db->where('id',$id);
     $result = $CI->db->get('category')->result_array();
+    
     $types = array();
     foreach ($result as $row) 
     {
         $types[$row['id']] = $row['name'];
         // /print_r($types); exit
     }
+    //echo "<pre>"; print_r($types);
     return $types;
 }
+
+function related_category($id)
+{
+    $CI = & get_instance();
+    $CI->db->where("category_id",$id);
+    $CI->db->limit(6);
+    $CI->db->order_by("id","desc");
+  $q = $CI->db->get("services");
+  return $q->result_array();
+}
+
 ?>

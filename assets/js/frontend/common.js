@@ -72,3 +72,25 @@ function tab_view(url,formid='')
     });
   
 }
+
+$(document).ready(function(){
+    $('button').click(function(){
+      var f1 = $('#category').val();
+      var f2 = $('#location').val();
+      var f3 = $('#keyword').val();
+
+      //var search_value = [f1, f2, f3];
+
+   if( f1== '' &&  f2== '' && f3 == '')
+   {
+     return false;    
+   }
+   else
+   {
+      return true;
+   }
+  
+   
+    });
+
+});

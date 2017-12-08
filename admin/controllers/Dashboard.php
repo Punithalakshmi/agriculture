@@ -16,7 +16,7 @@ class Dashboard extends Admin_Controller
     {
        
        
-        $this->layout->view("frontend/dashboard");
+        redirect('seller');
         
     }
     

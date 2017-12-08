@@ -19,7 +19,7 @@ class Business extends Admin_Controller
     $this->load->library('listing');
     $this->simple_search_fields = array('customer_name' => 'Customer Name',"title" =>"Title");
     $this->_narrow_search_conditions = array("start_date");
-    $str ='<a href="'.site_url('business/add/{id}').'" class="btn btn btn-padding yellow table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn red" onclick="delete_record(\'business/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
+    $str ='<a href="'.site_url('business/add/{id}').'" class="btn btn btn-padding  table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn " onclick="delete_record(\'business/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
     $listing = $this->listing->get_listings('business_model', 'listing');
     $this->data['btn'] = "";
@@ -44,8 +44,7 @@ class Business extends Admin_Controller
 
         if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
         {
-          
-             $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
+            $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
         }
          try
         {
@@ -82,7 +81,7 @@ class Business extends Admin_Controller
                $creater_id   = $this->session->userdata("user_data");
 
                if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
-               {
+               { 
 
                  $filedata1 = $this->do_upload();
                  $filename1  = $filedata1['file_name'];
@@ -152,7 +151,7 @@ class Business extends Admin_Controller
                 $config['upload_path']   = '../assets/img/business/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
                 $config['max_size']    = 2056;
-                $config['max_width']   = 1700;
+                $config['max_width']   = 1800;
                 $config['max_height']  = 800;
 
               $this->upload->initialize($config);
@@ -163,9 +162,9 @@ class Business extends Admin_Controller
               }
               else
               {
-                $final_file_data = array("success"=>$this->upload->data());
-                return true;
+                $final_file_data = $this->upload->data();
               }
+                return $final_file_data;
 
         }   
  

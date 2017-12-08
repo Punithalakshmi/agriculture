@@ -73,13 +73,13 @@
           </div>
         </li>
 
-        <?php $menu = array(array('link'=>'seller','name'=>'Seller','icon'=>'fa-anchor'),array('link'=>'category','name'=>'Category','icon'=>'fa-linkedin'),array('link'=>'services_product','name'=>'Services','icon'=>'fa-users'),array('link'=>'plans','name'=>'Plans','icon'=>'fa-sitemap'),array('link'=>'events','name'=>'Events','icon'=>'fa-calendar'),array('link'=>'business','name'=>'Business Ads','icon'=>'fa-briefcase'),array('link'=>'subscription','name'=>'Subscriptions','icon'=>'fa-sitemap'));
+        <?php $menu = array(array('link'=>'seller/add','name'=>'Profile','icon'=>'fa-user'),array('link'=>'seller','name'=>'Seller','icon'=>'fa-anchor'),array('link'=>'category','name'=>'Category','icon'=>'fa-linkedin'),array('link'=>'services_product','name'=>'Services','icon'=>'fa-users'),array('link'=>'plans','name'=>'Plans','icon'=>'fa-sitemap'),array('link'=>'events','name'=>'Events','icon'=>'fa-calendar'),array('link'=>'business','name'=>'Business Ads','icon'=>'fa-briefcase'),array('link'=>'subscription','name'=>'Subscriptions','icon'=>'fa-sitemap'));
           //echo "<pre>"; print_r($menu); exit;
         
 
-        foreach($menu as $row): 
+        foreach($menu as $k => $row): 
 
-          if( $usertype["role"] == 2 && ($row['link'] =='category' || $row['link'] =='services_product')): ?>
+          if( $usertype["role"] == 2 && ($row['link'] =='seller/add' || $row['link'] =='services_product')): ?>
 
               <li class="start <?=($uri==$row['link'])?'active':'';?>">
                 <a href="<?=site_url($row['link']);?>">
@@ -88,7 +88,7 @@
                 <?=($uri==$row['link'])?"<span class='selected'>":"";?>
                 </a>
               </li>
-           <?php elseif($usertype["role"] == 1): ?>
+           <?php elseif($usertype["role"] == 1 && $row['link'] !='seller/add'):?>
                <li class="start <?=($uri==$row['link'])?'active':'';?>">
                 <a href="<?=site_url($row['link']);?>">
                 <i class="fa <?=$row['icon'];?>"></i>

@@ -16,7 +16,7 @@ class Services extends Admin_Controller {
 	public function index($id='')
 	{	
 		$this->load->library('pagination');
-		$limit = 5;
+		$limit = 16;	
 		$config['base_url'] = base_url()."services/index/";
 		$config['per_page'] = $limit;
 		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
@@ -30,7 +30,12 @@ class Services extends Admin_Controller {
         $config['next_tag_open'] = '<li class="waves-effect">';
         $config['next_tag_close'] = '</li>';
 		$this->pagination->initialize($config);
-		$this->data['editdata'] = $this->services_product_model->get_services($limit,$start);
+
+	   	$search['category'] = $this->input->post('category');
+       	$search['location'] = $this->input->post('location');
+       	$search['keyword'] = $this->input->post('keyword');
+		
+		$this->data['editdata'] = $this->services_product_model->filter_search($limit,$start,$search);
 		$this->data['links'] = $this->pagination->create_links();
 		$this->data["category"] = $this->category_model->get_category();
 		$this->layout->view('frontend/home/services',$this->data);
@@ -40,20 +45,8 @@ class Services extends Admin_Controller {
 	{	
 		$this->data["service_row"] = $this->services_product_model->unique($id);
 		$category_id = $this->data["service_row"]["category_id"];
-		$this->data["related_product"] = $this->services_product_model->get_related($category_id);
+		$this->data["related_product"] = related_category($category_id);
 		$this->layout->view('frontend/home/detail',$this->data);
 	}
 
-	public function filter()
-	{ 
-		$search = array();
-
-	   $search['category'] = $this->input->post('category');
-       $search['location'] = $this->input->post('location');
-       $search['keyword'] = $this->input->post('keyword');
-      // print_r($search); exit;
-       $this->data['editdata'] = $this->services_product_model->filter_search($search);
-       $this->layout->view("frontend/home/filter",$this->data);
-	}
-	
 }

@@ -42,8 +42,15 @@ class Login extends Admin_Controller
 
         if(is_logged_in()) 
         {
-
-            redirect("dashboard");
+            $admin_data = get_user_type();
+            if($admin_data["role"]==1)
+            {
+                redirect("seller");                
+            }
+            elseif($admin_data["role"]==2)
+            {
+                redirect("seller/add");
+            }
          
         } 
         

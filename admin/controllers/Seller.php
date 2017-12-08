@@ -59,7 +59,7 @@ class Seller extends Admin_Controller
      try
         {
         
-          /* if($admin_data["role"]==1)
+          if($admin_data["role"]==1)
           {
             if($this->input->post('edit_id'))
              $editid = $this->input->post('edit_id'); 
@@ -67,7 +67,7 @@ class Seller extends Admin_Controller
           elseif($admin_data["role"]==2)
           {
              $edit_id = $admin_data["id"];
-          } */
+          } 
 
           $seller_id = $this->input->post('seller_id');
            
@@ -174,7 +174,6 @@ class Seller extends Admin_Controller
           }
         //print_r($country_data);exit;
         $state =  $this->state_model->get_state_by_country_id(231);
-
         $state_data[null] = 'Select State';
          if($state){
 
