@@ -1,5 +1,8 @@
+ 
+<?php display_flashmsg($this->session->flashdata()); ?>
  <div class="container">
 <div class="row">
+
     <div class="col s4">
       <ul class="tabs green profile-info">
         <li class="tab col s12"><a href="#test1" class="active white-text">Contact Information</a></li>
@@ -7,11 +10,11 @@
         <li class="tab col s12"><a href="#test3" class="white-text">photos</a></li>
       </ul>
     </div>
-
+     <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
     <div id="test1" class="col s8">
+      <?php echo form_open('profile/update/'.$editdata['id'], 'class="form-horizontal form-padding" id="form_seller_update"'); ?>
   <form id="formContact" role="form" method="post">
       <div class="row">
-        <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
          <div class="col s12 m6 input-field">
       <label for="FirstName"> First Name <span class="required">*</span></label>
      <?php echo form_input(['name' => 'first_name', 'id' => 'first_name', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('first_name',$editdata['first_name'])]); ?> <?php echo form_error('first_name', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
@@ -44,7 +47,6 @@
   </div>
 
   <div class="col s12 m6 input-field">
-    
 
     <?php echo form_dropdown('country_id', get_country_all(), (set_value('country_id')) ? set_value('country_id') : 231,
 ['name' => 'country_id', 'id' => 'country_id', 'tabindex' => '7']); ?> <?php echo form_error('country_id',
@@ -76,13 +78,15 @@
    <?php echo form_input(['name' => 'zip', 'id' => 'zip','maxlength' => '258', 'tabindex' => '11','value' => set_value('zip',$editdata['zip'])]); ?> <?php echo form_error('zip', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
   </div>
   <p>
-     <button type="button" onclick="tab_view('profile/update','<?= $editdata['id'] ?>')" class="btn-large z-depth-0" name="seller_data">Submit</button>
+   <input type="submit" value="Update" class="btn-large z-depth-0">
   </p>
       </div>
-    </form>
+    <?php echo form_close(); ?> 
     </div>
 
     <div id="test2" class="col s8">
+       <?php echo form_open('profile/service_update/'.$editdata['id'], 'class="form-horizontal form-padding" id="form_seller_update"'); ?>
+       <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
       <div class="row">
         <div class="input-field col s12">
         <?php echo form_input(['name' => 'company_name', 'id' => 'company_name', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Company Name' ,'value' => set_value('company_name',$servicedata['company_name'])]); ?> <?php echo form_error('company_name', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
@@ -102,21 +106,24 @@
         </div>
       </div>
       <p>
-         <button type="button" onclick="tab_view('seller/add','formContact')" class="btn-large z-depth-0" name="seller_data">Submit</button>
+      <p>
+      <input type="submit" value="Update" class="btn-large z-depth-0">
+      </p>
   
      </p>
-
+   <?php echo form_close(); ?> 
     </div>
  
 
     <div id="test3" class="col s8">
-       <div class="row">
+    
         <div class="input-field col s12">
        <form action="/" enctype="multipart/form-data" class="dropzone" id="photoForm">
+
+       <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
      
    </form>
-    </div>
-  </div>
+  
    <br /><br />
    
    <br /><br />
@@ -132,7 +139,7 @@
        <div class="imagelocation<?php echo $data->id ?> seller-img">
         
         <a href="<?php echo base_url(); ?>admin/uploads/seller/<?php echo $data->image_name; ?>" data-fancybox="images"><img src="<?php echo base_url(); ?>admin/uploads/seller/<?php echo $data->image_name; ?>" style="vertical-align:middle;" width="80" height="80"></a>
-        <span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i>X</span>
+       <span style="cursor:pointer;" onclick="javascript:deleteimage(<?php echo $data->id ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
       </div>
       <?php } endif; ?>
     
@@ -144,17 +151,47 @@
     </div>
   </div>
 </div>
-
+<!--
 <script type="text/javascript">
-  function deleteimage(image_id){
+$(document).ready(function(){
+  alert();
+});
+  $("#photoForm").dropzone({
+    
+    maxFiles: 5,
+    addRemoveLinks:true,
+    acceptedFiles: ".png, .jpg",//is this correct? I got an error if im using this
+    dictRemoveFile:"Remove",
+    dictDefaultMessage:"Drag or Drop Image here<br>(Or)<br>Browse File (Click)",  
+
+    url:base_url+'profile/update_photos',
+    
+    
+    sending: function(file, xhr, formData) {
+       formData.append("seller_id", $('input[name="seller_id"]').val());
+     },    
+    success: function (response) {
+
+      window.location.href = base_url+'profile/index';
+    },    
+
+  addRemoveLinks: true,
+  removedfile: function(file) {
+            var _ref;  // Remove file on clicking the 'Remove file' button
+    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;  
+          }   
+
+  });
+
+function deleteimage(image_id){
 
    var answer = confirm ("Are you sure you want to delete this image?");
     if (answer)
     {
         $.ajax({
                 type: "POST",
-                url:base_url+'seller/deleteimage',
-                  
+                url:base_url+'profile/deleteimage',
+                
                 data: "image_id="+image_id,
                 success: function (response) {
                   if (response == 1) {
@@ -166,4 +203,6 @@
             });
       }
 }
-</script>
+  //your code here
+  
+</script>-->

@@ -17,13 +17,17 @@ class Registration extends Admin_Controller {
         $this->load->model('seller_model');
         $this->load->model('country_model');
         $this->load->model('state_model');
+        $this->data['plans'] = array();
+        $this->data['plans'] = '';
 		
 	}
 
     public function index()
     {
+          
+          $this->data['plans'] = get_plans_all();
 
-        $this->layout->view('frontend/registration/signup');
+          $this->layout->view('frontend/registration/signup',$this->data);
     }
 
     /**
@@ -31,7 +35,7 @@ class Registration extends Admin_Controller {
     */
     public function createnew_account(){
 
-        
+          
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
           
@@ -44,7 +48,7 @@ class Registration extends Admin_Controller {
           $this->form_validation->set_rules('zip', 'Zib','trim|max_length[8]|integer', ['integer'=>'Invalid ZIP']);
           $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');   
           
-            $this->form_validation->set_rules('password','Password','trim|required');  
+          $this->form_validation->set_rules('password','Password','trim|required');  
             
           $this->form_validation->set_error_delimiters('', '');
 
@@ -66,6 +70,7 @@ class Registration extends Admin_Controller {
               $ins_data['state_id']          = $this->input->post('state_id');
               $ins_data['zip']                     = $this->input->post('zip');
               $ins_data['phone']      = $this->input->post('phone');
+              $ins_data['plan_id']    = $this->input->post('plans');
               $ins_data['created_on'] = date('Y-m-d H:i:s');
               
               $new_id                   = $this->seller_model->insert($ins_data); 
@@ -76,7 +81,9 @@ class Registration extends Admin_Controller {
               redirect('login'); 
           }
 
-          $this->layout->view('frontend/registration/signup');
+          $this->data['plans'] = get_plans_all();
+          
+          $this->layout->view('frontend/registration/signup',$this->data);
 
          }
         

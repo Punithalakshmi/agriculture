@@ -87,7 +87,23 @@
 
                                    <?php echo form_input(['name' => 'zip', 'id' => 'zip','maxlength' => '258', 'tabindex' => '11','value' => set_value('zip')]); ?> <?php echo form_error('zip', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                                   </div>
-
+                                  
+                                  <div class="row">
+                                    
+                                  <span>Choose Plan</span>
+                                  <br/>
+                                  <br/>
+                                   
+                                  <?php foreach($plans as $value){ ?>
+                                        
+                                   <p>
+                                    <input name="plans" type="radio" id="test<?=$value['id']?>" value="<?=$value['id']?>"/>
+                                    <label for="test<?=$value['id']?>"><?=$value['name']?></label>
+                                  </p>
+                                  
+                                  <?php } ?>
+                                  </div>
+                                
                                   <p>
                                     <input type="submit" value="Create" class="btn-large z-depth-0">
                                   </p>

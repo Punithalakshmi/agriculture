@@ -17,6 +17,9 @@
         <!--  -->     
     </head>
         <body>
+          <?php $user_data = get_user_type();
+               
+          ?>
             <nav class="white home-nav" role="navigation">
                 <div class="nav-wrapper container">
                     <!-- Dropdown Structure -->
@@ -37,10 +40,10 @@
 
 
                     <ul id="pUser" class="dropdown-content"> 
-                      <li><a href="welcome.html"><i class="material-icons dp48 user-icon">account_circle</i>Welcome User</a></li> 
-                      <li><a href="#!">Profile</a></li>
+                      <li><a href="welcome.html"><i class="material-icons dp48 user-icon">account_circle</i>Welcome   <?=$user_data['first_name']?></a></li> 
+                      <li><a href="<?=base_url();?>profile">Profile</a></li>
                       <li class="divider"></li> 
-                      <li><a href="#!">Log Out</a></li> 
+                      <li><a href="<?=base_url();?>login/logout">Log Out</a></li> 
                       <li class="divider"></li>
                     </ul>
 
@@ -55,9 +58,8 @@
                          <?php if(!is_logged_in()) { ?>
                         <li><a href="<?=base_url();?>registration">Register </a></li>
                         <li><a href="<?=base_url();?>login">Login </a></li>
-                        <?php }else { ?>
-                            <li><a href="">Profile </a></li>
-                        <li><a class="dropdown-button" href="welcome.html" data-activates="pUser"><i class="material-icons dp48 user-icon">account_circle</i>Welcome User <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <?php }else { ?>  
+                        <li><a class="dropdown-button" href="welcome.html" data-activates="pUser"><i class="material-icons dp48 user-icon">account_circle</i>Welcome <?=$user_data['first_name']?> <i class="material-icons right">arrow_drop_down</i></a></li>
                         <?php } ?>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
