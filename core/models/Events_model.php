@@ -36,6 +36,39 @@ class Events_model extends App_model
     return parent::listing();
   }
 
+  /**
+    * This method handles to get all events
+    **/
+  function get_events($limit='',$start='')
+    {
+
+      $this->db->select('*');
+      $this->db->from('events');
+      $this->db->where('status=', 'Active');
+      $this->db->order_by('id', 'DESC');
+      $this->db->limit($limit, $start);
+      
+      $result = $this->db->get()->result();
+      
+      return $result;
+    }
+    /**
+     * This method handles to retrieve a events detail by Id
+     * */
+    function get_events_by_id($id) {
+
+        $table_name =  $this->_table;
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('id' => (int) $id));
+        
+        if (!empty($result)) {
+            $return = $result->row_array();
+        }
+
+        return $return;
+    }
+
 
 }
 ?>

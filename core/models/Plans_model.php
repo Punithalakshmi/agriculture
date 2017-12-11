@@ -36,6 +36,22 @@ class Plans_model extends App_model
     return parent::listing();
   }
 
+  /**
+    * This method handles to retrive all plans
+    **/
+    function get_plans_all(){
+        $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name);
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result_array();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
+
 
 }
 ?>

@@ -525,8 +525,8 @@ function delete_file($path, $file_name){
         return false;
 
     }  
-
 }
+
 /**
 
 * This method handles to get all country 
@@ -557,6 +557,25 @@ function get_country_all(){
     $country_data = $country_data;
 
     return $country_data;
+
+}
+
+/**
+
+* This method handles to get all plans 
+
+**/
+function get_plans_all(){
+
+     $CI =& get_instance();
+
+     $CI->load->model('Plans_model');
+
+     $plans   = $CI->Plans_model->get_plans_all();
+
+     
+    return $plans;
+    
 
 }
 
