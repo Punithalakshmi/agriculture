@@ -5,3 +5,5 @@
 [25-Oct-2017 04:53:10 America/Denver] PHP Fatal error:  Using $this when not in object context in /home/izaapinn/public_html/construction/core/helpers/common_helper.php on line 481
 [25-Oct-2017 04:53:50 America/Denver] PHP Fatal error:  Call to a member function library() on null in /home/izaapinn/public_html/construction/core/helpers/common_helper.php on line 481
 [02-Dec-2017 04:23:03 America/Denver] PHP Fatal error:  Call to undefined function get_user_type() in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 35
+[04-Dec-2017 23:23:46 America/Denver] PHP Fatal error:  require_once(): Failed opening required '../core/controllers/Seller_controller.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/izaapinn/public_html/agdemo/admin/controllers/Profile.php on line 3
+[05-Dec-2017 00:22:24 America/Denver] PHP Parse error:  syntax error, unexpected '}' in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 101

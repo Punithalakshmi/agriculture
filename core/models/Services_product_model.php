@@ -8,13 +8,11 @@ class  Services_product_model extends App_model
   {
     parent::__construct();
     $this->_table = 'services';
-    //$this->_table = 'category';
   }
   
   function listing()
   {  
     $admin_data = get_user_type();
-    //print_r($admin_data["id"]); exit;
     $this->_fields = "*";
     $this->db->group_by('id');
     
@@ -59,43 +57,47 @@ class  Services_product_model extends App_model
     $this->db->from('services');
     $this->db->where('id',$id);
     $result = $this->db->get()->row_array();
-    //echo "<pre>"; print_r($result); exit;
    return $result;
 
    }
 
    public function filter_search($limit='',$start='',$filter)
    {
-   if($filter["category"]!='') 
-   $this->db->where('category_id',$filter["category"]);
-    if($filter["location"]!='' && $filter["category"]=='')
-    { //echo "one"; exit;
-        $this->db->like("b.city",$filter['location']);
-           $this->db->or_like("b.state_id",$filter['location']);
-           $this->db->or_like("b.country_id",$filter['location']);
-           $this->db->or_like("b.zip",$filter['location']);
-    }
-      if($filter['location']!='' && $filter["category"]!='')
-      {
-        
-         $this->db->where('category_id',$filter["category"]);
-         $this->db->like("b.city",$filter['location']);
-         $this->db->or_like("b.zip",$filter['location']);
- 
-      }
-        if($filter['keyword']!='' && $filter['location']=='' && $filter["category"]=='')
-        {     
-          $this->db->like("a.title",$filter['keyword']);
-          $this->db->or_like("a.description",$filter['keyword']);
-        }
-           $this->db->select('a.*,b.id as seller,b.phone');
-           $this->db->limit($limit, $start);
-           $this->db->from('services a');
-           $this->db->join("seller b","a.seller_id=b.id");
 
-           $result = $this->db->get()->result_array();
-          //print_r($this->db->last_query()); exit;
-           return $result;
+    $this->db->select('SQL_CALC_FOUND_ROWS a.*,b.id as seller,b.phone',FALSE); 
+    $this->db->from('services a');
+    $this->db->join("seller b","a.seller_id=b.id");   
+
+    if($filter["category"]!='') 
+     $this->db->where('category_id',$filter["category"]);
+
+    $like = false;
+    
+    if($filter['keyword']!=''){        
+      $this->db->like("a.title",$filter['keyword']);
+      $like = true;
+     } 
+    
+
+    if($filter["location"]!='')
+    { 
+        $this->db->join("state s","s.id=b.state_id");  
+
+        if($like)
+          $this->db->or_like("b.city",$filter['location']);
+        else
+          $this->db->like("b.city",$filter['location']);
+
+        $this->db->or_like("s.name",$filter['location']);
+        $this->db->or_like("b.zip",$filter['location']);
+    }
+          
+   $this->db->limit($limit, $start);
+   $data = $this->db->get()->result_array();
+
+   $count = $this->db->query("select FOUND_ROWS() as count")->row()->count;
+
+   return array('data'=>$data,'count'=>$count);
    }
 
 }

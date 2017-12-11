@@ -16,11 +16,20 @@ class Services extends Admin_Controller {
 	public function index($id='')
 	{	
 		$this->load->library('pagination');
-		$limit = 16;	
+		$limit = 5;
+		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
+
+		$search['category'] = $this->input->post('category');
+       	$search['location'] = $this->input->post('location');
+       	$search['keyword'] = $this->input->post('keyword');
+		
+		$retdata= $this->services_product_model->filter_search($limit,$start,$search);
+
+		$this->data['editdata'] = $retdata['data'];
+
 		$config['base_url'] = base_url()."services/index/";
 		$config['per_page'] = $limit;
-		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
-		$config['total_rows'] = $this->db->get('services')->num_rows();
+		$config['total_rows'] = $retdata['count'];
 		$config['first_tag_open'] = '<li class="waves-effect">';
         $config['first_tag_close'] = '</li>';
 		$config['cur_tag_open'] = '<li class="active green"><span>';
@@ -31,11 +40,7 @@ class Services extends Admin_Controller {
         $config['next_tag_close'] = '</li>';
 		$this->pagination->initialize($config);
 
-	   	$search['category'] = $this->input->post('category');
-       	$search['location'] = $this->input->post('location');
-       	$search['keyword'] = $this->input->post('keyword');
-		
-		$this->data['editdata'] = $this->services_product_model->filter_search($limit,$start,$search);
+	   	
 		$this->data['links'] = $this->pagination->create_links();
 		$this->data["category"] = $this->category_model->get_category();
 		$this->layout->view('frontend/home/services',$this->data);
