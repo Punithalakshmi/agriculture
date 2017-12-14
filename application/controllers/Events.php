@@ -38,8 +38,9 @@ class Events extends Admin_Controller {
 	public function details($id='')
 	{	
 		
+		
 		$this->data['events'] = $this->events_model->get_events_by_id($id);
-
+		
 		$this->layout->view('frontend/events/detail',$this->data);
 	}
 

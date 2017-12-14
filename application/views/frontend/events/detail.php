@@ -36,10 +36,19 @@
                                   </p>
 
                                   <hr>
+                                  <?php 
+
+                                          $from_date = date('Ymd', strtotime(str_replace('-', '/', $events['from_date'])));
+                                          
+                                           $to_date = date('Ymd', strtotime(str_replace('-', '/', $events['to_date'])));
+                                    ?>
 
                                   <p class="collection-item">
                                       <i class="material-icons dp48">today</i> <b>From</b>: Saturday, Nov 18, 10:00 am <br /><b>To</b>: Sunday, Dec 17, 7:00 pm <br />
-                                      <a href="https://calendar.google.com/calendar/r/eventedit?dates=20171118T180000Z/20171218T030000Z&details=Under+colorful+swags+of+Union+Jacks+and+boughs+of+holly,+The+Great+Dickens+Christmas+Fair+%26+Victorian+Holiday+Party+returns+for+five+weekends+amid+the+theatrically-lit+halls+of+the+historic+Cow+Palace+(2600+Geneva+Ave.,+Daly+City,+CA)+on+Saturdays+and+Sundays+(as+well+as+the+F%E2%80%A6%0A%0Ahttps://www.yelp.com/events/daly-city-the-great-dickens-christmas-fair-and-victorian-holiday-party-5&location=Cow+Palace+Exhibition+Halls,+2600+Geneva+Ave,+Daly+City,+CA+94014&sprop=name:The+Great+Dickens+Christmas+Fair+%26+Victorian+Holiday+Party&sprop=website:https://www.yelp.com/events/daly-city-the-great-dickens-christmas-fair-and-victorian-holiday-party-5&text=The+Great+Dickens+Christmas+Fair+%26+Victorian+Holiday+Party&sf=true&output=xml">Add to Calendar </a>
+
+                                      <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=urlencode($events['title'])?>&dates=<?=$from_date;?>/<?=$to_date;?>&details=<?=urlencode($events['description'])?>&location=<?=$events['location']?>&sf=true&output=xml" target="_blank">Add to calendar</a>
+
+                                      
                                   </p>
                                   
                                   
@@ -69,14 +78,10 @@
                   </div>
                 </div>
 
-            
-            
+          
             <!--- map-->
             
-            
-
             <!-- Content Area -->
-
 
 <script>
 function myMap() {
