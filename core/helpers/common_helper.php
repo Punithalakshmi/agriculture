@@ -476,7 +476,7 @@ function is_valid_user($user_id = 0)
     return $result->num_rows()?TRUE:FALSE;
 }
 
-function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message='')
+/* function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message='')
 {
   $CI = & get_instance();
   $CI->load->library('email');
@@ -490,7 +490,7 @@ function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message=''
     return true;
   else
     return false;
-}
+}*/
 
 /**
 * This method handles to delete a file
@@ -680,5 +680,94 @@ function related_category($id)
   $q = $CI->db->get("services");
   return $q->result_array();
 }
+
+function email_is_exist($data){
+
+    $CI =& get_instance();
+    $CI->load->model('login_model');
+    $data   = $CI->login_model->get_customer_email($data);
+
+    if($data){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function encrypt_data($string_data, $enc_key) {
+    $encrypted_data = strtr(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256,
+                            md5($enc_key), serialize($string_data),
+                            MCRYPT_MODE_CBC, md5(md5($enc_key)))), '+/=', '-_,');
+    return $encrypted_data;
+}
+
+function decrypt_data($string_data, $enc_key) {
+    $decrypted_data = unserialize(rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256,
+                            md5($enc_key),
+                            base64_decode(strtr($string_data, '-_,', '+/=')),
+                            MCRYPT_MODE_CBC, md5(md5($enc_key))), "\0"));
+    return $decrypted_data;
+}
+
+function content_forgot_password($url) {
+    $content = 'Your password reset request has been acknowledged by us.
+                Please follow the below link to reset your password.<br>
+                 <strong style="font-weight:bold;"><a href="' . $url . '" title="Reset Password" >Reset Password</a></strong>';
+    return $content;
+}
+
+function send_mail($data) {
+    $CI = & get_instance();
+    $CI->load->library('email');
+    $CI->email->set_mailtype("html"); 
+    $from_email = (isset($data['from'])) ? $data['from'] : 'sathishm@izaaptech.in';
+    $from_name = (isset($data['from_name'])) ? $data['from_name'] : 'sathishm@izaaptech.in';
+    $to_email = (isset($data['to'])) ? $data['to'] : 'sathishm@izaaptech.in';
+    $to_name = (isset($data['to_name'])) ? $data['to_name'] : 'satz';
+    $subject = (isset($data['subject'])) ? $data['subject'] : '';
+    $content = (isset($data['content'])) ? $data['content'] : '';
+    $attachment = (isset($data['attachment'])) ? $data['attachment'] : '';
+    // Email configuration details
+    $config['protocol'] = "smtp";
+    $config['smtp_host'] = "ssl://smtp.gmail.com";
+    $config['smtp_port'] = "465";
+    /*$config['smtp_user'] = "mail.php@boscoits.com";
+    $config['smtp_pass'] = "php!#nets15";*/
+    $config['smtp_user'] = "support@ifensys.com";
+    $config['smtp_pass'] = "ifs$062016$";
+    //$config['mailpath']   = '/usr/sbin/sendmail';
+    $config['charset'] = "utf-8";
+    $config['mailtype'] = 'html';
+    $config['newline'] = "\r\n";
+    $config['validate'] = TRUE;
+    $config['wordwrap'] = TRUE;
+    
+
+    // Email initialize
+    $CI->email->initialize($config);
+    $CI->email->from($from_email, $from_name);
+    $CI->email->to($to_email, $to_name);
+    //$this->email->bcc('edsitt@gmail.com');
+
+    $CI->email->subject($subject);
+    $CI->email->message($content);
+    
+    if($attachment){
+    $CI->email->attach($attachment);
+        
+    }
+    
+    // Send an Email
+    $send = $CI->email->send();
+
+    //$this->email->print_debugger();
+    if ($send) {
+        $CI->email->clear(TRUE);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 ?>

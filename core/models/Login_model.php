@@ -56,6 +56,43 @@ class Login_Model extends CI_Model
    {
         $this->session->sess_destroy();
    }
+
+   /**
+     * This method checks email exist
+     * */
+    function get_customer_email($data) {
+
+        $result = '';
+        $this->db->select('*')
+                 ->from('seller')
+                ->where('email', $data);
+        $result = $this->db->get()->result();
+
+        return $result;
+    }
+
+    /**
+     * This method handles to retrieve a user detail by email
+     * */
+    function get_user_details_by_email($email) {
+
+        $table_name = $this->customer_temp_table_name;
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('email' => $email));
+        if (!empty($result)) {
+            $return = $result->result();
+        }
+
+        return $return;
+    }
+
+    public function update_password_by_email($password, $email) {
+        $data = array('password' => $password);
+        $this->db->where('email', $email);
+        $result = $this->db->update('seller', $data);
+        return $result;
+    }
     
 }
 
