@@ -14,12 +14,13 @@
                                   <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" height="262" width="300" src="<?=base_url();?>assets/img/events/<?=$value->event_image?>">
                                   </div>
+                                  
                                   <div class="card-content">
 
                                     <a href="<?=base_url()?>events/details/<?=$value->id;?>"><?=$value->title;?> </a>
                                     <br/>
 
-                                   <i class="material-icons">event</i><span><?=$value->from_date;?></span>
+                                   <i class="material-icons">event</i><span><?=date("l, M j", strtotime($value->from_date));?></span>
                                    <br/>
                                    <i class="material-icons">location_on</i><span><?=$value->location;?></span>
                                     <p> <?=$value->description;?></p>

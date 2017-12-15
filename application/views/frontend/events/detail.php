@@ -44,7 +44,7 @@
                                     ?>
 
                                   <p class="collection-item">
-                                      <i class="material-icons dp48">today</i> <b>From</b>: Saturday, Nov 18, 10:00 am <br /><b>To</b>: Sunday, Dec 17, 7:00 pm <br />
+                                      <i class="material-icons dp48">today</i> <b>From</b>: <?=date("l, M j", strtotime($events['from_date']))?><br /><b>To</b>:  <?=date("l, M j", strtotime($events['to_date']))?> <br />
 
                                       <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=urlencode($events['title'])?>&dates=<?=$from_date;?>/<?=$to_date;?>&details=<?=urlencode($events['description'])?>&location=<?=$events['location']?>&sf=true&output=xml" target="_blank">Add to calendar</a>
 
@@ -84,12 +84,16 @@
             <!-- Content Area -->
 
 <script>
+
 function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  
+  var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+  var mapCanvas = document.getElementById("googleMap");
+  var mapOptions = {center: myCenter, zoom: 5};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter});
+  marker.setMap(map);
 }
+
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM0nAZg20zzOQd45MF2qXe_H0j0QRWMlE&callback=myMap"></script>

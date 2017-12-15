@@ -44,7 +44,7 @@
                                   
                                     <input type="submit" class="btn-large z-depth-0" value="Sign In">
                                   
-                                    <a href="#recover" id="RecoverPassword">Forgot your password?</a>
+                                    <a href="<?=base_url();?>login/forgot_password" id="RecoverPassword">Forgot your password?</a>
                                   
                                 </form>
 
