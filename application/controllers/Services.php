@@ -17,7 +17,7 @@ class Services extends Admin_Controller {
 	{	
 		$this->load->library('pagination');
 		$limit = 5;
-		yhuhgghujgh
+		
 		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
 
 		$search['category'] = $this->input->post('category');
