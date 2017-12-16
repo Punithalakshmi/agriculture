@@ -10,6 +10,7 @@ class Profile extends Admin_Controller
     
     if(!is_logged_in())
       redirect('login');
+
     $this->load->model('seller_model');
     $this->load->model('services_model');
     $this->load->model('photos_model');
@@ -113,10 +114,6 @@ class Profile extends Admin_Controller
         } 
         
         $this->data['editdata']              = $edit_data;
-
-        // $this->data['servicedata'] = $this->services_model->get_services_by_id($this->data['editdata']['id']);
-
-       // $this->data['photodata'] = $this->photos_model->get_photos_by_id($this->data['editdata']['id']);
 
        $this->layout->view('frontend/profile/profile',$this->data);  
          
