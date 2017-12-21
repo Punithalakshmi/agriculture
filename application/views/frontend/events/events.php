@@ -1,6 +1,7 @@
 <div class="container">
 
                         <div class="row center">
+                          
                           <h1 class="page-title">Events</h1>
                         </div>
                         <div class="row farmers-list">                       

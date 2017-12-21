@@ -1,5 +1,18 @@
+          <div class="add__left">
+ <!-- add left -->
 
+</div>
 
+<div class="add__right">
+ <!-- add right -->
+
+</div>
+
+<div class="add__vertical">
+ <!-- add vertical -->
+ 
+</div>
+    
             <div id="index-banner" class="parallax-container">
                 <div class="section no-pad-bot">
                     <h1 class="header center">Explore The Worldwide Farmers</h1>
@@ -39,6 +52,7 @@
                 <h1 class="center">Explore The Worldwide <span>Farmers</span></h1>
 
                 <div class="row">
+
                     <div class="container">
                         <div class="slider multiple-items">
 

@@ -16,6 +16,7 @@
             <!-- Content Area -->
             <div class="interior-wrap">
                 <div class="interior-container">
+                    <?php $this->load->view('_partials/business_ads');?>
                     <div class="container">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <b>Aenean commodo ligula eget</b> dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
 

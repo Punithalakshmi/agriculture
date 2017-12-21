@@ -1,5 +1,6 @@
             <div class="interior-wrap">
                 <div class="interior-container">
+                   <?php $this->load->view('_partials/business_ads');?>
                     <div class="container">   
                     
                       <div class="row">

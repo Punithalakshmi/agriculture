@@ -1,6 +1,7 @@
   
 
             <div class="interior-wrap contact-wrap">
+                <?php $this->load->view('_partials/business_ads');?>
                 <div class="interior-container">
                 
                     <div class="container">

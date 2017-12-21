@@ -14,11 +14,12 @@
             <!-- Content Area -->
             <div class="interior-wrap">
                 <div class="interior-container">
+                  <?php $this->load->view('_partials/business_ads');?>
                     <div class="container">
                         
                       
                         <div class="row">
-                        
+                          
                             <div class="col s12 m6 offset-m3">
 
                             <div class="card login-wrapper hoverable">

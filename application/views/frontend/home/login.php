@@ -40,6 +40,8 @@
                         </div> -->
 
                         <div class="row">
+                              <?php $this->load->view('_partials/business_ads');?>
+
                             <div class="col s12 m6 offset-m3">
                             <div class="card login-wrapper hoverable">
                             <div class="card-content">

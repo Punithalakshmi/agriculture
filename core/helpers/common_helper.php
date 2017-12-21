@@ -903,5 +903,14 @@ function get_google_map_address($address){
 
 }
 
+function get_business()
+{
+    $CI = & get_instance();
+    $CI->db->limit(2);
+    $result = $CI->db->get('business_ads')->result_array();
+    //echo "<pre>"; print_r($result); exit;
+    return $result;
+}
+
 
 ?>

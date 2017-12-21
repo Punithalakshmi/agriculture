@@ -15,13 +15,15 @@
             <!--- map-->
             
             <div id="map" class="">
-                    <img src="assets/images/map.jpg" style="width:100%;">
+                    <img src="<?=base_url()?>assets/images/map.jpg" style="width:100%;">
             </div>
 
             <!-- Content Area -->
 <div class="interior-wrap contact-wrap">
 <div class="interior-container">
+    <?php $this->load->view('_partials/business_ads');?>
 <div class="container">
+
 <div class="row contact c-info green darken-1">
         <div class="col s12 m8 e-height">
             <div class="card">
