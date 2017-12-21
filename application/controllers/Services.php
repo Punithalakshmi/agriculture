@@ -25,7 +25,7 @@ class Services extends Admin_Controller {
        	$search['keyword'] = $this->input->post('keyword');
 		
 		$retdata= $this->services_product_model->filter_search($limit,$start,$search);
-
+		
 		$this->data['editdata'] = $retdata['data'];
 
 		$config['base_url'] = base_url()."services/index/";

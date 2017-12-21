@@ -476,7 +476,7 @@ function is_valid_user($user_id = 0)
     return $result->num_rows()?TRUE:FALSE;
 }
 
-/* function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message='')
+function send_email($to='',$from='',$from_name='',$cc='',$subject='',$message='')
 {
   $CI = & get_instance();
   $CI->load->library('email');
@@ -490,7 +490,7 @@ function is_valid_user($user_id = 0)
     return true;
   else
     return false;
-}*/
+}
 
 /**
 * This method handles to delete a file
@@ -665,10 +665,32 @@ function categories($id='')
     foreach ($result as $row) 
     {
         $types[$row['id']] = $row['name'];
-        // /print_r($types); exit
     }
-    //echo "<pre>"; print_r($types);
     return $types;
+}
+function get_events($id='')
+{
+    $CI = & get_instance();
+    // $CI->db->where("status","Active");
+    if($id)
+        $CI->db->where('id',$id);
+    $result = $CI->db->get('events')->result_array();
+    
+    $types = array();
+    foreach ($result as $row) 
+    {
+        $types[$row['id']] = $row['title'];
+    }
+    return $types;
+}
+
+function categories1($id='')
+{
+    $CI = & get_instance();
+    if($id)
+        $CI->db->where('id',$id);
+    $result = $CI->db->get('category')->result_array();
+    return $result;
 }
 
 function related_category($id)
@@ -679,6 +701,22 @@ function related_category($id)
     $CI->db->order_by("id","desc");
   $q = $CI->db->get("services");
   return $q->result_array();
+}
+
+function get_seller($id='')
+{
+    $CI = & get_instance();
+    // $CI->db->where("status","Active");
+    if($id)
+        $CI->db->where('id',$id);
+    $result = $CI->db->get('seller')->result_array();
+    
+    $types = array();
+    foreach ($result as $row) 
+    {
+        $types[$row['id']] = $row['first_name'];
+    }
+    return $types;
 }
 
 function email_is_exist($data){
@@ -767,6 +805,102 @@ function send_mail($data) {
     } else {
         return false;
     }
+}
+/**
+
+* This method handles to get all experience 
+
+**/
+function get_experience_all(){
+
+     $CI =& get_instance();
+
+     $CI->load->model('Services_model');
+
+     $data   = $CI->Services_model->get_experience_all();
+
+     $experience = ($data) ? $data['data'] : '';
+
+    $experience_data[null] = 'Select Experience';
+
+    if($experience){
+
+        foreach ($experience as $key => $value) {
+
+            $experience_data[$value->id] = $value->name;
+
+        }
+
+    }
+
+    $experience_data = $experience_data;
+
+    return $experience_data;
+
+}
+
+/**
+
+* This method handles to get all Qualification 
+
+**/
+function get_qualification_all(){
+
+     $CI =& get_instance();
+
+     $CI->load->model('Services_model');
+
+     $data   = $CI->Services_model->get_qualification_all();
+
+     $qualification = ($data) ? $data['data'] : '';
+
+     $qualification_data[null] = 'Select Qualification';
+
+    if($qualification){
+
+        foreach ($qualification as $key => $value) {
+
+            $qualification_data[$value->id] = $value->name;
+
+        }
+
+    }
+
+    $qualification_data = $qualification_data;
+
+    return $qualification_data;
+
+}
+
+/**
+* This method handles to get lat and lng
+**/
+function get_google_map_address($address){
+
+    $address = urlencode($address);
+    
+    // google map geocode api url
+    $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+ 
+    // get the json response
+    $resp_json = file_get_contents($url);
+     
+    // decode the json
+    $resp = json_decode($resp_json, true);
+    
+    if($resp['status']=='OK'){
+
+    // get the important data
+    $data['lati'] = $resp['results'][0]['geometry']['location']['lat'];
+
+    $data['longi'] = $resp['results'][0]['geometry']['location']['lng'];
+
+    $data['formatted_address'] = $resp['results'][0]['formatted_address'];
+
+    return $data;
+
+    }
+
 }
 
 

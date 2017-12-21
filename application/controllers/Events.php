@@ -16,7 +16,7 @@ class Events extends Admin_Controller {
 	{
 		
 		$this->load->library('pagination');
-		$limit = 3;	
+		$limit = 20;	
 		$config['base_url'] = base_url()."events/index/";
 		$config['per_page'] = $limit;
 		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
@@ -38,10 +38,46 @@ class Events extends Admin_Controller {
 	public function details($id='')
 	{	
 		
+	$this->data['events'] = $this->events_model->get_events_by_id($id);
 		
-		$this->data['events'] = $this->events_model->get_events_by_id($id);
-		
-		$this->layout->view('frontend/events/detail',$this->data);
+	$address = $this->data['events']['location']; // Google HQ
+
+
+	$location = get_google_map_address($address);
+
+	
+
+	/* $this->data['lati']= $location['lati'];
+
+	$this->data['longi']= $location['longi']; 
+
+	$this->data['formatted_address'] = $location['formatted_address'];*/
+
+    $address = urlencode($address);
+    
+    // google map geocode api url
+    $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+ 
+    // get the json response
+    $resp_json = file_get_contents($url);
+     
+    // decode the json
+    $resp = json_decode($resp_json, true);
+ 	
+    if($resp['status']=='OK'){
+
+    // get the important data
+    $this->data['lati'] = $resp['results'][0]['geometry']['location']['lat'];
+
+    $this->data['longi'] = $resp['results'][0]['geometry']['location']['lng'];
+
+    $this->data['formatted_address'] = $resp['results'][0]['formatted_address'];
+
+    } 
+
+
+    $this->layout->view('frontend/events/detail',$this->data);
+
 	}
 
 }

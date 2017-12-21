@@ -1,8 +1,10 @@
 (function($){
   
+   
   $(function(){
-  	
-  	console.log('Hi, My name is console :)');
+    
+    console.log('Hi, My name is console :)');
+
 
     // Home Nav Button
     $('.button-collapse').sideNav();
@@ -19,10 +21,17 @@
 	
 	$('ul.tabs').tabs('select_tab', 'tab_id');
 
+  // $(selector).nextStep();
+
     // Feed wrap eQual Height
     $('.feed-wrap .feed-e-height').matchHeight();
     $('.top-footer .feed-e-height').matchHeight();
-	$('.c-info .e-height').matchHeight();
+	  $('.c-info .e-height').matchHeight();
+
+    // Step Form
+     $('.toc-wrapper').pushpin({ top: $('.toc-wrapper').offset().top, offset: 77 });
+     $('.scrollspy').scrollSpy();
+     $('.stepper').activateStepper();
 
  //    $('.variable-width').slick({
 	//   dots: true,

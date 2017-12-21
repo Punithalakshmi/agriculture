@@ -8,6 +8,8 @@ class  Services_model extends App_model
   {
     parent::__construct();
     $this->_table = 'bio_seller';
+    $this->_experience = 'experience';
+    $this->_qualification = 'qualification';
   }
   
   function listing()
@@ -83,6 +85,40 @@ class  Services_model extends App_model
        
             return $result;
 
+    }
+
+    /**
+    * This method handles to retrive all experience
+    **/
+    function get_experience_all($field='', $order_by=''){
+        $table_name =  $this->_experience;
+        $this->db->select('*')
+                    ->from($table_name);
+                   
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return['data'] = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
+
+      /**
+    * This method handles to retrive all qualification
+    **/
+    function get_qualification_all($field='', $order_by=''){
+        $table_name =  $this->_qualification;
+        $this->db->select('*')
+                    ->from($table_name);
+                   
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return['data'] = $data->result();
+            return $return;
+        }else{
+            return $return;
+        }
     }
 
 }

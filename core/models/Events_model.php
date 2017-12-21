@@ -12,10 +12,15 @@ class Events_model extends App_model
   
   function listing()
   {  
-    
+
+    $admin_data = get_user_type();
+
     $this->_fields = "*";
     $this->db->group_by('id');
-
+    if($admin_data["role"]==2) 
+      { 
+        $this->db->where('seller_id',$admin_data["id"]); 
+      }
     foreach ($this->criteria as $key => $value)
     {
       if( !is_array($value) && strcmp($value, '') === 0 )

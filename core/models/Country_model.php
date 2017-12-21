@@ -33,7 +33,7 @@ class Country_model extends App_model
         $table_name =  $this->_table;
         $this->db->select('*')
                     ->from($table_name)
-                    ->order_by($field, $order_by);;
+                    ->order_by($field, $order_by);
         $data = $this->db->get();
         if(!empty($data)){
             $return['data'] = $data->result();

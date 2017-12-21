@@ -16,11 +16,14 @@
 $root = (empty($_SERVER['HTTPS'])?'http://':'https://');
 
 $host = $_SERVER['HTTP_HOST'];
+
 if($_SERVER['HTTP_HOST']=='localhost')
+
 	$host = 'localhost/agriculture';
 
 
 $config['base_url']	= $root.$host."/admin/";
+
 
 $config['base_path'] = $root.$host;
  

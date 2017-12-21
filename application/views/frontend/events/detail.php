@@ -1,3 +1,5 @@
+
+
   <!-- breadcrumb -->
             <nav>
                 <div class="nav-wrapper green">
@@ -44,7 +46,7 @@
                                     ?>
 
                                   <p class="collection-item">
-                                      <i class="material-icons dp48">today</i> <b>From</b>: <?=date("l, M j", strtotime($events['from_date']))?><br /><b>To</b>:  <?=date("l, M j", strtotime($events['to_date']))?> <br />
+                                      <i class="material-icons dp48">today</i> <b>From</b>: <?=date("l, M j", strtotime($events['from_date']))?>, <?=date('h:i A',strtotime($events['start_time'])) ?><br /><b>To</b>:  <?=date("l, M j", strtotime($events['to_date']))?>, <?=date('h:i A',strtotime($events['end_time'])) ?> <br />
 
                                       <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=urlencode($events['title'])?>&dates=<?=$from_date;?>/<?=$to_date;?>&details=<?=urlencode($events['description'])?>&location=<?=$events['location']?>&sf=true&output=xml" target="_blank">Add to calendar</a>
 
@@ -83,17 +85,33 @@
             
             <!-- Content Area -->
 
-<script>
+<script type="text/javascript">
 
-function myMap() {
-  
-  var myCenter = new google.maps.LatLng(51.508742,-0.120850);
-  var mapCanvas = document.getElementById("googleMap");
-  var mapOptions = {center: myCenter, zoom: 5};
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker = new google.maps.Marker({position:myCenter});
-  marker.setMap(map);
-}
+   function init_map() {
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM0nAZg20zzOQd45MF2qXe_H0j0QRWMlE&callback=myMap"></script>
+            var myOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng( <?=$lati;?>, <?php echo $longi; ?>),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+            marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(<?php echo $lati; ?>, <?php echo $longi; ?>)
+            });
+            infowindow = new google.maps.InfoWindow({
+                content: "<?php echo $formatted_address; ?>"
+            });
+            google.maps.event.addListener(marker, "click", function () {
+                infowindow.open(map, marker);
+            });
+            infowindow.open(map, marker);
+        }
+
+        google.maps.event.addDomListener(window, 'load', init_map);
+
+
+ </script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM0nAZg20zzOQd45MF2qXe_H0j0QRWMlE&callback=init_map"></script>

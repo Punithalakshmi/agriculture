@@ -17,6 +17,7 @@ class Registration extends Admin_Controller {
         $this->load->model('seller_model');
         $this->load->model('country_model');
         $this->load->model('state_model');
+        $this->load->model('services_model');
         $this->data['plans'] = array();
         $this->data['plans'] = '';
 		
@@ -24,6 +25,14 @@ class Registration extends Admin_Controller {
 
     public function index()
     {
+
+          
+          $this->layout->add_javascripts(array('jquery.validate'));
+
+          $this->layout->add_javascripts(array('materialize-stepper.min'));
+          
+          $this->layout->add_stylesheets(array('materialize-stepper.min'));
+          //$this->layout->add_stylesheets(array('materialize-stepper.min));
           
           $this->data['plans'] = get_plans_all();
 
@@ -35,24 +44,8 @@ class Registration extends Admin_Controller {
     */
     public function createnew_account(){
 
-          
-          $this->form_validation->set_rules('first_name','First Name','trim|required');
-          $this->form_validation->set_rules('last_name','Last Name','trim|required');
-          
-          $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[seller.email]');
-         
-          $this->form_validation->set_rules('address','Address','trim|required');
-          
-          $this->form_validation->set_rules('city','City','trim|required');
-
-          $this->form_validation->set_rules('zip', 'Zib','trim|max_length[8]|integer', ['integer'=>'Invalid ZIP']);
-          $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10}$/]');   
-          
-          $this->form_validation->set_rules('password','Password','trim|required');  
             
-          $this->form_validation->set_error_delimiters('', '');
-
-          if($this->form_validation->run()){
+            if($this->input->post('plans')){
 
               $ins_data = array();
               $ins_data['first_name']              = $this->input->post('first_name');
@@ -74,16 +67,33 @@ class Registration extends Admin_Controller {
               $ins_data['created_on'] = date('Y-m-d H:i:s');
               
               $new_id                   = $this->seller_model->insert($ins_data); 
-             
+             }
 
-              $this->session->set_flashdata('success_msg', 'Registration completed successfully');
+             if($this->input->post('company_name')){
 
-              redirect('login'); 
-          }
+              $seller_id = $new_id;
 
-          $this->data['plans'] = get_plans_all();
-          
-          $this->layout->view('frontend/registration/signup',$this->data);
+              $ins_data = array();
+              $ins_data['company_name']          = $this->input->post('company_name');
+              $ins_data['website']               = $this->input->post('website');
+              $ins_data['description']           = $this->input->post('description'); 
+              $ins_data['experience_type']         = $this->input->post('experience_type');
+              $ins_data['experience_id']         = $this->input->post('experience_id');
+              $ins_data['primary_service_category']           = $this->input->post('primary_service_category');
+              $ins_data['other_related_category']           = $this->input->post('other_related_category');
+              $ins_data['qualification_id']           = $this->input->post('qualification_id'); 
+              $ins_data['seller_id']             = $seller_id;
+
+              
+
+               $ins_data['created_on'] = date('Y-m-d H:i:s');
+               $new_id                   = $this->services_model->insert($ins_data);
+
+               $this->session->set_flashdata('success_msg', 'Registration completed successfully');
+               redirect('login');  
+            }
+
+          $this->layout->view('frontend/registration/signup');
 
          }
         

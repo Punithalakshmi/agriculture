@@ -211,9 +211,13 @@ class Seller extends Admin_Controller
           
           if($this->input->post('seller_id'))
 
-            $edit_id = $this->input->post('seller_id');
+        $edit_id = $this->input->post('seller_id');
             
-        $this->form_validation->set_rules('company_name','Company Name','trim|required');
+        $this->form_validation->set_rules('company_name','Business Name','trim|required');
+
+        $this->form_validation->set_rules('experience_id','Work Experience','trim|required');
+
+        $this->form_validation->set_rules('primary_service_category','Primary service category','trim|required');
 
           //$this->form_validation->set_rules('website', 'URL', 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
 
@@ -230,6 +234,11 @@ class Seller extends Admin_Controller
               $ins_data['company_name']          = $this->input->post('company_name');
               $ins_data['website']               = $this->input->post('website');
               $ins_data['description']           = $this->input->post('description'); 
+              $ins_data['experience_type']         = $this->input->post('experience_type');
+              $ins_data['experience_id']         = $this->input->post('experience_id');
+              $ins_data['primary_service_category']           = $this->input->post('primary_service_category');
+              $ins_data['other_related_category']           = $this->input->post('other_related_category');
+              $ins_data['qualification_id']           = $this->input->post('qualification_id'); 
               $ins_data['seller_id']             = $this->input->post('seller_id');
 
 

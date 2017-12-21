@@ -162,6 +162,7 @@ function tab_view(id,url,formid='')
 {
 
    var sell_id = ($("input[name='seller_id']").val())?$("input[name='seller_id']").val():0;
+   
    var form_data = $("#"+formid).serializeArray();
    
    var formData = new FormData();
