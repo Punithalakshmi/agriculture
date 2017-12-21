@@ -10,11 +10,13 @@ class Home extends Admin_Controller {
 	{
 		 parent::__construct();
    		$this->load->model('services_product_model');
+      $this->load->model('news_model');
 	}
 
 	public function index()
 	{
 		$this->data["editdata"] =$this->services_product_model->get_services();
+    $this->data['newsdata'] =  $this->news_model->get_news();
 		$this->layout->view('frontend/home/index',$this->data);
 	}
 	public function contact()
