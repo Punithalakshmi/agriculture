@@ -192,20 +192,28 @@
                 <div class="row">
                   <div class="col m6 s12 whats-new-wrap feed-e-height">
                       <h3 class="custom-title no-decoration whats-new-icon">What’s <span>New</span></h3>
+                     
                       <ul>
+                        
+                      <?php if($newsdata) {?>
+                       <?php  foreach($newsdata as $news):?>
                           <li>
-                            <a href="#">How Long Do You Stay with a Struggling Employer?</a>
-                            <p>Tuesday, February 28, 2017 </p>
-                          </li>
-                           <li>
-                            <a href="#">VIDEO: Acing Today's Interview</a>
-                            <p>Tuesday, October 25, 2016 </p>
-                          </li>
-                           <li>
-                            <a href="#">Questions to Avoid Asking in an Interview</a>
-                            <p>Tuesday, October 25, 2016 </p>
-                          </li>
+                           
+                            <a href="<?=base_url()?>news/details/<?=$news['id'];?>"><?=$news['title']?></a>
+                            <p><?=date("l, F j, Y", strtotime($news['created_on']))?></p>
+
+                        <?php endforeach;?>
+                          <?php 
+                            }
+                            else
+                            {
+                                echo "<h1 style='text-align:center;'>No Records Found.</h1>";
+                            }
+                            ?>
+                        </li>
+                        
                       </ul>
+                      
                   </div>
                   <div class="col m6 s12 events-wrap feed-e-height">
                       <h3 class="custom-title no-decoration events-icon"><span>Events</span></h3>
