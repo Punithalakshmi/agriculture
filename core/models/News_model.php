@@ -61,5 +61,35 @@ class  News_model extends App_model
         return $return;
     }
 
+    /**
+     * This method handles to retrieve all news
+     * */
+  public function get_news()
+   {
+       $this->db->select("*"); 
+       $this->db->from("news");
+       $this->db->limit(3);
+       $this->db->order_by("id","desc");
+     return $this->db->get()->result_array();
+   }
+
+   /**
+     * This method handles to retrieve a news detail by Id
+     * */
+    function get_news_by_id($id) {
+
+        $table_name =  $this->_table;
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('id' => (int) $id));
+        
+        if (!empty($result)) {
+            $return = $result->row_array();
+        }
+
+        return $return;
+    }
+
+
 }
 ?>
