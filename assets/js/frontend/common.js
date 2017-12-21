@@ -1,89 +1,4 @@
 
-
-$(document).ready(function() {
-
-  $("#next").click(function(){
-
-    var output = validate();
-      
-    if(output) {
-
-      var current = $(".step active");
-
-      var next = $(".step active").next("li");
-
-      if(next.length>0) {
-        $("#"+current.attr("id")+"-field").hide();
-        $("#"+next.attr("id")+"-field").show();
-        $("#back").show();
-        $("#finish").hide();
-        $(".active").removeClass("active");
-        next.addClass("active");
-        if($(".active").attr("id") == $("li").last().attr("id")) {
-          $("#next").hide();
-          $("#finish").show();        
-        }
-      }
-    }
-
-  });
-  $("#back").click(function(){ 
-    var current = $(".active");
-    var prev = $(".active").prev("li");
-    if(prev.length>0) {
-      $("#"+current.attr("id")+"-field").hide();
-      $("#"+prev.attr("id")+"-field").show();
-      $("#next").show();
-      $("#finish").hide();
-      $(".active").removeClass("active");
-      prev.addClass("active");
-      if($(".active").attr("id") == $("li").first().attr("id")) {
-        $("#back").hide();      
-      }
-    }
-  });
-});
-
-
-function validate() {
-
-var output = true;
-
-$(".signup-error").html('');
-
-if($("#personal-field").css('display') != 'none') {
-
-  if(!($("#name").val())) {
-    output = false;
-    $("#name-error").html("Name required!");
-  }
-  if(!($("#email").val())) {
-    output = false;
-    $("#email-error").html("Email required!");
-  } 
-  if(!$("#email").val().match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
-    $("#email-error").html("Invalid Email!");
-    output = false;
-  }
-}
-
-if($("#password-field").css('display') != 'none') {
-  if(!($("#user-password").val())) {
-    output = false;
-    $("#password-error").html("Password required!");
-  } 
-  if(!($("#confirm-password").val())) {
-    output = false;
-    $("#confirm-password-error").html("Confirm password required!");
-  } 
-  if($("#user-password").val() != $("#confirm-password").val()) {
-    output = false;
-    $("#confirm-password-error").html("Password not matched!");
-  } 
-}
-return output;
-}
-
 dropzone();
 
 function dropzone()
@@ -140,8 +55,7 @@ function deleteimage(image_id){
 
 function tab_view(url,formid='')
 {
-
-
+  
    var sell_id = ($("input[name='seller_id']").val())?$("input[name='seller_id']").val():0;
    
    var form_data = $("#"+formid).serializeArray();
@@ -167,7 +81,7 @@ function tab_view(url,formid='')
 
           console.log(data);    
 
-          /*$("input[name='seller_id']").val(data.edit_id);
+          $("input[name='seller_id']").val(data.edit_id);
           
           $selid = $("input[name='seller_id']").val();
 
@@ -175,7 +89,7 @@ function tab_view(url,formid='')
             $("#"+id).html(data.output);
           }
           else
-           alerttab(id);*/
+           alerttab(id);
 
           if(data.msg)
             alert(data.msg);
