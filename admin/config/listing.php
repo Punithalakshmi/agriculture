@@ -191,4 +191,24 @@ $config['subscription_index'] = array(
 );
 
 
+$config['news_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/news/filter',
+	"base_url"	=> 	'/news/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+
+						'author'=>array('name'=>'Author', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						
+						'created_on'=>array('name'=>'Created Date', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
+
+
 ?>
