@@ -1,5 +1,4 @@
 
-dropzone();
 
 function dropzone()
 {
@@ -115,25 +114,22 @@ function alerttab(id)
    
 }
 
-
 $(document).ready(function(){
-    $('button').click(function(){
+    $("#search_form").submit(function(){
       var f1 = $('#category').val();
       var f2 = $('#location').val();
       var f3 = $('#keyword').val();
-
-      //var search_value = [f1, f2, f3];
-
-   if( f1== '' &&  f2== '' && f3 == '')
-   {
-     return false;    
-   }
-   else
-   {
-      return true;
-   }
-  
-   
+        if( f1== '' &&  f2== '' && f3 == '')
+          return false;    
+        else
+           return true;
     });
-
+     $("#form_search").submit(function(){
+      var s2 = $('#location').val();
+      var s3 = $('#keyword').val();
+        if(s2== '' && s3 == '')
+          return false;    
+        else
+           return true;
+    });
 });

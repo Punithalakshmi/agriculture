@@ -6,19 +6,19 @@
                     <div class="search-container">
                     
                         <div class="row center home-search">
-                            <form class="col s12">
+                            <form id="form_search" class="col s12" action="<?=site_url('services/show_search');?>" method="post">
                                 <div class="col l6 s12">
-                                  <input type="search" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="Enter Location" placeholder="Enter Location" aria-label="Search through site content">
+                                  <input name="location" id="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
                                 </div>
 
                                 <div class="col l6 s12">
-                                  <input type="search" onfocus="if(this.value == 'Enter Keyword') { this.value = ''; }" value="Enter Keyword" placeholder="Enter Keyword" />
+                                  <input name="keyword" id="keyword" onfocus="if(this.value == 'Enter Keyword') { this.value = ''; }" value="" placeholder="Enter Keyword" type="search">
                                 </div>
 
                                 <!-- <div class=" col l3 s12">
                                     <input type="submit" class="btn-large waves-effect waves-light lgreen lighten-1" value="Search">
                                 </div> -->
-                            </form>
+                           
                         </div>
 
                         <div class="row center">
@@ -26,10 +26,7 @@
 
                             <button class="btn-large waves-effect waves-light lgreen lighten-1 search-btn">Search</button>
                         </div>
-
-                       
-
-                    <!-- <br><br> -->
+                           </form>
 
                     </div>
                 </div>
@@ -78,7 +75,7 @@
                 </script>
 
                 <div class="row center">
-                  <a href="#" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
+                  <a href="<?=site_url('services')?>" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
                     More Farmers</a>
                 </div>
             </div>
@@ -95,7 +92,7 @@
 
 
                             <div class="row center">
-                              <a href="#" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
+                              <a href="<?=site_url('home/about')?>" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
                                 More About</a>
                             </div>
                         </div>

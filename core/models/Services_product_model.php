@@ -45,11 +45,13 @@ class  Services_product_model extends App_model
   }
    
    public function get_services()
-  {
-      $this->db->select("*"); 
-      $this->db->from("services");
-    return $this->db->get()->result_array();
-  }
+   {
+       $this->db->select("*"); 
+       $this->db->from("services");
+       $this->db->limit(5);
+       $this->db->order_by("id","desc");
+     return $this->db->get()->result_array();
+   }
 
    public function unique($id='')
    {
@@ -61,27 +63,31 @@ class  Services_product_model extends App_model
 
    }
 
-   public function filter_search($limit='',$start='',$filter)
+   public function filter_search($limit='',$start='',$filter=array())
    {
-
+    
+    
     $this->db->select('SQL_CALC_FOUND_ROWS a.*,b.id as seller,b.phone',FALSE); 
     $this->db->from('services a');
     $this->db->join("seller b","a.seller_id=b.id");   
 
-    if($filter["category"]!='') 
-     $this->db->where('category_id',$filter["category"]);
+    if(isset($filter["category"]) && $filter["category"]!='')
+    {
+      $this->db->where('category_id',$filter["category"]);      
+    } 
 
     $like = false;
     
-    if($filter['keyword']!=''){        
-      $this->db->like("a.title",$filter['keyword']);
-      $like = true;
-     } 
+    if(isset($filter["keyword"]) && $filter['keyword']!='')
+    {        
+       $this->db->like("a.title",$filter['keyword']);
+       $like = true;
+    } 
     
 
-    if($filter["location"]!='')
+    if(isset($filter["location"]) && $filter["location"]!='')
     { 
-        $this->db->join("state s","s.id=b.state_id");  
+        $this->db->join("states s","s.id=b.state_id");  
 
         if($like)
           $this->db->or_like("b.city",$filter['location']);
@@ -93,11 +99,11 @@ class  Services_product_model extends App_model
     }
           
    $this->db->limit($limit, $start);
+
    $data = $this->db->get()->result_array();
-
    $count = $this->db->query("select FOUND_ROWS() as count")->row()->count;
-
    return array('data'=>$data,'count'=>$count);
+   
    }
 
 }

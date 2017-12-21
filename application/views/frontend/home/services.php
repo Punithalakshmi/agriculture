@@ -1,4 +1,4 @@
-
+            <?php //$this->session->unset_userdata('var_search_term');?>
             <!-- breadcrumb -->
             <nav>
                 <div class="nav-wrapper green">
@@ -13,15 +13,24 @@
             <!-- Content Area -->
             <div class="interior-wrap inner-page-search">
                 <div class="interior-container">
+                <?php if(isset($_SESSION["var_search_term"]) && !empty($_SESSION["var_search_term"]))
+                {  
+                    $category = $_SESSION["var_search_term"]["category"]?$_SESSION["var_search_term"]["category"]:''; 
+                }
+                else
+                {
+                  $category ='';
+                }
 
+                ?>
                   <!-- Product Filter -->
                     <div class="filter-search teal lighten-5 cf">
                         <div class="container">
-                            <form class="col s12 white filter-sec" action="services" method="post" >
+                            <form class="col s12 white filter-sec" id="search_form"  action="<?=site_url('services/show_search');?>" method="post" >
                                 <div class="row">
                                     <div class="col m3 s12">
                                         <div class="input-field col s12">
-                                        <?php echo form_dropdown(array('name' => 'category', 'id' => 'category','class'=>'categories'), array('' => 'Select Category')+categories(), set_value('category'));?>
+                                        <?php echo form_dropdown(array('name' => 'category', 'id' => 'category','class'=>'categories'), array('' => 'Select Category')+categories(), set_value('category', $category));?>
                                         <!--<label><b>Filter Option</b></label>-->
                                       </div>
                                     </div>
@@ -53,7 +62,8 @@
                                 <div class="row center">
                             <!-- <input type="submit" class="btn-large waves-effect waves-light lgreen lighten-1 search-btn" value="Search"> -->
 
-                            <button class="btn-large waves-effect waves-light lgreen lighten-1 search-btn">Search</button>
+                            <button id="btns" class="btn-large waves-effect waves-light lgreen lighten-1 search-btn">Search</button>
+                            <a href="<?=site_url('services/clear_records')?>" class="btn-large waves-effect waves-light red lighten-1 search-btn">Clear</a>
                         </div>
                             </form>
                         </div>

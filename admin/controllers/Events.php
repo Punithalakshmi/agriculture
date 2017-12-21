@@ -42,22 +42,40 @@ class Events extends Admin_controller
 
     public function add($edit_id='')
     {	
+        $admin_data = get_user_type();
+       
+        $s_id ='';
+        $seller_id = '';
+        $seller_name ='';
+        
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));  
         $this->layout->add_javascripts(array('function')); 
-        
+        $this->layout->add_javascripts('bootstrap-timepicker.min');
+        $this->layout->add_stylesheets('bootstrap-timepicker');
+
         if(isset($_FILES["event_image"]["name"])&& $_FILES["event_image"]["size"]>0)
         {
           $this->form_validation->set_rules('event_image','Events image','trim|callback_do_upload');
         }
   		try
   		{
-  			
+  			if($admin_data["role"]==1)
+          {
+             $s_id = $admin_data["id"];
+
+          }else{
+
+             $seller_id = $admin_data["id"];
+             $seller_name = $admin_data["first_name"];
+          }
         $this->form_validation->set_rules('title','Title','trim|required');
   			$this->form_validation->set_rules('description','Description','trim|required|min_length[15]');
   			$this->form_validation->set_rules('location','Location','trim|required');
   			$this->form_validation->set_rules('from_date','From date','trim|required');
   			$this->form_validation->set_rules('to_date','To date','trim|required');
+        $this->form_validation->set_rules('start_time','Start Time','trim|required');
+        $this->form_validation->set_rules('end_time','End Time','trim|required');
   			$this->form_validation->set_rules('status','Status','trim|required');
 
   			$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
@@ -69,6 +87,8 @@ class Events extends Admin_controller
   				$ins_data["location"] = $form["location"];
   				$ins_data["from_date"]= $form["from_date"];
   				$ins_data["to_date"]  = $form["to_date"];
+          $ins_data["start_time"]= $form["start_time"];
+          $ins_data["end_time"]  = $form["end_time"];
   				$ins_data["description"] = $form["description"];
   				$ins_data["status"] = $form["status"];
           
@@ -106,14 +126,16 @@ class Events extends Admin_controller
   			$this->data["status"] = "error";
   			$msg  = $e->getMessage();
   		}
-
+          $this->data['seller_name']         = $seller_name;
+          $this->data['sell_id']             = $seller_id;
+          $this->data['s_id']                = $s_id;
   			if($edit_id)
   			{  
   				$this->data["editdata"] = $this->events_model->get_where(array("id"=> $edit_id))->row_array();
   			}
   			else
   			{ 
-  				$this->data["editdata"] = array("title"=>"","location"=>"","from_date"=>"","to_date"=>"","description"=>"", "status"=>"","image"=>"");
+  				$this->data["editdata"] = array("title"=>"","seller_id"=>"","location"=>"","from_date"=>"","to_date"=>"","description"=>"", "status"=>"", "start_time"=>"", "end_time"=>"","image"=>"");
   			}
   			$this->layout->view('frontend/events/add',$this->data);
     }

@@ -4,8 +4,8 @@
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#!" class="breadcrumb">Contact Us</a>
+                        <a href="<?=site_url('home')?>" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=site_url('home/contact')?>" class="breadcrumb">Contact Us</a>
                       </div>
                   </div>
                 </div>
@@ -31,24 +31,24 @@
                 <div class="">
                 <div class="rte">
                 </div>
-                    <form method="post" action="/contact#contact_form" id="contact_form" class="contact-form" accept-charset="UTF-8"><input value="contact" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
+                    <form method="post" action="<?=site_url('home/contact')?>" id="contact_form" class="contact-form" accept-charset="UTF-8"><input value="contact" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
                     <div class="input-field">
-                    <label for="ContactFormName" class="">Name</label>
-                    <input name="contact[name]" id="ContactFormName" value="" type="text">
+                    <label for="ContactFormName " class="">Name</label>
+                       <?php echo form_input(['name' => 'contact_name', 'id' => 'first_name', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('contact_name')]); ?> <?php echo form_error('contact_name', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                     </div>
                     <div class="input-field">
                     <label for="ContactFormEmail" class="">Email</label>
-                    <input name="contact[email]" id="ContactFormEmail" value="" spellcheck="false" autocomplete="off" autocapitalize="off" type="email">
+                        <?php echo form_input(['name' => 'email', 'id' => 'email', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('email')]); ?> <?php echo form_error('email', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                     </div>
                     
                     <div class="input-field">
                     <label for="ContactFormPhone">Phone Number</label>
-                    <input name="contact[phone]" id="ContactFormPhone" value="" pattern="[0-9\-]*" type="tel">
+                    <?php echo form_input(['name' => 'phone', 'id' => 'phone', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('phone')]); ?> <?php echo form_error('phone', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                     </div>
                     
                     <div class="input-field">
                     <label for="ContactFormMessage">Message</label>
-                    <textarea class="materialize-textarea" rows="10" name="contact[body]" id="ContactFormMessage"></textarea>
+                        <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('message')]); ?> <?php echo form_error('message', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                     </div>
                     <input class="btn" value="Send" type="submit">
                     </form>

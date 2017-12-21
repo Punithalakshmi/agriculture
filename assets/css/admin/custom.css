@@ -103,3 +103,9 @@ cursor: pointer;
 .seller-img span i {
     color: #fff;
 }
+#locations
+{
+  margin: 0px 0.75px 0px 0px;
+  width: 376px;
+  height: 124px;
+}

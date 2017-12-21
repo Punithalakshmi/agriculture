@@ -57,18 +57,5 @@ class Category_model extends App_model
       $result = $this->db->get()->result_array();
       return $result;
     }
-
-     /*function get_category_name($id)
-    {
-
-      $this->db->select('*');
-      $this->db->from('category');
-      $this->db->where('id',$id);
-      
-      $result = $this->db->get()->row_array();
-      //print_r($result); exit;
-      return $result['name'];
-    }*/
-
 }
 ?>

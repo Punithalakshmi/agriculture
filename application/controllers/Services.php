@@ -8,26 +8,26 @@ class Services extends Admin_Controller {
 
 	function __construct()
 	{
-		 parent::__construct();
+		parent::__construct();
    		$this->load->model('services_product_model');
    		$this->load->model('category_model');
 	}
 
-	public function index($id='')
+	public function index()
 	{	
+		if ( $this->session->userdata('var_search_term'))
+		{
+             $search_term=$this->session->userdata('var_search_term'); 
+        }
+        else
+        {
+              $search_term ='';
+        }
 		$this->load->library('pagination');
 		$limit = 5;
-		
 		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
-
-		$search['category'] = $this->input->post('category');
-       	$search['location'] = $this->input->post('location');
-       	$search['keyword'] = $this->input->post('keyword');
+		$retdata= $this->services_product_model->filter_search($limit,$start,$search_term);
 		
-		$retdata= $this->services_product_model->filter_search($limit,$start,$search);
-		
-		$this->data['editdata'] = $retdata['data'];
-
 		$config['base_url'] = base_url()."services/index/";
 		$config['per_page'] = $limit;
 		$config['total_rows'] = $retdata['count'];
@@ -39,12 +39,29 @@ class Services extends Admin_Controller {
         $config['num_tag_close'] = '</li>';
         $config['next_tag_open'] = '<li class="waves-effect">';
         $config['next_tag_close'] = '</li>';
+		
 		$this->pagination->initialize($config);
-
-	   	
+	   	$this->data['editdata'] = $retdata['data'];
 		$this->data['links'] = $this->pagination->create_links();
 		$this->data["category"] = $this->category_model->get_category();
 		$this->layout->view('frontend/home/services',$this->data);
+	}
+
+	function show_search($id='')
+	{ 	
+		$search_term = array();
+       if (empty($_POST))
+       {
+         $search_term['category'] = $id;
+       }
+       else
+       {  
+           	$search_term['category'] = $this->input->post('category');
+   			$search_term['location'] = $this->input->post('location');
+			$search_term['keyword']  =  $this->input->post('keyword');
+       }
+       $this->session->set_userdata('var_search_term', $search_term);
+       redirect('services/index');
 	}
 	
 	public function details($id='')
@@ -53,6 +70,12 @@ class Services extends Admin_Controller {
 		$category_id = $this->data["service_row"]["category_id"];
 		$this->data["related_product"] = related_category($category_id);
 		$this->layout->view('frontend/home/detail',$this->data);
+	}
+
+	 public function clear_records()
+	{
+		$this->session->unset_userdata('var_search_term');
+		redirect('services');
 	}
 
 }

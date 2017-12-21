@@ -25,7 +25,7 @@ $('#country_id').change(function() {
       autoclose: true,
     }).on('changeDate', function (selected) {
         var startDate = new Date(selected.date.valueOf());
-        $('#to_date').datepicker('setStartDate', "12/12/1994");
+        $('#to_date').datepicker('setStartDate',startDate);
     }).on('clearDate', function (selected) {
     $('#to_date').datepicker('setStartDate', null);
 });
@@ -277,3 +277,17 @@ function deleteimage(image_id){
       }
 }
 
+$(document).ready(function(){
+  $('#start_time').timepicker({
+    template:false,
+    defaultTime:'00:00',
+    showMeridian:false
+    
+ });
+ $('#end_time').timepicker({
+  template:false,
+  defaultTime:'00:00',
+  showMeridian:false
+
+ });
+})

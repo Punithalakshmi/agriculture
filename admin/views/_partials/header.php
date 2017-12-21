@@ -79,7 +79,7 @@
 
         foreach($menu as $k => $row): 
 
-          if( $usertype["role"] == 2 && ($row['link'] =='seller/add' || $row['link'] =='services_product')): ?>
+          if( $usertype["role"] == 2 && ($row['link'] =='seller/add' || $row['link'] =='services_product'|| $row['link'] =='events')): ?>
 
               <li class="start <?=($uri==$row['link'])?'active':'';?>">
                 <a href="<?=site_url($row['link']);?>">

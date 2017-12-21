@@ -18,24 +18,17 @@
     </head>
         <body>
           <?php $user_data = get_user_type();
-               
+             $category = categories1();   
           ?>
             <nav class="white home-nav" role="navigation">
                 <div class="nav-wrapper container">
                     <!-- Dropdown Structure -->
                     <ul id="dropdown1" class="dropdown-content">
                       <li><a href="<?=base_url();?>services">Services</a></li>
-                      <li><a href="#!">Properties</a></li>
+                      <?php foreach ($category as $key => $value): ?>
+                      <li><a href="<?=site_url('services/show_search');?>/<?=$value["id"]?>"><?=$value["name"]?></a></li>
                       <li class="divider"></li>
-                      <li><a href="#!">Finance &amp; Loans</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#!">Equipment</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#!">Weather</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#!">Forum</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#!">Resources</a></li>
+                    <?php endforeach;?>
                     </ul>
 
 

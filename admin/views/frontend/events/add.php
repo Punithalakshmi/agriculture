@@ -35,13 +35,13 @@
                               </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('location'))?'has-error':'';?>">
-                              <label class="control-label col-md-3">Event Location<span class="required">*</span></label>
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" name="location" id="location" placeholder="Event location" value="<?php echo set_value('location',$editdata['location']);?>">
-                                <?php echo form_error("location"); ?>
-                              </div>
+                            <label class="control-label col-md-3">Location<span class="required">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="jqte-test form-control" name="location" id="locations"><?php echo set_value('location',$editdata['location']);?></textarea>
+                              <?php echo form_error('location'); ?>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -67,6 +67,29 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
+                          <div class="form-group <?php echo (form_error('start_time'))?'has-error':'';?>">
+                              <label class="control-label col-md-3">Start Time<span class="required">*</span>  </label>
+                              <div class="col-md-9">
+                                <input type="text" autocomplete="off" class="form-control"  name="start_time" id="start_time" placeholder="hh:mm:ss 24hours"  value="<?php echo set_value('start_time',$editdata['start_time']);?>">
+                                <?php echo form_error("start_time"); ?>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group <?php echo (form_error('end_time'))?'has-error':'';?>">
+                              <label class="control-label col-md-3">End Time<span class="required">*</span></label>
+                              <div class="col-md-9">
+                                <input type="text" autocomplete="off" class="form-control" name="end_time" id="end_time" placeholder="hh:mm:ss 24hours" value="<?php echo set_value('end_time',$editdata['end_time']);?>">
+                                <?php echo form_error("end_time"); ?>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Description<span class="required">*</span></label>
                             <div class="col-md-9">
@@ -74,7 +97,18 @@
                               <?php echo form_error('description'); ?>
                             </div>
                           </div>
-                        </div>  
+                        </div> 
+                         <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Seller</label>
+                              <div class="col-md-9">
+                                <?php if($s_id){ ?>
+                               <?php echo form_dropdown(array('name' => 'seller_id', 'tabindex' => '1','class' => 'form-control', 'id' => 'seller_id'), array('' => 'Select Seller')+get_seller(), set_value('seller_id',$editdata['seller_id']));?> 
+                               <?php } else { echo $seller_name; } ?>
+                               <input type="hidden" name="seller_id" value="<?php echo $sell_id ?>">
+                              </div>
+                            </div>
+                          </div> 
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('event_image'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Events Image(maximum size 2MB)</span></label>
@@ -88,7 +122,7 @@
                               <?php echo form_error('event_image'); ?>
                           </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>
                             <div class="col-md-9 radio-btn">
@@ -99,6 +133,7 @@
                           </div>
                         </div>                                 
                       </div>
+
                       <!--row-->                                            
                     </div>
                     <div class="form-actions">
