@@ -884,7 +884,11 @@ cursor: pointer;
 .add__right {
  display: none;
 }
-
+@media(max-width: 1109px){
+.add__left,
+ .add__right,
+ .add_vertical{display: none!important;}
+}
 @media only screen and (min-width : 768px) {
  .add__left,
  .add__right,
@@ -894,7 +898,7 @@ cursor: pointer;
 
  .add__left,
  .add__right {
-  position: absolute;
+  position: fixed;
   top: 150px;
   display: block;
  }
@@ -914,7 +918,7 @@ cursor: pointer;
 #left_ads,
 #right_ads
  {
-  margin: 80px auto;
+  /*margin: 80px auto;*/
  
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
@@ -945,8 +949,13 @@ left:10px;
 #short-description
 {
   position:absolute;
+  border: 50px;
   bottom:-127px;
   left:0px;width:160px;
   height:120px;
   background-color:white;
+}
+
+#short-description h6{
+color: black;
 }

@@ -903,12 +903,12 @@ function get_google_map_address($address){
 
 }
 
-function get_business($limit,$order)
+function get_business($order)
 {
     $CI = & get_instance();
-     $CI->db->limit($limit);
-    $CI->db->order_by("id",$order);
-    $result = $CI->db->get('business_ads')->result_array();
+     // $CI->db->limit($limit);
+ $CI->db->order_by('rand()',$order);
+$result = $CI->db->get('business_ads')->result_array();
     //echo "<pre>"; print_r($result); exit;
     return $result;
 }

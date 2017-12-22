@@ -24,9 +24,9 @@
             </footer>
 
             <!-- businesss ads -->
-             <?php $ads_image = get_business(3,"ASC"); 
+             <?php $ads_image = get_business("ASC"); 
               // /echo "<pre>"; print_r($ads_image); exit;
-               $ads_image1 = get_business(3,"DESC"); 
+               $ads_image1 = get_business("DESC"); 
              if($ads_image && $ads_image1):?> 
             <div class="add__left" id="left_ads">
               <span id="closeadvt" style="cursor:pointer;">X</span>
