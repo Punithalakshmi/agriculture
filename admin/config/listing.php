@@ -190,7 +190,6 @@ $config['subscription_index'] = array(
 	"default_direction" => "DESC"
 );
 
-
 $config['news_index'] = array(
 
 	"view"		=> 	'listing/listing',
@@ -209,6 +208,27 @@ $config['news_index'] = array(
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
+
+$config['feedback_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/feedback/filter',
+	"base_url"	=> 	'/feedback/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'name'=>array('name'=>'Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+
+						'comments'=>array('name'=>'Comments', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						
+						'created_on'=>array('name'=>'Created Date', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
+
+
 
 
 ?>
