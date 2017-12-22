@@ -18,6 +18,7 @@ class Home extends Admin_Controller {
 	{
 		$this->data["editdata"] =$this->services_product_model->get_services();
     $this->data['newsdata'] =  $this->news_model->get_news();
+    $this->data['feedback'] = $this->feedback_model->get_feedbacks();
 		$this->layout->view('frontend/home/index',$this->data);
 	}
 	public function contact()
@@ -143,10 +144,11 @@ class Home extends Admin_Controller {
           else
           {
                  $final_file_data = array("success"=>$this->upload->data());
-                 
+
                  return true;
           }
   }
+
 
   
 	
