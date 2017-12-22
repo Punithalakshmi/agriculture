@@ -55,5 +55,42 @@ class  Feedback_model extends App_model
             return $return;
         }
     }
+
+    /**
+     * This method handles to retrieve a feedback detail by Id
+     * */
+    function get_feedback_by_id($id) {
+
+        $table_name =  $this->_table;
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('id' => (int) $id));
+        
+        if (!empty($result)) {
+            $return = $result->row_array();
+        }
+
+        return $return;
+    }
 }
+
+ /**
+     * This method handles to retrieve image by Id
+     * */
+    function get_image_by_id($id) {
+
+        $table_name =  $this->_table;
+
+        $return = [];
+
+        $result = $this->db->get_where($table_name, array('id' => (int) $id));
+
+        if (!empty($result)) {
+
+            $return = $result->result();
+            
+        }
+
+        return $return;
+    }
 ?>
