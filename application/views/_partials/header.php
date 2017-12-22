@@ -41,7 +41,7 @@
                     </ul>
 
 
-                    <a id="logo-container" href="index.html" class="brand-logo">Logo</a>
+                    <a id="logo-container" href="<?=base_url();?>home" class="brand-logo"><img class="activator" src="<?=base_url();?>assets/images/logo.png"></a>
                     <ul class="right hide-on-med-and-down desk-nav">
                         <li><a href="<?=base_url();?>">Home </a></li>
                         <li><a href="<?=base_url();?>home/about">About Us </a></li>
