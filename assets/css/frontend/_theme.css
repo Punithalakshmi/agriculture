@@ -910,3 +910,43 @@ cursor: pointer;
 
  }
 }
+
+#left_ads,
+#right_ads
+ {
+  margin: 80px auto;
+ 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+.left_ads {
+width:120px;
+height:610px;
+color:black;
+font-weight:bold;
+font-size:12px;
+position:fixed;
+left:10px;
+}
+#closeadvt, #closeadvt1
+{
+      position: absolute;
+    right: 0;
+    top: 0;
+    background: #fff;
+    color: #000;
+    padding: 0px 5px;
+    font-weight: bold;
+}
+.add__left ul, 
+.add__right ul
+{ 
+  margin: 0px !important; 
+}
+#short-description
+{
+  position:absolute;
+  bottom:-127px;
+  left:0px;width:160px;
+  height:120px;
+  background-color:white;
+}

@@ -1,5 +1,4 @@
-            
-
+        
             <footer class="page-footer">
                 <div class="container">
                   <div class="row">
@@ -25,36 +24,48 @@
             </footer>
 
             <!-- businesss ads -->
-            <div class="add__left">
-             <?php $ads_image = get_business(); if($ads_image):?> 
+             <?php $ads_image = get_business(3,"ASC"); 
+              // /echo "<pre>"; print_r($ads_image); exit;
+               $ads_image1 = get_business(3,"DESC"); 
+             if($ads_image && $ads_image1):?> 
+            <div class="add__left" id="left_ads">
+              <span id="closeadvt" style="cursor:pointer;">X</span>
               <ul>
                 <?php foreach($ads_image as $images): ?>
                 <li>
-                 <a href="#"> <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="200" alt="" "></a>
+                 <a href="#">
+                     <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="400" alt="" ">
+                    <div  id="short-description">
+                    <h6 style="text-align: center;"><?=$images["description"];?></h6>
+                    </div>
+                  </a>
                 </li>
               <?php endforeach;?>
               </ul>
+              </div>
             </div>
 
-            <div class="add__right">
+            <div class="add__right" id="right_ads">
+               <span id="closeadvt1" style="cursor:pointer;">X</span>
             <!-- add right -->
             <ul>
-              <?php foreach($ads_image as $images): ?>
+              <?php foreach($ads_image1 as $images): ?>
                 <li>
-                  <a href="#"> <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="200" alt="" "></a>
+                  <a href="#">
+                     <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="400" alt="" ">
+                    <div  id="short-description">
+                    <h6 style="text-align: center;"><?=$images["description"];?></h6>
+                    </div>
+                  </a>
                 </li>
                 <?php endforeach;?>
               </ul>
-            <?php endif;?>
             </div>
-
+            <?php endif;?>
             <div class="add__vertical">
             <!-- add vertical -->
             add__vertical
             </div>
-
-
-
             <!-- Footer Scripts -->
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script>

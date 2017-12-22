@@ -133,3 +133,32 @@ $(document).ready(function(){
            return true;
     });
 });
+
+$(document).ready(function(){
+  $("#left_ads > ul > li:gt(0)").hide();
+setInterval(function() {
+  $('#left_ads > ul > li:first')
+    .fadeOut(1)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#left_ads ul');
+}, 3000);
+
+$("#right_ads > ul > li:gt(0)").hide();
+setInterval(function() {
+  $('#right_ads > ul > li:first')
+    .fadeOut(1)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#right_ads ul');
+}, 3000);
+
+$('#closeadvt').on('click', function(e) { 
+        $('#left_ads').fadeOut(); 
+    });
+$('#closeadvt1').on('click', function(e) { 
+        $('#right_ads').fadeOut(); 
+    });
+})
