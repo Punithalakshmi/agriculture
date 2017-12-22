@@ -136,11 +136,23 @@
 
                         <!--  -->
                         <ul class="feed-avatar">
+                        <?php if($feedback) {?>
+                       <?php  foreach($feedback as $feedbacks):?>
                           <li>
-                            <img src="assets/images/avatar/yuna.jpg" alt="" class="circle">
-                            <span class="title">Rachel Vasquez</span>
-                            <p> France </p>
-                          </li>
+                            <img src="<?=base_url();?>uploads/feedback/<?=$feedbacks["image_name"]?>" alt="" class="circle">
+                            <span class="title"><?=$feedbacks["name"]?></span>
+                            <p> <?=$feedbacks["address"]?> </p>
+
+                        <?php endforeach;?>
+                          <?php 
+                            }
+                            else
+                            {
+                                echo "<h1 style='text-align:center;'>No Records Found.</h1>";
+                            }
+                            ?>
+                        </li>
+                          
                         </ul>
                         <!--  -->
                     </div>
