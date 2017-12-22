@@ -11,6 +11,7 @@ class Home extends Admin_Controller {
 		 parent::__construct();
    		$this->load->model('services_product_model');
       $this->load->model('news_model');
+      $this->load->model('feedback_model');
 	}
 
 	public function index()
@@ -73,7 +74,81 @@ class Home extends Admin_Controller {
 	{
 		$this->layout->view('frontend/home/about');
 	}
-	
+
+  public function feedback(){
+
+       
+    if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
+      {
+          $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_do_upload');
+      }
+
+      $this->form_validation->set_rules('name','Name','trim|required');
+      $this->form_validation->set_rules('address','Address','trim|required');
+      $this->form_validation->set_rules('comments','Comments','trim|required');
+
+      
+      $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+     
+      if($this->form_validation->run())
+        {
+
+
+              $ins_data['name']                   = $this->input->post('name');
+              $ins_data['address']                = $this->input->post('address');
+              $ins_data['comments']                = $this->input->post('comments');
+              $ins_data['status']                  = "Inactive";
+
+              if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
+               {
+
+                 $filedata = $this->do_upload();
+                 $filename  = $_FILES["image_name"]["name"];
+                 $ins_data['image_name'] = (!empty($filename))?$filename:"";
+               }
+
+              $result = $this->feedback_model->insert($ins_data);
+
+              if($result){
+
+                 $this->session->set_flashdata('success_msg', 'Feedback sent successfully');
+
+                redirect('home/feedback/');
+
+              }else{
+
+                 $this->session->set_flashdata('error_msg', 'Could not sent feedback');
+                 rediect('home/feedback/');
+              } 
+        }
+
+        $this->layout->view('frontend/home/feedback');
+  }
+
+ public function do_upload()
+  {
+          $config['upload_path']          = './uploads/feedback';
+          $config['allowed_types']        = 'gif|jpg|png';
+          $config['max_size']             = 2056;
+          $config['max_width']            = 1700;
+          $config['max_height']           = 800;
+
+          $this->load->library('upload', $config);
+
+          if (! $this->upload->do_upload('image_name'))
+          {
+                 $this->form_validation->set_message('do_upload', $this->upload->display_errors());
+                return false;
+          }
+          else
+          {
+                 $final_file_data = array("success"=>$this->upload->data());
+                 
+                 return true;
+          }
+  }
+
+  
 	
 
 }

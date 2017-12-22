@@ -47,10 +47,13 @@
                         <li><a href="<?=base_url();?>home/about">About Us </a></li>
                         <li><a class="dropdown-button" href="<?=base_url();?>home/services" data-activates="dropdown1">Services <i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="<?=base_url();?>events">Events </a></li>
+                        
                         <li><a href="<?=base_url();?>home/contact">Contact Us </a></li>
+                       
                          <?php if(!is_logged_in()) { ?>
                         <li><a href="<?=base_url();?>registration">Register </a></li>
                         <li><a href="<?=base_url();?>login">Login </a></li>
+                        <li><a href="<?=base_url();?>home/feedback">Feedback</a></li>
                         <?php }else { ?>  
                         <li><a class="dropdown-button" href="welcome.html" data-activates="pUser"><i class="material-icons dp48 user-icon">account_circle</i>Welcome <?=$user_data['first_name']?> <i class="material-icons right">arrow_drop_down</i></a></li>
                         <?php } ?>
