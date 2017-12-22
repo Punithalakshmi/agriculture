@@ -60,18 +60,24 @@ class  News_model extends App_model
 
         return $return;
     }
-
-    /**
-     * This method handles to retrieve all news
+   /**
+     * This method handles to retrieve all feedbacks
      * */
-  public function get_news()
-   {
-       $this->db->select("*"); 
-       $this->db->from("news");
-       $this->db->limit(3);
-       $this->db->order_by("id","desc");
-     return $this->db->get()->result_array();
-   }
+   function get_news($field='id', $order_by='DESC'){
+       $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->where('status=', "Active")
+                    ->limit(3)
+                    ->order_by($field, $order_by);
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result_array();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
 
    /**
      * This method handles to retrieve a news detail by Id
