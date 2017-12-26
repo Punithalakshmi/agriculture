@@ -887,12 +887,12 @@ cursor: pointer;
 @media(max-width: 1109px){
 .add__left,
  .add__right,
- .add_vertical{display: none!important;}
+ .add__vertical{display: none!important;}
 }
 @media only screen and (min-width : 768px) {
  .add__left,
  .add__right,
- .add_vertical {
+ .add__vertical {
   border:1px solid #ddd;
  }
 
@@ -910,7 +910,7 @@ cursor: pointer;
  .add__right {
   right: 0;
  }
- .add_vertical {
+ .add__vertical {
 
  }
 }

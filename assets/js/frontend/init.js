@@ -27,6 +27,7 @@
     $('.feed-wrap .feed-e-height').matchHeight();
     $('.top-footer .feed-e-height').matchHeight();
 	  $('.c-info .e-height').matchHeight();
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
 
     // Step Form
      $('.toc-wrapper').pushpin({ top: $('.toc-wrapper').offset().top, offset: 77 });
