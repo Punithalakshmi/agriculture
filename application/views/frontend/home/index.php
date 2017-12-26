@@ -1,17 +1,3 @@
-          <div class="add__left">
- <!-- add left -->
-
-</div>
-
-<div class="add__right">
- <!-- add right -->
-
-</div>
-
-<div class="add__vertical">
- <!-- add vertical -->
- 
-</div>
     
             <div id="index-banner" class="parallax-container">
                 <div class="section no-pad-bot">
@@ -46,6 +32,11 @@
                 <div class="parallax">
                     <img src="assets/images/background1.jpg" alt="Unsplashed background img 1">
                 </div>
+            </div>
+
+            <!-- add vertical -->
+            <div class="add__vertical text-center">
+              <img src="http://www.legalmarketingreview.com/wp-content/uploads/2013/01/gilman-728x90-a.jpg" alt="">
             </div>
 
             <div class="farmers-list">
@@ -135,6 +126,8 @@
                         </p>
 
                         <!--  -->
+
+                        
                         <ul class="feed-avatar">
                         <?php if($feedback) {?>
                        <?php  foreach($feedback as $feedbacks):?>
@@ -221,12 +214,13 @@
                      
                       <ul>
                         
-                      <?php if($newsdata) {?>
+                      <?php if($newsdata) { ?>
                        <?php  foreach($newsdata as $news):?>
                           <li>
                            
                             <a href="<?=base_url()?>news/details/<?=$news['id'];?>"><?=$news['title']?></a>
                             <p><?=date("l, F j, Y", strtotime($news['created_on']))?></p>
+                            
 
                         <?php endforeach;?>
                           <?php 
@@ -237,7 +231,10 @@
                             }
                             ?>
                         </li>
-                        
+                          <div class="row right">
+                          <a href="<?=site_url('news/view')?>" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
+                            More News</a>
+                        </div>
                       </ul>
                       
                   </div>
