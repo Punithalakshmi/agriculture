@@ -37,15 +37,6 @@
                                   </div>
 
                                   
-                                    <div class="file-field input-field">
-                                  <div class="btn">
-                                    <span>File</span>
-                                    <input type="file" name="image_name">
-                                  </div>
-                                  <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="Upload photo"><?php echo form_error('image_name', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
-                                  </div>
-                                </div>
 
                                      <div class="input-field">
                                      <label for="Address" class="">Address<span class="required">*</span></label>

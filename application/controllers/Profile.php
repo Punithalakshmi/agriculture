@@ -40,13 +40,9 @@ class Profile extends Admin_Controller
     $this->layout->view('frontend/profile/profile');
   }
 
-  public function update($edit_id=''){
+  public function update_contact($edit_id=''){
 
-    /* $this->layout->add_javascripts(array('dropzone'));
-    $this->layout->add_javascripts(array('jquery.fancybox.min'));
-    $this->layout->add_stylesheets(array('dropzone'));
-    $this->layout->add_stylesheets(array('jquery.fancybox.min'));*/
-   
+
     $msg ="";
     $status = '';
 
@@ -55,8 +51,6 @@ class Profile extends Admin_Controller
           
           $this->form_validation->set_rules('first_name','First Name','trim|required');
           $this->form_validation->set_rules('last_name','Last Name','trim|required');
-          
-          //$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[seller.email]');
 
          $this->form_validation->set_rules('email','Email','trim|required|valid_email|callback_check_email['.$edit_id.']');
           
@@ -69,11 +63,11 @@ class Profile extends Admin_Controller
 
           if(!$edit_id){
               $this->form_validation->set_rules('password','Password','trim|required');  
-            }
+            } 
 
           $this->form_validation->set_error_delimiters('', '');
 
-          if($this->form_validation->run()){
+          if(count($_POST) > 1 && $this->form_validation->run()){
              
 
               $ins_data = array();
@@ -92,14 +86,33 @@ class Profile extends Admin_Controller
               $ins_data['state_id']          = $this->input->post('state_id');
               $ins_data['zip']                     = $this->input->post('zip');
               $ins_data['phone']      = $this->input->post('phone');
-              
+             
               if($edit_id){
                
                 $ins_data['modified_on'] = date('Y-m-d H:i:s');
                 $this->seller_model->update(array("id" => $edit_id),$ins_data);
-                $this->session->set_flashdata("success_msg","Profile updated successfully.",TRUE);
-              }              
+                $msg                      = 'Record updated successfully';
+                $status  = 'edit';
+                //$this->session->set_flashdata("success_msg","Profile updated successfully.",TRUE);
+              }   
+
+          }else{
+            $edit_data = array();
+
+            $edit_data['first_name']              = '';
+            $edit_data['password']                = '';
+            $edit_data['last_name']                = '';
+            $edit_data['email']           = '';  
+            $edit_data['address2']               = '';
+            $edit_data['address']          = '';
+            $edit_data['state_id']                     = '';
+            $edit_data['country_id']                     = '';
+            $edit_data['city']                     = '';
+            $edit_data['zip']      = '';
+            $edit_data['phone']                     = '';
+            $status = 'error';
           }  
+
         }
         catch (Exception $e)
         {
@@ -112,16 +125,24 @@ class Profile extends Admin_Controller
           $edit_data = $this->seller_model->get_where(array("id" => $edit_id))->row_array();
 
         } 
-        
+
         $this->data['editdata']              = $edit_data;
 
-       $this->layout->view('frontend/profile/profile',$this->data);  
+        if($this->input->is_ajax_request()){
+          $output  = $this->load->view('frontend/profile/contact',$this->data,true);
+          return $this->_ajax_output(array('status' => $status,'msg'=>$msg, 'output' => $output, 'edit_id' => $edit_id), TRUE);
+        } 
+        else
+        { 
+             $this->layout->view('frontend/profile/profile',$this->data);   
+        }
          
      }
 
   public function service_update($edit_id = '')
   {
-    
+
+      
       $msg ="";
 
      try
@@ -153,13 +174,14 @@ class Profile extends Admin_Controller
                 if($checkServiceExist){
 
                     $ins_data['modified_on'] = date('Y-m-d H:i:s');
-                    $this->services_model->update_services($edit_id,$ins_data);
-                    $this->session->set_flashdata("success_msg","Service updated successfully.",TRUE);
+                   $this->services_model->update_services($edit_id,$ins_data);
+                    $msg                      = 'Service updated successfully';
+
                 }else{
 
                    $ins_data['created_on'] = date('Y-m-d H:i:s');
                    $new_id                   = $this->services_model->insert($ins_data);         
-                  $this->session->set_flashdata("success_msg","Service added successfully.",TRUE);
+                   $msg                      = 'Services added successfully';
                  
                 }
               } 
@@ -176,10 +198,18 @@ class Profile extends Admin_Controller
           $edit_data = $this->services_model->get_services_by_id($edit_id);
 
         } 
-  
-      $this->data['servicedata']              = $edit_data;
 
-      $this->layout->view('frontend/profile/profile',$this->data);      
+        $this->data['servicedata']              = $edit_data;
+
+        if($this->input->is_ajax_request()){
+          $output  = $this->load->view('frontend/profile/service',$this->data,true);
+          return $this->_ajax_output(array('status' => $status,'msg'=>$msg, 'output' => $output, 'edit_id' => $edit_id), TRUE);
+        } 
+        else
+        { 
+             $this->layout->view('frontend/profile/service',$this->data);  
+        }
+           
     }
 
   public function update_photos($edit_id = '')
@@ -249,20 +279,35 @@ class Profile extends Admin_Controller
 
     function check_email($mail,$id)
     {
-        $where = array();
+      // if($id)
+      // {
+      //   $where = array();
+      //   $where['id !='] = $id;
+      //   $where['email'] = $mail;
+      //   $result = $this->seller_model->get_where( $where)->num_rows();
+      //   if ($result)
+      //   {
+      //     $this->form_validation->set_message('check_email', 'Given email already exists!');
+      //     return FALSE;
+      //   }
+      // }
 
-        if($id)
-            $where['id !='] = $id;
-
-        $where['email'] = $mail;
-
-        $result = $this->seller_model->get_where( $where)->num_rows();
-
-        if ($result) {
-            $this->form_validation->set_message('check_email', 'Given email already exists!');
-            return FALSE;
+      // $where = '';
+        
+      //   if(!empty($id)){
+      //       $where = " and id !='".$id."'";
+      //   }
+        $where = '';
+        
+        if(!empty($id)){
+            $where = " and id !='".$id."'";
         }
-        return TRUE;
+        $query = $this->db->query("select * from seller where email='".$mail."' and id!='".$id."'")->row_array();
+        if(count($query)) {
+             $this->form_validation->set_message('check_email', 'Given email already exists!');
+             return FALSE; 
+        }
+      return TRUE;
     }
 
      public function deleteimage() {

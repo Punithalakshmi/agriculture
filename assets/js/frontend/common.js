@@ -1,4 +1,5 @@
 
+tab_view("contact","profile/update_contact",'formContact');
 
 function dropzone()
 {
@@ -51,14 +52,13 @@ function deleteimage(image_id){
             });
       }
 }
-
-function tab_view(url,formid='')
+function tab_view(id,url,formid='')
 {
-  
+
    var sell_id = ($("input[name='seller_id']").val())?$("input[name='seller_id']").val():0;
    
    var form_data = $("#"+formid).serializeArray();
-   
+  
    var formData = new FormData();
 
    $(form_data).each(function (index, element) {
@@ -66,7 +66,42 @@ function tab_view(url,formid='')
      formData.append(element.name, element.value);
     });
 
-   formData.append('seller_id', sell_id);  
+   formData.append('seller_id', sell_id);   
+
+    $.ajax({
+        type:"POST",
+        url:base_url+url+'/'+sell_id,
+        processData: false,
+        data:formData,
+        contentType: false,
+        dataType:'json',
+        success:function(data)
+        { 
+
+          
+            $("#"+id).html(data.output);
+        
+           
+          if(data.msg)
+            alert(data.msg);
+
+          if(data.status=="add")
+            window.location.href = base_url+'profile/profile/'+data.edit_id;
+          
+            //service_message(data.status,data.msg);
+        }
+    });
+  
+}
+
+/* function tab_view(id,url,formid='')
+{
+
+   var sell_id = ($("input[name='seller_id']").val())?$("input[name='seller_id']").val():0;
+
+   var form_data = $("#"+formid).serializeArray();
+   console.log();
+   var formData = new FormData();  
 
     $.ajax({
         type:"POST",
@@ -77,30 +112,15 @@ function tab_view(url,formid='')
         dataType:'json',
         success:function(data)
         {   
-
-          console.log(data);    
-
-          $("input[name='seller_id']").val(data.edit_id);
-          
-          $selid = $("input[name='seller_id']").val();
-
-          if(data.edit_id != 0 || id=='contact'){
-            $("#"+id).html(data.output);
-          }
-          else
-           alerttab(id);
+          alert('tesr');
+          $("#"+id).html(data.output);
 
           if(data.msg)
             alert(data.msg);
-
-          if(data.status=="add")
-            window.location.href = base_url+'registration/createnew_account/'+data.edit_id;
-          
-            //service_message(data.status,data.msg);
         }
     });
   
-}
+} */
 
 function alerttab(id)
 {

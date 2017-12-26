@@ -6959,15 +6959,15 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
+.select-wrapper select {
   display: none;
 }
 
-select.browser-default {
+.select-wrapper select.browser-default {
   display: block;
 }
 
-select {
+.select-wrapper select {
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 5px;
@@ -6976,7 +6976,7 @@ select {
   height: 3rem;
 }
 
-.input-field > select {
+.select-wrapper .input-field > select {
   display: block;
   position: absolute;
   width: 0;

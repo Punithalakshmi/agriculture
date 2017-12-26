@@ -172,6 +172,7 @@ function tab_view(id,url,formid='')
      formData.append(element.name, element.value);
     });
    formData.append('seller_id', sell_id);   
+    
     $.ajax({
         type:"POST",
         url:base_url+url+'/'+sell_id,

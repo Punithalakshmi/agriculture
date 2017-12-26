@@ -19,5 +19,13 @@ class News extends Admin_Controller {
     $this->layout->view('frontend/news/detail',$this->data);
 
 	}
+	public function view(){
+
+	 $this->data['newsdata'] = $this->news_model->get_news();
+
+	 $this->layout->view('frontend/news/all_detail',$this->data);
+
+	 
+	}
 
 }

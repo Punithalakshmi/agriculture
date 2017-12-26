@@ -68,7 +68,6 @@ class  News_model extends App_model
         $this->db->select('*')
                     ->from($table_name)
                     ->where('status=', "Active")
-                    ->limit(3)
                     ->order_by($field, $order_by);
         $data = $this->db->get();
         if(!empty($data)){
