@@ -23,7 +23,7 @@ class Feedback extends Admin_Controller
     $this->simple_search_fields = array('name' =>'Name','comments'=>'Comments','status'=>'Status');
     $this->_narrow_search_conditions = array("start_date");
 
-    $str ='<a href="'.site_url('feedback/view/{id}').'" class="btn"><i class="fa fa-eye"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding" onclick="delete_record(\'feedback/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
+    $str ='<a href="'.site_url('feedback/add/{id}').'" class="btn"><i class="fa fa-edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding" onclick="delete_record(\'feedback/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
     
     $listing = $this->listing->get_listings('feedback_model', 'listing');
@@ -49,67 +49,39 @@ class Feedback extends Admin_Controller
   {
 
 
-        $this->layout->add_javascripts(array('tinymce/tinymce.min'));
-        $this->layout->add_javascripts(array('tinymce')); 
-
-       if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
-        {
-            $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_do_upload');
-        }
-
+       //print_r($this->input->post());exit;
        try
         {
           
            if($this->input->post('edit_id'))  
 
              $edit_id = $this->input->post('edit_id');
-            
-           $this->form_validation->set_rules('title','Title','trim|required');
-           
-           $this->form_validation->set_rules('description','Description','trim|required');
-           
-           $this->form_validation->set_rules('author','Author','trim|required');
+          
 
            $this->form_validation->set_rules('status','Status','trim|required');
             
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
-           
            if($this->form_validation->run())
            {
 
                $ins_data = array();
                
-              
-               $ins_data['title']        = $this->input->post('title');
-               $ins_data['description'] = $this->input->post('description');
-               $ins_data['author'] = $this->input->post('author');
+               $ins_data['name']        = $this->input->post('name');
+               $ins_data['address'] = $this->input->post('address');
+               $ins_data['comments'] = $this->input->post('comments');
                $ins_data['status']     = $this->input->post('status');
-                
-              if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
-               {
-
-                 $filedata = $this->do_upload();
-                 $filename  = $_FILES["image_name"]["name"];
-                 $ins_data['image_name'] = (!empty($filename))?$filename:"";
-               }
               
               if($edit_id)
               {
                 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
 
-                $update_id = $this->news_model->update(array("id" => $edit_id),$ins_data);
-                $this->session->set_flashdata("success_msg","News updated successfully.",TRUE);              
-              }
-              else
-              {  
-                 
-                $new_id = $this->news_model->insert($ins_data);
-                $this->session->set_flashdata("success_msg","News inserted successfully.",TRUE);         
+                $update_id = $this->feedback_model->update(array("id" => $edit_id),$ins_data);
+                $this->session->set_flashdata("success_msg","Feedback updated successfully.",TRUE);              
               }
               
-                 redirect("news");
+                 redirect("feedback");
             }
             
 
@@ -122,7 +94,7 @@ class Feedback extends Admin_Controller
 
           if($edit_id)
           {
-             $this->data["editdata"] = $this->news_model->get_where(array("id" => $edit_id))->row_array();
+             $this->data["editdata"] = $this->feedback_model->get_where(array("id" => $edit_id))->row_array();
 
           }  
           else
@@ -131,8 +103,10 @@ class Feedback extends Admin_Controller
 
           }
 
-      $this->layout->view('frontend/news/add',$this->data);
+      $this->layout->view('frontend/feedback/add',$this->data);
   }
+
+
   public function view($id='')
   {
     if($id)
