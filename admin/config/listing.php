@@ -103,7 +103,7 @@ $config['business_index'] = array(
 						'customer_name'=>array('name'=>'Customer Name', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
 						'created_date'=>array('name'=>'Created Date', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'status'=>array('name'=>'Status', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => true, 'default_view'=>1)),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"
 );
@@ -135,7 +135,7 @@ $config['events_index'] = array(
 						'title'=>array('name'=>'Title Name', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'location'=>array('name'=>'Location', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
 						'created_date'=>array('name'=>'Created Date', 'data_type' => 'string', 'sortable' => FALSE, 'default_view'=>1),
-						'status'=>array('name'=>'Satus', 'data_type' => 'status', 'sortable' => true, 'default_view'=>1)
+						'status'=>array('name'=>'Satus', 'data_type' => 'String', 'sortable' => true, 'default_view'=>1)
 						,),
 	"default_order"	=> "id",
 	"default_direction" => "DESC"

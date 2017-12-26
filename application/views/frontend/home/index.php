@@ -1,11 +1,11 @@
-    
+
             <div id="index-banner" class="parallax-container">
                 <div class="section no-pad-bot">
                     <h1 class="header center">Explore The Worldwide Farmers</h1>
                     <div class="search-container">
                     
                         <div class="row center home-search">
-                            <form id="form_search" class="col s12" action="<?=site_url('services/show_search');?>" method="post">
+                            <form id="form_search" class="col s12" action="<?=site_url('services/show_search');?>"` method="post">
                                 <div class="col l6 s12">
                                   <input name="location" id="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
                                 </div>
@@ -34,10 +34,23 @@
                 </div>
             </div>
 
-            <!-- add vertical -->
-            <div class="add__vertical text-center">
-              <img src="http://www.legalmarketingreview.com/wp-content/uploads/2013/01/gilman-728x90-a.jpg" alt="">
+            <!-- add horizontal -->
+           <?php $ads_image = get_business('Horizontal'); 
+             if($ads_image):?> 
+            <div class="add__vertical text-center" id="add__vertical">
+              <span id="closeadvt3" style="cursor:pointer;">X</span>
+              <ul>
+                <?php foreach($ads_image as $images): ?>
+                <li>
+                 <a href="#">
+                     <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" ">
+                  </a>
+                </li>
+              <?php endforeach;?>
+              </ul>
+              </div>
             </div>
+            <?php endif;?>
 
             <div class="farmers-list">
                 <h1 class="center">Explore The Worldwide <span>Farmers</span></h1>

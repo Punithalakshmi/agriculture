@@ -150,9 +150,19 @@ setInterval(function() {
   $('#right_ads > ul > li:first')
     .fadeOut(1)
     .next()
-    .fadeIn(1000)
+    .fadeIn(800)
     .end()
     .appendTo('#right_ads ul');
+}, 2800);
+
+$("#add__vertical > ul > li:gt(0)").hide();
+setInterval(function() {
+  $('#add__vertical > ul > li:first')
+    .fadeOut(1)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#add__vertical ul');
 }, 3000);
 
 $('#closeadvt').on('click', function(e) { 
@@ -161,4 +171,7 @@ $('#closeadvt').on('click', function(e) {
 $('#closeadvt1').on('click', function(e) { 
         $('#right_ads').fadeOut(); 
     });
-})
+$('#closeadvt3').on('click', function(e) { 
+        $('#add__vertical').fadeOut(); 
+    });
+});

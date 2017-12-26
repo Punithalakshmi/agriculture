@@ -126,7 +126,7 @@ function displayData($data = null, $type = 'string', $row = array(), $wrap_tag_o
             break;
         case 'status':
            $labels_array = array('COMPLETED' => 'label-success','PROCESSING' => 'label-success','CANCELLED' => 'label-danger','HOLD' => 'label-danger','PENDING'=>'label-warning','Active' => 'label-success','Inactive' => 'label-danger');
-           $data = "<span class='label {$labels_array[$data]}'>{$data}</span>";
+           // $data = "<span class='label {$labels_array[$data]}'>{$data}</span>";
           break;
         case "status_change":
             $labels_array = array('COMPLETED' => 'label-success','PROCESSING' => 'label-success','CANCELLED' => 'label-danger','HOLD' => 'label-danger','PENDING'=>'label-warning');
@@ -903,14 +903,14 @@ function get_google_map_address($address){
 
 }
 
-function get_business($order)
+function get_business($dimen)
 {
-    $CI = & get_instance();
-     // $CI->db->limit($limit);
- $CI->db->order_by('rand()',$order);
-$result = $CI->db->get('business_ads')->result_array();
-    //echo "<pre>"; print_r($result); exit;
-    return $result;
+ $CI = & get_instance();
+ $CI->db->where('dimention',$dimen);
+ $CI->db->order_by('rand()');
+ $result = $CI->db->get('business_ads')->result_array();
+ 
+ return $result;
 }
 
 

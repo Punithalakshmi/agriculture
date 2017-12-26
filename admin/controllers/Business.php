@@ -15,7 +15,7 @@ class Business extends Admin_Controller
 
   public function index()
   {
-  	$this->layout->add_javascripts(array('listing'));
+    $this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
     $this->simple_search_fields = array('customer_name' => 'Customer Name',"title" =>"Title");
     $this->_narrow_search_conditions = array("start_date");
@@ -42,10 +42,21 @@ class Business extends Admin_Controller
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));  
 
-        if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+        if($this->input->post('dimention')=='Horizontal')
         {
-            $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_do_upload');
+            if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+            {
+              $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio1');
+            }
         }
+        elseif($this->input->post('dimention')=='Vertical')
+        {                                 
+            if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+            {
+              $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio');
+            }
+        }
+
          try
         {
            
@@ -71,11 +82,12 @@ class Business extends Admin_Controller
              
                $ins_data = array();
                $form = $this->input->post();
-               $ins_data['customer_name'] = $form["customer_name"];
-               $ins_data['title']         = $form["title"];
-               $ins_data['description']   = $form["description"];
+               $ins_data['customer_name']  = $form["customer_name"];
+               $ins_data['title']          = $form["title"];
+               $ins_data['description']    = $form["description"];
                $ins_data['url']            = $form["url"];
                $ins_data['status']         = $form["status"];
+               $ins_data['dimention']      = $form["dimention"];
               
                
                $creater_id   = $this->session->userdata("user_data");
@@ -120,7 +132,7 @@ class Business extends Admin_Controller
            else
            {
 
-              $this->data["editdata"] = array("customer_name"=>"","title"=>"","ads_image"=>"","description"=>"","url"=>"","status"=>"");
+              $this->data["editdata"] = array("customer_name"=>"","title"=>"","ads_image"=>"","description"=>"","url"=>"","status"=>"","dimention"=>"");
             }
       $this->layout->view('frontend/business/add',$this->data);
   }
@@ -181,5 +193,28 @@ class Business extends Admin_Controller
             return TRUE;
     }
 
+    function imgratio($str)
+    {  
+      $str = getimagesize($_FILES['ads_image']['tmp_name']);
+      if($str[0]>="160" && $str[1]>="600")
+        return true;
+      else
+      {
+        $this->form_validation->set_message('imgratio',"The dimention should be 160x600 ratio");
+        return false;
+      }
+    }
+
+    function imgratio1($str)
+    {  
+      $str = getimagesize($_FILES['ads_image']['tmp_name']);
+      if($str[0]>="720" && $str[1]>="90")
+        return true;
+      else
+      {
+        $this->form_validation->set_message('imgratio1',"The dimention should be 720x90 ratio");
+        return false;
+      }
+    }
 }
 ?>

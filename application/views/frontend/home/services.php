@@ -68,9 +68,23 @@
                             </form>
                         </div>
                     </div>
-                    
+                    <?php $ads_image = get_business('Horizontal'); 
+                       if($ads_image):?> 
+                      <div class="add__vertical text-center" id="add__vertical">
+                        
+                        <ul>
+                          <span id="closeadvt3" style="cursor:pointer;">X</span>
+                          <?php foreach($ads_image as $images): ?>
+                          <li>
+                            <a href="#">
+                               <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" "> </a>
+                          </li>
+                          <?php endforeach;?>
+                        </ul>
+                      </div>
+                    </div>
+                    <?php endif;?>
                     <div class="container">
-
                         <div class="row center">
                           <h1 class="page-title">Explore The Worldwide <span>Farmers</span></h1>
                         </div>

@@ -1,4 +1,6 @@
-        
+        <?php $uri = $this->uri->segment(1);
+          $uri1 = $this->uri->segment(2);
+        ?>
             <footer class="page-footer">
                 <div class="container">
                   <div class="row">
@@ -24,10 +26,10 @@
             </footer>
 
             <!-- businesss ads -->
-             <?php $ads_image = get_business("ASC"); 
+             <?php $ads_image = get_business('Vertical'); 
               // /echo "<pre>"; print_r($ads_image); exit;
-               $ads_image1 = get_business("DESC"); 
-             if($ads_image && $ads_image1):?> 
+               $ads_image1 = get_business('Vertical'); 
+             if($uri!=''&&$uri!='services'&&$uri1!='contact'&&  $ads_image && $ads_image1):?> 
             <div class="add__left" id="left_ads">
               <span id="closeadvt" style="cursor:pointer;">X</span>
               <ul>
@@ -35,9 +37,6 @@
                 <li>
                  <a href="#">
                      <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="400" alt="" ">
-                    <div  id="short-description">
-                    <h6 style="text-align: center;"><?=$images["description"];?></h6>
-                    </div>
                   </a>
                 </li>
               <?php endforeach;?>
@@ -53,19 +52,16 @@
                 <li>
                   <a href="#">
                      <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="160" height="400" alt="" ">
-                    <div  id="short-description">
-                    <h6 style="text-align: center;"><?=$images["description"];?></h6>
-                    </div>
                   </a>
                 </li>
                 <?php endforeach;?>
               </ul>
             </div>
             <?php endif;?>
-            <div class="add__vertical">
-            <!-- add vertical -->
+            <!-- <div class="add__vertical">
+            add vertical
             add__vertical
-            </div>
+            </div> -->
             <!-- Footer Scripts -->
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script>
