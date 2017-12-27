@@ -72,13 +72,22 @@
 
             <!-- add vertical -->
 
-            <div class="add__vertical text-center">
-
-              <img src="http://www.legalmarketingreview.com/wp-content/uploads/2013/01/gilman-728x90-a.jpg" alt="">
-
+            <?php $ads_image = get_business('Horizontal'); 
+                if($ads_image):?> 
+                <div class="add__vertical text-center" id="add__vertical">
+                        
+                <ul>
+                    <span id="closeadvt3" style="cursor:pointer;">X</span>
+                    <?php foreach($ads_image as $images): ?>
+                    <li>
+                    <a href="#">
+                        <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" "> </a>
+                    </li>
+                    <?php endforeach;?>
+                </ul>
+                </div>
             </div>
-
-
+            <?php endif;?>
 
             <div class="farmers-list">
 
@@ -149,15 +158,6 @@
                     </div>
 
                 </div>
-
-
-
-                <script>
-
-
-
-                </script>
-
 
 
                 <div class="row center">

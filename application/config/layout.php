@@ -10,7 +10,7 @@ $config['layout']['default']['js_dir']    = "assets/js/frontend";
 $config['layout']['default']['css_dir']   = "assets/css/frontend";
 $config['layout']['default']['img_dir']   = "assets/images";
 
-$config['layout']['default']['javascripts'] = array('jquery.matchHeight','dropzone','common','materialize.min','slick.min','init',);
+$config['layout']['default']['javascripts'] = array('lib/3.2.1/jquery-3.2.1.min','bootstrap.min','jquery.matchHeight','dropzone','common','materialize.min','slick.min','init');
  
 $config['layout']['default']['stylesheets'] = array('materialize','slick','dropzone','slick-theme','_theme');
 

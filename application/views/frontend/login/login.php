@@ -1,20 +1,18 @@
 
             <!-- breadcrumb -->
             <nav>
-                <div class="nav-wrapper green lighten-4 black-text">
+                <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#!" class="breadcrumb">Login</a>
+                        <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url()?>login" class="breadcrumb">Login</a>
                       </div>
                   </div>
                 </div>
             </nav>
             
             <!-- Content Area -->
-            <div class="interior-wrap">
-                <div class="interior-container">
-                  <?php $this->load->view('_partials/business_ads');?>
+           
                     <div class="container">
                         
                       
@@ -61,5 +59,4 @@
 
                         
                     </div>
-                </div>
-            </div>
+              

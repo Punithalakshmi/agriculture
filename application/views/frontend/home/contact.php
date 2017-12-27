@@ -4,14 +4,12 @@
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="<?=site_url('home')?>" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="<?=site_url('home/contact')?>" class="breadcrumb">Contact Us</a>
+                        <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url()?>home/contact" class="breadcrumb">Contact</a>
                       </div>
                   </div>
                 </div>
             </nav>
-            
-            
             <!--- map-->
             
             <div id="map" class="">
@@ -21,13 +19,14 @@
             <!-- Content Area -->
 <div class="interior-wrap contact-wrap">
 <div class="interior-container">
-    <?php $this->load->view('_partials/business_ads');?>
+
 <div class="container">
 
 <div class="row contact c-info green darken-1">
         <div class="col s12 m8 e-height">
             <div class="card">
                 <div class="card-content">
+                <?php echo display_flashmsg($this->session->flashdata()); ?>
                     <span class="card-title">Send us a message
                     </span>
                 <div class="">
@@ -50,7 +49,7 @@
                     
                     <div class="input-field">
                     <label for="ContactFormMessage">Message</label>
-                        <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('message')]); ?> <?php echo form_error('message', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+                        <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'maxlength' => '258', 'rows'=>'1','class'=>'materialize-textarea','value' => set_value('message')]); ?> <?php echo form_error('message', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                     </div>
                     <input class="btn" value="Send" type="submit">
                     </form>
@@ -89,7 +88,7 @@
 <?php $ads_image = get_business('Horizontal'); 
     if($ads_image):?> 
 <div class="add__vertical text-center" id="add__vertical">
-    <span id="closeadvt3" style="cursor:pointer;">mahe</span>
+    <span id="closeadvt3" style="cursor:pointer;">X</span>
     <ul>
     <?php foreach($ads_image as $images): ?>
     <li>

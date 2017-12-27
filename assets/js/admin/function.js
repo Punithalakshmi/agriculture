@@ -281,13 +281,13 @@ function deleteimage(image_id){
 $(document).ready(function(){
   $('#start_time').timepicker({
     template:false,
-    defaultTime:'00:00',
+    defaultTime:'0:00',
     showMeridian:false
     
  });
  $('#end_time').timepicker({
   template:false,
-  defaultTime:'00:00',
+  defaultTime:'0:00',
   showMeridian:false
 
  });

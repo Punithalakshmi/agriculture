@@ -23,17 +23,19 @@ class Home extends Admin_Controller {
 	}
 	public function contact()
 	{ 	
-			$this->form_validation->set_rules('contact_name','Contact Name','trim|required');
-			$this->form_validation->set_rules('email','Email','trim|required|valid_email');
-			$this->form_validation->set_rules('phone','Phone Number','trim|required');
-			$this->form_validation->set_rules('message','Message','trim|required');
+		try
+    {
+        $this->form_validation->set_rules('contact_name','Contact Name','trim|required');
+      $this->form_validation->set_rules('email','Email','trim|required|valid_email');
+      $this->form_validation->set_rules('phone','Phone Number','trim|required');
+      $this->form_validation->set_rules('message','Message','trim|required');
 
-			$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+      $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
-			if($this->form_validation->run())
-  			{  
-				$form = $this->input->post();
-				 $to = "mahendran@izaaptech.in";
+      if($this->form_validation->run())
+        {  
+        $form = $this->input->post();
+         $to = "mahendran@izaaptech.in";
               $from = $form['email'];
               $from_name = $form['contact_name'];
               $subject = "Contact information";
@@ -64,10 +66,16 @@ class Home extends Admin_Controller {
                             </body>
                           </html>";
               send_email($to,$from,$from_name,'',$subject,$message);
-              $this->session->set_flashdata("success_msg","Contact has been sent successfully.");
+              $this->session->set_flashdata("success_msg","Contact has been sent successfully.",TRUE);
               redirect('home/contact/');
-			}
+      }
 
+    }
+    catch (Exception $e)
+    {
+       $this->data['status']   = 'success';
+       $this->data['message']  = $e->getMessage();                
+    }
 		$this->layout->view('frontend/home/contact');
 	}
 

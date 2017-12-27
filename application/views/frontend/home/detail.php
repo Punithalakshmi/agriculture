@@ -72,15 +72,15 @@
                                         
                                     </tr>
                                     <tr>
-                                        <td>Dummy text </td>
+                                        <td>Phone </td>
                                         <td>:</td>
-                                        <td><b>4</b></td>
+                                        <td><b><?=$service_row['phone']; ?></b></td>
                                     </tr>
 
                                     <tr>
-                                        <td>Sleeps</td>
+                                        <td>State</td>
                                         <td>:</td>
-                                        <td> <b>6</b></td>
+                                        <td> <b><?=$service_row['city']; ?></b></td>
                                     </tr>
 
                                 </tbody>

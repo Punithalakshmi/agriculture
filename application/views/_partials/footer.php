@@ -63,11 +63,6 @@
             add__vertical
             </div> -->
             <!-- Footer Scripts -->
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script>
-                if (!window.jQuery) { 
-                    document.write('<script src="assets/js/lib/3.2.1/jquery-3.2.1.min.js"><\/script>'); 
-                }
-            </script>
+            
         </body>
     </html>

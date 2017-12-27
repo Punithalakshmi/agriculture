@@ -2,9 +2,6 @@
   
    
   $(function(){
-    
-    console.log('Hi, My name is console :)');
-
 
     // Home Nav Button
     $('.button-collapse').sideNav();
@@ -30,9 +27,12 @@
     $('.carousel.carousel-slider').carousel({fullWidth: true});
 
     // Step Form
-     $('.toc-wrapper').pushpin({ top: $('.toc-wrapper').offset().top, offset: 77 });
+    if(current_controller == 'registration'){
+    var topof = $('.toc-wrapper').offset().top;
+     $('.toc-wrapper').pushpin({ top:topof, offset: 77 });
      $('.scrollspy').scrollSpy();
      $('.stepper').activateStepper();
+   }
 
  //    $('.variable-width').slick({
 	//   dots: true,

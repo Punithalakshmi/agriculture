@@ -55,9 +55,10 @@ class  Services_product_model extends App_model
 
    public function unique($id='')
    {
-    $this->db->select('*');
-    $this->db->from('services');
-    $this->db->where('id',$id);
+    $this->db->select('a.*,b.id as seller,b.phone,b.city'); 
+    $this->db->from("services a");
+    $this->db->join("seller b","a.seller_id=b.id"); 
+    $this->db->where('a.id',$id);
     $result = $this->db->get()->row_array();
    return $result;
 
