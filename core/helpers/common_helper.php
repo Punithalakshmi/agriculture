@@ -645,8 +645,7 @@ function get_state_all($country_id=false){
 
 function get_user_type()
 {
-    $CI = @ get_instance();
-    $CI->load->model('login_model');
+    $CI = @get_instance();
     
     $result =  $CI->session->userdata("user_data");
 
@@ -911,6 +910,18 @@ function get_business($dimen)
  $result = $CI->db->get('business_ads')->result_array();
  
  return $result;
+}
+
+/**
+* This method handles to get plans by id
+**/
+function get_plan_by_id($id='')
+{
+    $CI = & get_instance();
+    if($id)
+        $CI->db->where('id',$id);
+    $result = $CI->db->get('plans')->result_array();
+    return $result;
 }
 
 

@@ -240,63 +240,37 @@
 
                     </div>
 
-                    <div class="col m6 s12 feed-clients feed-e-height">
+                    <div class="col m6 s12 feed-e-height">
 
                         <h2 class="center custom-title"> Clients <span>Feeds</span> </h2>
+            
+                   <?php if($feedback) {?>
+                      
+                      
+                         <div class="carousel carousel-slider center" data-indicators="true">
 
-                        <p class="center">
-
-                            It’s List took the stress out of a very stressful situation.
-
-                        </p>
-
-
-
-                        <!--  -->
-
-
-
+                      <?php  foreach($feedback as $feedbacks):?>
+                        <div>
+                          <a class="waves-effect white grey-text darken-text-2"></a>
+                        </div>
+                        <div class="carousel-item white-bg block-text" href="#one!">
+                          <h2><?=$feedbacks['name']?></h2>
+                          <p class="block-text"><?=$feedbacks["address"]?></p>
+                        </div>
                         
-
-                        <ul class="feed-avatar">
-
-                        <?php if($feedback) {?>
-
-                       <?php  foreach($feedback as $feedbacks):?>
-
-                          <li>
-
-                            <img src="<?=base_url();?>uploads/feedback/<?=$feedbacks["image_name"]?>" alt="" class="circle">
-
-                            <span class="title"><?=$feedbacks["name"]?></span>
-
-                            <p> <?=$feedbacks["address"]?> </p>
-
-
-
-                        <?php endforeach;?>
+                         <?php endforeach;?>
 
                           <?php 
 
-                            }
-
-                            else
-
-                            {
+                            }else{
 
                                 echo "<h1 style='text-align:center;'>No Records Found.</h1>";
 
                             }
 
                             ?>
-
-                        </li>
-
-                          
-
-                        </ul>
-
-                        <!--  -->
+                      </div>
+                    
 
                     </div>
 

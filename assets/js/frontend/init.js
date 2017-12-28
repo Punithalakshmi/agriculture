@@ -72,6 +72,9 @@
     $('#CustomerLoginForm').toggleClass('hide');
   }
 
+
+  
+
   /**
    *  Show reset password success message
    */
