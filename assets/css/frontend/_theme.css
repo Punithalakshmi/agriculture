@@ -60,7 +60,10 @@ nav .brand-logo {
 
 }
 
-
+nav ul li.active
+{
+  color: #444;
+}
 
 
 
