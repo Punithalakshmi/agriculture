@@ -53,7 +53,7 @@
 
   <div class="col s12 m6">
 
-    <?php echo form_dropdown('state_id', get_state_all(), $editdata['state_id'], ['name'=>'state_id', 'id'=>'state_id', 'tabindex'=> '8','class' => 'browser-default']); ?>
+    <?php echo form_dropdown('state_id', get_state_all(231), $editdata['state_id'], ['name'=>'state_id', 'id'=>'state_id', 'tabindex'=> '8','class' => 'browser-default']); ?>
 <?php echo form_error('state_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
   </div>
  </div>
