@@ -49,8 +49,8 @@
                                           <div class="card">
                                             <div class="card-image purple waves-effect">
 
-                                                <div class="card-title">BASIC</div>
-                                                <div class="price"><sup>$</sup>9<sub>/mo</sub></div>
+                                                <div class="card-title">Free</div>
+                                                <div class="price"><sup>$</sup>00<sub>/mo</sub></div>
                                                 <div class="price-desc">Free 1 month</div>
                                             </div>
                                           </div>
@@ -62,8 +62,8 @@
                                         <label for="test2">
                                         <div class="card">
                                           <div class="card-image cyan waves-effect">
-                                              <div class="card-title">PROFESSIONAL</div>
-                                              <div class="price"><sup>$</sup>29<sub>/mo</sub></div>
+                                              <div class="card-title">Standard</div>
+                                              <div class="price"><sup>$</sup>99<sub>/mo</sub></div>
                                               <div class="price-desc">Most Popular</div>
                                           </div>
                                         </div>
@@ -75,8 +75,8 @@
                                         <label for="test3">
                                         <div class="card">
                                           <div class="card-image green waves-effect">
-                                              <div class="card-title">PREMIUM</div>
-                                              <div class="price"><sup>$</sup>49<sub>/mo</sub></div>
+                                              <div class="card-title">Pro</div>
+                                              <div class="price"><sup>$</sup>1188<sub>/mo</sub></div>
                                               <div class="price-desc">Get 20% off</div>
                                           </div>
                                         </div>
@@ -99,7 +99,7 @@
                                                   
 
                                                  <li class="step">
-                                                    <div class="step-title waves-effect waves-dark">Step 2</div>
+                                                    <div class="waves-dark">Step 2</div>
                                                     <div class="step-content">
                                                        <div class="row">
                                                           <div class="col s12 m6 input-field">
@@ -183,7 +183,7 @@
                                           
 
                                                  <li class="step">
-                                                    <div class="step-title waves-effect waves-dark">Step 3</div>
+                                                    <div class="waves-dark">Step 3</div>
                                                     <div class="step-content">
                                                       <div class="col s12 m6 input-field">
                                                           <label for="FirstName"> Business Name <span class="required">*</span></label>
