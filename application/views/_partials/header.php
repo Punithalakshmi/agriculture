@@ -59,7 +59,9 @@
                         <li class="<?=($uri=='login')?'active':'';?>"><a href="<?=base_url();?>login">Login </a></li>
                         <li class="<?=($uri1=='feedback')?'active':'';?>"><a href="<?=base_url();?>home/feedback">Feedback</a></li>
                         <?php }else { ?>  
+                         <li class="<?=($uri1=='feedback')?'active':'';?>"><a href="<?=base_url();?>home/feedback">Feedback</a></li>
                         <li class="<?=($uri=='profile')?'active':'';?>"><a class="dropdown-button" href="welcome.html" data-activates="pUser"><i class="material-icons dp48 user-icon">account_circle</i>Welcome <?=$user_data['first_name']?> <i class="material-icons right">arrow_drop_down</i></a></li>
+                        
                         <?php } ?>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
@@ -71,10 +73,13 @@
                         <?php if(!is_logged_in()) { ?> 
                         <li><a href="<?=base_url();?>home/register">Register </a></li>
                         <li><a href="<?=base_url();?>home/login">Login </a></li>
+                        <li class="<?=($uri1=='feedback')?'active':'';?>"><a href="<?=base_url();?>home/feedback">Feedback</a></li>
 
                         <?php }else { ?>
+                             <li class="<?=($uri1=='feedback')?'active':'';?>"><a href="<?=base_url();?>home/feedback">Feedback</a></li>
                             <li><a href="">Profile </a></li>
                         <li><a href="">Logout</a></li>
+                        
                         <?php } ?>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse">
