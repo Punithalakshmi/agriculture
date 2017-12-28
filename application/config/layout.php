@@ -5,7 +5,7 @@
 //
                                         
 $config['layout']['default']['template'] = 'layouts/frontend';
-$config['layout']['default']['title']    = 'Customer Support Services';
+$config['layout']['default']['title']    = 'myAGrow';
 $config['layout']['default']['js_dir']    = "assets/js/frontend";
 $config['layout']['default']['css_dir']   = "assets/css/frontend";
 $config['layout']['default']['img_dir']   = "assets/images";
