@@ -115,7 +115,7 @@
 
                                   <div class="card-image waves-effect waves-block waves-light">
 
-                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/services/<?=$services["image_name"]?>">
 
                                   </div>
 

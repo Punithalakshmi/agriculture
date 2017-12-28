@@ -120,7 +120,8 @@ class Services_product extends Admin_Controller
                {
 
                  $filedata = $this->do_upload();
-                 $filename  = $_FILES["image_name"]["name"];
+                 //echo "<pre>"; print_r($filedata); exit;
+                 $filename  =$filedata['file_name'];
                  $ins_data['image_name'] = (!empty($filename))?$filename:"";
                }
               
@@ -216,10 +217,9 @@ class Services_product extends Admin_Controller
               }
               else
               {
-                $final_file_data = array("success"=>$this->upload->data());
-                return true;
+                $final_file_data = $this->upload->data();
               }
-
+               return $final_file_data;
         } 
   function delete($del_id)
    {
