@@ -80,4 +80,32 @@ class Events extends Admin_Controller {
 
 	}
 
+	public function view(){
+
+
+	    $this->load->library('pagination');
+		$limit = 5;	
+		$config['base_url'] = base_url()."events/view/";
+		$config['per_page'] = $limit;
+		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
+		$config['total_rows'] = $this->db->get('events')->num_rows();
+
+		$config['first_tag_open'] = '<li class="waves-effect">';
+        $config['first_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active green"><span>';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['num_tag_open'] = '<li class="waves-effect">';
+        $config['num_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li class="waves-effect">';
+        $config['next_tag_close'] = '</li>';
+		$this->pagination->initialize($config);
+		$this->data['eventsdata'] = $this->events_model->get_events($limit,$start);
+
+		$this->data['links'] = $this->pagination->create_links();
+
+	    $this->layout->view('frontend/events/all_detail',$this->data);
+
+	 
+	}
+
 }

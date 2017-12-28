@@ -12,6 +12,7 @@ class Home extends Admin_Controller {
    		$this->load->model('services_product_model');
       $this->load->model('news_model');
       $this->load->model('feedback_model');
+      $this->load->model('events_model');
 	}
 
 	public function index()
@@ -19,6 +20,8 @@ class Home extends Admin_Controller {
 		$this->data["editdata"] =$this->services_product_model->get_services();
     $this->data['newsdata'] =  $this->news_model->get_news();
     $this->data['feedback'] = $this->feedback_model->get_feedbacks();
+    $this->data['eventdata'] = $this->events_model->get_events_list();
+    
 		$this->layout->view('frontend/home/index',$this->data);
 	}
 	public function contact()

@@ -456,26 +456,49 @@
 
                       <h3 class="custom-title no-decoration events-icon"><span>Events</span></h3>
 
-                     <ul>
+                      <ul>
+                      <?php if($eventdata) { ?>
+
+                       <?php  foreach($eventdata as $events):?>
 
                           <li class="hoverable">
 
-                            <a href="#">2018 Ag &amp; Food HR Roundtable</a>
+                           
 
-                            <p>August 07, 2018 - August 09, 2018</p>
+                            <a href="<?=base_url()?>events/details/<?=$events['id'];?>"><?=$events['title']?></a>
 
-                          </li>
+                            <p><?=date("l, F j, Y", strtotime($events['from_date']))?></p>
 
-                           <li class="hoverable">
+                        <?php endforeach;?>
 
-                            <a href="#">Building a Workplace for the Future - Generation Z</a>
+                          <?php 
 
-                            <p>December 08, 2017  </p>
+                            }
 
-                          </li>        
+                            else
+
+                            {
+
+                                echo "<h1 style='text-align:center;'>No Records Found.</h1>";
+
+                            }
+
+                            ?>
+
+                        </li>
+
+                          <div class="row right" style="margin-top: 15px;">
+
+                          <a href="<?=site_url('events/view')?>" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
+
+                            More News</a>
+
+                        </div>
 
                       </ul>
 
+
+                     
                   </div>  
 
                 </div>
