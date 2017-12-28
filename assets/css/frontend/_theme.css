@@ -1150,4 +1150,7 @@ button.close {
     filter: alpha(opacity=20);
     opacity: .2;
 }
-
+.help-block
+{
+  color: #FF0000;
+}
