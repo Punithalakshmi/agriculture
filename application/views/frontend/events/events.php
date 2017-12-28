@@ -1,9 +1,9 @@
-                    <nav>
+                    <nav class="clearfix breadcrumb-wrapper">
                         <div class="nav-wrapper green">
                           <div class="container">
                               <div class="col s12">
                                 <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
-                                            <a href="<?=base_url()?>event" class="breadcrumb">Event</a>
+                                <a href="<?=base_url()?>event" class="breadcrumb">Event</a>
                               </div>
                           </div>
                         </div>

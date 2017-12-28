@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Aggricultural</title>
-        <!-- Favicons-->
-        <!-- <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32"> -->
-        <!--  Android 5 Chrome Color-->
-        <meta name="theme-color" content="#25a642">
-        <!-- Remove Tap Highlight on Windows Phone IE -->
-        <meta name="msapplication-tap-highlight" content="no"/>
-        <!-- CSS-->
+
+    <head>   
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- <link href="assets/css/ghpages-materialize.css" rel="stylesheet" /> -->
-        <!--  -->     
     </head>
-        <body>
+      
           <?php $user_data = get_user_type();
              $category = categories1();  
              $uri = $this->uri->segment(1);

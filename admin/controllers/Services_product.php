@@ -110,7 +110,6 @@ class Services_product extends Admin_Controller
                $ins_data['title']        = $this->input->post('title');
                $ins_data['description'] = $this->input->post('description');
                $ins_data['price'] = $this->input->post('price');
-               //$ins_data['image_name'] =  $fileName;
                $ins_data['address'] = $this->input->post('address');
                $ins_data['contact_details'] = $this->input->post('contact_details');
 
@@ -120,7 +119,6 @@ class Services_product extends Admin_Controller
                {
 
                  $filedata = $this->do_upload();
-                 //echo "<pre>"; print_r($filedata); exit;
                  $filename  =$filedata['file_name'];
                  $ins_data['image_name'] = (!empty($filename))?$filename:"";
                }
@@ -129,7 +127,6 @@ class Services_product extends Admin_Controller
               {
                 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
-
                 $update_id = $this->services_product_model->update(array("id" => $edit_id),$ins_data);
                 $this->session->set_flashdata("success_msg","Services updated successfully.",TRUE);              
               }

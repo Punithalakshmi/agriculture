@@ -2,12 +2,12 @@
 
 
             <!-- breadcrumb -->
-            <nav>
+            <nav class="clearfix breadcrumb-wrapper">
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
                         <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#" class="breadcrumb">About Us</a>
+                        <a href="<?=base_url();?>home/about" class="breadcrumb">About Us</a>
                       </div>
                   </div>
                 </div>

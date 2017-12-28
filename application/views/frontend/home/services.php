@@ -1,10 +1,10 @@
             <?php //$this->session->unset_userdata('var_search_term');?>
             <!-- breadcrumb -->
-            <nav>
+            <nav class="clearfix breadcrumb-wrapper">
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="<?=base_url();?>" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
                         <a href="<?=base_url();?>services" class="breadcrumb">Services</a>
                       </div>
                   </div>
@@ -95,12 +95,13 @@
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/images/products/<?=$services["image_name"]?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/services/<?=$services["image_name"]?>">
                                   </div>
                                   <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>
 
-                                    <p> <small>by Ashiana Housing</small> <br /><?=$services["address"];?></p>
+                                    <p> <!-- <small>by Ashiana Housing</small>  -->
+                                      <?=$services["address"];?></p>
                                   </div>
 
                                   <div class="card-action right-align">

@@ -53,14 +53,30 @@ class  Services_product_model extends App_model
      return $this->db->get()->result_array();
    }
 
-   public function unique($id='')
+   public function get_product_service($id='')
    {
     $this->db->select('a.*,b.id as seller,b.phone,b.city'); 
     $this->db->from("services a");
     $this->db->join("seller b","a.seller_id=b.id"); 
     $this->db->where('a.id',$id);
+
     $result = $this->db->get()->row_array();
-   return $result;
+
+    $related =array();
+
+    if(count($result)){
+
+      $this->db->select('*'); 
+      $this->db->from("services");
+      $this->db->where('category_id',$result['category_id']);
+      $this->db->where('id !=',$id);
+      $this->db->order_by("id","desc");
+      $related = $this->db->get()->result_array();
+    }
+
+    $retdata = array('service'=>$result,'related'=>$related);
+    
+    return $retdata;
 
    }
 

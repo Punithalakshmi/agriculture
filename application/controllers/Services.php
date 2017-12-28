@@ -66,9 +66,12 @@ class Services extends Admin_Controller {
 	
 	public function details($id='')
 	{	
-		$this->data["service_row"] = $this->services_product_model->unique($id);
-		$category_id = $this->data["service_row"]["category_id"];
-		$this->data["related_product"] = related_category($category_id);
+		$data= $this->services_product_model->get_product_service($id);
+
+		$this->data["service_row"] = $data['service']; 
+
+		$this->data["related_product"] = $data['related'];
+
 		$this->layout->view('frontend/home/detail',$this->data);
 	}
 

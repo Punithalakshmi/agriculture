@@ -1,6 +1,6 @@
 
             <!-- breadcrumb -->
-            <nav>
+            <nav class="clearfix breadcrumb-wrapper">
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">

@@ -1,11 +1,11 @@
 
             <!-- breadcrumb -->
-            <nav>
+            <nav class="clearfix breadcrumb-wrapper">
                 <div class="nav-wrapper green lighten-4 black-text">
                   <div class="container">
                       <div class="col s12">
-                        <a href="#!" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="#!" class="breadcrumb">Login</a>
+                        <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url();?>login" class="breadcrumb">Login</a>
                       </div>
                   </div>
                 </div>

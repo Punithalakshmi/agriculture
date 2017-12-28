@@ -125,7 +125,11 @@
 
 
 
-                                    <p> <small>by Ashiana Housing</small> <br /><?=$services["address"];?></p>
+                                    <p> <!--<small>by Ashiana Housing</small> -->
+
+                                      <?=$services["address"];?>
+                                        
+                                    </p>
 
                                   </div>
 

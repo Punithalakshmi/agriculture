@@ -4390,3 +4390,10 @@ button.close {
 {
   color: #FF0000;
 }
+.breadcrumb {  display:inline-block; float:left;}
+
+
+.breadcrumb-wrapper {
+  position: relative;
+  top:-34px;
+}
