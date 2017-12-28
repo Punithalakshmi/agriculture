@@ -31,14 +31,14 @@
                                   <div class="input-field">
                                     <label for="CustomerEmail"> Email </label>
                                     <input type="email" value="<?=set_value('email');?>" name="email" class="" spellcheck="false" autocomplete="off" autocapitalize="off" autofocus>
-                                    <?=form_error('email');?>
+                                    <?=form_error('email','<span class="help-block text-danger">&nbsp;', '</span>');?>
                                   </div>
 
                                   
                                     <div class="input-field">
                                       <label for="CustomerPassword"> Password </label>
                                       <input type="password" name="password" id="password" class="">
-                                      <?=form_error('password');?>
+                                      <?=form_error('password','<span class="help-block text-danger">&nbsp;', '</span>');?>
                                     </div>
                                   
                                     <input type="submit" class="btn-large z-depth-0" value="Sign In">
