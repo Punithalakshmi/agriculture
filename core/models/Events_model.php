@@ -74,6 +74,44 @@ class Events_model extends App_model
         return $return;
     }
 
+     /**
+     * This method handles to retrieve all events
+     * */
+   function get_all_events($field='id', $order_by='DESC'){
+       $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->where('status=', "Active")
+                    ->order_by($field, $order_by);
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result_array();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
+
+
+     /**
+     * This method handles to retrieve limited evets
+     * */
+   function get_events_list($field='id', $order_by='DESC'){
+       $table_name =  $this->_table;
+        $this->db->select('*')
+                    ->from($table_name)
+                    ->where('status=', "Active")
+                    ->limit(3)
+                    ->order_by($field, $order_by);
+        $data = $this->db->get();
+        if(!empty($data)){
+            $return = $data->result_array();
+            return $return;
+        }else{
+            return $return;
+        }
+    }
+
 
 }
 ?>
