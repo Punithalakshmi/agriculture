@@ -316,7 +316,7 @@
 
                                 <div class="center">
 
-                                    <a href="#" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
+                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
 
                                 </div>
 
@@ -344,7 +344,7 @@
 
                                 <div class="center">
 
-                                    <a href="#" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4 active">Subscribe</a>                                
+                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4 active">Subscribe</a>                                
 
                                 </div>
 
@@ -372,7 +372,7 @@
 
                                 <div class="center">
 
-                                    <a href="#" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
+                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
 
                                 </div>
 
