@@ -135,6 +135,17 @@ function alerttab(id)
 
 $(document).ready(function(){
 
+ $('#country_id').change(function() {
+
+    var id = $('#country_id').val();
+
+    if( $(id).val() !='' ){          
+      $.post(base_url+'country_state_manager/get_state/'+id,{id:$(id).val()}, function(data){
+        $('#state_id').html(data);
+      }); 
+    } 
+  });
+
   tab_view("contact","profile/update_contact",'');
 
     $("#search_form").submit(function(){
@@ -154,6 +165,8 @@ $(document).ready(function(){
         else
            return true;
     });
+
+     
 });
 
 $(document).ready(function(){

@@ -18,6 +18,7 @@ class Registration extends Admin_Controller {
         $this->load->model('country_model');
         $this->load->model('state_model');
         $this->load->model('services_model');
+        $this->load->model('plans_model');
         $this->data['plans'] = array();
         $this->data['plans'] = '';
 		
@@ -34,7 +35,7 @@ class Registration extends Admin_Controller {
           $this->layout->add_stylesheets(array('materialize-stepper.min'));
           //$this->layout->add_stylesheets(array('materialize-stepper.min));
           
-          $this->data['plans'] = get_plans_all();
+          $this->data['plandata']  = $this->plans_model->get_plans_all();
 
           $this->layout->view('frontend/registration/signup',$this->data);
     }
@@ -77,11 +78,11 @@ class Registration extends Admin_Controller {
               $ins_data['company_name']          = $this->input->post('company_name');
               $ins_data['website']               = $this->input->post('website');
               $ins_data['description']           = $this->input->post('description'); 
-              $ins_data['experience_type']         = $this->input->post('experience_type');
-              $ins_data['experience_id']         = $this->input->post('experience_id');
-              $ins_data['primary_service_category']           = $this->input->post('primary_service_category');
-              $ins_data['other_related_category']           = $this->input->post('other_related_category');
-              $ins_data['qualification_id']           = $this->input->post('qualification_id'); 
+              $ins_data['experience_type']          = $this->input->post('experience_type');
+              $ins_data['experience']            = $this->input->post('experience');
+              $ins_data['primary_service_category'] = $this->input->post('primary_service_category');
+              $ins_data['other_related_category']   = $this->input->post('other_related_category');
+              $ins_data['qualification']         = $this->input->post('qualification');
               $ins_data['seller_id']             = $seller_id;
 
               
