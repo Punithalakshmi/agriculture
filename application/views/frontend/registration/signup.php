@@ -131,16 +131,16 @@
                                   </div>
 
                                   
-                                   <div class="col s12 m6 input-field">
+                                   <div class="col s12 m6">
 
                                         <?php echo form_dropdown('country_id', get_country_all(), (set_value('country_id')) ? set_value('country_id') : 231,
-    ['id' => 'country_id', 'tabindex' => '7','class' => 'validate']); ?>
+    ['id' => 'country_id', 'tabindex' => '7','class' => 'browser-default validate']); ?>
                                   </div>
 
-                                  <div class="col s12 m6 input-field">
+                                  <div class="col s12 m6 ">
 
-                                        <?php echo form_dropdown('state_id',  get_state_all(231),  set_value('state_id'),
-    ['id' => 'state_id', 'tabindex' => '8','class' => 'validate']); ?>
+                                        <?php echo form_dropdown('state_id',  get_state_all(231),  (set_value('state_id')) ? set_value('state_id') : 3924,
+    ['id' => 'state_id', 'tabindex' => '8','class' => 'browser-default validate']); ?>
 
                                    
                                                 
