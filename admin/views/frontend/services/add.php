@@ -16,9 +16,9 @@
   
        <div class="form-group">
         <div class="col-lg-7">
-      <label class="control-label">Website<span class="required">*</span></label>
+      <label class="control-label">Website</label>
        
-        <?php echo form_input(['name' => 'website', 'id' => 'website', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Website' ,'value' => set_value('website',$editdata['website'])]); ?> <?php echo form_error('website', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+        <?php echo form_input(['name' => 'website', 'id' => 'website', 'class' => 'form-control', 'maxlength' => '258', 'tabindex' => '2', 'placeholder' =>'Website' ,'value' => set_value('website',$editdata['website'])]); ?> 
      </div>
   
  </div>

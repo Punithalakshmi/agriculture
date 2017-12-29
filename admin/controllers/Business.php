@@ -15,7 +15,7 @@ class Business extends Admin_Controller
 
   public function index()
   {
-    $this->layout->add_javascripts(array('listing'));
+  	$this->layout->add_javascripts(array('listing'));
     $this->load->library('listing');
     $this->simple_search_fields = array('customer_name' => 'Customer Name',"title" =>"Title");
     $this->_narrow_search_conditions = array("start_date");
@@ -42,19 +42,21 @@ class Business extends Admin_Controller
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));  
 
+        
         if($this->input->post('dimention')=='Horizontal')
         {
-            if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
-            {
+          if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+          {
               $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio1');
-            }
+          }
+
         }
-        elseif($this->input->post('dimention')=='Vertical')
-        {                                 
-            if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
-            {
-              $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio');
-            }
+        else if($this->input->post('dimention')=='Vertical')
+        { //echo "string"; exit;
+          if(isset($_FILES["ads_image"]["name"]) && $_FILES["ads_image"]["size"]>0)
+          {
+            $this->form_validation->set_rules('ads_image',  'Ads Image','trim|callback_imgratio');
+          }
         }
 
          try
@@ -82,13 +84,14 @@ class Business extends Admin_Controller
              
                $ins_data = array();
                $form = $this->input->post();
-               $ins_data['customer_name']  = $form["customer_name"];
-               $ins_data['title']          = $form["title"];
-               $ins_data['description']    = $form["description"];
+               $ins_data['customer_name'] = $form["customer_name"];
+               $ins_data['title']         = $form["title"];
+               $ins_data['description']   = $form["description"];
                $ins_data['url']            = $form["url"];
                $ins_data['status']         = $form["status"];
-               $ins_data['dimention']      = $form["dimention"];
-              
+               $ins_data['dimention']         = $form["dimention"];
+                
+
                
                $creater_id   = $this->session->userdata("user_data");
 
@@ -163,8 +166,7 @@ class Business extends Admin_Controller
                 $config['upload_path']   = '../assets/img/business/';
                 $config['allowed_types'] = 'gif|png|jpg|jpeg';
                 $config['max_size']    = 2056;
-                $config['max_width']   = 1800;
-                $config['max_height']  = 800;
+
 
               $this->upload->initialize($config);
               if(!$this->upload->do_upload('ads_image'))
@@ -200,11 +202,10 @@ class Business extends Admin_Controller
         return true;
       else
       {
-        $this->form_validation->set_message('imgratio',"The dimention should be 160x600 ratio");
+        $this->form_validation->set_message('imgratio',"The ads image should be 160x600 ratio");
         return false;
       }
     }
-
     function imgratio1($str)
     {  
       $str = getimagesize($_FILES['ads_image']['tmp_name']);
@@ -212,9 +213,10 @@ class Business extends Admin_Controller
         return true;
       else
       {
-        $this->form_validation->set_message('imgratio1',"The dimention should be 720x90 ratio");
+        $this->form_validation->set_message('imgratio1',"The vertical image should be 720x90 ratio");
         return false;
       }
     }
+
 }
 ?>

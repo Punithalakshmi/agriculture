@@ -6,7 +6,7 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<h1 style="color: #fff;font-size: 30px;"></h1>
+	<h1 style="color: #fff;font-size: 30px;">myAGrow Admin</h1>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
@@ -42,7 +42,7 @@
 	<!-- END LOGIN FORM -->
 </div>
 <div class="copyright">
-	 <?=date('Y');?> © 8th Domain Technology
+	 <?=date('Y');?> © myAGrow.com
 </div>
 
 </body>

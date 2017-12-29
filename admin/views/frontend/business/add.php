@@ -74,16 +74,13 @@
                       <div class="row">  
                          <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('dimention'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Image type<span class="required">*</span></label>
+                            <label class="control-label col-md-3">Image Type</label>
                             <div class="col-md-9 radio-btn">
                               <input type="radio" class="form-control form-control-inline" name="dimention" id="dimention" value="Vertical" checked="checked" <?php echo set_radio('dimention',$editdata['dimention'],($editdata['dimention']=='Vertical')?True:False);?>> Vertical
                               <input type="radio" class="form-control form-control-inline" name="dimention" id="dimention" value="Horizontal" <?php echo set_radio('dimention',$editdata['dimention'],($editdata['dimention']=='Horizontal')?True:False);?>> Horizontal
-                                <?php echo form_error('status'); ?>
                             </div>
                           </div>
-                        </div>                                 
-                      </div>
-                      <div class="row">  
+                        </div>                                   
                         <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Status<span class="required">*</span></label>
@@ -94,9 +91,7 @@
                             </div>
                           </div>
                         </div>                                 
-                      </div>
-                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('description'))?'has-error':'';?>">
                             <label class="control-label col-md-3">Description<span class="required">*</span></label>
                             <div class="col-md-9">

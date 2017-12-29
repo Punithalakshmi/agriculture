@@ -41,26 +41,26 @@ class Events extends Admin_controller
   
 
     public function add($edit_id='')
-    {	
-        $admin_data = get_user_type();
+    {	  $admin_data = get_user_type();
        
         $s_id ='';
         $seller_id = '';
         $seller_name ='';
-        
+
         $this->layout->add_javascripts(array('tinymce/tinymce.min'));
         $this->layout->add_javascripts(array('tinymce'));  
-        $this->layout->add_javascripts(array('function')); 
+        $this->layout->add_javascripts(array('function'));    
         $this->layout->add_javascripts('bootstrap-timepicker.min');
-        $this->layout->add_stylesheets('bootstrap-timepicker');
-
+        $this->layout->add_stylesheets('bootstrap-timepicker'); 
+        $this->layout->add_stylesheets('custom');
+        
         if(isset($_FILES["event_image"]["name"])&& $_FILES["event_image"]["size"]>0)
         {
           $this->form_validation->set_rules('event_image','Events image','trim|callback_do_upload');
         }
   		try
   		{
-  			if($admin_data["role"]==1)
+  			 if($admin_data["role"]==1)
           {
              $s_id = $admin_data["id"];
 
@@ -68,7 +68,7 @@ class Events extends Admin_controller
 
              $seller_id = $admin_data["id"];
              $seller_name = $admin_data["first_name"];
-          }
+          } 
         $this->form_validation->set_rules('title','Title','trim|required');
   			$this->form_validation->set_rules('description','Description','trim|required|min_length[15]');
   			$this->form_validation->set_rules('location','Location','trim|required');
@@ -91,6 +91,7 @@ class Events extends Admin_controller
           $ins_data["end_time"]  = $form["end_time"];
   				$ins_data["description"] = $form["description"];
   				$ins_data["status"] = $form["status"];
+          $ins_data["seller_id"] = $form["seller_id"];
           
           $creater_id   = $this->session->userdata("user_data");
   	       
@@ -126,6 +127,7 @@ class Events extends Admin_controller
   			$this->data["status"] = "error";
   			$msg  = $e->getMessage();
   		}
+
           $this->data['seller_name']         = $seller_name;
           $this->data['sell_id']             = $seller_id;
           $this->data['s_id']                = $s_id;

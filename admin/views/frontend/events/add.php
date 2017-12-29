@@ -35,9 +35,9 @@
                               </div>
                           </div>
                         </div>
-                         <div class="col-md-6">
+                       <div class="col-md-6">
                           <div class="form-group <?php echo (form_error('location'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Location<span class="required">*</span></label>
+                            <label class="control-label col-md-3">Event Location<span class="required">*</span></label>
                             <div class="col-md-9">
                               <textarea class="jqte-test form-control" name="location" id="locations"><?php echo set_value('location',$editdata['location']);?></textarea>
                               <?php echo form_error('location'); ?>

@@ -110,16 +110,16 @@ class Services_product extends Admin_Controller
                $ins_data['title']        = $this->input->post('title');
                $ins_data['description'] = $this->input->post('description');
                $ins_data['price'] = $this->input->post('price');
+               //$ins_data['image_name'] =  $fileName;
                $ins_data['address'] = $this->input->post('address');
                $ins_data['contact_details'] = $this->input->post('contact_details');
-
                $ins_data['status']     = $this->input->post('status');
-                
+                $ins_data['event_id']     = $this->input->post('event_id');
               if(isset($_FILES["image_name"]["name"]) && $_FILES["image_name"]["size"]>0)
                {
 
                  $filedata = $this->do_upload();
-                 $filename  =$filedata['file_name'];
+                 $filename  = $filedata['file_name'];
                  $ins_data['image_name'] = (!empty($filename))?$filename:"";
                }
               
@@ -127,6 +127,7 @@ class Services_product extends Admin_Controller
               {
                 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
+
                 $update_id = $this->services_product_model->update(array("id" => $edit_id),$ins_data);
                 $this->session->set_flashdata("success_msg","Services updated successfully.",TRUE);              
               }
@@ -189,7 +190,7 @@ class Services_product extends Admin_Controller
           }  
           else
           {
-              $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'','category_id' =>'','seller_id' =>'');
+              $this->data["editdata"] = array("title"=>"","description"=>"","price"=>"","status"=>"",'image_name'=>'','address' => '','contact_details' =>'','category_id' =>'','seller_id' =>'','event_id' =>'');
 
           }
 
@@ -216,7 +217,7 @@ class Services_product extends Admin_Controller
               {
                 $final_file_data = $this->upload->data();
               }
-               return $final_file_data;
+              return $final_file_data;
         } 
   function delete($del_id)
    {

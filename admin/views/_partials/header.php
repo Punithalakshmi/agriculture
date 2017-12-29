@@ -15,7 +15,7 @@
     <div class="page-header-inner">
       <!-- BEGIN LOGO -->
       <div class="page-logo">      
-        <h4 style="color: white;">Agriculture Dashboard</h4>    
+        <h4 style="color: white;">myAGrow Admin</h4>    
         <div class="menu-toggler sidebar-toggler hide">
           <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
         </div>

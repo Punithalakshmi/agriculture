@@ -174,6 +174,7 @@ class Seller extends Admin_Controller
           }
         //print_r($country_data);exit;
         $state =  $this->state_model->get_state_by_country_id(231);
+
         $state_data[null] = 'Select State';
          if($state){
 
@@ -205,24 +206,20 @@ class Seller extends Admin_Controller
   public function add_service($edit_id = '')
   {
     
-      
+      $msg ="";
      try
         {
           
           if($this->input->post('seller_id'))
 
-        $edit_id = $this->input->post('seller_id');
+            $edit_id = $this->input->post('seller_id');
             
-        $this->form_validation->set_rules('company_name','Business Name','trim|required');
+       $this->form_validation->set_rules('company_name','Business Name','trim|required');
 
-        $this->form_validation->set_rules('experience_id','Work Experience','trim|required');
+        $this->form_validation->set_rules('experience','Work Experience','trim|required');
 
-        $this->form_validation->set_rules('primary_service_category','Primary service category','trim|required');
+        $this->form_validation->set_rules('primary_service_category','Primary services','trim|required');
 
-          //$this->form_validation->set_rules('website', 'URL', 'trim|max_length[548]|prep_url|callback_form_validation_validate_url');
-
-        $this->form_validation->set_rules('website','Website','trim|required');
-          
         $this->form_validation->set_rules('description','Description','trim|required');
 
         $this->form_validation->set_error_delimiters('', '');
@@ -233,12 +230,12 @@ class Seller extends Admin_Controller
               $ins_data = array();
               $ins_data['company_name']          = $this->input->post('company_name');
               $ins_data['website']               = $this->input->post('website');
-              $ins_data['description']           = $this->input->post('description'); 
-              $ins_data['experience_type']         = $this->input->post('experience_type');
-              $ins_data['experience_id']         = $this->input->post('experience_id');
-              $ins_data['primary_service_category']           = $this->input->post('primary_service_category');
-              $ins_data['other_related_category']           = $this->input->post('other_related_category');
-              $ins_data['qualification_id']           = $this->input->post('qualification_id'); 
+              $ins_data['description']           = $this->input->post('description');
+              $ins_data['experience_type']          = $this->input->post('experience_type');
+              $ins_data['experience']            = $this->input->post('experience');
+              $ins_data['primary_service_category'] = $this->input->post('primary_service_category');
+              $ins_data['other_related_category']   = $this->input->post('other_related_category');
+              $ins_data['qualification']         = $this->input->post('qualification');
               $ins_data['seller_id']             = $this->input->post('seller_id');
 
 
@@ -253,14 +250,15 @@ class Seller extends Admin_Controller
 
                     $ins_data['modified_on'] = date('Y-m-d H:i:s');
                     $this->services_model->update_services($edit_id,$ins_data);
-                    $msg                      = 'Service updated successfully';
+                    $msg                      = 'Record updated successfully';
+                    $status  = 'edit';
                  
                 }else{
 
                    $ins_data['created_on'] = date('Y-m-d H:i:s');
                    $new_id                   = $this->services_model->insert($ins_data);         
                    $msg                      = 'Services added successfully';
-                 
+                   $status  = 'add';
                 }
 
               $this->session->set_flashdata('success_msg',$msg,TRUE);
@@ -276,6 +274,11 @@ class Seller extends Admin_Controller
               $edit_data = array();
               $edit_data['company_name'] = '';
               $edit_data['description'] = '';
+              $edit_data['experience_type']  = '';
+              $edit_data['experience_id']  = '';
+              $edit_data['primary_service_category']  = '';
+              $edit_data['other_related_category']  = '';
+              $edit_data['qualification_id']  = '';
               $edit_data['website']  = '';
               $edit_data['seller_id']  = '';
               $status = 'error'; 
@@ -299,7 +302,7 @@ class Seller extends Admin_Controller
         if($this->input->is_ajax_request()){
          
          $output  = $this->load->view('frontend/services/add',$this->data,true);
-          return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
+          return $this->_ajax_output(array('status' => $status, 'msg'=>$msg, 'output' => $output, 'edit_id' => $edit_id), TRUE);
         } 
         else
         {

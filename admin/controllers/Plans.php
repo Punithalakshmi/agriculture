@@ -19,7 +19,7 @@ class Plans extends Admin_Controller
     $this->load->library('listing');
     $this->simple_search_fields = array('name' => 'Name',"amount" =>"Amount");
     $this->_narrow_search_conditions = array("start_date");
-    $str ='<a href="'.site_url('plans/add/{id}').'" class="btn btn btn-padding table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding" onclick="delete_record(\'plans/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
+    $str ='<a href="'.site_url('plans/add/{id}').'" class="btn btn btn-padding  table-action"><i class="fa fa-edit edit"></i></a><a href="javascript:void(0);" data-original-title="Remove" data-toggle="tooltip" data-placement="top" class="table-action btn-padding btn " onclick="delete_record(\'plans/delete/{id}\',this);"><i class="fa fa-trash-o trash"></i></a>';    
     $this->listing->initialize(array('listing_action' => $str));
     $listing = $this->listing->get_listings('plans_model', 'listing');
     $this->data['btn'] = "";
@@ -50,7 +50,7 @@ class Plans extends Admin_Controller
              $edit_id = $this->input->post('edit_id');
             
            $this->form_validation->set_rules('name','Name','trim|required');
-           $this->form_validation->set_rules('amount','Amount','trim|required|integer');
+           $this->form_validation->set_rules('amount','Amount','trim|required|numeric');
            $this->form_validation->set_rules('description','Description','trim|required|min_length[15]');
            
            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');

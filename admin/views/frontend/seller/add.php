@@ -4,11 +4,17 @@
     <div class="page-content">
       <!-- BEGIN PAGE HEADER-->
       <h3 class="page-title">
-       Add Seller
+      Profile
       </h3>
 
       <div class="page-bar">
-         <?php echo set_breadcrumb(); ?>
+         <?php $admin_data = get_user_type();
+         
+         if($admin_data['role']==1)
+         {
+            echo set_breadcrumb();          
+         }
+           ?>
       </div>
       <!-- END PAGE HEADER-->
       <!-- BEGIN PAGE CONTENT-->
@@ -19,7 +25,7 @@
           <div class="portlet box green ">
             <div class="portlet-title">
               <div class="caption">
-                <i class="fa fa-table"></i> Seller Form
+                <i class="fa fa-table"></i> Profile Details
               </div>
             </div>
 
@@ -29,13 +35,13 @@
 
   <div class="container-full sellerform">
    <ul class="nav nav-tabs sellertabs">
-  <li class="active"><a data-toggle="tab" id="tab1"  href="#contact">Contact Information</a></li>
+  <li class="active"><a data-toggle="tab" id="tab1" href="#contact">Contact Information</a></li>
 
-  <li><a data-toggle="tab" id="tab2" href="#service" onclick="tab_view('service','seller/add_service','')" >Seller Services</a></li>
+  <li><a data-toggle="tab" href="#service" onclick="tab_view('service','seller/add_service','')" >Seller Services</a></li>
 
-  <li><a data-toggle="tab" id="tab3" href="#photos" onclick="tab_view('photos','seller/add_photos','')">photos</a></li>
+  <li><a data-toggle="tab" href="#photos" onclick="tab_view('photos','seller/add_photos','')">photos</a></li>
 </ul>
-  
+  </ul>
   <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
  
   <div class="tab-content">

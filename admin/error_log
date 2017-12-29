@@ -7,3 +7,11 @@
 [02-Dec-2017 04:23:03 America/Denver] PHP Fatal error:  Call to undefined function get_user_type() in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 35
 [04-Dec-2017 23:23:46 America/Denver] PHP Fatal error:  require_once(): Failed opening required '../core/controllers/Seller_controller.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/izaapinn/public_html/agdemo/admin/controllers/Profile.php on line 3
 [05-Dec-2017 00:22:24 America/Denver] PHP Parse error:  syntax error, unexpected '}' in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 101
+[15-Dec-2017 07:41:03 America/Denver] PHP Parse error:  syntax error, unexpected ')' in /home/izaapinn/public_html/agdemo/admin/views/_partials/header.php on line 82
+[16-Dec-2017 05:37:27 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 32
+[16-Dec-2017 05:40:07 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 31
+[16-Dec-2017 05:46:40 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 26
+[16-Dec-2017 05:52:07 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 27
+[16-Dec-2017 05:54:05 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 27
+[16-Dec-2017 05:59:46 America/Denver] PHP Fatal error:  Call to undefined function get_experience_all() in /home/izaapinn/public_html/agdemo/admin/views/frontend/services/add.php on line 32
+[27-Dec-2017 00:55:33 America/Denver] PHP Parse error:  syntax error, unexpected end of file in /home/izaapinn/public_html/agdemo/admin/views/frontend/business/add.php on line 88

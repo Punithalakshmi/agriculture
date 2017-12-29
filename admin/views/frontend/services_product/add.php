@@ -35,7 +35,7 @@
                             <div class="form-group <?php echo (form_error('category_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Category<span class="required">*</span></label>
                               <div class="col-md-9">
-                                <?php echo form_dropdown('category_id', $category, $editdata['category_id'], ['name' => 'category_id', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
+                                <?php echo form_dropdown  ('category_id', $category, $editdata['category_id'], ['name' => 'category_id', 'tabindex' => '1', 'id' => 'category_id', 'class' => 'form-control']); ?> <?php echo form_error('category_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?> 
                               </div>
                             </div>
                           </div>
@@ -43,9 +43,6 @@
                           <div class="col-md-6">
                             <div class="form-group <?php echo (form_error('seller_id'))?'has-error':'';?>">
                               <label class="control-label col-md-3">Seller<span class="required">*</span></label>
-
-                             
-
                               <div class="col-md-9">
                               <?php if($s_id){ ?>
 
@@ -104,10 +101,9 @@
                           </div>
                             <div class="col-md-6">
                             <div class="form-group">
-                              <label class="control-label col-md-3">Addresss</label>
+                              <label class="control-label col-md-3">Event</label>
                               <div class="col-md-9">
-
-                               <?php echo form_textarea(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'tabindex' => '6', 'value' => set_value('address',$editdata['address']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> 
+                               <?php echo form_dropdown(array('name' => 'event_id', 'tabindex' => '1','class' => 'form-control', 'id' => 'events'), array('' => 'Select Events')+get_events(), set_value('events',$editdata['event_id']));?> 
                               </div>
                             </div>
                           </div>
@@ -122,20 +118,16 @@
                               </div>
                             </div>
                           </div>
-
                           <div class="col-md-6">
-                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
-                            <label class="control-label col-md-3">Status<span class="required">*</span></label>
-                            <div class="col-md-9 radio-btn">
-                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Active" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Active')?True:False);?>> Active
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Addresss</label>
+                              <div class="col-md-9">
 
-                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Inactive" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Inactive')?True:False);?>> Inactive
-                                <?php echo form_error('status'); ?>
+                               <?php echo form_textarea(['name' => 'address', 'id' => 'address', 'class' => 'form-control', 'tabindex' => '6', 'value' => set_value('address',$editdata['address']), 'rows' => 4, 'cols' => 8, 'tabindex' => '10']); ?> 
+                              </div>
                             </div>
                           </div>
-
-                            
-                          </div> 
+                           
                           </div>
                           
                           <div class="row">
@@ -148,7 +140,19 @@
                             </div>
                           </div>
 
-                      
+                        <div class="col-md-6">
+                           <div class="form-group <?php echo (form_error('status'))?'has-error':'';?>">
+                            <label class="control-label col-md-3">Status<span class="required">*</span></label>
+                            <div class="col-md-9 radio-btn">
+                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Active" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Active')?True:False);?>> Active
+
+                              <input type="radio" class="form-control form-control-inline" name="status" id="status" value="Inactive" <?php echo set_radio('status',$editdata['status'],($editdata['status']=='Inactive')?True:False);?>> Inactive
+                                <?php echo form_error('status'); ?>
+                            </div>
+                          </div>
+
+                            
+                          </div>
                       </div>
                        
                     <!--/row-->                                            
