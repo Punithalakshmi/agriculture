@@ -4,7 +4,7 @@
 
                 <div class="section no-pad-bot">
 
-                    <h1 class="header center">Explore The Worldwide Farmers</h1>
+                    <h1 class="header center">Explore California Farmers</h1>
 
                     <div class="search-container">
 
@@ -125,11 +125,7 @@
 
 
 
-                                    <p> <!--<small>by Ashiana Housing</small> -->
-
-                                      <?=$services["address"];?>
-                                        
-                                    </p>
+                                    <p> <small>by Ashiana Housing</small> <br /><?=$services["address"];?></p>
 
                                   </div>
 
@@ -162,6 +158,15 @@
                     </div>
 
                 </div>
+
+
+
+                <script>
+
+
+
+                </script>
+
 
 
                 <div class="row center">
@@ -244,36 +249,78 @@
 
                     </div>
 
-                    <div class="col m6 s12 feed-e-height">
+                    <div class="col m6 s12 feed-clients feed-e-height">
 
                         <h2 class="center custom-title"> Clients <span>Feeds</span> </h2>
-            
-                   <?php if($feedback) {?>
-                      
-                      
-                         <div class="carousel carousel-slider center" data-indicators="true">
 
-                      <?php  foreach($feedback as $feedbacks):?>
-                        <div>
+                        <!--  -->
+                        <div class="carousel carousel-feeds carousel-slider center" data-indicators="true">
+
+                         <?php foreach($feedback as $feedbacks):?>
+                          <div class="carousel-item black-text" href="#one!">
+                            <div class="feed-text"><?=$feedbacks['comments'];?></div>
+                            <ul class="feed-avatar">
+                              <li>
+                                <span class="title"><?=$feedbacks['name']?></span>
+                                <p> <?=$feedbacks["address"]?> </p>
+                              </li>
+                            </ul>
+                          </div>
+                           <?php endforeach;?>
+
+                         
+
+                          <!-- <div class="carousel-item black-text" href="#three!">
+                            <div class="feed-text">Quasi, pariatur! Voluptates quasi necessitatibus, aliquam fugiat culpa, veniam quae, nobis soluta corporis rerum quas</div>
+                            <ul class="feed-avatar">
+                              <li>
+                                <span class="title">Rachel Vasquez</span>
+                                <p> France </p>
+                              </li>
+                            </ul>
+                          </div> -->
+                          <!--<div class="carousel-item black-text" href="#four!">
+                            <div class="feed-text">Dolore nemo voluptatibus, minima quisquam. Consequuntur libero nobis, voluptas quia sapiente nostrum ab suscipit necessitatibus unde quas quo</div>
+                            <ul class="feed-avatar">
+                              <li>
+                                <span class="title">Rachel Vasquez</span>
+                                <p> France </p>
+                              </li>
+                            </ul>
+                          </div> -->
+                        </div>
+                        <!--  -->
+
+
+
+
+            
+                   <?php //if($feedback) {?>
+                      
+                      
+                         <!-- <div class="carousel carousel-slider center" data-indicators="true"> -->
+
+                      <?php  //foreach($feedback as $feedbacks):?>
+                        <!-- <div>
                           <a class="waves-effect white grey-text darken-text-2"></a>
                         </div>
                         <div class="carousel-item white-bg block-text" href="#one!">
                           <h2><?=$feedbacks['name']?></h2>
                           <p class="block-text"><?=$feedbacks["address"]?></p>
-                        </div>
+                        </div> -->
                         
-                         <?php endforeach;?>
+                         <?php //endforeach;?>
 
                           <?php 
 
-                            }else{
+                            //}else{
 
-                                echo "<h1 style='text-align:center;'>No Records Found.</h1>";
+                               // echo "<h1 style='text-align:center;'>No Records Found.</h1>";
 
-                            }
+                           // }
 
                             ?>
-                      </div>
+                      <!-- </div> -->
                     
 
                     </div>
@@ -301,90 +348,36 @@
                     </div>
 
                     <div class="row">
-
-                        <div class="col m4 s12">
+                     
+                      <?php  foreach($plandata as $plans):?>
+                       <div class="col m4 s12">
 
                             <div class="card-panel hoverable center">
 
-                                <h3>Free</h3>
+                                <h3><?=$plans['name']?></h3>
 
                                 <span class="description-text">
 
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+                                      <?=$plans['description']?> 
 
                                 </span>
 
-                                <h4>$0.00</h4>
+                                <h4>$<?=$plans['amount']?></h4>
 
-                                <span class="days">30 Days</span>
+                                <!--<span class="days">30 Days</span> -->
 
                                 <div class="center">
 
-                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
+                                    <a href="<?=site_url('registration')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
 
                                 </div>
 
                             </div>
-
+                          
                         </div>
-
+                       <?php endforeach;?>
                         
 
-                        <div class="col m4 s12">
-
-                            <div class="card-panel active-tab hoverable center">
-
-                                <h3>Standard</h3>
-
-                                <span class="description-text">
-
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-
-                                </span>
-
-                                <h4>$99.00</h4>
-
-                                <span class="days">Monthly</span>
-
-                                <div class="center">
-
-                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4 active">Subscribe</a>                                
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col m4 s12">
-
-
-
-                            <div class="card-panel hoverable center">
-
-                                <h3>Pro</h3>
-
-                                <span class="description-text">
-
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-
-                                </span>
-
-                                <h4>$1188.00</h4>
-
-                                <span class="days">Monthly</span>
-
-                                <div class="center">
-
-                                    <a href="<?=site_url('registration/createnew_account')?>" class="btn-large waves-effect waves-light white lighten-1 no-caps z-depth-4">Subscribe</a>                                
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
 
                     </div>
 
@@ -460,7 +453,7 @@
 
                       <h3 class="custom-title no-decoration events-icon"><span>Events</span></h3>
 
-                      <ul>
+                    <ul>
                       <?php if($eventdata) { ?>
 
                        <?php  foreach($eventdata as $events):?>
@@ -495,14 +488,12 @@
 
                           <a href="<?=site_url('events/view')?>" id="" class="btn-large waves-effect waves-light teal lighten-1 no-caps">
 
-                            More News</a>
+                            More Events</a>
 
                         </div>
 
                       </ul>
 
-
-                     
                   </div>  
 
                 </div>

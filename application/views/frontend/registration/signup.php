@@ -31,7 +31,7 @@
                                               <ul class="stepper horizontal" id="horizontal">
 
                                                  <li class="step active">
-                                                    <div data-step-label="To step-title!" class="step-title waves-effect waves-dark">Step 1</div>
+                                                    <div data-step-label="" class="step-title waves-effect waves-dark">Step 1</div>
                                                     <div class="step-content">
                                                        <div class="row">
 
@@ -39,50 +39,46 @@
 
                                       <p class="text-center">
                                         <b>Choose Plan</b>
+
                                          <input name="plans" type="hidden"  class="validate" required />
                                       </p>
                                       <div class="clearfix"></div>
                                       
-                                      <div class="col s12 m6">
-                                        <input name="plans" type="radio" id="test1" class="validate" required value="1"/>
-                                        <label for="test1">
-                                          <div class="card">
-                                            <div class="card-image purple waves-effect">
+                                      <?php
 
-                                                <div class="card-title">Free</div>
-                                                <div class="price"><sup>$</sup>00<sub>/mo</sub></div>
-                                                <div class="price-desc">Free 1 month</div>
+                                          $color  = array("red","blue","purple" ,"cyan","green");
+                                          $palncount = count($plandata);
+                                          $width = "m12";
+                                          if ($palncount % 2 == 0)
+                                             $width = "m6";
+
+                                        foreach($plandata as $key => $plans):
+                                          $len = "m6";
+
+                                          if($key==$palncount-1)
+                                            $len = $width;
+                                        ?>
+                                        
+                                      <div class="col s12 <?=$len;?>">
+                                        <input name="plans" type="radio" id="test<?=$key+1;?>" class="validate" required value="<?=$plans['id']?>"/>
+                                        <label for="test<?=$key+1;?>">
+                                          <div class="card">
+                                            <div class="card-image <?=$color[$key];?> waves-effect">
+
+                                                <div class="card-title"><?=$plans['name']?></div>
+                                                <div class="price"><sup>$</sup><?=$plans['amount']?>
+                                                  <?php if($key!=0): ?>
+                                                  <sub>/mo</sub>
+                                                <?php endif;?>
+                                                </div>
+                                                <div class="price-desc"> <?=$plans['description']?></div>
                                             </div>
                                           </div>
                                         </label>
                                       </div>
+                                        <?php endforeach;?>
 
-                                      <div class="col s12 m6">
-                                        <input name="plans" type="radio" id="test2" value="2"/>
-                                        <label for="test2">
-                                        <div class="card">
-                                          <div class="card-image cyan waves-effect">
-                                              <div class="card-title">Standard</div>
-                                              <div class="price"><sup>$</sup>99<sub>/mo</sub></div>
-                                              <div class="price-desc">Most Popular</div>
-                                          </div>
-                                        </div>
-                                      </label>
-                                      </div>
-
-                                     <div class="col s12 m12">
-                                        <input name="plans" type="radio" id="test3" value="3"/>
-                                        <label for="test3">
-                                        <div class="card">
-                                          <div class="card-image green waves-effect">
-                                              <div class="card-title">Pro</div>
-                                              <div class="price"><sup>$</sup>1188<sub>/mo</sub></div>
-                                              <div class="price-desc">Get 20% off</div>
-                                          </div>
-                                        </div>
-                                         </label>
-                                      </div>  <!---->
-                                     
+                                    
 
                                       <div class="clearfix"></div>
                                     </div>
@@ -99,7 +95,7 @@
                                                   
 
                                                  <li class="step">
-                                                    <div class="waves-dark">Step 2</div>
+                                                   <div class="">Step 2</div>
                                                     <div class="step-content">
                                                        <div class="row">
                                                           <div class="col s12 m6 input-field">
@@ -137,15 +133,17 @@
                                   
                                    <div class="col s12 m6 input-field">
 
-                                    <?php echo form_dropdown('country_id', get_country_all(), (set_value('country_id')) ? set_value('country_id') : 231,
-                              ['name' => 'country_id', 'id' => 'country_id', 'tabindex' => '7']); ?> <?php echo form_error('country_id',
-                                          '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+                                        <?php echo form_dropdown('country_id', get_country_all(), (set_value('country_id')) ? set_value('country_id') : 231,
+    ['id' => 'country_id', 'tabindex' => '7','class' => 'validate']); ?>
                                   </div>
 
                                   <div class="col s12 m6 input-field">
 
-                                    <?php echo form_dropdown('state_id', get_state_all(), set_value('state_id'), ['name'=>'state_id', 'id'=>'state_id', 'tabindex'=> '8']); ?>
-                                <?php echo form_error('state_id', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+                                        <?php echo form_dropdown('state_id',  get_state_all(231),  set_value('state_id'),
+    ['id' => 'state_id', 'tabindex' => '8','class' => 'validate']); ?>
+
+                                   
+                                                
                                   </div>
 
                                   <div class="col s12 m6 input-field">
@@ -183,7 +181,7 @@
                                           
 
                                                  <li class="step">
-                                                    <div class="waves-dark">Step 3</div>
+                                                    <div class="">Step 3</div>
                                                     <div class="step-content">
                                                       <div class="col s12 m6 input-field">
                                                           <label for="FirstName"> Business Name <span class="required">*</span></label>
@@ -196,37 +194,49 @@
                                                              <label for="website">Website</label>
                                                           </div>
   
-                                                        <div class="col s12 m6 input-field">
-                                                          <label for="FirstName"> Description <span class="required">*</span></label>
-
-                                                         <?php echo form_input(['name' => 'description', 'id' => 'description', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('description'),'class' => 'validate','required'=>'required']); ?> 
-                                                        </div>
+                                                      
 
                                                         <div class="col s12 m6 input-field">
                                                          
-                                                         <?php echo form_dropdown('experience_id', get_experience_all(), ['name' => 'experience_id', 'tabindex' => '3', 'id' => 'experience_id']); ?>
+                                                         <label for="icon_telephone">Work Experience<span class="required">*</span></label>
+                                                  <?php echo form_input(['name' => 'experience', 'id' => 'experience', 'maxlength' => '258', 'tabindex' => '2','value' => set_value('experience')]); ?> <?php echo form_error('experience', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
                                                         </div>
                                                         
                                                         <div class="col s12 m6 input-field">
-                                                          <label for="FirstName"> Primary service category <span class="required">*</span></label>
+                                                          <label for="FirstName"> Primary services <span class="required">*</span></label>
 
                                                          <?php echo form_input(['name' => 'primary_service_category', 'id' => 'primary_service_category', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('primary_service_category'),'class' => 'validate','required'=>'required']); ?>
                                                         </div>
-                                                        <div class="col s12 m6 input-field">
-                                                          <label for="FirstName"> Other related category <span class="required">*</span></label>
 
-                                                         <?php echo form_input(['name' => 'other_related_category', 'id' => 'other_related_category', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('other_related_category'),'class' => 'validate','required'=>'required']); ?> 
-                                                        </div>
+
+                                                        
 
                                                         <div class="col s12 m6 input-field">
-                                                          <label for="FirstName"> Experience Type <span class="required">*</span></label>
+                                                          <label for="FirstName">  Types of Experience<span class="required">*</span></label>
 
                                                          <?php echo form_input(['name' => 'experience_type', 'id' => 'experience_type', 'maxlength' => '258', 'tabindex' => '1','value' => set_value('experience_type'),'class' => 'validate','required'=>'required']); ?> 
                                                         </div>
 
                                                          <div class="col s12 m6 input-field">
                                                           
-                                                         <?php echo form_dropdown('qualification_id', get_qualification_all(), ['name' => 'qualification_id', 'tabindex' => '7', 'id' => 'experience_id']); ?> 
+                                                         <label for="icon_prefix">QualifiCation</label>
+                                              <?php echo form_input(['name' => 'qualification', 'id' => 'qualification', 'maxlength' => '258', 'tabindex' => '5','value' => set_value('qualification')]); ?>  
+                                                        </div>
+
+                                                        <div class="col s12 m6 input-field">
+                                                          <label for="FirstName"> Description <span class="required">*</span></label>
+                                                          
+                                                           <?php echo form_textarea(['name' => 'description', 'id' => 'description', 'maxlength' => '258', 'tabindex' => '8','class' => 'materialize-textarea validate','value' => set_value('description')]); ?>  <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+
+                                      
+                                                        </div>
+
+                                                        <div class="col s12 m6 input-field">
+                                                          <label for="FirstName"> Other related services </label>
+
+                                                           <?php echo form_textarea(['name' => 'other_related_category', 'id' => 'other_related_category', 'maxlength' => '258', 'tabindex' => '8','class' => 'materialize-textarea','value' => set_value('other_related_category')]); ?>  <?php echo form_error('description', '<small class="help-block text-danger">&nbsp;', '</small>'); ?>
+
+                                                
                                                         </div>
 
                                                        <div class="step-actions">
