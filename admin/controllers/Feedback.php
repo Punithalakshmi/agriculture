@@ -121,13 +121,7 @@ class Feedback extends Admin_Controller
        
       $output=array();
       if(count($access_data) > 0){
-
-          $image_data = $this->feedback_model->get_image_by_id($del_id);
-
-          $path = getcwd() . '/uploads/feedback/';
-
-          delete_file($path, $image_data[0]->image_name);
-
+        
           $this->feedback_model->delete(array("id"=>$del_id));
 
         $output['message'] ="Record deleted successfuly.";
