@@ -60,10 +60,7 @@ nav .brand-logo {
 
 }
 
-nav ul li.active
-{
-  color: #444;
-}
+
 
 
 
@@ -669,19 +666,9 @@ nav.home-nav ul.desk-nav > li i {
 
 
 
-  padding-top: 130px;
+  padding: 80px;
 
 
-
-  padding-bottom: 130px;
-
-
-
-  padding-left: 100px;
-
-
-
-  padding-right: 100px;
 
 
 
@@ -797,14 +784,23 @@ nav.home-nav ul.desk-nav > li i {
 
 
 
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
 
 
 }
 
 
+.carousel .indicators 
+  { 
+    display: none; 
+  }
 
+.carousel-item 
+  {
+    min-height:inherit !important;
+    height:190px !important;
+  }
 
 
 
@@ -4390,10 +4386,29 @@ button.close {
 {
   color: #FF0000;
 }
-.breadcrumb {  display:inline-block; float:left;}
 
+
+.feed-text {
+  font-size:24px;
+  font-weight:300;
+  line-height: 32px;
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical; 
+}
 
 .breadcrumb-wrapper {
   position: relative;
   top:-34px;
+}
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
