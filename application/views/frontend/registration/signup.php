@@ -116,7 +116,7 @@
                                    
                                   <div class="col s12 m6 input-field">
                                     <label for="CreatePassword"> Password <span class="required">*</span></label>
-                                   <?php echo form_input(['name' => 'password', 'id' => 'password', 'maxlength' => '258', 'tabindex' => '4','value' => set_value('password'),'class' => 'validate','required'=>'required']); ?> 
+                                   <?php echo form_password(['name' => 'password', 'id' => 'password', 'maxlength' => '258', 'tabindex' => '4','value' => set_value('password'),'class' => 'validate','required'=>'required']); ?> 
                                   </div>
                                   <div class="col s12 m6 input-field">
                                     <label for="FirstName"> Address 1 <span class="required">*</span></label>

@@ -753,7 +753,7 @@ function content_forgot_password($url) {
     return $content;
 }
 
-function send_mail($data) {
+/* function send_mail($data) {
     $CI = & get_instance();
     $CI->load->library('email');
     $CI->email->set_mailtype("html"); 
@@ -769,7 +769,7 @@ function send_mail($data) {
     $config['smtp_host'] = "ssl://smtp.gmail.com";
     $config['smtp_port'] = "465";
     /*$config['smtp_user'] = "mail.php@boscoits.com";
-    $config['smtp_pass'] = "php!#nets15";*/
+    $config['smtp_pass'] = "php!#nets15";
     $config['smtp_user'] = "support@ifensys.com";
     $config['smtp_pass'] = "ifs$062016$";
     //$config['mailpath']   = '/usr/sbin/sendmail';
@@ -804,7 +804,7 @@ function send_mail($data) {
     } else {
         return false;
     }
-}
+} */
 /**
 
 * This method handles to get all experience 
