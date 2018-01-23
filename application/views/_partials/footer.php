@@ -29,7 +29,7 @@
              <?php $ads_image = get_business('Vertical'); 
               // /echo "<pre>"; print_r($ads_image); exit;
                $ads_image1 = get_business('Vertical'); 
-             if(($uri!=''&&$uri!='services'&&$uri1!='contact'&&  $ads_image && $ads_image1)||($uri=='services'&&$uri1='details')):?> 
+             if(($uri!='' && $uri!='home'&&$uri!='services'&&$uri!='contact' && $ads_image && $ads_image1 )|| $uri=='details'):?> 
             <div class="add__left" id="left_ads">
               <span id="closeadvt" style="cursor:pointer;">X</span>
               <ul>
@@ -63,3 +63,8 @@
             add__vertical
             </div> -->
             <!-- Footer Scripts -->
+            <script>
+                if (!window.jQuery) { 
+                    document.write('<script src="assets/js/lib/3.2.1/jquery-3.2.1.min.js"><\/script>'); 
+                }
+            </script>
