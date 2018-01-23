@@ -4,7 +4,7 @@
 
                 <div class="section no-pad-bot">
 
-                    <h1 class="header center">Explore California Farmers</h1>
+                    <h1 class="header center">Explore Cali Farmers</h1>
 
                     <div class="search-container">
 
@@ -115,7 +115,7 @@
 
                                   <div class="card-image waves-effect waves-block waves-light">
 
-                                    <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/services/<?=$services["image_name"]?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/services/<?=!empty($services['image_name'])?$services['image_name']:'dummy_img.jpg' ?>">
 
                                   </div>
 
