@@ -55,7 +55,7 @@ class Seller extends Admin_Controller
     $this->layout->add_stylesheets(array('jquery.fancybox.min'));
     
     $msg ="";
-    //print_r($this->input->post());exit;
+    print_r($this->input->post());exit;
      try
         {
         
