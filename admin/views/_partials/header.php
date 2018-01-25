@@ -73,7 +73,7 @@
           </div>
         </li>
 
-        <?php $menu = array(array('link'=>'seller/add','name'=>'Profile','icon'=>'fa-user'),array('link'=>'seller','name'=>'Seller','icon'=>'fa-anchor'),array('link'=>'category','name'=>'Category','icon'=>'fa-linkedin'),array('link'=>'services_product','name'=>'Services','icon'=>'fa-users'),array('link'=>'plans','name'=>'Plans','icon'=>'fa-sitemap'),array('link'=>'events','name'=>'Events','icon'=>'fa-calendar'),array('link'=>'news','name'=>'News','icon'=>'fa fa-newspaper-o'),array('link'=>'business','name'=>'Business Ads','icon'=>'fa-briefcase'),array('link'=>'feedback','name'=>'Feedback','icon'=>'fa-comments-o'),array('link'=>'subscription','name'=>'Subscriptions','icon'=>'fa-sitemap'));
+        <?php $menu = array(array('link'=>'seller/add','name'=>'Profile','icon'=>'fa-user'),array('link'=>'seller','name'=>'Seller','icon'=>'fa-anchor'),array('link'=>'category','name'=>'Category','icon'=>'fa-linkedin'),array('link'=>'services_product','name'=>'Services','icon'=>'fa-users'),array('link'=>'plans','name'=>'Plans','icon'=>'fa-sitemap'),array('link'=>'events','name'=>'Events','icon'=>'fa-calendar'),array('link'=>'news','name'=>'News','icon'=>'fa fa-newspaper-o'), array('link'=>'agr_photos','name'=>'Photos','icon'=>'fa fa-picture-o'),array('link'=>'business','name'=>'Business Ads','icon'=>'fa-briefcase'),array('link'=>'feedback','name'=>'Feedback','icon'=>'fa-comments-o'),array('link'=>'subscription','name'=>'Subscriptions','icon'=>'fa-sitemap'));
           //echo "<pre>"; print_r($menu); exit;
         
 
