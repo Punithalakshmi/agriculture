@@ -14,7 +14,7 @@ class Services extends Admin_Controller {
 	}
 
 	public function index()
-	{	
+	{	$this->layout->add_javascripts(array('jquery.min'));
 		if ( $this->session->userdata('var_search_term'))
 		{
              $search_term=$this->session->userdata('var_search_term'); 
@@ -59,6 +59,7 @@ class Services extends Admin_Controller {
            	$search_term['category'] = $this->input->post('category');
    			$search_term['location'] = $this->input->post('location');
 			$search_term['keyword']  =  $this->input->post('keyword');
+
        }
        $this->session->set_userdata('var_search_term', $search_term);
        redirect('services/index');
@@ -80,5 +81,22 @@ class Services extends Admin_Controller {
 		$this->session->unset_userdata('var_search_term');
 		redirect('services');
 	}
+     
+     function weather()
+     {  
+     			$city = $this->input->post('city');
+     			$country = $this->input->post('country_name');
+     			// print_r($country); exit;
+				$url="http://api.openweathermap.org/data/2.5/weather?q=".$city.",".$country."&APPID=da7f37c0af468057b3501d021fbd6c0f";
 
+                $json=file_get_contents($url); 
+
+                //$manage = (array) json_decode($json);
+
+                //json_encode($manage['weather'][0]->main);
+                //print_r($manage['weather'][0]->main);exit;
+                 echo $json;
+    			 exit;
+     }         
+                          
 }
