@@ -210,4 +210,35 @@ $('#closeadvt1').on('click', function(e) {
 $('#closeadvt3').on('click', function(e) { 
         $('#add__vertical').fadeOut(); 
     });
+$('.close').on('click', function(e) { 
+        $('#div_service_message').fadeOut(); 
+    });
 });
+
+$(document).ready(function(){
+// alert("hai");    
+  $.get("https://api.ipdata.co", function(response) {
+      
+var location1 = response.city;
+var location2 = response.country_name;
+      $.ajax({
+    type:"POST",
+    url:base_url+"services/weather",
+    dataType: "json",
+    data:{city:location1,country_name:location2},
+    success:function(data)
+    {
+      console.log(data);
+     
+      $(".location").html($.trim(data.name));
+      $(".main_temp").html($.trim(data.main.temp-273.15+"&deg"+"C"));
+      $(".climate").html($.trim(data.weather[0].main));
+      
+
+    }
+
+  });
+    }, "jsonp");
+
+   
+})
