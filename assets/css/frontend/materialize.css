@@ -4902,7 +4902,6 @@ small {
   position: absolute;
   background-color: #fff;
   width: 100%;
-  overflow-y: auto;
   left: 0;
   top: 100%;
   height: 100%;
@@ -9404,4 +9403,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-width: 4;
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/
+}
+.card-reveal p,.card-content p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
