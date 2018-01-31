@@ -924,5 +924,25 @@ function get_plan_by_id($id='')
     return $result;
 }
 
+function get_ag_photos()
+{
+
+ $CI = & get_instance();
+
+ $date = new DateTime("now");
+ 
+ $curr_date = $date->format('Y-m-d ');
+
+ $condition = array('DATE(created_on)' => $curr_date, 'status' => "Active");
+
+ $CI->db->where($condition);
+
+ $CI->db->limit(1);
+ 
+ $result = $CI->db->get('ag_photos')->result_array();
+ 
+ return $result;
+}
+
 
 ?>
