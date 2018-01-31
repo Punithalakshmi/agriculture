@@ -4,7 +4,7 @@
 
                 <div class="section no-pad-bot">
 
-                    <h1 class="header center">Explore Cali Farmers</h1>
+                    <h1 class="header center">Explore Farmers</h1>
 
                     <div class="search-container">
 
@@ -16,10 +16,10 @@
 
                                 <div class="col l6 s12">
 
-                                  <input name="location" id="location" onfocus="if(this.value == 'Enter Location') { this.value = ''; }" value="" placeholder="Enter Location" aria-label="Search through site content" type="search">
+                                  <input name="location" id="location"  onfocus="if(this.value == 'Enter Location') { this.value = ''; }"  value="<?php echo set_value('location',"Califoria"); ?>" placeholder="Enter Location" aria-label="Search through site content" type="search">
 
                                 </div>
-
+                                
 
 
                                 <div class="col l6 s12">
@@ -59,13 +59,20 @@
                     </div>
 
                 </div>
+                <?php 
 
+                $ag_photos = get_ag_photos();
+              
+                if($ag_photos):?>
+               <?php foreach($ag_photos as $images): ?>
                 <div class="parallax">
 
-                    <img src="assets/images/background1.jpg" alt="Unsplashed background img 1">
+                    <img src="<?=base_url()?>admin/uploads/agr_photos/<?=$images["image_name"];?>" alt="Unsplashed background img 1">
 
                 </div>
+              <?php endforeach;?>
 
+              <?php endif;?>
             </div>
 
 
