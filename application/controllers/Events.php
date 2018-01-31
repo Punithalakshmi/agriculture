@@ -14,6 +14,8 @@ class Events extends Admin_Controller {
 
 	public function index()
 	{
+
+		$filter = $this->input->post('filter_by');
 		
 		$this->load->library('pagination');
 		$limit = 20;	
@@ -31,7 +33,12 @@ class Events extends Admin_Controller {
         $config['next_tag_open'] = '<li class="waves-effect">';
         $config['next_tag_close'] = '</li>';
 		$this->pagination->initialize($config);
-		$this->data['events'] = $this->events_model->get_events($limit,$start);
+		if(!empty($filter)){
+			 $search_data = $this->events_model->get_search_events($filter,$limit,$start);
+		     $this->data['events'] = $search_data;
+		}else{
+			$this->data['events'] = $this->events_model->get_events($limit,$start);
+		}
 		$this->data['links'] = $this->pagination->create_links();
 		$this->layout->view('frontend/events/events',$this->data);
 	}
@@ -107,5 +114,17 @@ class Events extends Admin_Controller {
 
 	 
 	}
+
+	/* public function delete_cookies(){
+
+		$this->load->helper('cookie');
+
+		unset($_COOKIE['name']);
+        //empty value and expiration one hour before
+        $res = setcookie('name', '', time() - 3600);
+       
+		//unset($_COOKIE['name']);
+		
+	} */
 
 }
