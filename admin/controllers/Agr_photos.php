@@ -169,7 +169,7 @@ class Agr_photos extends Admin_Controller
           else
           {
 
-              $this->data["editdata"] = array("title"=>"","status"=>"",'image_name'=>'',);
+              $this->data["editdata"] = array("title"=>"","status"=>"",'image_name'=>'','display_date' =>'');
           }
 
       $this->layout->view('frontend/agr_photos/add',$this->data);
@@ -186,9 +186,9 @@ class Agr_photos extends Admin_Controller
 
           $config['max_size']    = 2056;
 
-          $config['max_width']   = 1700;
+          $config['max_width']   = 1440;
 
-          $config['max_height']  = 800;
+          $config['max_height']  = 743;
 
         $this->upload->initialize($config);
 

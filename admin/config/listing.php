@@ -228,4 +228,20 @@ $config['feedback_index'] = array(
 	"default_direction" => "DESC"
 );
 
+$config['agr_photos_index'] = array(
+
+	"view"		=> 	'listing/listing',
+	"init_scripts" => 'listing/init_scripts',
+	"advance_search_view" => 'frontend/agr_photos/filter',
+	"base_url"	=> 	'/agr_photos/index/',
+	"per_page"	=>	"20",
+	"fields"	=> array(   
+						'title'=>array('name'=>'Title', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'created_on'=>array('name'=>'Created Date', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1),
+						'status'=>array('name'=>'Status', 'data_type' => 'String', 'sortable' => FALSE, 'default_view'=>1)
+						),
+	"default_order"	=> "id",
+	"default_direction" => "DESC"
+);
+
 ?>
