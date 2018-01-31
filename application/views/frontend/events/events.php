@@ -14,14 +14,33 @@
 
 
                         <div class="row center">
-
-                          
-
                           <h1 class="page-title">Events</h1>
-
                         </div>
 
-                        <div class="row farmers-list">                       
+                    <div class="input-field">
+
+                    <form action="<?=site_url('events');?>" method="POST">
+
+                  <?php   
+                        $options = array(
+                         ''             => 'Sort by',
+                        'today'         => 'Today',
+                        'tomorrow'      => 'Tomorrow',
+                        'thisweek'      => 'This Week',
+                        'nextweek'      => 'Next Week',
+                        'thismonth'     => 'This Month',
+                        'thisyear'      => 'This Year',
+                        'allevents'     => 'All Events'
+                        ); ?>
+
+                    <?php echo form_dropdown('filter_by', $options, set_value('filter_by'),['onchange'=>'this.form.submit()']); ?>
+                    </form>
+                    
+                    </div> 
+
+                        <div class="row farmers-list"> 
+
+                                 
 
                             <!-- Single loop -->
 
