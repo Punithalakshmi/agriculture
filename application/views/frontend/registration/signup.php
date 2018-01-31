@@ -76,7 +76,7 @@
                                           </div>
                                         </label>
                                       </div>
-                                        <?php endforeach;?>
+                                    <?php endforeach;?>
 
                                     
 

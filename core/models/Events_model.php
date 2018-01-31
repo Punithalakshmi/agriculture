@@ -112,6 +112,68 @@ class Events_model extends App_model
         }
     }
 
+function get_search_events($case = '',$limit='',$start='')
+{
+
+   
+    $dt = date('Y-m-d');
+    if(empty($case)){
+        return false;
+    }
+
+    switch($case)
+    {
+        case 'today':
+            $highdateval = $dt;
+            $lowdateval = $dt;
+        break;
+
+        case 'tomorrow':
+            $highdateval = date('Y-m-d', strtotime('tomorrow'));
+            $lowdateval  = date('Y-m-d', strtotime('tomorrow'));
+        break;
+
+        case 'thisweek':
+            $highdateval = date('Y-m-d', strtotime('saturday this week'));
+            $lowdateval  = date('Y-m-d', strtotime('sunday last week'));
+        break;
+
+        case 'thismonth':
+            $highdateval = date('Y-m-d', strtotime('last day of this month'));
+            $lowdateval  = date('Y-m-d', strtotime('first day of this month'));
+        break;
+        case 'thisyear':
+            $highdateval = date('Y-m-d', strtotime('1/1 next year -1 day'));
+            $lowdateval  = date('Y-m-d ', strtotime('1/1 this year'));
+        break;
+
+        case 'nextweek':
+            $lowdateval  = date('Y-m-d', strtotime('this sunday'));
+            $highdateval = date('Y-m-d', strtotime('next week saturday'));
+        break;
+        case 'nextmonth':
+            $lowdateval  = date('Y-m-d', strtotime('first day of next month'));
+            $highdateval = date('Y-m-d', strtotime('last day of next month'));
+        break;
+        case 'nextyear':
+            $lowdateval  = date('Y-m-d', strtotime('1/1 next year'));
+            $highdateval = date('Y-m-d', strtotime('12/31 next year'));
+        break;
+        }
+
+       $result[]='';
+       $this->db->select('*');
+       $this->db->from('events');
+       $this->db->where('from_date >=', $lowdateval);
+       $this->db->where('to_date <=', $highdateval);
+       $this->db->where('status','Active');
+       $this->db->order_by('id','DESC');
+       $this->db->limit($limit, $start);
+       $result = $this->db->get()->result();
+       return $result;
+       
+   }
+
 
 }
 ?>

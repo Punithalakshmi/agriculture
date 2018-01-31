@@ -1,6 +1,29 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+
+		<style>
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+</style>
 		
 		
 		<?php include_title(); ?>
@@ -35,15 +58,49 @@
 			<?php echo $content; ?>
 		</div>
 
-		<?php /*
-			$this->data['settings'] = $this->settings;
-			$this->data['interests'] = $this->interests;
-			$this->data['options'] = $this->options;
-            if($this->settings['general']['enabled'])
-			$this->data['contact_form'] = $this->load->view('frontend/_partials/contact_form', $this->data, TRUE);
-            else
-            $this->data['contact_form'] ="";
-		*/?>
+		<?php 
+
+		$this->load->helper('cookie');
+        $ip = "";
+        $count=1;
+        if(!is_logged_in()){
+
+            $ip = $this->input->ip_address();
+            $get_cookie = isset($_COOKIE['name'])?$_COOKIE['name']:"";
+            if($get_cookie)
+            {
+                $decode = json_decode($get_cookie);
+                if($decode->value == $ip)
+                    $count= $decode->count+1;
+            }
+            
+            
+            $cookie = array(
+            'count'=>$count,
+            'name' => 'ip',
+            'value' => $ip,
+            'expire' => '86400'
+         );
+        //echo json_encode($cookie);exit;
+        
+
+        if($count>=5 && $count<=5){ 
+
+          $this->data['user_msg'] = "Please login to get extra benefit for agriculture";
+
+        }
+        if($count>=6){
+            $cookie = array(
+            'count'=>1,
+            'name' => 'ip',
+            'value' => $ip,
+            'expire' => '86400'
+         );
+        }
+        setcookie('name',json_encode($cookie));
+        }
+		?>
+		
 
 		<?php $this->load->view('_partials/footer', $this->data); ?>
 

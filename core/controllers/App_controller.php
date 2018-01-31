@@ -31,6 +31,40 @@ class App_Controller extends CI_Controller
     
     protected function _init_layout()
     {
+
+       /*  $this->load->helper('cookie');
+        $ip = "";
+        $count=1;
+        if(!is_logged_in()){
+
+            $ip = $this->input->ip_address();
+            $get_cookie = isset($_COOKIE['name'])?$_COOKIE['name']:"";
+            if($get_cookie)
+            {
+                $decode = json_decode($get_cookie);
+                if($decode->value == $ip)
+                    $count= $decode->count+1;
+            }
+            
+            $cookie = array(
+            'count'=>$count,
+            'name' => 'ip',
+            'value' => $ip,
+            'expire' => '86400'
+         );
+        //echo json_encode($cookie);exit;
+        setcookie('name',json_encode($cookie));
+
+        if($count>=50){ ?>
+
+               <script type="text/javascript">
+                    alert("Please login to get extra benefit for agriculture");
+                </script>
+
+        <?php } 
+        
+        } */
+       
         
         $this->layout->initialize($this->config->item('default', 'layout'));
                

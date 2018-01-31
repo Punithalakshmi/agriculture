@@ -24,7 +24,12 @@
                   </div>
                 </div>
             </footer>
-
+            <?php if(!empty($user_msg)){ ?>
+            <div class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <?=$user_msg;?>
+            </div>
+          <?php } ?>
             <!-- businesss ads -->
              <?php $ads_image = get_business('Vertical'); 
               // /echo "<pre>"; print_r($ads_image); exit;

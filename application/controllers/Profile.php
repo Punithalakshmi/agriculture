@@ -112,7 +112,7 @@ class Profile extends Admin_Controller
        $status = '';
 
         $this->data['servicedata']  = $this->services_model->get_services_by_id($edit_id);
-
+        //print_r($this->data['servicedata']);exit;
         $this->form_validation->set_rules('company_name','Business Name','trim|required');
 
         $this->form_validation->set_rules('experience','Work Experience','trim|required');
@@ -126,6 +126,8 @@ class Profile extends Admin_Controller
 
         $this->form_validation->set_error_delimiters('', '');
 
+       
+
         if(count($_POST) > 1 && $this->form_validation->run())
         {
 
@@ -138,12 +140,22 @@ class Profile extends Admin_Controller
               $ins_data['experience']            = $this->input->post('experience');
               $ins_data['primary_service_category'] = $this->input->post('primary_service_category');
               $ins_data['other_related_category']   = $this->input->post('other_related_category');
-              $ins_data['qualification']         = $this->input->post('qualification');
 
-              $ins_data['how_did_you_hear_about_us']         = $this->input->post('how_did_you_hear_about_us');
-              $ins_data['seller_id']                = $edit_id;
+              $ins_data['farming_industry']         = $this->input->post('farming_industry');
+              $ins_data['own_acreage']              = $this->input->post('own_acreage');
+              $ins_data['custom_farmer']            = $this->input->post('custom_farmer');
 
-
+              $ins_data['far_name']                 = $this->input->post('far_name');
+              $ins_data['far_address']              = $this->input->post('far_address');
+              $ins_data['far_description']          = $this->input->post('far_description');
+              $ins_data['land_type']                = $this->input->post('land_type');
+              $ins_data['number_of_acreage']        = $this->input->post('number_of_acreage');
+              $ins_data['cus_far_name']             = $this->input->post('cus_far_name');
+              $ins_data['cus_description']          = $this->input->post('cus_description');
+              $ins_data['position']                 = $this->input->post('position');
+              $ins_data['how_did_you_hear_about_us']    = $this->input->post('how_did_you_hear_about_us');
+              $ins_data['seller_id']                 = $edit_id;
+              
               $checkServiceExist  = $this->services_model->get_where(array('seller_id'=>$edit_id),"id","bio_seller")->num_rows(); 
 
               if($checkServiceExist){

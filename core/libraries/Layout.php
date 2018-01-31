@@ -48,23 +48,11 @@ class Layout {
     public function view($file_name, $type = 'default')
     {
 
-        //$this->initialize($this->CI->config->item($type, 'layout'));
+       // $ip = $this->CI->input->ip_address();
+
         $this->CI->data['content'] = $this->CI->load->view($file_name, $this->CI->data, TRUE);
         $this->CI->load->view($this->template, $this->CI->data);
 
-        /*
-        //load header
-        $this->CI->load->view('admin/_partials/header.php', $this->CI->data);
-        
-        //load left menu
-        $this->CI->load->view('admin/_partials/left_menu',$this->CI->data);
-
-        //load page content
-        $this->CI->load->view($file_name, $this->CI->data);
-
-        //load footer
-        $this->CI->load->view('admin/_partials/footer.php', $this->CI->data);
-        */
 
     }
 

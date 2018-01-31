@@ -40,6 +40,15 @@ $('#country_id').change(function() {
    $('#from_date').datepicker('setEndDate', null);
 });
 
+  $("#display_date").datepicker({
+       format: 'yyyy-mm-dd',
+       autoclose: true,
+    }).on('changeDate', function (selected) {
+       var endDate = new Date(selected.date.valueOf());
+       $('#display_date').datepicker('setEndDate', endDate);
+    }).on('clearDate', function (selected) {
+   $('#from_date').datepicker('setEndDate', null);
+});
 
  })
  

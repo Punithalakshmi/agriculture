@@ -14,10 +14,21 @@ class Home extends Admin_Controller {
       $this->load->model('feedback_model');
       $this->load->model('events_model');
       $this->load->model('plans_model');
+      $this->load->model('site_model');
 	}
 
 	public function index()
 	{
+
+      /* $site_visit = $this->site_model->get_site_visit_all();
+
+      foreach($site_visit as $sites){
+
+        $ip[] = $sites['ip'];
+        
+       } */
+
+    
 		$this->data["editdata"] =$this->services_product_model->get_services();
     $this->data['newsdata'] =  $this->news_model->get_news();
     $this->data['feedback'] = $this->feedback_model->get_feedbacks();

@@ -78,8 +78,6 @@ function tab_view(id,url,formid='')
         success:function(data)
         { 
 
-          
-         
           $("#"+id).html(data.output);
         
           if(data.msg)
@@ -165,7 +163,6 @@ $(document).ready(function(){
         else
            return true;
     });
-
      
 });
 
@@ -214,6 +211,44 @@ $('.close').on('click', function(e) {
         $('#div_service_message').fadeOut(); 
     });
 });
+
+ $(document).on('click', '.farming', function() {
+  
+      if ($(".farming").is(":checked")) {
+          $(".farming").show();
+      }else{
+        $(".farming").hide();
+      }
+  });
+
+  $(document).on('click', '.position', function() {
+
+      if ($(".position").is(":checked")) {
+          $(".position").show();
+      }else{
+        $(".position").hide();
+      }
+  });
+
+  $(document).on('click', '.acreage', function() {
+    
+      if ($(".acreage").is(":checked")) {
+          $(".acreage").show();
+      }else{
+        $(".acreage").hide();
+      }
+  });
+
+$(document).on('click', '.custom', function() {
+
+  if ($(".custom").is(":checked")) {
+      $(".custom").show();
+  }else{
+    $(".custom").hide();
+  }
+});
+
+
 
 $(document).ready(function(){
 // alert("hai");    
