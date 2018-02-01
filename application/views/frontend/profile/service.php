@@ -89,7 +89,7 @@
         </div>
 
       <p>
-      <input type="checkbox" class="filled-in farming" name="farming_industry" id="filled-in-box" value="farming_industry" <?php echo set_checkbox('farming_industry', $servicedata['farming_industry'], ($servicedata['farming_industry']==$servicedata['farming_industry'])?TRUE:FALSE);?>"/>
+      <input type="checkbox" class="filled-in farming" name="farming_industry" id="filled-in-box" value="farming_industry"/>
       <label for="filled-in-box">Farming Industry</label>
      </p>
       
@@ -120,7 +120,7 @@
       
 
       <p>
-      <input type="checkbox" class="filled-in acreage" name="own_acreage" id="filled-in-box3" value="own_acreage" <?php echo set_checkbox('own_acreage', $servicedata['own_acreage'], ($servicedata['own_acreage']==$servicedata['own_acreage'])?TRUE:FALSE);?> />
+      <input type="checkbox" class="filled-in acreage" name="own_acreage" id="filled-in-box3" value="own_acreage"/>
       <label for="filled-in-box3">Own Acreage</label>
      </p>
 
@@ -141,7 +141,7 @@
       </div>
         
         <p>
-      <input type="checkbox" class="filled-in custom" name="custom_farmer" id="filled-in-box4" value="custom_farmer" <?php echo set_checkbox('custom_farmer', $servicedata['custom_farmer'], ($servicedata['custom_farmer']==$servicedata['custom_farmer'])?TRUE:FALSE);?> />
+      <input type="checkbox" class="filled-in custom" name="custom_farmer" id="filled-in-box4" value="custom_farmer"/>
       <label for="filled-in-box4">Custom Farmer</label>
      </p>
 

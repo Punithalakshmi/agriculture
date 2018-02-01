@@ -1,13 +1,5 @@
 $(document).ready(function(){
 
- //  //tab_view("contact","seller/add",'');
- // $("#formtabs li").not(":first").click(function() {
-      
- //   $('.nav-tabs li ').removeClass('active');
- //   $('.nav-tabs li').eq(1).addClass('active'); 
- //  });
-
-
 $('#country_id').change(function() {
 
     var id = $('#country_id').val();
@@ -40,15 +32,6 @@ $('#country_id').change(function() {
    $('#from_date').datepicker('setEndDate', null);
 });
 
-  $("#display_date").datepicker({
-       format: 'yyyy-mm-dd',
-       autoclose: true,
-    }).on('changeDate', function (selected) {
-       var endDate = new Date(selected.date.valueOf());
-       $('#display_date').datepicker('setEndDate', endDate);
-    }).on('clearDate', function (selected) {
-   $('#from_date').datepicker('setEndDate', null);
-});
 
  })
  
@@ -56,8 +39,6 @@ $('#country_id').change(function() {
 $(function()
 {
 
-  
-   
     $(".mt-repeater-add2").click(function()
     {
         if($(".mt-repeater-cust-item").length >= 1)
@@ -175,14 +156,12 @@ function tab_view(id,url,formid='')
    var form_data = $("#"+formid).serializeArray();
    
    var formData = new FormData();
-   
+
    $(form_data).each(function (index, element) {
 
      formData.append(element.name, element.value);
     });
    formData.append('seller_id', sell_id);   
-
-   
     $.ajax({
         type:"POST",
         url:base_url+url+'/'+sell_id,
@@ -289,15 +268,16 @@ function deleteimage(image_id){
 }
 
 $(document).ready(function(){
+  
   $('#start_time').timepicker({
     template:false,
-    defaultTime:'0:00',
+    defaultTime:'00:00',
     showMeridian:false
     
  });
  $('#end_time').timepicker({
   template:false,
-  defaultTime:'0:00',
+  defaultTime:'00:00',
   showMeridian:false
 
  });

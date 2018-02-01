@@ -221,15 +221,6 @@ $('.close').on('click', function(e) {
       }
   });
 
-  $(document).on('click', '.position', function() {
-
-      if ($(".position").is(":checked")) {
-          $(".position").show();
-      }else{
-        $(".position").hide();
-      }
-  });
-
   $(document).on('click', '.acreage', function() {
     
       if ($(".acreage").is(":checked")) {
@@ -247,7 +238,6 @@ $(document).on('click', '.custom', function() {
     $(".custom").hide();
   }
 });
-
 
 
 $(document).ready(function(){

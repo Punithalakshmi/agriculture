@@ -33,10 +33,18 @@ class Events extends Admin_Controller {
         $config['next_tag_open'] = '<li class="waves-effect">';
         $config['next_tag_close'] = '</li>';
 		$this->pagination->initialize($config);
-		if(!empty($filter)){
+
+		if($filter =="today" || $filter =="tomorrow" || $filter =="thisweek" || $filter =="nextweek"|| $filter =="thismonth" || $filter =="thisyear"){
+
 			 $search_data = $this->events_model->get_search_events($filter,$limit,$start);
 		     $this->data['events'] = $search_data;
+
+		}elseif($filter=="allevents"){
+
+			$this->data['events'] = $this->events_model->get_events($limit,$start);
+			
 		}else{
+
 			$this->data['events'] = $this->events_model->get_events($limit,$start);
 		}
 		$this->data['links'] = $this->pagination->create_links();
