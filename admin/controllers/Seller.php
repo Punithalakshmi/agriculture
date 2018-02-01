@@ -55,7 +55,7 @@ class Seller extends Admin_Controller
     $this->layout->add_stylesheets(array('jquery.fancybox.min'));
     
     $msg ="";
-    print_r($this->input->post());exit;
+    
      try
         {
         
@@ -280,6 +280,17 @@ class Seller extends Admin_Controller
               $edit_data['other_related_category']  = '';
               $edit_data['qualification_id']  = '';
               $edit_data['website']  = '';
+              $edit_data['position']  = '';
+              $edit_data['farming_industry']  = '';
+              $edit_data['far_name']  = '';
+              $edit_data['far_address']  = '';
+              $edit_data['far_description']  = '';
+              $edit_data['land_type']  = '';
+              $edit_data['number_of_acreage']  = '';
+              $edit_data['cus_far_name']  = '';
+              $edit_data['own_acreage']  = '';
+              $edit_data['custom_farmer']  = '';
+              $edit_data['cus_description']  = '';
               $edit_data['seller_id']  = '';
               $status = 'error'; 
           }
