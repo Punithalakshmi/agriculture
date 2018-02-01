@@ -3,9 +3,9 @@
             <nav class="clearfix breadcrumb-wrapper">
                 <div class="nav-wrapper green">
                   <div class="container">
-                      <div class="col s12">
-                        <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
-                        <a href="<?=base_url()?>home/contact" class="breadcrumb">Contact</a>
+                      <div class="col s12">      
+                      <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                      <a href="<?=base_url()?>home/contact" class="breadcrumb">Contact</a>
                       </div>
                   </div>
                 </div>

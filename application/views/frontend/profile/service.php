@@ -80,7 +80,7 @@
                   <?php echo form_dropdown('how_did_you_hear_about_us', $qualification, $servicedata['how_did_you_hear_about_us'], ['name'=>'how_did_you_hear_about_us', 'id'=>'how_did_you_hear_about_us', 'tabindex'=> '8','class' => 'browser-default']); ?>
   </div>
 
-      <div class="col s6">
+  <div class="col s6">
          <label for="">Position<span class="required"></span></label>
            <?php echo form_input(['name' => 'position', 'id' => 'position','value' => set_value('position',$servicedata['position'])]); ?> 
           
@@ -88,7 +88,7 @@
           
         </div>
 
-      <p>
+        <p>
       <input type="checkbox" class="filled-in farming" name="farming_industry" id="filled-in-box" value="farming_industry"/>
       <label for="filled-in-box">Farming Industry</label>
      </p>
@@ -159,6 +159,7 @@
         </div>
       </div>
 
+      </div>
        <button type="button" onclick="tab_view('service','profile/service_update','servicesForm')" class="btn-large z-depth-0" name="seller_data">Update</button>
     </form>
   </div>

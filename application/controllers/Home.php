@@ -14,44 +14,30 @@ class Home extends Admin_Controller {
       $this->load->model('feedback_model');
       $this->load->model('events_model');
       $this->load->model('plans_model');
-      $this->load->model('site_model');
 	}
 
 	public function index()
 	{
-
-      /* $site_visit = $this->site_model->get_site_visit_all();
-
-      foreach($site_visit as $sites){
-
-        $ip[] = $sites['ip'];
-        
-       } */
-
-    
 		$this->data["editdata"] =$this->services_product_model->get_services();
-    $this->data['newsdata'] =  $this->news_model->get_news();
-    $this->data['feedback'] = $this->feedback_model->get_feedbacks();
-    $this->data['eventdata'] = $this->events_model->get_events_list();
-    $this->data['plandata']  = $this->plans_model->get_plans_all();
-    //echo '<<pre></pre>>';print_r($this->data['plandata']);exit;
+     $this->data['newsdata'] =  $this->news_model->get_news();
+     $this->data['feedback'] = $this->feedback_model->get_feedbacks();
+     $this->data['eventdata'] = $this->events_model->get_events_list();
+     $this->data['plandata']  = $this->plans_model->get_plans_all();
 		$this->layout->view('frontend/home/index',$this->data);
 	}
 	public function contact()
 	{ 	
-		try
-    {
-        $this->form_validation->set_rules('contact_name','Contact Name','trim|required');
-      $this->form_validation->set_rules('email','Email','trim|required|valid_email');
-      $this->form_validation->set_rules('phone','Phone Number','trim|required');
-      $this->form_validation->set_rules('message','Message','trim|required');
+			$this->form_validation->set_rules('contact_name','Contact Name','trim|required');
+			$this->form_validation->set_rules('email','Email','trim|required|valid_email');
+			$this->form_validation->set_rules('phone','Phone Number','trim|required');
+			$this->form_validation->set_rules('message','Message','trim|required');
 
-      $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+			$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
-      if($this->form_validation->run())
-        {  
-        $form = $this->input->post();
-         $to = "mahendran@izaaptech.in";
+			if($this->form_validation->run())
+  			{  
+				$form = $this->input->post();
+				 $to = "mahendran@izaaptech.in";
               $from = $form['email'];
               $from_name = $form['contact_name'];
               $subject = "Contact information";
@@ -84,14 +70,8 @@ class Home extends Admin_Controller {
               send_email($to,$from,$from_name,'',$subject,$message);
               $this->session->set_flashdata("success_msg","Contact has been sent successfully.",TRUE);
               redirect('home/contact/');
-      }
+			}
 
-    }
-    catch (Exception $e)
-    {
-       $this->data['status']   = 'success';
-       $this->data['message']  = $e->getMessage();                
-    }
 		$this->layout->view('frontend/home/contact');
 	}
 

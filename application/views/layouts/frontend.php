@@ -2,30 +2,6 @@
 <html>
 	<head>
 
-		<style>
-.alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-}
-
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.closebtn:hover {
-    color: black;
-}
-</style>
-		
-		
 		<?php include_title(); ?>
         <?php include_metas(); ?>
         <?php include_links(); ?>
@@ -60,7 +36,7 @@
 
 		<?php 
 
-		$this->load->helper('cookie');
+        $this->load->helper('cookie');
         $ip = "";
         $count=1;
         if(!is_logged_in()){
@@ -82,11 +58,9 @@
             'expire' => '86400'
          );
         //echo json_encode($cookie);exit;
-        
-
         if($count>=5 && $count<=5){ 
 
-          $this->data['user_msg'] = "Please login to get extra benefit for agriculture";
+          $this->data['user_msg'] = "If you are not registered yet, Please register to get more Features & Benefits.";
 
         }
         if($count>=6){
@@ -99,8 +73,7 @@
         }
         setcookie('name',json_encode($cookie));
         }
-		?>
-		
+        ?>
 
 		<?php $this->load->view('_partials/footer', $this->data); ?>
 

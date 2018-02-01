@@ -34,70 +34,6 @@
                                                     <div data-step-label="" class="step-title waves-effect waves-dark">Step 1</div>
                                                     <div class="step-content">
                                                        <div class="row">
-
-                                    <div class="plans-container">
-
-                                      <p class="text-center">
-                                        <b>Choose Plan</b>
-
-                                         <input name="plans" type="hidden"  class="validate" required />
-                                      </p>
-                                      <div class="clearfix"></div>
-                                      
-                                      <?php
-
-                                          $color  = array("red","blue","purple" ,"cyan","green");
-                                          $palncount = count($plandata);
-                                          $width = "m12";
-                                          if ($palncount % 2 == 0)
-                                             $width = "m6";
-
-                                        foreach($plandata as $key => $plans):
-                                          $len = "m6";
-
-                                          if($key==$palncount-1)
-                                            $len = $width;
-                                        ?>
-                                        
-                                      <div class="col s12 <?=$len;?>">
-                                        <input name="plans" type="radio" id="test<?=$key+1;?>" class="validate" required value="<?=$plans['id']?>"/>
-                                        <label for="test<?=$key+1;?>">
-                                          <div class="card">
-                                            <div class="card-image <?=$color[$key];?> waves-effect">
-
-                                                <div class="card-title"><?=$plans['name']?></div>
-                                                <div class="price"><sup>$</sup><?=$plans['amount']?>
-                                                  <?php if($key!=0): ?>
-                                                  <sub>/mo</sub>
-                                                <?php endif;?>
-                                                </div>
-                                                <div class="price-desc"> <?=$plans['description']?></div>
-                                            </div>
-                                          </div>
-                                        </label>
-                                      </div>
-                                    <?php endforeach;?>
-
-                                    
-
-                                      <div class="clearfix"></div>
-                                    </div>
-
-                                    
-                                    <br/>
-  
-                                  </div>
-                                                       <div class="step-actions">
-                                                          <button class="waves-effect waves-dark btn blue next-step">CONTINUE</button>
-                                                       </div>
-                                                    </div>
-                                                 </li>
-                                                  
-
-                                                 <li class="step">
-                                                   <div class="">Step 2</div>
-                                                    <div class="step-content">
-                                                       <div class="row">
                                                           <div class="col s12 m6 input-field">
                                                           <label for="FirstName"> First Name <span class="required">*</span></label>
 
@@ -170,19 +106,16 @@
 
                                                          <button class="waves-effect waves-dark btn blue next-step" type="submit">CONTINUE</button>
                                                           
-                                                          <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
 
                                                           
                                                        </div>
                                                     </div>
                                                  </li>
-
-                                                
-                                          
+                                                  
 
                                                  <li class="step">
-                                                    <div class="">Step 3</div>
-                                                    <div class="step-content">
+                                                   <div class="">Step 2</div>
+                                                      <div class="step-content">
                                                       <div class="col s12 m6 input-field">
                                                           <label for="FirstName"> Business Name <span class="required">*</span></label>
 
@@ -242,9 +175,9 @@
                                                        <div class="step-actions">
                                                           <button class="waves-effect waves-dark btn blue" type="submit">SUBMIT</button>
                                                        </div>
+                                                        <?php echo form_close() ?>
                                                     </div>
-                                                 </li>
-                                                <?php echo form_close() ?>
+                                                 </li> 
                                                
                                               </ul>
                                            </div>

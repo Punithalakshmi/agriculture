@@ -18,7 +18,7 @@
      <input type="hidden" name="seller_id" value="<?=$editdata['id'];?>">
 
     <div id="contact" class="col s8">
-     
+   
     </div>
 
     <div id="service" class="col s8">

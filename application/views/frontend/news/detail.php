@@ -40,8 +40,7 @@
 
                             <div class="card-image waves-effect waves-block waves-light">
 
-                                <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/news/<?=$newsdata['image_name'];?>">
-
+                                <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/news/<?=!empty($newsdata['image_name'])?$newsdata['image_name']:'dummy_img.jpg' ?>">
                               </div>
 
                           </div>

@@ -96,7 +96,7 @@ class Agr_photos extends Admin_Controller
 
         {
 
-            $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_do_upload');
+            $this->form_validation->set_rules('image_name',  'Upload Image','trim|callback_image_ratio');
 
         }
 
@@ -136,14 +136,20 @@ class Agr_photos extends Admin_Controller
               {
 
                 $ins_data['modified_on']   = date("Y-m-d H:i:s");
-
+                if($ins_data['status']=="Active")
+                {
+                  $this->agr_photos_model->change_inactive();
+                }
                 $update_id = $this->agr_photos_model->update(array("id" => $edit_id),$ins_data);
 
                 $this->session->set_flashdata("success_msg","Photos updated successfully.",TRUE);              
               }
               else
               {  
-                
+                if($ins_data['status']=="Active")
+                {
+                  $this->agr_photos_model->change_inactive();
+                }
                 $new_id = $this->agr_photos_model->insert($ins_data);
 
                 $this->session->set_flashdata("success_msg","Photos inserted successfully.",TRUE);
@@ -241,6 +247,18 @@ class Agr_photos extends Admin_Controller
       }      
       $this->_ajax_output($output, TRUE);            
 
+    }
+
+    function image_ratio($str)
+    {  
+      $str = getimagesize($_FILES['image_name']['tmp_name']);
+      if($str[0]=="1440" && $str[1]=="743")
+        return true;
+      else
+      {
+        $this->form_validation->set_message('image_ratio',"The banner image should be 1440x743 ratio");
+        return false;
+      }
     }
 
 }

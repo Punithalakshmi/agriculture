@@ -44,7 +44,7 @@
                                     
                                     <div style="padding-top: 12px;">
                              
-                                      <img src="<?php echo base_url(); ?>uploads/news/<?php echo $editdata['image_name']; ?>" style="vertical-align:middle;" width="80" height="80">
+                                      <img src="<?php echo base_url(); ?>uploads/agr_photos/<?php echo $editdata['image_name']; ?>" style="vertical-align:middle;" width="80" height="80">
 
                                      </div>
                                    <?php } ?> 

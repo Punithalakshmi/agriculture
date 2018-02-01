@@ -46,7 +46,7 @@ class Registration extends Admin_Controller {
     public function createnew_account(){
 
             
-            if($this->input->post('plans')){
+            if($this->input->post('first_name')){
 
               $ins_data = array();
               $ins_data['first_name']              = $this->input->post('first_name');
@@ -64,7 +64,7 @@ class Registration extends Admin_Controller {
               $ins_data['state_id']          = $this->input->post('state_id');
               $ins_data['zip']                     = $this->input->post('zip');
               $ins_data['phone']      = $this->input->post('phone');
-              $ins_data['plan_id']    = $this->input->post('plans');
+              // $ins_data['plan_id']    = $this->input->post('plans');
               $ins_data['created_on'] = date('Y-m-d H:i:s');
               
               $new_id                   = $this->seller_model->insert($ins_data); 

@@ -34,9 +34,8 @@
 
                               <div class="card-image waves-effect waves-block waves-light">
 
-                                <img class="activator" height="262" width="300" src="<?=base_url();?>assets/img/events/<?=$events['event_image'];?>">
+                                <img class="activator" height="262" width="300" src="<?=base_url();?>assets/img/events/<?=!empty($events["event_image"])?$events["event_image"]:'dummy_img.jpg'?>">
 
-                                
 
                               </div>
 

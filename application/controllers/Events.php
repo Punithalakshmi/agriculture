@@ -16,7 +16,7 @@ class Events extends Admin_Controller {
 	{
 
 		$filter = $this->input->post('filter_by');
-		
+
 		$this->load->library('pagination');
 		$limit = 20;	
 		$config['base_url'] = base_url()."events/index/";
@@ -33,7 +33,7 @@ class Events extends Admin_Controller {
         $config['next_tag_open'] = '<li class="waves-effect">';
         $config['next_tag_close'] = '</li>';
 		$this->pagination->initialize($config);
-
+		
 		if($filter =="today" || $filter =="tomorrow" || $filter =="thisweek" || $filter =="nextweek"|| $filter =="thismonth" || $filter =="thisyear"){
 
 			 $search_data = $this->events_model->get_search_events($filter,$limit,$start);
@@ -47,6 +47,7 @@ class Events extends Admin_Controller {
 
 			$this->data['events'] = $this->events_model->get_events($limit,$start);
 		}
+		//$this->data['events'] = $this->events_model->get_events($limit,$start);
 		$this->data['links'] = $this->pagination->create_links();
 		$this->layout->view('frontend/events/events',$this->data);
 	}
@@ -94,12 +95,12 @@ class Events extends Admin_Controller {
     $this->layout->view('frontend/events/detail',$this->data);
 
 	}
-
+	
 	public function view(){
 
 
 	    $this->load->library('pagination');
-		$limit = 5;	
+		$limit = 20;	
 		$config['base_url'] = base_url()."events/view/";
 		$config['per_page'] = $limit;
 		$start = $this->uri->segment(3)?$this->uri->segment(3):0;
@@ -122,17 +123,5 @@ class Events extends Admin_Controller {
 
 	 
 	}
-
-	/* public function delete_cookies(){
-
-		$this->load->helper('cookie');
-
-		unset($_COOKIE['name']);
-        //empty value and expiration one hour before
-        $res = setcookie('name', '', time() - 3600);
-       
-		//unset($_COOKIE['name']);
-		
-	} */
 
 }

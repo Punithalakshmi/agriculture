@@ -1,10 +1,9 @@
-            <?php //$this->session->unset_userdata('var_search_term');?>
-            <!-- breadcrumb -->
-            <nav class="clearfix breadcrumb-wrapper">
+           <!-- breadcrumb -->
+            <nav> 
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">
-                        <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                        <a href="<?=base_url();?>" class="breadcrumb"><i class="material-icons">home</i></a>
                         <a href="<?=base_url();?>services" class="breadcrumb">Services</a>
                       </div>
                   </div>
@@ -30,7 +29,7 @@
                                 <div class="row">
                                     <div class="col m3 s12">
                                         <div class="input-field col s12">
-                                        <?php echo form_dropdown(array('name' => 'category', 'id' => 'category','class'=>'categories'), array('' => 'Select Category')+categories(), set_value('category', $category));?>
+                                        <?php echo form_dropdown(array('name' => 'category', 'id' => 'category','class'=>'categories select'), array('' => 'Select Category')+categories(), set_value('category', $category));?>
                                         <!--<label><b>Filter Option</b></label>-->
                                       </div>
                                     </div>
@@ -64,6 +63,14 @@
 
                             <button id="btns" class="btn-large waves-effect waves-light lgreen lighten-1 search-btn">Search</button>
                             <a href="<?=site_url('services/clear_records')?>" class="btn-large waves-effect waves-light red lighten-1 search-btn">Clear</a>
+                            <div class="weather">
+                              <img src="<?=base_url()?>assets/img/weather.jpg">
+                              <div class="weather-info">
+                                <p class="location"></p>
+                                <p class="main_temp"></p>
+                                <p class="climate"></p>
+                              </div>
+                            </div>
                         </div>
                             </form>
                         </div>
@@ -77,7 +84,7 @@
                           <?php foreach($ads_image as $images): ?>
                           <li>
                             <a href="#">
-                               <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" "> </a>
+                               <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt=""> </a>
                           </li>
                           <?php endforeach;?>
                         </ul>
@@ -88,20 +95,20 @@
                         <div class="row center">
                           <h1 class="page-title">Explore The Worldwide <span>Farmers</span></h1>
                         </div>
-                        <div class="row farmers-list">                       
+                        <div class="row farmers-list-list">                       
                             <!-- Single loop -->
                           <?php if($editdata){?>  
                                <?php  foreach($editdata as $services):?>
                               <div class="col l4 m6 s12">
                                 <div class="card sticky-action hoverable" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" height="262" width="300" src="<?=base_url();?>admin/uploads/services/<?=$services["image_name"]?>">
+                                    <img class="activator" src="<?=base_url();?>admin/uploads/services/<?=!empty($services['image_name'])?$services['image_name']:'dummy_img.jpg' ?>">
                                   </div>
                                   <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4"><?=$services["title"];?></span>
 
-                                    <p> <!-- <small>by Ashiana Housing</small>  -->
-                                      <?=$services["address"];?></p>
+                                    <p> <small><?=$services["address"];?></small> </p>
+                                      <p> <?=$services["description"];?></p>
                                   </div>
 
                                   <div class="card-action right-align">

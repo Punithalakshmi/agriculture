@@ -1,9 +1,9 @@
                     <nav class="clearfix breadcrumb-wrapper">
                         <div class="nav-wrapper green">
                           <div class="container">
-                              <div class="col s12">
-                                <a href="<?=base_url()?>home" class="breadcrumb"><i class="material-icons">home</i></a>
-                                <a href="<?=base_url()?>event" class="breadcrumb">Event</a>
+                            <div class="col s12">      
+                              <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
+                              <a href="<?=base_url();?>events" class="breadcrumb">Events</a>
                               </div>
                           </div>
                         </div>
@@ -14,13 +14,20 @@
 
 
                         <div class="row center">
+
+                          
+
                           <h1 class="page-title">Events</h1>
+
                         </div>
 
+                    
+
+                        <div class="row farmers-list-list">  
+
+
                     <div class="input-field">
-
                     <form action="<?=site_url('events');?>" method="POST">
-
                   <?php   
                         $options = array(
                          ''             => 'Sort by',
@@ -35,12 +42,7 @@
 
                     <?php echo form_dropdown('filter_by', $options, set_value('filter_by'),['onchange'=>'this.form.submit()']); ?>
                     </form>
-                    
-                    </div> 
-
-                        <div class="row farmers-list"> 
-
-                                 
+                    </div>                      
 
                             <!-- Single loop -->
 
@@ -58,15 +60,9 @@
 
                                   <div class="card-image waves-effect waves-block waves-light">
 
-                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/img/events/<?=$value->event_image?>">
+                                    <img class="activator" height="262" width="300" src="<?=base_url();?>assets/img/events/<?=!empty($value->event_image)?$value->event_image:'dummy_img.jpg'?>">
 
                                   </div>
-
-
-
-
-
-
 
                                   <div class="card-content">
 

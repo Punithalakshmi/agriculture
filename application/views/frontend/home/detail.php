@@ -3,14 +3,18 @@
                 <div class="nav-wrapper green">
                   <div class="container">
                       <div class="col s12">      
-                      <a href="<?=base_url();?>" class="breadcrumb"><i class="material-icons">home</i></a>
+                      <a href="<?=base_url();?>home" class="breadcrumb"><i class="material-icons">home</i></a>
                         <a href="<?=base_url();?>services" class="breadcrumb">Services</a>
                         <a href="<?=base_url();?>services" class="breadcrumb"><?=$service_row['title']; ?></a>
                       </div>
                   </div>
                 </div>
-            </nav>     
-        <!--- map-->
+            </nav>
+        
+            <!--- map-->
+            
+            
+
             <!-- Content Area -->
 
             <div class="interior-wrap contact-wrap">
@@ -26,7 +30,7 @@
 
                                 <div class="card" style="overflow: visible;">
                                   <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" height="403" width="461" src="<?=base_url();?>admin/uploads/services/<?=$service_row['image_name']; ?>">
+                                    <img class="activator" height="403" width="461" src="<?=base_url();?>admin/uploads/services/<?=!empty($service_row['image_name'])?$service_row['image_name']:'dummy_img.jpg' ?>">
                                   </div>
                                  
                                 </div>
@@ -73,7 +77,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td>State</td>
+                                        <td>City</td>
                                         <td>:</td>
                                         <td> <b><?=$service_row['city']; ?></b></td>
                                     </tr>

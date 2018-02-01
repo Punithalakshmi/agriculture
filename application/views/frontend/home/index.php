@@ -88,7 +88,7 @@
                     <?php foreach($ads_image as $images): ?>
                     <li>
                     <a href="#">
-                        <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" "> </a>
+                        <img src="<?=base_url()?>assets/img/business/<?=$images["ads_image"];?>" border="0" width="720" height="90" alt="" > </a>
                     </li>
                     <?php endforeach;?>
                 </ul>
